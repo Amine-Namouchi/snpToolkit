@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+
+# Copyright Amine Namouchi
+# snpToolkit is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but without
+# any warranty; without even the implied warranty of merchantability or fitness
+# for a particular purpose. See the GNU General Public License for more details
+#
+# You should have received a copy of the GNU General Public License along with
+# this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+__licence__ = 'GPLv3'
+__author__ = 'Amine Namouchi'
+__author_email__ = 'amine.namouchi@gmail.com'
+
+
+if __name__ == "__main__":
+
+    from modules.argsLogger_snpToolkit import *
+    import sys
+    import subprocess
+
+    logger = setupLogger()
+
+    import sys
+    if len(sys.argv) == 1:
+        logger.error('Run snpToolkit with -h option for instructions')
+        sys.exit(0)
+
+    args = get_options()
+
+    if args.command == 'explore':
+        cmd = ['python','/Users/amine/Documents/Programming/Bitbucket/snpToolkit-dev/modules/explore_snpToolkit.py','-i', args.identifier]
+        proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
+        proc.wait()
+
+    elif args.command == 'annotate':
+        try:
+            from Bio import SeqIO
+        except ImportError:
+            logger.error('Please install Biopython before to continue')
+            sys.exit(0)
+
+        from modules.calls_snpToolkit import annotate
+        annotate(args)
+
+
+    elif args.command == 'combine':
+        try:
+            import pysam
+        except ImportError:
+            logger.error('Please install pysam before to continue')
+            sys.exit()
+        from modules.combine_snpToolkit import *
+        from modules.calls_snpToolkit import combine
+        combine(args)
+    else:
+        from modules.calls_snpToolkit import expand
+        expand(args)
