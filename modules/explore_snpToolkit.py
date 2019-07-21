@@ -17,6 +17,10 @@ from subprocess import Popen, PIPE, STDOUT
 from annotate_snpToolkit import *
 from argsLogger_snpToolkit import *
 from argsLogger_snpToolkit import *
+from plotly.colors import n_colors
+
+
+
 
 
 color_choice = "aliceblue, antiquewhite, aqua, aquamarine, azure, beige, bisque, black, blanchedalmond, blue, blueviolet, brown, burlywood, cadetblue, chartreuse, chocolate, coral, cornflowerblue,cornsilk, crimson, cyan, darkblue, darkcyan,darkgoldenrod, darkgray, darkgrey, darkgreen,darkkhaki, darkmagenta, darkolivegreen, darkorange,darkorchid, darkred, darksalmon, darkseagreen,darkslateblue, darkslategray, darkslategrey, darkturquoise, darkviolet, deeppink, deepskyblue,dimgray, dimgrey, dodgerblue, firebrick,floralwhite, forestgreen, fuchsia, gainsboro, ghostwhite, gold, goldenrod, gray, grey, green,greenyellow, honeydew, hotpink, indianred, indigo,ivory, khaki, lavender, lavenderblush, lawngreen,lemonchiffon, lightblue, lightcoral, lightcyan,lightgoldenrodyellow, lightgray, lightgrey,lightgreen, lightpink, lightsalmon, lightseagreen,lightskyblue, lightslategray, lightslategrey,lightsteelblue, lightyellow, lime, limegreen,linen, magenta, maroon, mediumaquamarine, mediumblue, mediumorchid, mediumpurple,mediumseagreen, mediumslateblue, mediumspringgreen,mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, navajowhite, navy,oldlace, olive, olivedrab, orange, orangered,orchid, palegoldenrod, palegreen, paleturquoise,palevioletred, papayawhip, peachpuff, peru, pink,plum, powderblue, purple, red, rosybrown,royalblue, saddlebrown, salmon, sandybrown,seagreen, seashell, sienna, silver, skyblue,slateblue, slategray, slategrey, snow, springgreen,steelblue, tan, teal, thistle, tomato, turquoise,violet, wheat, white, whitesmoke, yellow,yellowgreen".split(',')
@@ -82,14 +86,19 @@ for x in range (len (diffContigs)):
     color_picker[diffContigs[x]]= uniqueRandNum[x]
 
 data ={}
+data2 = {}
 for each_vcf_File in vcf_data_collection.keys():
     vcf_content = vcf_data_collection[each_vcf_File][0]
     allSNP = []
-    for eachElem in vcf_content.keys():
+    allSNP2 = []
+    colors = n_colors('rgb(5, 200, 200)', 'rgb(200, 10, 10)', len(vcf_content.keys()), colortype='rgb')
+    for eachElem,color in zip(vcf_content.keys(),colors):
         df_raw = pd.DataFrame(vcf_content[eachElem],[x[0] for x in vcf_content[eachElem]],['Position','REF','SNP','Depth','Depth reference','Depth SNPs','Ratio','Quality'])
-        allSNP.append(go.Scatter(x=df_raw["Ratio"],y=df_raw["Depth"],mode="markers",name=eachElem,marker=dict(color=color_picker[eachElem],size=df_raw['Quality'],opacity=0.5,sizeref=5, line_width=1,showscale=False),showlegend=True))#color=df_raw['Quality']
-        #allSNP.append(go.Histogram(x=df_raw["Ratio"],name=eachElem,marker=dict(color='black',opacity=0.2),showlegend=True))
+        bubble_color = color_picker[eachElem]
+        allSNP.append(go.Scatter(x=df_raw["Ratio"],y=df_raw["Depth"],mode="markers",name=eachElem,marker=dict(size = df_raw ['Quality'],color=color,opacity=0.5,sizeref=10, line_width=1,showscale=False),showlegend=True))#color=df_raw['Quality']
+        allSNP2.append(go.Violin(x=df_raw["Ratio"],name=eachElem,marker=dict(opacity=0.5,color=color), points=False,orientation='h', side='positive',showlegend=True))
     data[each_vcf_File]=allSNP
+    data2[each_vcf_File]=allSNP2
 
 
 app = dash.Dash()
@@ -97,11 +106,14 @@ app = dash.Dash()
 colors={'background':'#111111','text':'#ffffff','textHeader':'#111111'}
 
 app.layout = html.Div(children=[
-    html.H1('snpToolkit plots',style={'color':colors['textHeader'],'text-align':'center'}),
-    dcc.Graph(id='graph'),
-    dcc.Dropdown(id='isolate',options=isolates_collection,value=File_name)])
     
-
+    html.H1('snpToolkit plots',style={'color':colors['textHeader'],'text-align':'center'}),
+    dcc.Dropdown(id='isolate',options=isolates_collection,value=File_name),
+    dcc.Graph(id='graph'),
+    html.Div(children=[
+    dcc.Graph(id='graph2')
+    ])])
+    
 
 @app.callback (Output('graph','figure'),[Input('isolate','value')])
 
@@ -109,6 +121,10 @@ def update_graph(selected_isolate):
     layout = go.Layout(title='Depth vs Ratio',xaxis={'title':'Ratio'},yaxis={'title':'Depth'},hovermode='closest')
     return {'data':data[selected_isolate],'layout':layout}
 
+@app.callback (Output('graph2','figure'),[Input('isolate','value')])
+def update_graph2(selected_isolate):
+    layout2 = go.Layout(title='Frequency distribution',xaxis={'title':'Ratio','range':[0,1]}, hovermode='closest',autosize=False,height=300,xaxis_showgrid=False, xaxis_zeroline=False)
+    return {'data':data2[selected_isolate],'layout':layout2}
 
 if __name__ == '__main__':
     app.run_server()

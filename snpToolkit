@@ -35,7 +35,7 @@ if __name__ == "__main__":
     args = get_options()
 
     if args.command == 'explore':
-        cmd = ['python','/Users/amine/Documents/Programming/Bitbucket/snpToolkit-dev/modules/explore_snpToolkit.py','-i', args.identifier]
+        cmd = ['python','/Users/amine/Documents/programming/snpToolkit-dev/modules/explore_snpToolkit.py','-i', args.identifier]
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 
