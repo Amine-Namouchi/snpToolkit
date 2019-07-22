@@ -8,6 +8,7 @@ import random
 import plotly.graph_objs as go
 import plotly.offline as pyo
 import plotly.figure_factory as ff
+import numpy as np 
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -95,7 +96,10 @@ for each_vcf_File in vcf_data_collection.keys():
     for eachElem,color in zip(vcf_content.keys(),colors):
         df_raw = pd.DataFrame(vcf_content[eachElem],[x[0] for x in vcf_content[eachElem]],['Position','REF','SNP','Depth','Depth reference','Depth SNPs','Ratio','Quality'])
         bubble_color = color_picker[eachElem]
-        allSNP.append(go.Scatter(x=df_raw["Ratio"],y=df_raw["Depth"],mode="markers",name=eachElem,marker=dict(size = df_raw ['Quality'],color=color,opacity=0.5,sizeref=10, line_width=1,showscale=False),showlegend=True))#color=df_raw['Quality']
+        Qrange = [df_raw['Quality'].between(1, 20), df_raw['Quality'].between(21, 50), df_raw['Quality'].between(51, 100), df_raw['Quality'].between(101, 1000000)] 
+        values = [5, 10, 15, 20]
+        df_raw['Qvalues'] = np.select(Qrange, values)
+        allSNP.append(go.Scatter(x=df_raw["Ratio"],y=df_raw["Depth"],mode="markers",name=eachElem,marker=dict(size=df_raw['Qvalues'],color=color,opacity=0.3,showscale=False),showlegend=True))#color=df_raw['Quality']
         allSNP2.append(go.Violin(x=df_raw["Ratio"],name=eachElem,marker=dict(opacity=0.5,color=color), points=False,orientation='h', side='positive',showlegend=True))
     data[each_vcf_File]=allSNP
     data2[each_vcf_File]=allSNP2
