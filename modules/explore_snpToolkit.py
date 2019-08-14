@@ -13,10 +13,10 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies  import Input, Output
+import dash_table
 from operator import itemgetter
 from subprocess import Popen, PIPE, STDOUT
 from annotate_snpToolkit import *
-from argsLogger_snpToolkit import *
 from argsLogger_snpToolkit import *
 from plotly.colors import n_colors
 
@@ -88,19 +88,25 @@ for x in range (len (diffContigs)):
 
 data ={}
 data2 = {}
+all_snps_stats = {}
 for each_vcf_File in vcf_data_collection.keys():
     vcf_content = vcf_data_collection[each_vcf_File][0]
     allSNP = []
     allSNP2 = []
+    statsSNPs =[]
     colors = n_colors('rgb(5, 200, 200)', 'rgb(200, 10, 10)', len(vcf_content.keys()), colortype='rgb')
+    snp_stats=[]
     for eachElem,color in zip(vcf_content.keys(),colors):
         df_raw = pd.DataFrame(vcf_content[eachElem],[x[0] for x in vcf_content[eachElem]],['Position','REF','SNP','Depth','Depth reference','Depth SNPs','Ratio','Quality'])
+        #print (each_vcf_File,len(df_raw.loc[(df_raw['Ratio']>0.9) & (df_raw['Depth']>10)]))
+        snp_stats.append([eachElem,len(df_raw),len(df_raw[df_raw.Depth >= 3]),len(df_raw[df_raw.Quality >= 20]),len(df_raw[df_raw.Ratio >= 0.9]),len(df_raw[(df_raw.Ratio >= 0.9) & (df_raw.Depth >= 3) & (df_raw.Quality >= 20)])])
         bubble_color = color_picker[eachElem]
         Qrange = [df_raw['Quality'].between(1, 20), df_raw['Quality'].between(21, 50), df_raw['Quality'].between(51, 100), df_raw['Quality'].between(101, 1000000)] 
         values = [5, 10, 15, 20]
         df_raw['Qvalues'] = np.select(Qrange, values)
         allSNP.append(go.Scatter(x=df_raw["Ratio"],y=df_raw["Depth"],mode="markers",name=eachElem,marker=dict(size=df_raw['Qvalues'],color=color,opacity=0.3,showscale=False),showlegend=True))#color=df_raw['Quality']
         allSNP2.append(go.Violin(x=df_raw["Ratio"],name=eachElem,marker=dict(opacity=0.5,color=color), points=False,orientation='h', side='positive',showlegend=True))
+    all_snps_stats[each_vcf_File]=snp_stats
     data[each_vcf_File]=allSNP
     data2[each_vcf_File]=allSNP2
 
@@ -108,16 +114,18 @@ for each_vcf_File in vcf_data_collection.keys():
 app = dash.Dash()
 
 colors={'background':'#111111','text':'#ffffff','textHeader':'#111111'}
-
 app.layout = html.Div(children=[
-    
     html.H1('snpToolkit plots',style={'color':colors['textHeader'],'text-align':'center'}),
     dcc.Dropdown(id='isolate',options=isolates_collection,value=File_name),
+    #dash_table.DataTable(id='table'),
     dcc.Graph(id='graph'),
     html.Div(children=[
     dcc.Graph(id='graph2')
     ])])
-    
+
+
+
+
 
 @app.callback (Output('graph','figure'),[Input('isolate','value')])
 
