@@ -13,14 +13,12 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies  import Input, Output
-import dash_table
+import dash_table as dt
 from operator import itemgetter
 from subprocess import Popen, PIPE, STDOUT
 from annotate_snpToolkit import *
 from argsLogger_snpToolkit import *
 from plotly.colors import n_colors
-
-
 
 
 
@@ -94,49 +92,67 @@ for each_vcf_File in vcf_data_collection.keys():
     allSNP = []
     allSNP2 = []
     statsSNPs =[]
-    colors = n_colors('rgb(5, 200, 200)', 'rgb(200, 10, 10)', len(vcf_content.keys()), colortype='rgb')
-    snp_stats=[]
+    if len (vcf_content.keys())>1:
+        colors = n_colors('rgb(5, 200, 200)', 'rgb(200, 10, 10)', len(vcf_content.keys()), colortype='rgb')
+    else:
+        colors = ['rgb(62, 155, 184)']
+    snpsSTATS=[]
     for eachElem,color in zip(vcf_content.keys(),colors):
         df_raw = pd.DataFrame(vcf_content[eachElem],[x[0] for x in vcf_content[eachElem]],['Position','REF','SNP','Depth','Depth reference','Depth SNPs','Ratio','Quality'])
-        #print (each_vcf_File,len(df_raw.loc[(df_raw['Ratio']>0.9) & (df_raw['Depth']>10)]))
-        snp_stats.append([eachElem,len(df_raw),len(df_raw[df_raw.Depth >= 3]),len(df_raw[df_raw.Quality >= 20]),len(df_raw[df_raw.Ratio >= 0.9]),len(df_raw[(df_raw.Ratio >= 0.9) & (df_raw.Depth >= 3) & (df_raw.Quality >= 20)])])
+        snpsSTATS.append ([eachElem,len(df_raw),len(df_raw[df_raw.Depth >= 3]),len(df_raw[df_raw.Quality >= 20]),len(df_raw[df_raw.Ratio >= 0.9]),len(df_raw[(df_raw.Ratio >= 0.9) & (df_raw.Depth >= 3) & (df_raw.Quality >= 20)])])
         bubble_color = color_picker[eachElem]
         Qrange = [df_raw['Quality'].between(1, 20), df_raw['Quality'].between(21, 50), df_raw['Quality'].between(51, 100), df_raw['Quality'].between(101, 1000000)] 
         values = [5, 10, 15, 20]
         df_raw['Qvalues'] = np.select(Qrange, values)
         allSNP.append(go.Scatter(x=df_raw["Ratio"],y=df_raw["Depth"],mode="markers",name=eachElem,marker=dict(size=df_raw['Qvalues'],color=color,opacity=0.3,showscale=False),showlegend=True))#color=df_raw['Quality']
-        allSNP2.append(go.Violin(x=df_raw["Ratio"],name=eachElem,marker=dict(opacity=0.5,color=color), points=False,orientation='h', side='positive',showlegend=True))
-    all_snps_stats[each_vcf_File]=snp_stats
+        allSNP2.append(go.Violin(x=df_raw["Ratio"],name=eachElem,marker=dict(opacity=0.5,color=color),points=False,orientation='h', side='positive',showlegend=True))
+
+    all_snps_stats[each_vcf_File]=pd.DataFrame(columns=['Location', 'Total SNPs','Nb SNP if depth >= 3','Nb SNP if QUAL >= 20','Nb SNP if Ratio >= 0.9','All filters on'],data=snpsSTATS)
+
     data[each_vcf_File]=allSNP
     data2[each_vcf_File]=allSNP2
+
 
 
 app = dash.Dash()
 
 colors={'background':'#111111','text':'#ffffff','textHeader':'#111111'}
 app.layout = html.Div(children=[
-    html.H1('snpToolkit plots',style={'color':colors['textHeader'],'text-align':'center'}),
-    dcc.Dropdown(id='isolate',options=isolates_collection,value=File_name),
-    #dash_table.DataTable(id='table'),
+    html.H2('snpToolkit plots -  VCFs SNPs content',style={'color':colors['textHeader'],'text-align':'center'}),
+    dcc.Dropdown(id='isolate',options=isolates_collection,value=isolates_collection[0]['value']),
+    # html.Div(children=[html.Label('Depth cutoff'),
+    # dcc.Slider(id='depth-slider',min=0,max=1000,step=1,value=3, tooltip={'updatemode':'drag'})]),
+    # html.Label('Quality cutoff'),
+    # dcc.Slider(id='qual-slider',min=0,max=1000,step=1,value=20,tooltip={'updatemode':'drag'}),
+    # html.Label('Ratio cutoff'),
+    # dcc.Slider(id='ratio-slider',min=0.0,max=1.0,step=0.1,value=0.9, marks={i:i for i in range (0,1)}),
+    html.H3('Number of identified SNPs',style={'color':colors['textHeader']}),
+    html.Div(dt.DataTable(columns = [{"name": i, "id": i} for i in ['Location', 'Total SNPs','Nb SNP if depth >= 3','Nb SNP if QUAL >= 20','Nb SNP if Ratio >= 0.9','All filters on']],id='snpTable', style_table={ 'align':'center'},style_cell={'textAlign': 'center', 'border': '1px solid grey'},    style_header={
+        'color':'white',
+        'backgroundColor': 'rgb(62, 155, 184)',
+        'border': '1px solid black'
+    })),
     dcc.Graph(id='graph'),
     html.Div(children=[
     dcc.Graph(id='graph2')
     ])])
 
 
-
-
+@app.callback (Output('snpTable','data'),[Input('isolate','value')])
+def update_table(selected_isolate):
+    return all_snps_stats[selected_isolate].to_dict('rows')
 
 @app.callback (Output('graph','figure'),[Input('isolate','value')])
-
 def update_graph(selected_isolate):
     layout = go.Layout(title='Depth vs Ratio',xaxis={'title':'Ratio'},yaxis={'title':'Depth'},hovermode='closest')
     return {'data':data[selected_isolate],'layout':layout}
 
 @app.callback (Output('graph2','figure'),[Input('isolate','value')])
 def update_graph2(selected_isolate):
-    layout2 = go.Layout(title='Frequency distribution',xaxis={'title':'Ratio','range':[0,1]}, hovermode='closest',autosize=False,height=300,xaxis_showgrid=False, xaxis_zeroline=False)
+    layout2 = go.Layout(title='Frequency distribution',xaxis={'title':'Ratio','range':[0,1]}, yaxis={'showticklabels':False}, hovermode=False,autosize=False,height=300,xaxis_showgrid=False, xaxis_zeroline=False)
     return {'data':data2[selected_isolate],'layout':layout2}
+
+
 
 if __name__ == '__main__':
     app.run_server()

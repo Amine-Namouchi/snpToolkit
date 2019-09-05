@@ -35,7 +35,7 @@ from tqdm import tqdm
 from .argsLogger_snpToolkit import *
 from .annotate_snpToolkit import *
 from .combine_snpToolkit import *
-from .plot_snpToolkit import *
+# from .plot_snpToolkit import *
 import pandas as pd
 import pysam
 
@@ -135,18 +135,16 @@ def annotate(options):
             PreProcessedRawSNPs = SNPselect(
                 Fitered_SNPs, 0, 0, 0)
             extractedRawSNPs = PreProcessedRawSNPs.ExtractSNPinfo(vcf_source)
-            print (extractedRawSNPs[0].keys())
-
 
             PreProcessedSNPs = SNPselect(
                 Fitered_SNPs, options.quality, options.depth, options.ratio)
             extractedSNPs = PreProcessedSNPs.ExtractSNPinfo(vcf_source)
 
             if options.ratio == 0.001:
-                info3 = '##Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
+                info3 = '##Filtred SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
                     len(Fitered_SNPs), options.quality, options.depth, 0.0, sum([len(x) for x in extractedSNPs[0].values()]))
             else:
-                info3 = '##Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
+                info3 = '##Filtred SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
                     len(Fitered_SNPs), options.quality, options.depth, options.ratio, sum([len(x) for x in extractedSNPs[0].values()]))
 
             genbank_accessions = annotationDB.keys()
@@ -198,7 +196,7 @@ def annotate(options):
                 '\n##'.join(Final_SNP_List.keys())
             info5 = '##The mapped and annotated SNPs are distributed as follow:'
 
-            summary_columns = [[' ', 'Genes', 'RBS', 'tRNA', 'rRNA', 'ncRNA',
+            summary_columns = [['Location', 'Genes', 'RBS', 'tRNA', 'rRNA', 'ncRNA',
                                 'Pseudogenes', 'intergenic', 'Synonymous', 'NonSynonumous']]
             allSNPs = []
             all_data_collection = []
@@ -243,15 +241,15 @@ def annotate(options):
                         sys.argv[:]), '##VcfFile='+VcfFile, info1, info2, info3, info4, info5]
                     for info in infos:
                         outputfile.write(info + '\n')
-
-                    for info in summary_columns:
-                        outputfile.write('##'+'\t'.join(info) + '\n')
+                    outputfile.write('##'+'\t'.join(summary_columns[0]) + '\n')
+                    for info in summary_columns[1:]:
+                        outputfile.write('##SNPs in '+'\t'.join(info) + '\n')
 
                     outputfile.write(
-                        '##Syn=Synnonymous NS=Non-Synonymous'+'\n'+'##'+'\n')
+                        '##Syn=Synonymous NS=Non-Synonymous'+'\n'+'##'+'\n')
 
-                    header = ['##Coordinates', 'Ref', 'SNP', 'Depth', 'Nb of reads Ref', 'Nb reads SNPs', 'Ratio', 'Quality', 'Location', 'Product',
-                              'Orientation', 'Coordinates annotation', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates Protein', 'Effect', 'Distribution']
+                    header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Location', 'Product',
+                              'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates protein', 'Effect', 'Location']
 
                     outputfile.write('\t'.join(header) + '\n')
 
@@ -271,15 +269,15 @@ def annotate(options):
                         sys.argv[:]), '##VcfFile='+VcfFile, info1, info2, info3, info4, info5]
                     for info in infos:
                         outputfile.write(info + '\n')
-
-                    for info in summary_columns:
-                        outputfile.write('##'+'\t'.join(info) + '\n')
+                    outputfile.write('##'+'\t'.join(summary_columns[0]) + '\n')
+                    for info in summary_columns[1:]:
+                        outputfile.write('##SNPs in '+'\t'.join(info) + '\n')
 
                     outputfile.write(
-                        '##Syn=Synnonymous NS=Non-Synonymous'+'\n'+'##'+'\n')
+                        '##Syn=Synnonymous NS=Non-Synonymous'+'\n')
 
-                    header = ['##Coordinates', 'Ref', 'SNP', 'Depth', 'Nb of reads Ref', 'Nb reads SNPs', 'Ratio', 'Quality', 'Location', 'Product',
-                              'Orientation', 'Coordinates annotation', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates Protein', 'Effect', 'Distribution']
+                    header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Location', 'Product',
+                                'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates protein', 'Effect', 'Location']
 
                     outputfile.write('\t'.join(header) + '\n')
 
@@ -308,8 +306,8 @@ def annotate(options):
                 logger.warning(warning)
         logger.info('snpToolkit output folder was not created')
 
-    #generatePlots (extractedRawSNPs,extractedSNPs,'NC_000962.3')
-   
+ 
+       
 
 def combine(options):
     regions_to_exclude = []
@@ -441,6 +439,7 @@ def combine(options):
         outputfile2 = open(choices[options.snps] + '_alignment.fasta', 'w')
         outputfile2.write('>' + options.location + '\n' + reference + '\n')
         reconstruct_fasta(outputfile2, 13, SampleNames, distribution_result)
+
 
 
 def expand(options):

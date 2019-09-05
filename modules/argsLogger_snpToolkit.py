@@ -80,7 +80,7 @@ def get_options():
                                    dest='ratio', default=0.001, type=float, help='minimum ratio that correspond to the number of reads that has the mutated allele / total depth in that particular position. default value [0]')
 
     AdditonalOptions2.add_argument('-e', required=False, type=str, dest='exclude',
-                                   help='provide a tab file with genomic regions to exclude in this format: region1	start	stop')
+                                   help='provide a tab file with genomic regions to exclude in this format: region1	start stop')
 
     combine = subparsers.add_parser(
         name='combine', help='combine snpToolkit output files in one alignment in fasta format', epilog=copyright)
@@ -111,8 +111,14 @@ def get_options():
 
 
 
-    return parser.parse_args()
+    viz = subparsers.add_parser(
+        name='viz', help='visualize snptoolkit output files', epilog=copyright)
 
+    requiredOptions4 = viz.add_argument_group('snpToolkit viz required options')
+    requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',
+                                  help='provide the path to the directory containing snptoolkit output files')
+
+    return parser.parse_args()
 
 def setupLogger():
 

@@ -22,7 +22,7 @@ __author_email__ = 'amine.namouchi@gmail.com'
 if __name__ == "__main__":
 
     from modules.argsLogger_snpToolkit import *
-    import sys
+    import sys,os
     import subprocess
 
     logger = setupLogger()
@@ -33,9 +33,11 @@ if __name__ == "__main__":
         sys.exit(0)
 
     args = get_options()
+    cwd = os.path.dirname(__file__)
+
 
     if args.command == 'explore':
-        cmd = ['python','/Users/amine/Documents/programming/snpToolkit-dev/modules/explore_snpToolkit.py','-i', args.identifier]
+        cmd = ['python',cwd+'/modules/explore_snpToolkit.py','-i', args.identifier]
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 
@@ -59,6 +61,12 @@ if __name__ == "__main__":
         from modules.combine_snpToolkit import *
         from modules.calls_snpToolkit import combine
         combine(args)
+    
+    elif args.command == 'viz':
+        cmd = ['python',cwd+'/modules/plot_snpToolkit_output.py','--dir', args.directory]
+        proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
+        proc.wait()
+
     else:
         from modules.calls_snpToolkit import expand
         expand(args)

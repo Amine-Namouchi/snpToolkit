@@ -1,0 +1,909 @@
+##snpToolkit=version 2.0.6
+##commandline= ../snpToolkit annotate -i vcf.gz -g /Users/amine/Documents/from_google_drive/HAARLEM/reference/GCF_000195955.2_ASM19595v2_genomic.gbff -r 0.9 -f 50
+##VcfFile=TUN2412.vcf.gz
+##Total number of SNPs before snpToolkit processing: 1304
+##By excluding SNPs that are closer than 50 bp to each other, the number of remaining SNPs is: 949
+##Filtred SNPs. Among the 949 SNPs, the number of those with a quality score >= 20, a depth >= 3 and a ratio >= 0.9 is: 894
+##After mapping, SNPs were located in: 
+##NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+##The mapped and annotated SNPs are distributed as follow:
+##Location	Genes	RBS	tRNA	rRNA	ncRNA	Pseudogenes	intergenic	Synonymous	NonSynonumous
+##SNPs in NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp	781	0	0	0	2	0	113	309	472
+##Syn=Synnonymous NS=Non-Synonymous
+Coordinates	REF	SNP	Depth	Nb of reads REF	Nb reads SNPs	Ratio	Quality	Location	Product	Orientation	Coordinates in gene	Ref codon	SNP codon	Ref AA	SNP AA	Coodinates protein	Effect	Location
+418	C	A	379	0	337	1.0	225.0	Rv0001|dnaA	chromosomal replication initiator protein DnaA	+	418	CGG	AGG	R	R	140	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1812	T	C	440	0	395	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1977	A	G	251	0	222	1.0	225.0	intergenic	.	+	75 bp from Rv0002|dnaN	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4013	T	C	373	0	330	1.0	225.0	Rv0003|recF	DNA replication/repair protein RecF	+	734	ATC	ACC	I	T	245	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+7362	G	C	470	0	432	1.0	225.0	Rv0006|gyrA	DNA gyrase subunit A	+	61	GAG	CAG	E	Q	21	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+7585	G	C	373	0	342	1.0	225.0	Rv0006|gyrA	DNA gyrase subunit A	+	284	AGC	ACC	S	T	95	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+9304	G	A	390	0	326	1.0	225.0	Rv0006|gyrA	DNA gyrase subunit A	+	2003	GGC	GAC	G	D	668	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+11370	C	T	379	0	333	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+11879	T	C	330	0	298	1.0	225.0	Rv0008c|Rv0008c	cell wall synthesis protein CwsA	-	433	TCC	CCC	S	P	145	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+14785	T	C	472	0	432	1.0	225.0	Rv0012|Rv0012	membrane protein	+	697	TGC	CGC	C	R	233	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+15793	C	G	355	0	328	1.0	225.0	Rv0014c|pknB	serine/threonine-protein kinase PknB	-	1678	CAA	GAA	Q	E	560	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+21795	C	T	179	0	149	1.0	225.0	Rv0018c|pstP	phosphoserine/threonine phosphatase PstP	-	1387	CCG	TCG	P	S	463	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+25768	C	A	363	0	322	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+26959	C	G	219	0	187	1.0	225.0	intergenic	.	+	78 bp from Rv0021c|Rv0021c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+30943	C	T	364	1	321	1.0	228.0	Rv0026|Rv0026	hypothetical protein	+	1222	CCC	TCC	P	S	408	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+31077	C	T	348	0	311	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+32083	G	A	357	0	306	1.0	225.0	Rv0029|Rv0029	hypothetical protein	+	27	GCG	GCA	A	A	9	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+34044	T	C	411	0	378	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+37031	C	G	366	0	325	1.0	225.0	Rv0034|Rv0034	hypothetical protein	+	165	GCC	GCG	A	A	55	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+42967	C	G	399	1	350	1.0	228.0	Rv0040c|mtc28	hypothetical protein	-	399	CCC	CCG	P	P	133	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+50557	A	G	418	0	392	1.0	225.0	Rv0046c|ino1	inositol-3-phosphate synthase	-	568	AGG	GGG	R	G	190	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+54394	A	G	389	0	345	1.0	225.0	Rv0050|ponA1	bifunctional penicillin-insensitive transglycosylase/penicillin-sensitive transpeptidase	+	732	GCA	GCG	A	A	244	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+55553	C	T	250	3	213	0.99	228.0	Rv0050|ponA1	bifunctional penicillin-insensitive transglycosylase/penicillin-sensitive transpeptidase	+	1891	CCG	TCG	P	S	631	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+57393	A	T	241	0	211	1.0	225.0	intergenic	.	+	17 bp from Rv0052|Rv0052	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+62049	A	G	267	0	228	1.0	225.0	Rv0058|dnaB	replicative DNA helicase	+	1654	AGG	GGG	R	G	552	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+62657	G	A	341	0	308	1.0	225.0	Rv0058|dnaB	replicative DNA helicase	+	2262	CCG	CCA	P	P	754	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+69989	G	A	324	0	250	1.0	225.0	Rv0064|Rv0064	transmembrane protein	+	1370	GGT	GAT	G	D	457	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+70095	G	A	344	0	302	1.0	225.0	Rv0064|Rv0064	transmembrane protein	+	1476	CGG	CGA	R	R	492	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+70816	A	G	424	1	366	1.0	228.0	Rv0064|Rv0064	transmembrane protein	+	2197	AAC	GAC	N	D	733	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+70924	C	T	422	0	382	1.0	225.0	Rv0064|Rv0064	transmembrane protein	+	2305	CTC	TTC	L	F	769	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+71336	G	C	153	0	147	1.0	225.0	Rv0064|Rv0064	transmembrane protein	+	2717	CGC	CCC	R	P	906	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+75940	G	C	369	0	333	1.0	225.0	Rv0068|Rv0068	oxidoreductase	+	640	GTG	CTG	V	L	214	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+80616	C	G	446	0	395	1.0	225.0	intergenic	.	+	8 bp from Rv0072|Rv0072	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+81963	G	A	478	0	441	1.0	225.0	Rv0073|Rv0073	glutamine ABC transporter ATP-binding protein	+	288	CTG	CTA	L	L	96	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+83842	G	A	369	0	328	1.0	225.0	Rv0074|Rv0074	hypothetical protein	+	1095	CCG	CCA	P	P	365	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+83982	A	G	377	2	333	0.99	228.0	Rv0074|Rv0074	hypothetical protein	+	1235	TAA	TGA	#	#	412	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+85930	G	A	315	0	277	1.0	225.0	Rv0077c|Rv0077c	oxidoreductase	-	537	TGG	TGA	W	#	179	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+91695	A	T	194	0	158	1.0	225.0	Rv0083|Rv0083	oxidoreductase	+	1296	GAA	GAT	E	D	432	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+92199	T	G	312	0	270	1.0	225.0	Rv0083|Rv0083	oxidoreductase	+	1800	ACT	ACG	T	T	600	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+94344	G	A	383	0	352	1.0	225.0	Rv0086|hycQ	hydrogenase HycQ	+	394	GTA	ATA	V	I	132	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+105799	C	T	215	0	170	1.0	225.0	Rv0096|PPE1	PPE family protein PPE1	+	476	ACG	ATG	T	M	159	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+107485	T	C	465	0	434	1.0	225.0	Rv0097|Rv0097	oxidoreductase	+	752	ATC	ACC	I	T	251	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+107794	C	T	504	0	452	1.0	225.0	Rv0098|fcoT	fatty acyl CoA thioesterase FcoT	+	195	GCC	GCT	A	A	65	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+116000	T	G	357	0	320	1.0	225.0	Rv0101|nrp	peptide synthetase Nrp	+	6000	GTT	GTG	V	V	2000	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+122109	T	C	267	0	227	1.0	225.0	Rv0103c|ctpB	cation-transporter P-type ATPase B	-	65	TTG	TCG	L	S	22	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+126618	C	T	276	0	254	1.0	225.0	Rv0107c|ctpI	cation-transporter ATPase I	-	3924	GCC	GCT	A	A	1308	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+130997	G	A	380	0	351	1.0	225.0	Rv0108c|Rv0108c	hypothetical protein	-	108	GTG	GTA	V	V	36	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+132417	C	G	43	0	42	1.0	225.0	Rv0109|PE_PGRS1	PE-PGRS family protein PE_PGRS1	+	1036	CGC	GGC	R	G	346	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+133839	C	T	354	0	322	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+146087	A	G	363	0	330	1.0	225.0	Rv0120c|fusA2	elongation factor G	-	1685	AAT	AGT	N	S	562	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+154283	T	C	398	0	344	1.0	225.0	Rv0127|mak	maltokinase	+	52	TCG	CCG	S	P	18	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+164676	G	A	340	0	311	1.0	225.0	Rv0136|cyp138	cytochrome P450 Cyp138	+	1311	GTG	GTA	V	V	437	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+177596	A	G	260	0	240	1.0	225.0	Rv0151c|PE1	PE family protein PE1	-	1714	ATT	GTT	I	V	572	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+177857	C	T	148	0	132	1.0	225.0	Rv0151c|PE1	PE family protein PE1	-	1453	CTG	TTG	L	L	485	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+178946	G	A	280	0	219	1.0	225.0	Rv0151c|PE1	PE family protein PE1	-	364	GCA	ACA	A	T	122	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+180061	G	A	362	0	329	1.0	225.0	Rv0152c|PE2	PE family protein PE2	-	836	GGC	GAC	G	D	279	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+187420	G	C	389	0	343	1.0	225.0	Rv0158|Rv0158	transcriptional regulator	+	636	AAG	AAC	K	N	212	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+188800	A	G	235	0	207	1.0	225.0	Rv0159c|PE3	PE family protein PE3	-	40	ACG	GCG	T	A	14	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+194681	C	G	284	0	252	1.0	225.0	Rv0165c|mce1R	transcriptional regulator Mce1R	-	135	CTC	CTG	L	L	45	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+196642	C	T	412	0	368	1.0	225.0	Rv0166|fadD5	fatty-acid--CoA ligase FadD5	+	1650	AAC	AAT	N	N	550	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+197995	C	T	422	0	395	1.0	225.0	Rv0168|yrbE1B	membrane protein	+	336	TTC	TTT	F	F	112	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+202197	G	A	159	0	154	1.0	225.0	Rv0171|mce1C	Mce family protein Mce1C	+	1266	ACG	ACA	T	T	422	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+206339	T	C	290	0	250	1.0	225.0	Rv0174|mce1F	Mce family protein Mce1F	+	1109	CTG	CCG	L	P	370	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+220050	G	A	306	0	279	1.0	225.0	Rv0189c|ilvD	dihydroxy-acid dehydratase	-	1674	CTG	CTA	L	L	558	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+222486	C	T	412	0	382	1.0	225.0	Rv0191|Rv0191	MFS-type transporter	+	198	GCC	GCT	A	A	66	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+223942	T	C	136	0	124	1.0	225.0	Rv0192|Rv0192	hypothetical protein	+	379	TCG	CCG	S	P	127	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+225323	A	G	390	0	344	1.0	225.0	Rv0193c|Rv0193c	hypothetical protein	-	1249	AAG	GAG	K	E	417	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+227098	T	C	524	0	482	1.0	225.0	Rv0194|Rv0194	multidrug ABC transporter ATPase/permease	+	221	ATG	ACG	M	T	74	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+231114	C	G	341	0	302	1.0	225.0	Rv0195|Rv0195	two component transcriptional regulator	+	216	GCC	GCG	A	A	72	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+234477	T	G	104	0	84	1.0	225.0	Rv0197|Rv0197	oxidoreductase	+	2247	TAT	TAG	Y	#	749	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+261869	T	C	127	0	106	1.0	225.0	Rv0218|Rv0218	transmembrane protein	+	946	TGT	CGT	C	R	316	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+265554	A	C	381	0	353	1.0	225.0	Rv0222|echA1	enoyl-CoA hydratase EchA1	+	48	GTA	GTC	V	V	16	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+267240	C	A	338	0	271	1.0	225.0	Rv0223c|Rv0223c	aldehyde dehydrogenase	-	525	TGC	TGA	C	#	175	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+278681	C	G	326	0	293	1.0	225.0	Rv0233|nrdB	ribonucleoside-diphosphate reductase subunit beta NrdB	+	97	CAT	GAT	H	D	33	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+283614	A	G	237	0	207	1.0	225.0	Rv0236c|aftD	alpha-(1->3)-arabinofuranosyltransferase	-	3238	AGC	GGC	S	G	1080	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+284623	C	T	314	0	251	1.0	225.0	Rv0236c|aftD	alpha-(1->3)-arabinofuranosyltransferase	-	2229	ACC	ACT	T	T	743	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+285772	T	G	246	0	227	1.0	225.0	Rv0236c|aftD	alpha-(1->3)-arabinofuranosyltransferase	-	1080	CCT	CCG	P	P	360	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+285871	T	C	176	0	153	1.0	225.0	Rv0236c|aftD	alpha-(1->3)-arabinofuranosyltransferase	-	981	GTT	GTC	V	V	327	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+304340	T	C	353	0	311	1.0	225.0	Rv0252|nirB	nitrite reductase large subunit NirB	+	1475	GTG	GCG	V	A	492	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+304923	A	G	375	0	349	1.0	225.0	Rv0252|nirB	nitrite reductase large subunit NirB	+	2058	AAA	AAG	K	K	686	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+310973	C	T	406	0	354	1.0	225.0	Rv0259c|Rv0259c	hypothetical protein	-	545	GCG	GTG	A	V	182	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+311613	C	A	466	0	411	1.0	225.0	Rv0260c|Rv0260c	transcriptional regulator	-	1047	GTC	GTA	V	V	349	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+326327	C	T	379	0	344	1.0	225.0	Rv0271c|fadE6	acyl-CoA dehydrogenase FadE6	-	2135	ACG	ATG	T	M	712	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+333892	C	G	16	0	15	1.0	151.0	Rv0278c|Rv0278c	PE-PGRS family protein PE_PGRS3	-	2419	CGC	GGC	R	G	807	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+334006	G	A	44	0	42	1.0	225.0	Rv0278c|Rv0278c	PE-PGRS family protein PE_PGRS3	-	2305	GCC	ACC	A	T	769	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+336191	G	A	334	0	281	1.0	225.0	Rv0278c|Rv0278c	PE-PGRS family protein PE_PGRS3	-	120	ATG	ATA	M	I	40	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+337820	C	T	13	0	12	1.0	157.0	Rv0279c|PE_PGRS4	PE-PGRS family protein PE_PGRS4	-	1254	GGC	GGT	G	G	418	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+337959	T	G	9	0	8	1.0	112.0	Rv0279c|PE_PGRS4	PE-PGRS family protein PE_PGRS4	-	1115	ATC	AGC	I	S	372	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+338020	T	G	6	0	4	1.0	82.0	Rv0279c|PE_PGRS4	PE-PGRS family protein PE_PGRS4	-	1054	TGC	GGC	C	G	352	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+338100	A	G	14	0	11	1.0	201.0	Rv0279c|PE_PGRS4	PE-PGRS family protein PE_PGRS4	-	974	AAC	AGC	N	S	325	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+340372	T	C	105	0	91	1.0	225.0	Rv0280|PPE3	PPE family protein PPE3	+	1009	TCG	CCG	S	P	337	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+342340	C	T	317	0	279	1.0	225.0	Rv0282|eccA3	ESX-3 secretion system protein EccA	+	211	CTG	TTG	L	L	71	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+346275	C	G	343	0	318	1.0	225.0	Rv0284|eccC3	ESX-3 secretion system protein EccC3	+	641	CCG	CGG	P	R	214	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+356528	A	G	306	0	273	1.0	225.0	Rv0292|eccE3	ESX-3 secretion system protein EccE	+	649	AAT	GAT	N	D	217	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+372913	T	G	404	0	356	1.0	225.0	Rv0305c|PPE6	PPE family protein PPE6	-	2799	GGT	GGG	G	G	933	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+376774	A	G	258	0	209	1.0	225.0	Rv0307c|Rv0307c	hypothetical protein	-	282	GCA	GCG	A	A	94	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+384380	A	C	379	0	344	1.0	225.0	Rv0315|Rv0315	beta-1,3-glucanase	+	779	AAG	ACG	K	T	260	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+386013	G	A	399	0	345	1.0	225.0	intergenic	.	+	70 bp from Rv0317c|glpQ2	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+386432	G	C	363	0	295	1.0	225.0	Rv0318c|Rv0318c	integral membrane protein	-	668	GGG	GCG	G	A	223	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+386935	G	A	367	0	317	1.0	225.0	Rv0318c|Rv0318c	integral membrane protein	-	165	GCG	GCA	A	A	55	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+390828	A	G	347	0	300	1.0	225.0	Rv0323c|Rv0323c	hypothetical protein	-	424	AGT	GGT	S	G	142	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+391853	A	G	246	0	194	1.0	225.0	Rv0324|Rv0324	transcriptional regulator	+	502	ACT	GCT	T	A	168	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+397275	G	C	343	0	297	1.0	225.0	Rv0331|Rv0331	dehydrogenase/reductase	+	1075	GCG	CCG	A	P	359	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+403980	C	T	396	0	341	1.0	225.0	Rv0338c|Rv0338c	iron-sulfur-binding reductase	-	1862	GCC	GTC	A	V	621	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+404326	A	G	422	0	392	1.0	225.0	Rv0338c|Rv0338c	iron-sulfur-binding reductase	-	1516	AGG	GGG	R	G	506	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+414486	G	A	396	0	355	1.0	225.0	Rv0344c|lpqJ	lipoprotein LpqJ	-	456	GAG	GAA	E	E	152	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+420008	A	G	310	0	275	1.0	225.0	Rv0350|dnaK	chaperone protein DnaK	+	174	GCA	GCG	A	A	58	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+428840	G	A	358	0	322	1.0	225.0	Rv0355c|PPE8	PPE family protein PPE8	-	5840	GGC	GAC	G	D	1947	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+430756	C	T	422	0	385	1.0	225.0	Rv0355c|PPE8	PPE family protein PPE8	-	3924	ATC	ATT	I	I	1308	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+435190	G	A	333	0	301	1.0	225.0	Rv0356c|Rv0356c	hypothetical protein	-	285	CTG	CTA	L	L	95	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+438158	T	G	263	0	241	1.0	225.0	Rv0359|Rv0359	zinc metalloprotease	+	641	CTG	CGG	L	R	214	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+443277	T	G	266	0	241	1.0	225.0	Rv0365c|Rv0365c	hypothetical protein	-	921	GAT	GAG	D	E	307	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+446165	C	G	254	0	231	1.0	225.0	Rv0368c|Rv0368c	hypothetical protein	-	361	CAG	GAG	Q	E	121	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+454167	A	G	332	0	296	1.0	225.0	Rv0376c|Rv0376c	hypothetical protein	-	206	TAC	TGC	Y	C	69	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+454295	A	G	233	1	202	1.0	228.0	Rv0376c|Rv0376c	hypothetical protein	-	78	CCA	CCG	P	P	26	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+454576	T	C	214	0	184	1.0	225.0	Rv0377|Rv0377	HTH-type transcriptional regulator	+	156	GGT	GGC	G	G	52	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+456281	G	A	192	0	147	1.0	225.0	Rv0380c|Rv0380c	RNA methyltransferase	-	539	GGC	GAC	G	D	180	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+457452	A	C	307	0	277	1.0	225.0	Rv0381c|Rv0381c	hypothetical protein	-	372	ACA	ACC	T	T	124	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+459399	A	C	144	0	126	1.0	225.0	intergenic	.	+	84 bp from Rv0383c|Rv0383c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+475178	T	C	383	0	345	1.0	225.0	Rv0395|Rv0395	hypothetical protein	+	239	GTC	GCC	V	A	80	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+475833	G	T	316	0	287	1.0	225.0	Rv0397|Rv0397	hypothetical protein	+	18	TGG	TGT	W	C	6	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+483935	T	G	342	0	312	1.0	225.0	intergenic	.	+	42 bp from Rv0404|fadD30	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+487852	C	G	207	0	192	1.0	225.0	Rv0405|pks6	membrane bound polyketide synthase	+	2122	CTC	GTC	L	V	708	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+489073	C	G	357	0	322	1.0	225.0	Rv0405|pks6	membrane bound polyketide synthase	+	3343	CTT	GTT	L	V	1115	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+489935	G	C	443	0	392	1.0	225.0	Rv0405|pks6	membrane bound polyketide synthase	+	4205	CGG	CCG	R	P	1402	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+489935	C	G	443	0	392	1.0	225.0	Rv0406c|Rv0406c	beta lactamase-like protein	-	771	ACC	ACG	T	T	257	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+491591	A	T	353	0	276	1.0	225.0	Rv0407|fgd1	F420-dependent glucose-6-phosphate dehydrogenase	+	809	AAG	ATG	K	M	270	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+498557	G	T	403	0	338	1.0	225.0	Rv0412c|Rv0412c	membrane protein	-	1063	GAC	TAC	D	Y	355	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+500339	G	A	236	0	214	1.0	225.0	Rv0413|mutT3	8-oxo-dGTP diphosphatase	+	627	CTG	CTA	L	L	209	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+502589	C	G	340	0	303	1.0	225.0	Rv0417|thiG	thiazole synthase	+	224	TCC	TGC	S	C	75	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+503354	G	C	445	0	408	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+513257	A	G	346	0	306	1.0	225.0	Rv0425c|ctpH	metal cation transporting ATPase H	-	2065	ATG	GTG	M	V	689	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+524891	G	T	250	0	218	1.0	225.0	Rv0436c|pssA	CDP-diacylglycerol--serine O-phosphatidyltransferase	-	500	GGC	GTC	G	V	167	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+525833	G	A	231	0	179	1.0	225.0	Rv0437c|psd	phosphatidylserine decarboxylase	-	250	GTG	ATG	V	M	84	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+541201	T	C	449	0	406	1.0	225.0	Rv0450c|mmpL4	transmembrane transport protein MmpL4	-	291	CTT	CTC	L	L	97	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+544461	C	T	291	0	238	1.0	225.0	Rv0453|PPE11	PPE family protein PPE11	+	1288	CGC	TGC	R	C	430	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+546914	G	A	389	0	361	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+551525	A	C	213	0	194	1.0	225.0	Rv0459|Rv0459	hypothetical protein	+	328	AGA	CGA	R	R	110	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+565655	A	G	361	0	317	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+573262	T	C	407	0	373	1.0	225.0	Rv0484c|Rv0484c	short-chain type oxidoreductase	-	540	GGT	GGC	G	G	180	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+575679	A	G	294	0	269	1.0	225.0	Rv0486|mshA	D-inositol 3-phosphate glycosyltransferase	+	332	AAC	AGC	N	S	111	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+590436	T	C	304	1	268	1.0	228.0	Rv0500|proC	pyrroline-5-carboxylate reductase	+	354	GCT	GCC	A	A	118	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+597816	A	G	428	0	389	1.0	225.0	Rv0507|mmpL2	transmembrane transport protein MmpL2	+	618	GCA	GCG	A	A	206	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+598475	G	A	378	0	320	1.0	225.0	Rv0507|mmpL2	transmembrane transport protein MmpL2	+	1277	CGC	CAC	R	H	426	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+600025	C	G	323	0	297	1.0	225.0	Rv0507|mmpL2	transmembrane transport protein MmpL2	+	2827	CCG	GCG	P	A	943	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+601925	C	T	397	0	361	1.0	225.0	Rv0510|hemC	porphobilinogen deaminase	+	69	CTC	CTT	L	L	23	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+608775	T	C	375	0	332	1.0	225.0	Rv0517|Rv0517	acyltransferase	+	30	GGT	GGC	G	G	10	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+610120	T	G	418	0	365	1.0	225.0	intergenic	.	+	68 bp from Rv0518|Rv0518	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+628895	C	T	357	0	332	1.0	225.0	Rv0537c|Rv0537c	integral membrane protein	-	837	TTC	TTT	F	F	279	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+629925	C	A	422	0	390	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+630722	G	C	211	0	186	1.0	225.0	Rv0538|Rv0538	membrane protein	+	683	CGG	CCG	R	P	228	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+637319	C	T	432	0	405	1.0	225.0	Rv0545c|pitA	low-affinity inorganic phosphate transporter	-	145	CCT	TCT	P	S	49	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+637730	G	A	205	0	195	1.0	225.0	Rv0546c|Rv0546c	hypothetical protein	-	240	CTG	CTA	L	L	80	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+648002	T	G	502	1	442	1.0	228.0	Rv0556|Rv0556	transmembrane protein	+	44	CTC	CGC	L	R	15	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+648990	G	C	440	0	408	1.0	225.0	Rv0557|mgtA	GDP-mannose-dependent alpha-mannosyltransferase	+	455	CGC	CCC	R	P	152	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+657269	T	C	367	0	316	1.0	225.0	Rv0565c|Rv0565c	monooxygenase	-	202	TCG	CCG	S	P	68	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+665293	T	C	471	0	427	1.0	225.0	Rv0572c|Rv0572c	hypothetical protein	-	91	TTC	CTC	F	L	31	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+669398	A	G	326	0	297	1.0	225.0	Rv0575c|Rv0575c	oxidoreductase	-	348	CAA	CAG	Q	Q	116	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+672491	G	C	26	0	24	1.0	225.0	Rv0578c|PE_PGRS7	PE-PGRS family protein PE_PGRS7	-	3426	GGG	GGC	G	G	1142	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+673238	T	C	19	0	19	1.0	225.0	Rv0578c|PE_PGRS7	PE-PGRS family protein PE_PGRS7	-	2679	CAT	CAC	H	H	893	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+680512	C	T	509	0	469	1.0	225.0	Rv0584|Rv0584	glycosidase	+	1284	CTC	CTT	L	L	428	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+685461	C	G	316	0	283	1.0	225.0	Rv0587|yrbE2A	hypothetical protein	+	333	GCC	GCG	A	A	111	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+685608	T	C	375	0	339	1.0	225.0	Rv0587|yrbE2A	hypothetical protein	+	480	CTT	CTC	L	L	160	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+686655	C	T	404	0	372	1.0	225.0	Rv0588|Rv0588	hypothetical protein	+	728	ACC	ATC	T	I	243	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+686972	T	C	410	0	367	1.0	225.0	Rv0589|mce2A	Mce family protein Mce2A	+	152	TTC	TCC	F	S	51	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+690465	T	G	241	0	209	1.0	225.0	Rv0591|mce2C	Mce family protein Mce2C	+	1407	CTT	CTG	L	L	469	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+697667	G	C	440	0	402	1.0	225.0	Rv0599c|vapB27	antitoxin VapB27	-	134	CGA	CCA	R	P	45	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+698968	C	T	306	0	246	1.0	225.0	Rv0601c|Rv0601c	two component sensor kinase HK2	-	27	GGC	GGT	G	G	9	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+712693	A	G	290	0	252	1.0	225.0	intergenic	.	+	23 bp from Rv0620|galK	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+752566	C	T	385	1	338	1.0	228.0	Rv0655|mkl	ABC transporter ATP-binding protein	+	1050	CAC	CAT	H	H	350	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+760115	C	T	421	0	383	1.0	225.0	Rv0667|rpoB	DNA-directed RNA polymerase subunit beta	+	309	GAC	GAT	D	D	103	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+761155	C	T	357	0	312	1.0	225.0	Rv0667|rpoB	DNA-directed RNA polymerase subunit beta	+	1349	TCG	TTG	S	L	450	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+761406	G	A	357	0	323	1.0	225.0	Rv0667|rpoB	DNA-directed RNA polymerase subunit beta	+	1600	GTG	ATG	V	M	534	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+765150	G	A	341	0	298	1.0	225.0	Rv0668|rpoC	DNA-directed RNA polymerase subunit beta'	+	1781	GGG	GAG	G	E	594	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+767414	G	A	217	0	202	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+775639	A	G	331	0	289	1.0	225.0	Rv0676c|mmpL5	transmembrane transport protein MmpL5	-	2842	ATT	GTT	I	V	948	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+781395	T	C	275	0	237	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+788259	G	T	428	0	359	1.0	225.0	Rv0688|Rv0688	ferredoxin reductase	+	320	GGT	GTT	G	V	107	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+794521	T	G	352	0	317	1.0	225.0	Rv0694|Rv0694	mycofactocin system heme/flavin oxidoreductase MftD	+	1187	GTT	GGT	V	G	396	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+805663	G	T	405	0	367	1.0	225.0	Rv0709|rpmC	50S ribosomal protein L29	+	138	CGG	CGT	R	R	46	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+816522	C	T	191	0	162	1.0	225.0	Rv0724|sppA	protease IV SppA	+	860	CCG	CTG	P	L	287	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+820483	C	A	334	0	305	1.0	225.0	Rv0727c|fucA	L-fuculose phosphate aldolase FucA	-	17	GCC	GAC	A	D	6	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+832708	A	C	386	0	351	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+836538	A	G	44	0	42	1.0	225.0	Rv0746|PE_PGRS9	PE-PGRS family protein PE_PGRS9	+	838	AAC	GAC	N	D	280	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+836658	A	G	86	0	74	1.0	225.0	Rv0746|PE_PGRS9	PE-PGRS family protein PE_PGRS9	+	958	ACC	GCC	T	A	320	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+836777	G	T	58	0	50	1.0	225.0	Rv0746|PE_PGRS9	PE-PGRS family protein PE_PGRS9	+	1077	GGG	GGT	G	G	359	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+837033	A	G	100	0	87	1.0	225.0	Rv0746|PE_PGRS9	PE-PGRS family protein PE_PGRS9	+	1333	ACC	GCC	T	A	445	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+838990	C	G	33	0	33	1.0	219.0	Rv0747|PE_PGRS10	PE-PGRS family protein PE_PGRS10	+	540	GCC	GCG	A	A	180	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+839089	G	A	4	0	4	1.0	69.0	Rv0747|PE_PGRS10	PE-PGRS family protein PE_PGRS10	+	639	GGG	GGA	G	G	213	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+841764	C	G	427	0	383	1.0	225.0	Rv0749A|Rv0749A	hypothetical protein	-	111	ACC	ACG	T	T	37	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+850591	C	T	420	0	372	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+852910	C	T	285	0	247	1.0	225.0	Rv0758|phoR	two component system response sensor kinase PhoR	+	515	CCC	CTC	P	L	172	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+857696	T	C	429	0	393	1.0	225.0	Rv0764c|cyp51	lanosterol 14-alpha demethylase	-	342	GCT	GCC	A	A	114	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+868148	G	T	272	0	231	1.0	225.0	Rv0774c|Rv0774c	hypothetical protein	-	204	GCG	GCT	A	A	68	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+880562	G	T	375	0	338	1.0	225.0	Rv0785|Rv0785	KsdD-like steroid dehydrogenase	+	1223	TGC	TTC	C	F	408	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+882257	T	C	318	0	284	1.0	225.0	Rv0787|Rv0787	hypothetical protein	+	799	TAC	CAC	Y	H	267	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+886233	T	C	379	0	343	1.0	225.0	Rv0792c|Rv0792c	transcriptional regulator	-	414	TGT	TGC	C	C	138	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+891756	T	C	395	0	360	1.0	225.0	Rv0798c|cfp29	hypothetical protein	-	514	TTG	CTG	L	L	172	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+893733	T	G	162	0	118	1.0	225.0	Rv0800|pepC	M18 family aminopeptidase	+	416	CTG	CGG	L	R	139	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+897209	G	C	398	0	363	1.0	225.0	Rv0803|purL	phosphoribosylformylglycinamidine synthase 2	+	1390	GAG	CAG	E	Q	464	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+899315	A	G	400	1	354	1.0	228.0	Rv0805|Rv0805	3',5'-cyclic adenosine monophosphate phosphodiesterase CpdA	+	485	GAC	GGC	D	G	162	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+900221	A	G	375	0	325	1.0	225.0	Rv0806c|cpsY	exopolysaccharide phosphotransferase CpsY	-	1110	GTA	GTG	V	V	370	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+902413	C	T	423	0	393	1.0	225.0	Rv0808|purF	amidophosphoribosyltransferase	+	303	GTC	GTT	V	V	101	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+903550	T	C	291	0	261	1.0	225.0	Rv0808|purF	amidophosphoribosyltransferase	+	1440	GCT	GCC	A	A	480	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+903633	C	T	249	0	221	1.0	225.0	Rv0808|purF	amidophosphoribosyltransferase	+	1523	GCG	GTG	A	V	508	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+903913	T	C	312	0	282	1.0	225.0	Rv0809|purM	phosphoribosylformylglycinamidine cyclo-ligase PurM	+	189	GGT	GGC	G	G	63	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+906857	A	G	346	0	283	1.0	225.0	Rv0812|Rv0812	4-amino-4-deoxychorismate lyase	+	435	ATA	ATG	I	M	145	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+909724	C	G	364	0	316	1.0	225.0	Rv0816c|thiX	thioredoxin ThiX	-	310	CTT	GTT	L	V	104	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+917905	G	T	404	0	345	1.0	225.0	Rv0824c|desA1	acyl-ACP desaturase DesA	-	846	GGG	GGT	G	G	282	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+919574	T	C	380	0	346	1.0	225.0	intergenic	.	+	21 bp from Rv0825c|Rv0825c and 60 bp from Rv0826|Rv0826	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+921813	C	G	242	7	217	0.97	228.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+923065	A	T	406	0	354	1.0	225.0	Rv0831c|Rv0831c	hypothetical protein	-	645	GGA	GGT	G	G	215	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+927110	A	G	35	0	34	1.0	225.0	Rv0833|PE_PGRS13	PE-PGRS family protein PE_PGRS13	+	1750	AGT	GGT	S	G	584	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+927385	A	G	42	0	42	1.0	225.0	Rv0833|PE_PGRS13	PE-PGRS family protein PE_PGRS13	+	2025	GGA	GGG	G	G	675	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+945214	G	A	354	0	324	1.0	225.0	Rv0848|cysK2	cysteine synthase CysK	+	277	GGT	AGT	G	S	93	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+949535	A	G	247	0	215	1.0	225.0	Rv0853c|pdc	alpha-keto-acid decarboxylase	-	1584	GCA	GCG	A	A	528	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+953233	T	G	421	0	384	1.0	225.0	intergenic	.	+	24 bp from Rv0857|Rv0857	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+955524	A	G	427	0	384	1.0	225.0	Rv0859|Rv0859	acyltransferase	+	448	AGC	GGC	S	G	150	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+957117	T	C	249	0	204	1.0	225.0	Rv0860|fadB	fatty oxidation protein FadB	+	825	GAT	GAC	D	D	275	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+979704	G	C	348	0	289	1.0	225.0	Rv0881|Rv0881	tRNA/rRNA methyltransferase	+	343	GGC	CGC	G	R	115	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+981670	G	A	292	0	255	1.0	225.0	Rv0884c|serC	phosphoserine aminotransferase	-	885	CGG	CGA	R	R	295	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+983485	T	G	353	0	310	1.0	225.0	Rv0885|Rv0885	hypothetical protein	+	724	TCG	GCG	S	A	242	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+985621	C	T	319	0	291	1.0	225.0	Rv0887c|Rv0887c	hypothetical protein	-	351	TAC	TAT	Y	Y	117	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+986463	G	C	394	0	345	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+990001	C	G	359	0	315	1.0	225.0	Rv0890c|Rv0890c	HTH-type transcriptional regulator	-	2596	CCC	GCC	P	A	866	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+993346	T	G	465	0	416	1.0	225.0	Rv0891c|Rv0891c	hypothetical protein	-	110	GTT	GGT	V	G	37	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1019632	T	C	303	0	276	1.0	225.0	Rv0914c|Rv0914c	lipid carrier protein or keto acyl-CoA thiolase	-	334	TAC	CAC	Y	H	112	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1025106	T	C	325	0	296	1.0	225.0	Rv0919|Rv0919	GCN5-like N-acetyltransferase	+	423	TTT	TTC	F	F	141	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1037012	T	C	205	0	172	1.0	225.0	Rv0930|pstA1	phosphate ABC transporter permease PstA	+	14	ATG	ACG	M	T	5	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1037911	C	T	369	0	326	1.0	225.0	Rv0930|pstA1	phosphate ABC transporter permease PstA	+	913	CGA	TGA	R	#	305	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1047165	T	C	439	0	396	1.0	225.0	Rv0938|ligD	multifunctional non-homologous end joining DNA repair protein/ATP dependent DNA ligase LigD	+	1030	TGC	CGC	C	R	344	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1052866	G	A	416	0	380	1.0	225.0	Rv0943c|Rv0943c	monooxygenase	-	871	GAT	AAT	D	N	291	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1068151	T	C	364	0	311	1.0	225.0	Rv0956|purN	phosphoribosylglycinamide formyltransferase PurN	+	591	CAT	CAC	H	H	197	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1068432	A	G	361	0	332	1.0	225.0	Rv0957|purH	bifunctional phosphoribosylaminoimidazolecarboxamide formyltransferase/inosinemonophosphate cyclohydrolase	+	228	CCA	CCG	P	P	76	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1070702	T	C	374	0	328	1.0	225.0	Rv0958|Rv0958	magnesium chelatase	+	820	TCC	CCC	S	P	274	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1074558	C	T	352	0	292	1.0	225.0	Rv0962c|lprP	lipoprotein LprP	-	557	CCC	CTC	P	L	186	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1075279	T	C	418	0	381	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1076309	C	A	411	0	350	1.0	225.0	Rv0964c|Rv0964c	hypothetical protein	-	370	CCT	ACT	P	T	124	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1077312	T	C	349	0	311	1.0	225.0	Rv0966c|Rv0966c	hypothetical protein	-	524	GTG	GCG	V	A	175	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1079927	C	A	320	1	292	1.0	228.0	Rv0969|ctpV	copper-exporting ATPase	+	1185	ACC	ACA	T	T	395	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1080528	G	A	315	0	263	1.0	225.0	Rv0969|ctpV	copper-exporting ATPase	+	1786	GCG	ACG	A	T	596	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1081681	T	C	381	0	334	1.0	225.0	Rv0970|Rv0970	integral membrane protein	+	630	GTT	GTC	V	V	210	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1087193	C	G	355	0	322	1.0	225.0	Rv0974c|accD2	acetyl-/propionyl-CoA carboxylase subunit beta	-	153	AAC	AAG	N	K	51	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1091253	A	G	39	0	29	1.0	225.0	Rv0977|PE_PGRS16	PE-PGRS family protein PE_PGRS16	+	881	AAC	AGC	N	S	294	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1092195	A	C	8	0	7	1.0	144.0	Rv0977|PE_PGRS16	PE-PGRS family protein PE_PGRS16	+	1823	AAC	ACC	N	T	608	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1093406	T	C	399	1	347	1.0	228.0	Rv0978c|PE_PGRS17	PE-PGRS family protein PE_PGRS17	-	951	GTT	GTC	V	V	317	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1096398	G	A	111	0	98	1.0	225.0	Rv0980c|PE_PGRS18	PE-PGRS family protein PE_PGRS18	-	54	GCG	GCA	A	A	18	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1096567	A	G	234	0	214	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1096633	T	G	304	0	282	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1100234	T	C	402	0	366	1.0	225.0	Rv0983|pepD	serine protease PepD	+	1169	CTG	CCG	L	P	390	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1101494	T	G	452	0	411	1.0	225.0	intergenic	.	+	14 bp from Rv0985c|mscL	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1106422	A	G	469	0	416	1.0	225.0	Rv0989c|grcC2	polyprenyl-diphosphate synthase GrcC	-	961	ATA	GTA	I	V	321	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1109975	A	G	516	0	489	1.0	225.0	Rv0993|galU	UTP--glucose-1-phosphate uridylyltransferase	+	704	CAG	CGG	Q	R	235	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1111826	G	T	361	0	299	1.0	225.0	Rv0995|rimJ	ribosomal-protein-alanine acetyltransferase RimJ	+	215	CGC	CTC	R	L	72	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1111925	A	G	336	0	300	1.0	225.0	Rv0995|rimJ	ribosomal-protein-alanine acetyltransferase RimJ	+	314	TAT	TGT	Y	C	105	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1126889	C	G	349	0	320	1.0	225.0	Rv1007c|metS	methionine--tRNA ligase	-	115	CGC	GGC	R	G	39	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1127648	C	A	447	0	387	1.0	225.0	Rv1008|tatD	deoxyribonuclease TatD	+	560	ACC	AAC	T	N	187	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1128868	C	T	381	0	336	1.0	225.0	Rv1009|rpfB	resuscitation-promoting factor RpfB	+	778	CCG	TCG	P	S	260	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1135251	A	C	398	0	360	1.0	225.0	Rv1016c|lpqT	lipoprotein LpqT	-	215	GAG	GCG	E	A	72	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1148255	G	A	363	0	317	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1149551	G	A	371	0	332	1.0	225.0	Rv1028c|kdpD	sensor protein KdpD	-	2136	GAG	GAA	E	E	712	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1149631	G	A	348	0	279	1.0	225.0	Rv1028c|kdpD	sensor protein KdpD	-	2056	GCC	ACC	A	T	686	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1150585	C	T	284	0	234	1.0	225.0	Rv1028c|kdpD	sensor protein KdpD	-	1102	CCC	TCC	P	S	368	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1153676	C	G	391	0	352	1.0	225.0	Rv1029|kdpA	potassium-transporting ATPase subunit A	+	1665	TTC	TTG	F	L	555	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1163134	A	G	387	0	354	1.0	225.0	Rv1040c|PE8	PE family protein PE8	-	243	GGA	GGG	G	G	81	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1164336	G	A	412	0	357	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1178116	T	C	314	0	292	1.0	225.0	Rv1056|Rv1056	hypothetical protein	+	489	ACT	ACC	T	T	163	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1190093	T	G	318	21	266	0.93	228.0	Rv1067c|PE_PGRS19	PE-PGRS family protein PE_PGRS19	-	332	TTG	TGG	L	W	111	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1196872	C	T	416	0	383	1.0	225.0	Rv1072|Rv1072	transmembrane protein	+	594	TTC	TTT	F	F	198	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1200418	A	G	382	0	347	1.0	225.0	intergenic	.	+	48 bp from Rv1075c|Rv1075c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1205239	G	A	290	0	266	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1220680	T	C	338	0	301	1.0	225.0	Rv1093|glyA1	serine hydroxymethyltransferase	+	107	GTA	GCA	V	A	36	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1224367	T	C	97	0	83	1.0	225.0	intergenic	.	+	18 bp from Rv1096|Rv1096	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1232037	C	A	373	0	312	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1234262	C	G	433	0	385	1.0	225.0	Rv1108c|xseA	exodeoxyribonuclease VII large subunit	-	1199	GCC	GGC	A	G	400	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1248978	T	C	242	0	225	1.0	225.0	Rv1125|Rv1125	hypothetical protein	+	897	GCT	GCC	A	A	299	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1251199	G	A	399	0	358	1.0	225.0	Rv1127c|ppdK	pyruvate, phosphate dikinase PpdK	-	206	GGA	GAA	G	E	69	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1252164	A	G	385	0	349	1.0	225.0	Rv1128c|Rv1128c	hypothetical protein	-	809	GAA	GGA	E	G	270	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1275957	T	C	400	0	354	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1276588	G	C	93	0	87	1.0	225.0	Rv1148c|Rv1148c	hypothetical protein	-	1161	GCG	GCC	A	A	387	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1276885	G	A	6	0	4	1.0	29.4193	Rv1148c|Rv1148c	hypothetical protein	-	864	CAG	CAA	Q	Q	288	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1281118	A	G	422	0	391	1.0	225.0	Rv1154c|Rv1154c	hypothetical protein	-	367	ACG	GCG	T	A	123	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1292102	A	G	287	0	268	1.0	225.0	Rv1162|narH	nitrate reductase subunit beta	+	1038	CCA	CCG	P	P	346	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1292464	C	T	392	0	348	1.0	225.0	Rv1162|narH	nitrate reductase subunit beta	+	1400	GCG	GTG	A	V	467	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1306259	T	C	379	0	346	1.0	225.0	Rv1175c|fadH	NADPH dependent 2,4-dienoyl-CoA reductase FadH	-	1968	GCT	GCC	A	A	656	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1307598	G	C	308	0	277	1.0	225.0	Rv1175c|fadH	NADPH dependent 2,4-dienoyl-CoA reductase FadH	-	629	TGC	TCC	C	S	210	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1313338	A	C	98	0	91	1.0	225.0	intergenic	.	+	39 bp from Rv1179c|Rv1179c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1315191	A	C	383	0	352	1.0	225.0	Rv1180|pks3	polyketide beta-ketoacyl synthase	+	1467	TAA	TAC	#	Y	489	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1315884	G	A	303	0	258	1.0	225.0	Rv1181|pks4	polyketide beta-ketoacyl synthase	+	651	GCG	GCA	A	A	217	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1327890	C	T	326	0	302	1.0	225.0	Rv1186c|Rv1186c	hypothetical protein	-	1416	GAC	GAT	D	D	472	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1328687	C	G	324	0	287	1.0	225.0	Rv1186c|Rv1186c	hypothetical protein	-	619	CCC	GCC	P	A	207	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1338172	C	G	395	0	354	1.0	225.0	Rv1194c|Rv1194c	hypothetical protein	-	342	TTC	TTG	F	L	114	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1342720	T	G	378	10	336	0.97	228.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1356135	C	T	311	0	267	1.0	225.0	Rv1213|glgC	glucose-1-phosphate adenylyltransferase	+	300	ACC	ACT	T	T	100	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1360209	A	G	298	0	244	1.0	225.0	Rv1217c|Rv1217c	tetronasin ABC transporter integral membrane protein	-	1593	GCA	GCG	A	A	531	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1362006	A	G	507	0	470	1.0	225.0	Rv1218c|Rv1218c	tetronasin ABC transporter ATP-binding protein	-	728	CAA	CGA	Q	R	243	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1370051	G	A	348	0	302	1.0	225.0	Rv1226c|Rv1226c	transmembrane protein	-	245	AGC	AAC	S	N	82	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1374065	A	G	275	0	238	1.0	225.0	Rv1230c|Rv1230c	membrane protein	-	133	AGC	GGC	S	G	45	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1375724	T	G	328	0	288	1.0	225.0	Rv1232c|Rv1232c	hypothetical protein	-	445	TGC	GGC	C	G	149	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1382628	A	G	410	0	370	1.0	225.0	Rv1239c|corA	magnesium and cobalt transport transmembrane protein CorA	-	415	AAA	GAA	K	E	139	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1393626	T	C	347	0	310	1.0	225.0	Rv1249c|Rv1249c	membrane protein	-	357	CTT	CTC	L	L	119	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1393694	G	T	323	0	263	1.0	225.0	Rv1249c|Rv1249c	membrane protein	-	289	GCG	TCG	A	S	97	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1393994	C	T	337	0	299	1.0	225.0	intergenic	.	+	12 bp from Rv1249c|Rv1249c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1396035	C	T	291	0	269	1.0	225.0	Rv1251c|Rv1251c	hypothetical protein	-	3206	CCG	CTG	P	L	1069	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1396311	C	A	311	0	253	1.0	225.0	Rv1251c|Rv1251c	hypothetical protein	-	2930	CCC	CAC	P	H	977	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1396922	A	G	381	0	349	1.0	225.0	Rv1251c|Rv1251c	hypothetical protein	-	2319	ACA	ACG	T	T	773	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1411210	T	G	302	1	256	1.0	228.0	Rv1263|amiB2	amidase AmiB	+	780	GTT	GTG	V	V	260	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1413148	C	T	344	0	283	1.0	225.0	ncRNA	.	.	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1414021	G	A	326	0	284	1.0	225.0	Rv1266c|pknH	serine/threonine-protein kinase PknH	-	1820	CGG	CAG	R	Q	607	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1423536	A	T	408	0	368	1.0	225.0	Rv1273c|Rv1273c	drug ABC transporter ATP-binding protein	-	515	AAC	ATC	N	I	172	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1433733	A	C	348	0	312	1.0	225.0	Rv1281c|oppD	oligopeptide ABC transporter ATP-binding protein OppD	-	1539	GCA	GCC	A	A	513	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1440469	C	G	447	0	398	1.0	225.0	Rv1286|Rv1286	adenylyl-sulfate kinase	+	1563	CCC	CCG	P	P	521	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1444202	G	C	293	0	245	1.0	225.0	Rv1290c|Rv1290c	hypothetical protein	-	846	TTG	TTC	L	F	282	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1445781	T	C	324	0	294	1.0	225.0	Rv1291c|Rv1291c	hypothetical protein	-	54	GCT	GCC	A	A	18	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1448151	C	G	423	0	391	1.0	225.0	Rv1293|lysA	diaminopimelate decarboxylase	+	124	CTG	GTG	L	V	42	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1457144	C	T	282	0	263	1.0	225.0	Rv1300|hemK	release factor glutamine methyltransferase	+	580	CGC	TGC	R	C	194	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1460125	G	A	369	0	303	1.0	225.0	Rv1303|Rv1303	hypothetical protein	+	360	CTG	CTA	L	L	120	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1466056	G	A	401	1	348	1.0	228.0	Rv1310|atpD	ATP synthase subunit beta	+	216	CTG	CTA	L	L	72	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1468208	T	G	367	24	290	0.92	228.0	Rv1313c|Rv1313c	insertion sequence element IS1557 transposase	-	1298	CTG	CGG	L	R	433	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1471659	C	T	227	0	176	1.0	225.0	ncRNA	.	.	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1477588	C	G	309	0	286	1.0	225.0	Rv1316c|ogt	methylated-DNA--protein-cysteine methyltransferase	-	44	ACC	AGC	T	S	15	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1481185	T	G	471	0	363	1.0	225.0	Rv1319c|Rv1319c	adenylate cyclase	-	1317	GAT	GAG	D	E	439	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1482627	A	G	289	0	257	1.0	225.0	Rv1320c|Rv1320c	adenylate cyclase	-	1591	ACG	GCG	T	A	531	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1484708	A	C	360	0	328	1.0	225.0	Rv1321|Rv1321	endonuclease NucS	+	430	AGC	CGC	S	R	144	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1488793	C	G	66	0	62	1.0	225.0	Rv1325c|PE_PGRS24	PE-PGRS family protein PE_PGRS24	-	1173	GGC	GGG	G	G	391	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1495326	A	G	314	0	291	1.0	225.0	Rv1328|glgP	glycogen phosphorylase	+	763	AAA	GAA	K	E	255	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1499274	G	C	255	0	201	1.0	225.0	Rv1330c|pncB1	nicotinic acid phosphoribosyltransferase PncB1	-	1286	GGC	GCC	G	A	429	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1507674	G	T	426	0	391	1.0	225.0	Rv1341|Rv1341	non-canonical purine NTP pyrophosphatase	+	102	CTG	CTT	L	L	34	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1524571	T	A	6	0	5	1.0	81.0	Rv1356c|Rv1356c	hypothetical protein	-	250	TCC	ACC	S	T	84	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1526819	C	A	409	0	379	1.0	225.0	Rv1358|Rv1358	transcriptional regulator	+	208	CGG	AGG	R	R	70	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1529952	G	A	375	0	342	1.0	225.0	Rv1358|Rv1358	transcriptional regulator	+	3341	GGA	GAA	G	E	1114	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1533241	C	G	361	0	314	1.0	225.0	Rv1361c|PPE19	PPE family protein PPE19	-	393	ACC	ACG	T	T	131	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1533583	C	T	244	1	218	1.0	228.0	Rv1361c|PPE19	PPE family protein PPE19	-	51	TAC	TAT	Y	Y	17	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1536251	C	A	350	0	296	1.0	225.0	Rv1364c|Rv1364c	sigma factor regulatory protein	-	1394	GCG	GAG	A	E	465	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1547125	A	G	449	0	415	1.0	225.0	Rv1374c|Rv1374c	hypothetical protein	-	406	ACA	GCA	T	A	136	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1552547	C	T	275	0	228	1.0	225.0	Rv1378c|Rv1378c	hypothetical protein	-	109	CGG	TGG	R	W	37	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1561614	G	A	301	0	274	1.0	225.0	Rv1386|PE15	PE family protein PE15	+	151	GCC	ACC	A	T	51	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1563717	C	T	381	0	314	1.0	225.0	Rv1388|mihF	integration host factor MihF	+	24	GTC	GTT	V	V	8	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1572322	C	T	4	0	3	1.0	45.4146	Rv1396c|PE_PGRS25	PE-PGRS family protein PE_PGRS25	-	1536	AAC	AAT	N	N	512	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1573660	A	C	263	0	237	1.0	225.0	Rv1396c|PE_PGRS25	PE-PGRS family protein PE_PGRS25	-	198	AGA	AGC	R	S	66	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1588899	G	T	212	0	206	1.0	225.0	Rv1412|ribC	riboflavin synthase	+	333	GCG	GCT	A	A	111	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1589383	A	G	410	0	368	1.0	225.0	intergenic	.	+	3 bp from Rv1413|Rv1413	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1597795	G	A	370	1	330	1.0	228.0	Rv1422|Rv1422	hypothetical protein	+	915	GCG	GCA	A	A	305	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1609840	A	G	317	0	281	1.0	225.0	Rv1431|Rv1431	hypothetical protein	+	1758	CCA	CCG	P	P	586	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1609938	G	T	329	0	300	1.0	225.0	Rv1432|Rv1432	dehydrogenase	+	90	CTG	CTT	L	L	30	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1613035	T	C	278	0	248	1.0	225.0	intergenic	.	+	85 bp from Rv1435c|Rv1435c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1619978	A	G	223	0	202	1.0	225.0	Rv1442|bisC	biotin sulfoxide reductase BisC	+	188	CAT	CGT	H	R	63	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1622964	C	A	335	0	286	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1624791	G	C	144	0	128	1.0	225.0	Rv1446c|opcA	OXPP cycle protein OpcA	-	575	CGA	CCA	R	P	192	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1627351	A	G	265	0	254	1.0	225.0	Rv1448c|tal	transaldolase	-	730	ACC	GCC	T	A	244	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1630148	T	G	393	0	351	1.0	225.0	Rv1449c|tkt	transketolase	-	52	TAC	GAC	Y	D	18	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1636826	G	T	68	0	42	1.0	225.0	Rv1452c|PE_PGRS28	PE-PGRS family protein PE_PGRS28	-	1404	GGG	GGT	G	G	468	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1639594	C	A	269	0	247	1.0	225.0	Rv1453|Rv1453	transcriptional activator protein	+	1214	CCA	CAA	P	Q	405	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1645802	A	G	362	0	318	1.0	225.0	Rv1459c|Rv1459c	alpha-(1->6)-mannopyranosyltransferase	-	337	AAA	GAA	K	E	113	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1648620	G	A	414	0	386	1.0	225.0	Rv1461|Rv1461	hypothetical protein	+	1632	ATG	ATA	M	I	544	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1650072	A	G	402	0	355	1.0	225.0	Rv1462|Rv1462	hypothetical protein	+	547	AAC	GAC	N	D	183	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1669358	C	A	297	0	272	1.0	225.0	Rv1479|moxR1	transcriptional regulator MoxR1	+	76	CAC	AAC	H	N	26	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1676290	G	T	371	0	337	1.0	225.0	Rv1486c|Rv1486c	hypothetical protein	-	594	AAG	AAT	K	N	198	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1677756	C	T	368	0	327	1.0	225.0	Rv1488|Rv1488	hypothetical protein	+	360	ACC	ACT	T	T	120	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1688649	G	C	261	0	233	1.0	225.0	Rv1497|lipL	esterase LipL	+	709	GCC	CCC	A	P	237	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1689349	G	A	333	1	292	1.0	228.0	Rv1498c|Rv1498c	methyltransferase	-	572	CGC	CAC	R	H	191	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1692141	A	C	399	0	366	1.0	225.0	Rv1501|Rv1501	hypothetical protein	+	252	ATA	ATC	I	I	84	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1693561	A	G	467	0	419	1.0	225.0	Rv1502|Rv1502	hypothetical protein	+	638	TAC	TGC	Y	C	213	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1695364	G	C	440	0	393	1.0	225.0	Rv1505c|Rv1505c	hypothetical protein	-	583	GGC	CGC	G	R	195	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1698911	C	T	421	0	345	1.0	225.0	Rv1508c|Rv1508c	membrane protein	-	984	GGC	GGT	G	G	328	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1706119	A	G	353	0	323	1.0	225.0	Rv1514c|Rv1514c	glycosyltransferase	-	477	TCA	TCG	S	S	159	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1706602	C	T	451	0	404	1.0	225.0	intergenic	.	+	7 bp from Rv1514c|Rv1514c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1708846	C	T	446	0	402	1.0	225.0	intergenic	.	+	25 bp from Rv1517|Rv1517	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1709432	C	T	428	1	387	1.0	228.0	Rv1517|Rv1517	hypothetical protein	+	562	CTC	TTC	L	F	188	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1712824	A	G	357	0	304	1.0	225.0	Rv1521|fadD25	fatty-acid--CoA ligase FadD25	+	523	ACC	GCC	T	A	175	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1713192	A	G	355	0	298	1.0	225.0	Rv1521|fadD25	fatty-acid--CoA ligase FadD25	+	891	GTA	GTG	V	V	297	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1715942	C	T	368	0	328	1.0	225.0	Rv1522c|mmpL12	transmembrane transport protein MmpL12	-	1671	GGC	GGT	G	G	557	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1716262	G	A	464	0	408	1.0	225.0	Rv1522c|mmpL12	transmembrane transport protein MmpL12	-	1351	GGC	AGC	G	S	451	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1722702	T	G	303	0	274	1.0	225.0	Rv1527c|pks5	polyketide synthase	-	5708	CTG	CGG	L	R	1903	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1728622	C	G	366	0	337	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1728837	A	G	409	0	367	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1741624	G	C	282	0	246	1.0	225.0	Rv1538c|ansA	L-aparaginase	-	569	CGG	CCG	R	P	190	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1752561	A	G	292	0	266	1.0	225.0	Rv1548c|PPE21	PPE family protein PPE21	-	773	GAC	GGC	D	G	258	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1759252	G	T	350	0	308	1.0	225.0	Rv1552|frdA	fumarate reductase flavoprotein subunit	+	1572	TCG	TCT	S	S	524	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1759904	C	T	389	0	358	1.0	225.0	Rv1553|frdB	fumarate reductase iron-sulfur subunit	+	470	TCG	TTG	S	L	157	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1760292	A	G	346	0	306	1.0	225.0	Rv1554|frdC	fumarate reductase membrane anchor subunit	+	118	ATG	GTG	M	V	40	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1778430	T	C	182	0	151	1.0	225.0	Rv1570|bioD	ATP-dependent dethiobiotin synthetase BioD	+	572	ATG	ACG	M	T	191	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1778789	G	T	276	0	255	1.0	225.0	Rv1571|Rv1571	hypothetical protein	+	251	CGG	CTG	R	L	84	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1779279	A	T	3	0	3	1.0	50.0	intergenic	.	+	35 bp from Rv1573|Rv1573	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1788506	T	A	4	0	4	1.0	80.0	Rv1587c|Rv1587c	hypothetical protein	-	658	TGT	AGT	C	S	220	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1798355	G	A	307	1	244	1.0	228.0	Rv1597|Rv1597	hypothetical protein	+	62	GGT	GAT	G	D	21	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1803265	G	A	354	0	320	1.0	225.0	Rv1602|hisH	imidazole glycerol phosphate synthase subunit HisH	+	602	AGC	AAC	S	N	201	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1804409	C	A	285	0	245	1.0	225.0	Rv1604|impA	inositol-monophosphatase ImpA	+	371	CCA	CAA	P	Q	124	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1810237	G	A	388	0	353	1.0	225.0	intergenic	.	+	3 bp from Rv1611|trpC	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1817976	A	T	306	0	273	1.0	225.0	Rv1618|tesB1	acyl-CoA thioesterase II	+	362	CAC	CTC	H	L	121	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1821430	G	T	269	0	242	1.0	225.0	Rv1620c|cydC	cytochrome biosyntheisis ABC transporter ATP-binding protein/permease CydC	-	264	CTG	CTT	L	L	88	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1836286	G	C	290	0	260	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1847919	G	C	337	0	317	1.0	225.0	Rv1639c|Rv1639c	hypothetical protein	-	540	ACG	ACC	T	T	180	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1854300	T	C	296	0	265	1.0	225.0	Rv1644|tsnR	23S rRNA methyltransferase TsnR	+	695	CTG	CCG	L	P	232	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1856777	G	C	326	0	304	1.0	225.0	Rv1647|Rv1647	adenylate cyclase	+	4	GCG	CCG	A	P	2	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1857485	G	T	106	0	102	1.0	225.0	Rv1647|Rv1647	adenylate cyclase	+	712	GCC	TCC	A	S	238	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1861804	G	T	274	0	247	1.0	225.0	Rv1650|pheT	phenylalanine--tRNA ligase subunit beta	+	2047	GGC	TGC	G	C	683	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1864811	A	G	41	0	40	1.0	225.0	Rv1651c|PE_PGRS30	PE-PGRS family protein PE_PGRS30	-	572	AAC	AGC	N	S	191	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1865976	C	T	242	0	230	1.0	225.0	Rv1652|argC	N-acetyl-gamma-glutamyl-phoshate reductase	+	401	CCG	CTG	P	L	134	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1875207	C	T	354	0	321	1.0	225.0	Rv1660|pks10	chalcone synthase	+	1048	CTG	TTG	L	L	350	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1885772	G	A	295	0	239	1.0	225.0	Rv1662|pks8	polyketide synthase	+	4069	GCC	ACC	A	T	1357	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1894422	A	G	313	0	285	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1901493	T	C	366	0	341	1.0	225.0	Rv1676|Rv1676	hypothetical protein	+	447	AGT	AGC	S	S	149	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1907296	G	C	385	0	338	1.0	225.0	Rv1682|Rv1682	hypothetical protein	+	894	GCG	GCC	A	A	298	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1913811	G	C	327	0	302	1.0	225.0	Rv1689|tyrS	tyrosine--tRNA ligase	+	210	CTG	CTC	L	L	70	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1916137	A	G	319	0	291	1.0	225.0	Rv1691|Rv1691	hypothetical protein	+	189	CTA	CTG	L	L	63	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1917972	A	G	275	1	252	1.0	228.0	Rv1694|tlyA	16S/23S rRNA (cytidine-2'-O)-methyltransferase TlyA	+	33	CTA	CTG	L	L	11	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1930028	C	G	284	0	247	1.0	225.0	Rv1704c|cycA	D-serine/alanine/glycine transporter protein CycA	-	1429	CGT	GGT	R	G	477	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1933988	G	A	397	0	364	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1944107	A	G	369	0	334	1.0	225.0	Rv1716|Rv1716	hypothetical protein	+	532	AGT	GGT	S	G	178	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1944402	T	C	360	0	330	1.0	225.0	Rv1716|Rv1716	hypothetical protein	+	827	GTC	GCC	V	A	276	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1950767	A	G	364	0	318	1.0	225.0	Rv1724c|Rv1724c	hypothetical protein	-	285	AAA	AAG	K	K	95	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1960284	G	T	315	0	281	1.0	225.0	Rv1733c|Rv1733c	transmembrane protein	-	204	CAG	CAT	Q	H	68	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1967237	G	T	388	1	344	1.0	228.0	Rv1739c|Rv1739c	sulfate ABC transporter permease	-	401	CGA	CTA	R	L	134	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1982901	C	A	266	1	229	1.0	228.0	Rv1753c|PPE24	PPE family protein PPE24	-	1875	CCC	CCA	P	P	625	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1983198	G	C	7	0	6	1.0	56.0	Rv1753c|PPE24	PPE family protein PPE24	-	1578	GTG	GTC	V	V	526	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1983313	A	C	322	0	281	1.0	225.0	Rv1753c|PPE24	PPE family protein PPE24	-	1463	AAC	ACC	N	T	488	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1993808	A	T	350	0	312	1.0	225.0	Rv1760|Rv1760	diacylglycerol acyltransferase	+	656	GAG	GTG	E	V	219	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+1994342	T	C	373	0	311	1.0	225.0	Rv1760|Rv1760	diacylglycerol acyltransferase	+	1190	ATG	ACG	M	T	397	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2007502	C	T	365	0	340	1.0	225.0	Rv1773c|Rv1773c	transcriptional regulator	-	265	CAC	TAC	H	Y	89	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2010991	A	C	425	0	392	1.0	225.0	Rv1777|cyp144	cytochrome P450 Cyp144	+	336	CCA	CCC	P	P	112	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2020144	G	A	219	0	190	1.0	225.0	Rv1783|eccC5	ESX-5 type VII secretion system protein EccC5	+	888	GAG	GAA	E	E	296	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2022868	T	C	288	0	266	1.0	225.0	Rv1783|eccC5	ESX-5 type VII secretion system protein EccC5	+	3612	AGT	AGC	S	S	1204	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2026148	C	T	290	0	236	1.0	225.0	Rv1787|PPE25	PPE family protein PPE25	+	848	GCG	GTG	A	V	283	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2026480	T	C	248	0	227	1.0	225.0	Rv1788|PE18	PE family protein PE18	+	4	TCG	CCG	S	P	2	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2039901	C	T	247	0	210	1.0	225.0	Rv1800|PPE28	PPE family protein PPE28	+	449	GCA	GTA	A	V	150	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2044790	G	A	374	0	334	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2045310	T	C	216	0	203	1.0	225.0	Rv1803c|PE_PGRS32	PE-PGRS family protein PE_PGRS32	-	1533	ATT	ATC	I	I	511	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2045703	C	G	89	0	87	1.0	225.0	Rv1803c|PE_PGRS32	PE-PGRS family protein PE_PGRS32	-	1140	AGC	AGG	S	R	380	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2051746	T	C	357	1	341	1.0	228.0	Rv1809|PPE33	PPE family protein PPE33	+	465	GCT	GCC	A	A	155	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2052035	G	T	423	0	387	1.0	225.0	Rv1809|PPE33	PPE family protein PPE33	+	754	GTG	TTG	V	L	252	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2053987	G	A	402	0	355	1.0	225.0	Rv1811|mgtC	Mg2+ transport P-type ATPase MgtC	+	545	CGC	CAC	R	H	182	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2055271	T	C	288	0	259	1.0	225.0	Rv1812c|Rv1812c	dehydrogenase	-	89	CTA	CCA	L	P	30	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2057774	A	T	304	0	267	1.0	225.0	Rv1815|Rv1815	hypothetical protein	+	247	ATC	TTC	I	F	83	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2061958	T	C	11	0	9	1.0	136.0	Rv1818c|PE_PGRS33	PE-PGRS family protein PE_PGRS33	-	717	GCT	GCC	A	A	239	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2062805	C	G	155	0	141	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2066633	C	G	305	0	279	1.0	225.0	Rv1821|secA2	accessory Sec system translocase SecA2	+	177	AGC	AGG	S	R	59	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2073671	C	T	273	0	250	1.0	225.0	Rv1828|Rv1828	HTH-type transcriptional regulator	+	591	GAC	GAT	D	D	197	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2074695	C	T	361	0	327	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2074754	C	T	357	0	320	1.0	225.0	intergenic	.	+	87 bp from Rv1830|Rv1830	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2096186	T	C	268	0	242	1.0	225.0	Rv1846c|blaI	transcriptional repressor BlaI	-	414	ACT	ACC	T	T	138	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2107168	C	T	369	0	346	1.0	225.0	Rv1859|modC	molybdenum ABC transporter ATP-binding protein ModC	+	595	CTG	TTG	L	L	199	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2108141	T	C	200	0	194	1.0	225.0	Rv1860|apa	hypothetical protein	+	406	TTC	CTC	F	L	136	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2116903	C	T	312	0	248	1.0	225.0	Rv1867|Rv1867	hypothetical protein	+	1140	GGC	GGT	G	G	380	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2128870	A	G	372	0	309	1.0	225.0	Rv1878|glnA3	glutamine synthetase GlnA	+	849	CTA	CTG	L	L	283	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2135870	T	C	353	0	321	1.0	225.0	intergenic	.	+	3 bp from Rv1886c|fbpB	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2141320	G	A	343	0	304	1.0	225.0	Rv1894c|Rv1894c	hypothetical protein	-	550	GCG	ACG	A	T	184	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2143328	G	C	356	0	324	1.0	225.0	Rv1895|Rv1895	zinc-binding alcohol dehydrogenase	+	808	GTG	CTG	V	L	270	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2147022	T	G	315	0	281	1.0	225.0	Rv1900c|lipJ	lignin peroxidase LipJ	-	612	ATT	ATG	I	M	204	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2155168	G	C	419	0	381	1.0	225.0	Rv1908c|katG	catalase-peroxidase	-	944	AGC	ACC	S	T	315	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2160998	G	A	234	0	191	1.0	225.0	Rv1915|aceAa	isocitrate lyase AceAa	+	536	GGC	GAC	G	D	179	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2163790	T	G	133	0	126	1.0	225.0	Rv1917c|PPE34	PPE family protein PPE34	-	3522	CCT	CCG	P	P	1174	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2165286	T	G	305	0	267	1.0	225.0	Rv1917c|PPE34	PPE family protein PPE34	-	2026	TCA	GCA	S	A	676	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2172320	T	C	307	0	276	1.0	225.0	Rv1920|Rv1920	membrane protein	+	698	ATC	ACC	I	T	233	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2186282	C	G	287	0	259	1.0	225.0	Rv1935c|echA13	enoyl-CoA hydratase EchA13	-	878	TCC	TGC	S	C	293	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2187376	G	A	427	0	395	1.0	225.0	intergenic	.	+	8 bp from Rv1936|Rv1936	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2196715	G	C	184	0	157	1.0	225.0	Rv1945|Rv1945	hypothetical protein	+	727	GTC	CTC	V	L	243	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2202833	G	A	375	0	346	1.0	225.0	Rv1957|Rv1957	SecB-like chaperone	+	250	GAC	AAC	D	N	84	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2211826	A	G	304	0	280	1.0	225.0	Rv1968|mce3C	Mce family protein Mce3C	+	201	AAA	AAG	K	K	67	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2216443	C	A	207	0	197	1.0	225.0	Rv1971|mce3F	Mce family protein Mce3F	+	1187	GCG	GAG	A	E	396	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2220512	T	G	326	0	298	1.0	225.0	Rv1977|Rv1977	hypothetical protein	+	759	TCT	TCG	S	S	253	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2223293	T	C	350	0	321	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2225456	T	A	320	0	287	1.0	225.0	Rv1982c|vapC36	ribonuclease VapC36	-	377	CTT	CAT	L	H	126	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2228967	A	G	371	0	341	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2238613	T	C	338	0	308	1.0	225.0	Rv1995|Rv1995	hypothetical protein	+	473	CTC	CCC	L	P	158	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2239533	A	G	4	0	2	1.0	21.4455	Rv1996|Rv1996	universal stress protein	+	530	GAC	GGC	D	G	177	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2244770	C	T	286	0	246	1.0	225.0	Rv1999c|Rv1999c	transporter	-	369	CCC	CCT	P	P	123	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2247677	A	C	378	0	347	1.0	225.0	Rv2002|fabG3	3-alpha(or 20-beta)-hydroxysteroid dehydrogenase	+	18	ATA	ATC	I	I	6	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2248179	A	G	308	1	283	1.0	228.0	Rv2002|fabG3	3-alpha(or 20-beta)-hydroxysteroid dehydrogenase	+	520	AGC	GGC	S	G	174	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2251999	A	G	390	1	354	1.0	228.0	intergenic	.	+	3 bp from Rv2006|otsB1	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2253453	T	C	352	0	300	1.0	225.0	Rv2006|otsB1	trehalose-6-phosphate phosphatase OtsB	+	1452	CGT	CGC	R	R	484	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2260525	C	T	317	0	281	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2263760	C	T	348	0	309	1.0	225.0	Rv2016|Rv2016	hypothetical protein	+	335	CCC	CTC	P	L	112	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2264782	C	A	292	0	264	1.0	225.0	Rv2017|Rv2017	transcriptional regulator	+	785	GCG	GAG	A	E	262	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2265059	T	G	381	0	338	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2269780	A	G	317	0	280	1.0	225.0	Rv2024c|Rv2024c	hypothetical protein	-	461	GAC	GGC	D	G	154	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2270102	T	C	244	0	220	1.0	225.0	Rv2024c|Rv2024c	hypothetical protein	-	139	TGG	CGG	W	R	47	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2282787	G	A	393	0	365	1.0	225.0	Rv2037c|Rv2037c	transmembrane protein	-	935	TGT	TAT	C	Y	312	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2285251	G	T	443	0	413	1.0	225.0	Rv2039c|Rv2039c	sugar ABC transporter permease	-	391	GTC	TTC	V	F	131	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2287121	T	C	372	0	337	1.0	225.0	Rv2041c|Rv2041c	sugar ABC transporter substrate-binding lipoprotein	-	726	GAT	GAC	D	D	242	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2296042	C	G	291	5	256	0.98	228.0	Rv2048c|pks12	polyketide synthase	-	10945	CCG	GCG	P	A	3649	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2296181	T	C	305	0	245	1.0	225.0	Rv2048c|pks12	polyketide synthase	-	10806	GGT	GGC	G	G	3602	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2300237	T	C	276	5	250	0.98	228.0	Rv2048c|pks12	polyketide synthase	-	6750	GCT	GCC	A	A	2250	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2302271	T	C	264	0	225	1.0	225.0	Rv2048c|pks12	polyketide synthase	-	4716	GGT	GGC	G	G	1572	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2304068	G	T	339	0	298	1.0	225.0	Rv2048c|pks12	polyketide synthase	-	2919	GAG	GAT	E	D	973	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2307701	G	A	308	0	269	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2311099	G	C	183	0	158	1.0	225.0	Rv2052c|Rv2052c	hypothetical protein	-	1419	CCG	CCC	P	P	473	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2325009	G	A	451	0	410	1.0	225.0	Rv2067c|Rv2067c	hypothetical protein	-	862	GAG	AAG	E	K	288	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2329533	T	C	329	0	299	1.0	225.0	Rv2072c|cobL	precorrin-6Y C(5,15)-methyltransferase	-	614	CTC	CCC	L	P	205	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2334007	T	C	402	0	375	1.0	225.0	Rv2077c|Rv2077c	transmembrane protein	-	288	GCT	GCC	A	A	96	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2335075	A	G	433	0	391	1.0	225.0	Rv2078|Rv2078	hypothetical protein	+	17	GAA	GGA	E	G	6	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2335494	A	G	284	0	232	1.0	225.0	Rv2079|Rv2079	hypothetical protein	+	140	TAC	TGC	Y	C	47	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2339605	A	G	182	0	155	1.0	225.0	Rv2082|Rv2082	hypothetical protein	+	897	CCA	CCG	P	P	299	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2340621	C	G	164	0	156	1.0	225.0	Rv2082|Rv2082	hypothetical protein	+	1913	CCC	CGC	P	R	638	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2341636	C	G	300	0	269	1.0	225.0	Rv2083|Rv2083	hypothetical protein	+	766	CTG	GTG	L	V	256	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2345037	C	A	330	0	289	1.0	225.0	Rv2088|pknJ	transmembrane serine/threonine-protein kinase PknJ	+	627	CTC	CTA	L	L	209	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2347521	T	C	10	1	9	0.9	55.0	Rv2090|Rv2090	5'-3' exonuclease	+	149	CTG	CCG	L	P	50	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2348446	C	G	281	0	259	1.0	225.0	Rv2090|Rv2090	5'-3' exonuclease	+	1074	TTC	TTG	F	L	358	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2360483	C	T	216	0	135	1.0	225.0	Rv2101|helZ	helicase HelZ	+	244	CCG	TCG	P	S	82	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2361604	C	G	266	0	242	1.0	225.0	Rv2101|helZ	helicase HelZ	+	1365	GTC	GTG	V	V	455	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2369326	G	C	287	0	278	1.0	225.0	Rv2109c|prcA	proteasome subunit alpha	-	404	CGC	CCC	R	P	135	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2379589	A	T	324	0	275	1.0	225.0	Rv2120c|Rv2120c	integral membrane protein	-	139	ATG	TTG	M	L	47	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2386389	G	A	377	0	335	1.0	225.0	Rv2125|Rv2125	hypothetical protein	+	97	GGC	AGC	G	S	33	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2387733	A	G	101	0	89	1.0	225.0	Rv2126c|PE_PGRS37	PE-PGRS family protein PE_PGRS37	-	240	GAA	GAG	E	E	80	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2402439	C	T	428	0	387	1.0	225.0	Rv2142c|parE2	toxin ParE2	-	72	GAC	GAT	D	D	24	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2403375	G	T	336	0	267	1.0	225.0	Rv2143|Rv2143	hypothetical protein	+	399	CGG	CGT	R	R	133	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2406186	G	A	328	0	300	1.0	225.0	Rv2147c|Rv2147c	cell division protein SepF	-	658	GCA	ACA	A	T	220	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2415656	C	G	97	0	89	1.0	225.0	Rv2155c|murD	UDP-N-acetylmuramoylalanine--D-glutamate ligase	-	739	CGG	GGG	R	G	247	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2416156	C	T	247	0	189	1.0	225.0	Rv2155c|murD	UDP-N-acetylmuramoylalanine--D-glutamate ligase	-	239	ACC	ATC	T	I	80	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2424008	C	A	76	0	61	1.0	225.0	Rv2162c|PE_PGRS38	PE-PGRS family protein PE_PGRS38	-	831	GCC	GCA	A	A	277	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2424925	A	G	360	1	317	1.0	228.0	intergenic	.	+	87 bp from Rv2162c|PE_PGRS38	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2440926	C	A	351	0	317	1.0	225.0	Rv2178c|aroG	phospho-2-dehydro-3-deoxyheptonate aldolase AroG	-	795	GAC	GAA	D	E	265	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2460317	G	T	361	1	336	1.0	228.0	Rv2196|qcrB	ubiquinol-cytochrome C reductase cytochrome subunit B	+	640	GCC	TCC	A	S	214	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2462871	C	T	253	0	216	1.0	225.0	Rv2198c|mmpS3	membrane protein MmpS3	-	177	GCC	GCT	A	A	59	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2468098	G	A	376	0	324	1.0	225.0	intergenic	.	+	71 bp from Rv2202c|adoK	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2473699	C	T	391	0	354	1.0	225.0	Rv2209|Rv2209	integral membrane protein	+	300	AAC	AAT	N	N	100	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2483497	G	T	391	0	345	1.0	225.0	Rv2215|dlaT	pyruvate dehydrogenase E2 component dihydrolipoamide acyltransferase	+	1533	GTG	GTT	V	V	511	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2499726	G	A	323	0	295	1.0	225.0	Rv2226|Rv2226	hypothetical protein	+	895	GAT	AAT	D	N	299	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2509140	C	G	255	0	226	1.0	225.0	Rv2236c|cobD	cobalamin biosynthesis transmembrane protein CobD	-	236	TCC	TGC	S	C	79	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2509722	A	G	248	0	231	1.0	225.0	Rv2237|Rv2237	hypothetical protein	+	234	CCA	CCG	P	P	78	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2516567	G	C	334	0	310	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2518076	C	T	418	0	382	1.0	225.0	Rv2244|acpM	meromycolate extension acyl carrier protein	+	306	GCC	GCT	A	A	102	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2521342	T	C	361	0	317	1.0	225.0	Rv2247|accD6	acetyl-/propionyl-CoA carboxylase subunit beta	+	600	GAT	GAC	D	D	200	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2526974	T	C	314	0	287	1.0	225.0	Rv2251|Rv2251	flavoprotein	+	1410	CCT	CCC	P	P	470	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2529680	T	C	416	0	374	1.0	225.0	Rv2256c|Rv2256c	hypothetical protein	-	195	ACT	ACC	T	T	65	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2531742	T	C	425	0	379	1.0	225.0	Rv2258c|Rv2258c	transcriptional regulator	-	156	GCT	GCC	A	A	52	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2532017	G	C	53	0	50	1.0	91.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2532123	G	C	114	0	114	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2544535	C	T	322	0	285	1.0	225.0	Rv2269c|Rv2269c	hypothetical protein	-	87	GGC	GGT	G	G	29	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2568273	A	G	234	0	213	1.0	225.0	Rv2296|Rv2296	haloalkane dehalogenase	+	770	GAC	GGC	D	G	257	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2573756	C	A	400	0	368	1.0	225.0	intergenic	.	+	57 bp from Rv2302|Rv2302	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2574022	C	T	362	0	327	1.0	225.0	Rv2302|Rv2302	hypothetical protein	+	210	CGC	CGT	R	R	70	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2578626	T	C	365	0	337	1.0	225.0	Rv2307c|Rv2307c	hypothetical protein	-	71	ATG	ACG	M	T	24	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2578975	G	T	344	0	293	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2586127	T	C	277	0	258	1.0	225.0	Rv2314c|Rv2314c	hypothetical protein	-	1164	GGT	GGC	G	G	388	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2589216	G	C	396	0	363	1.0	225.0	Rv2316|uspA	sugar ABC transporter permease UspA	+	379	GTG	CTG	V	L	127	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2598400	T	C	298	0	266	1.0	225.0	Rv2326c|Rv2326c	ABC transporter ATP-binding protein	-	1548	AAT	AAC	N	N	516	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2608117	G	T	315	0	263	1.0	225.0	Rv2333c|stp	multidrug resistance protein	-	205	GAC	TAC	D	Y	69	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2610702	T	C	309	0	270	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2612632	G	T	297	1	214	1.0	228.0	Rv2337c|Rv2337c	hypothetical protein	-	356	GGC	GTC	G	V	119	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2614413	T	G	407	0	367	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2615907	C	T	368	0	337	1.0	225.0	Rv2339|mmpL9	transmembrane transport protein MmpL9	+	1215	TAC	TAT	Y	Y	405	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2617673	C	T	308	0	276	1.0	225.0	Rv2340c|PE_PGRS39	PE-PGRS family protein PE_PGRS39	-	1236	CAC	CAT	H	H	412	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2627337	C	T	256	0	228	1.0	225.0	Rv2349c|plcC	phospholipase C	-	1362	CCC	CCT	P	P	454	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2637541	C	T	361	0	323	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2642383	G	A	426	0	370	1.0	225.0	Rv2360c|Rv2360c	hypothetical protein	-	196	GCC	ACC	A	T	66	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2644072	C	T	355	0	312	1.0	225.0	Rv2362c|recO	DNA repair protein RecO	-	187	CCT	TCT	P	S	63	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2656225	T	C	385	0	343	1.0	225.0	Rv2377c|Rv2377c	hypothetical protein	-	206	GTC	GCC	V	A	69	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2660319	G	C	367	0	333	1.0	225.0	Rv2379c|mbtF	peptide synthetase	-	1767	GAG	GAC	E	D	589	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2671061	G	T	412	0	369	1.0	225.0	Rv2382c|mbtC	polyketide synthetase	-	543	GCG	GCT	A	A	181	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2680155	G	A	307	0	270	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2680658	T	G	226	0	189	1.0	225.0	Rv2386a|Rv2386a	hypothetical protein	+	201	ACT	ACG	T	T	67	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2685073	C	T	375	0	341	1.0	225.0	Rv2391|sirA	sulfite reductase	+	395	ACC	ATC	T	I	132	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2689715	G	C	276	0	243	1.0	225.0	Rv2394|ggtB	gamma-glutamyltranspeptidase precursor GgtB	+	1706	GGC	GCC	G	A	569	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2695378	G	C	420	0	375	1.0	225.0	Rv2398c|cysW	sulfate ABC transporter permease CysW	-	422	GGC	GCC	G	A	141	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2700239	G	A	318	0	258	1.0	225.0	Rv2402|Rv2402	trehalase	+	1711	GTG	ATG	V	M	571	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2713795	C	T	200	0	175	1.0	225.0	intergenic	.	+	11 bp from Rv2415c|Rv2415c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2718852	T	G	428	0	385	1.0	225.0	intergenic	.	+	44 bp from Rv2421c|nadD	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2721562	G	C	422	0	392	1.0	225.0	Rv2424c|Rv2424c	transposase	-	216	GCG	GCC	A	A	72	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2724432	C	T	462	0	426	1.0	225.0	Rv2427c|proA	gamma-glutamyl phosphate reductase	-	1046	GCC	GTC	A	V	349	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2724782	G	A	392	0	353	1.0	225.0	Rv2427c|proA	gamma-glutamyl phosphate reductase	-	696	GAG	GAA	E	E	232	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2734074	T	C	156	0	154	1.0	225.0	Rv2436|rbsK	ribokinase RbsK	+	845	GTC	GCC	V	A	282	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2737572	G	T	197	0	151	1.0	225.0	Rv2439c|proB	glutamate 5-kinase protein	-	676	GCG	TCG	A	S	226	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2739174	A	C	285	0	233	1.0	225.0	Rv2440c|obg	GTPase Obg	-	513	GGA	GGC	G	G	171	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2751804	G	A	254	0	213	1.0	225.0	Rv2450c|rpfE	resuscitation-promoting factor RpfE	-	377	CGG	CAG	R	Q	126	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2752698	C	A	455	0	387	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2759390	C	T	406	0	373	1.0	225.0	Rv2457c|clpX	ATP-dependent CLP protease ATP-binding subunit ClpX	-	99	TAC	TAT	Y	Y	33	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2760152	A	G	397	0	355	1.0	225.0	Rv2458|mmuM	homocysteine S-methyltransferase MmuM	+	374	TAC	TGC	Y	C	125	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2760241	G	A	329	0	294	1.0	225.0	Rv2458|mmuM	homocysteine S-methyltransferase MmuM	+	463	GAA	AAA	E	K	155	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2775592	G	A	395	0	350	1.0	225.0	Rv2473|Rv2473	hypothetical protein	+	25	GCC	ACC	A	T	9	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2779136	A	G	367	0	339	1.0	225.0	Rv2476c|gdh	NAD-dependent glutamate dehydrogenase	-	3127	AGC	GGC	S	G	1043	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2786952	T	C	350	0	319	1.0	225.0	Rv2482c|plsB2	glycerol-3-phosphate acyltransferase	-	2332	TGC	CGC	C	R	778	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2788298	A	G	435	0	397	1.0	225.0	Rv2482c|plsB2	glycerol-3-phosphate acyltransferase	-	986	GAC	GGC	D	G	329	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2788745	G	A	350	0	321	1.0	225.0	Rv2482c|plsB2	glycerol-3-phosphate acyltransferase	-	539	CGG	CAG	R	Q	180	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2788963	A	C	275	0	251	1.0	225.0	Rv2482c|plsB2	glycerol-3-phosphate acyltransferase	-	321	GCA	GCC	A	A	107	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2808506	G	C	381	0	346	1.0	225.0	Rv2494|vapC38	ribonuclease VapC38	+	197	CGG	CCG	R	P	66	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2809621	A	G	272	0	232	1.0	225.0	Rv2495c|bkdC	branched-chain keto acid dehydrogenase E2 component	-	319	ACC	GCC	T	A	107	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2818837	T	C	413	0	372	1.0	225.0	Rv2503c|scoB	succinyl-CoA:3-ketoacid-CoA transferase subunit B	-	291	GGT	GGC	G	G	97	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2819009	C	T	387	0	335	1.0	225.0	Rv2503c|scoB	succinyl-CoA:3-ketoacid-CoA transferase subunit B	-	119	CCC	CTC	P	L	40	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2821342	G	A	241	1	198	0.99	228.0	Rv2505c|fadD35	fatty-acid--CoA ligase FadD35	-	255	GCG	GCA	A	A	85	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2826532	G	A	388	0	343	1.0	225.0	Rv2510c|Rv2510c	hypothetical protein	-	558	GCG	GCA	A	A	186	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2830525	C	A	383	0	346	1.0	225.0	Rv2513|Rv2513	hypothetical protein	+	365	ACG	AAG	T	K	122	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2831020	A	T	315	0	269	1.0	225.0	Rv2514c|Rv2514c	hypothetical protein	-	319	ATG	TTG	M	L	107	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2855259	T	C	239	0	220	1.0	225.0	Rv2531c|Rv2531c	amino acid decarboxylase	-	2523	GCT	GCC	A	A	841	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2865760	A	G	388	0	357	1.0	225.0	Rv2542|Rv2542	hypothetical protein	+	631	ACC	GCC	T	A	211	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2865882	T	C	428	0	386	1.0	225.0	Rv2542|Rv2542	hypothetical protein	+	753	GTT	GTC	V	V	251	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2871251	C	T	300	0	276	1.0	225.0	Rv2552c|aroE	shikimate 5-dehydrogenase	-	765	CCC	CCT	P	P	255	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2873145	C	T	201	0	152	1.0	225.0	Rv2553c|Rv2553c	membrane protein	-	121	CGC	TGC	R	C	41	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2880702	G	C	463	0	423	1.0	225.0	Rv2560|Rv2560	hypothetical protein	+	628	GTC	CTC	V	L	210	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2885170	C	A	274	0	225	1.0	225.0	Rv2565|Rv2565	NTE family protein	+	560	GCG	GAG	A	E	187	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2888201	T	C	236	0	217	1.0	225.0	Rv2566|Rv2566	hypothetical protein	+	1829	CTC	CCC	L	P	610	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2889633	T	C	187	0	164	1.0	225.0	Rv2566|Rv2566	hypothetical protein	+	3261	GCT	GCC	A	A	1087	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2891267	C	T	418	0	349	1.0	225.0	Rv2567|Rv2567	hypothetical protein	+	1473	GGC	GGT	G	G	491	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2891728	A	G	295	0	261	1.0	225.0	Rv2567|Rv2567	hypothetical protein	+	1934	CAG	CGG	Q	R	645	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2894208	C	T	325	1	269	1.0	228.0	Rv2569c|Rv2569c	hypothetical protein	-	201	AGC	AGT	S	S	67	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2895488	G	A	353	0	307	1.0	225.0	Rv2571c|Rv2571c	transmembrane protein	-	473	GGG	GAG	G	E	158	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2898337	C	T	312	0	274	1.0	225.0	Rv2573|Rv2573	2-dehydropantoate 2-reductase	+	295	CCC	TCC	P	S	99	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2906978	C	T	321	0	281	1.0	225.0	Rv2582|ppiB	peptidyl-prolyl cis-trans isomerase B	+	165	CTC	CTT	L	L	55	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2910461	C	A	275	0	222	1.0	225.0	Rv2584c|apt	adenine phosphoribosyltransferase	-	440	GCG	GAG	A	E	147	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2911293	G	C	284	0	234	1.0	225.0	Rv2585c|Rv2585c	lipoprotein	-	1385	TGT	TCT	C	S	462	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2911823	C	T	410	0	361	1.0	225.0	Rv2585c|Rv2585c	lipoprotein	-	855	AGC	AGT	S	S	285	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2912294	A	C	388	0	342	1.0	225.0	Rv2585c|Rv2585c	lipoprotein	-	384	GCA	GCC	A	A	128	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2912596	C	T	328	0	300	1.0	225.0	Rv2585c|Rv2585c	lipoprotein	-	82	CTG	TTG	L	L	28	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2915247	C	T	229	0	199	1.0	225.0	Rv2587c|secD	protein translocase subunit SecD	-	490	CCT	TCT	P	S	164	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2923391	A	G	174	0	156	1.0	225.0	Rv2592c|ruvB	Holliday junction ATP-dependent DNA helicase RuvB	-	843	CCA	CCG	P	P	281	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2927015	G	A	383	0	341	1.0	225.0	Rv2598|Rv2598	hypothetical protein	+	30	CCG	CCA	P	P	10	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2927939	T	C	388	0	351	1.0	225.0	intergenic	.	+	51 bp from Rv2600|Rv2600	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2939373	C	G	258	0	226	1.0	225.0	Rv2611c|Rv2611c	phosphatidylinositol mannoside acyltransferase	-	590	TCT	TGT	S	C	197	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2939657	A	G	272	0	231	1.0	225.0	Rv2611c|Rv2611c	phosphatidylinositol mannoside acyltransferase	-	306	ATA	ATG	I	M	102	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2946724	C	T	320	0	286	1.0	225.0	Rv2618|Rv2618	hypothetical protein	+	291	ATC	ATT	I	I	97	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2953367	T	C	383	0	340	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2954439	A	G	412	0	385	1.0	225.0	Rv2627c|Rv2627c	hypothetical protein	-	310	AGA	GGA	R	G	104	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2958749	G	A	446	0	399	1.0	225.0	Rv2631|Rv2631	RNA-splicing ligase RtcB	+	1178	GGT	GAT	G	D	393	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2958811	C	T	391	0	352	1.0	225.0	Rv2631|Rv2631	RNA-splicing ligase RtcB	+	1240	CAG	TAG	Q	#	414	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2969494	T	C	433	0	385	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2973658	T	G	297	0	262	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2974933	T	C	280	0	250	1.0	225.0	Rv2650c|Rv2650c	prophage protein	-	302	ATC	ACC	I	T	101	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2982956	A	G	319	11	280	0.96	228.0	Rv2665|Rv2665	hypothetical protein	+	258	CCA	CCG	P	P	86	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+2984740	A	G	297	0	278	1.0	225.0	Rv2668|Rv2668	hypothetical protein	+	8	CAC	CGC	H	R	3	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3005185	C	A	399	0	361	1.0	225.0	Rv2688c|Rv2688c	antibiotic ABC transporter ATP-binding protein	-	466	CCC	ACC	P	T	156	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3005618	G	A	355	0	317	1.0	225.0	Rv2688c|Rv2688c	antibiotic ABC transporter ATP-binding protein	-	33	GCG	GCA	A	A	11	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3009692	A	G	398	0	354	1.0	225.0	Rv2691|ceoB	TRK system potassium uptake protein CeoB	+	349	ACC	GCC	T	A	117	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3011692	T	G	444	0	401	1.0	225.0	Rv2694c|Rv2694c	hypothetical protein	-	76	TTA	GTA	L	V	26	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3013784	G	C	328	0	281	1.0	225.0	Rv2697c|dut	deoxyuridine 5'-triphosphate nucleotidohydrolase	-	364	GTC	CTC	V	L	122	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3017465	T	C	406	1	363	1.0	228.0	Rv2702|ppgK	polyphosphate glucokinase	+	608	ATA	ACA	I	T	203	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3022094	T	C	285	0	264	1.0	225.0	Rv2709|Rv2709	transmembrane protein	+	256	TCG	CCG	S	P	86	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3024577	C	G	349	0	320	1.0	225.0	Rv2712c|Rv2712c	hypothetical protein	-	752	GCT	GGT	A	G	251	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3037377	T	C	115	0	98	1.0	225.0	intergenic	.	+	86 bp from Rv2724c|fadE20	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3040504	C	T	267	0	236	1.0	225.0	Rv2727c|miaA	tRNA delta(2)-isopentenylpyrophosphate transferase	-	266	GCG	GTG	A	V	89	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3041871	C	A	368	0	317	1.0	225.0	Rv2729c|Rv2729c	integral membrane protein	-	605	GCG	GAG	A	E	202	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3054081	A	G	295	1	263	1.0	228.0	Rv2741|PE_PGRS47	PE-PGRS family protein PE_PGRS47	+	168	GGA	GGG	G	G	56	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3054321	A	G	217	0	184	1.0	225.0	Rv2741|PE_PGRS47	PE-PGRS family protein PE_PGRS47	+	408	GGA	GGG	G	G	136	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3054724	A	G	17	0	9	1.0	175.0	Rv2741|PE_PGRS47	PE-PGRS family protein PE_PGRS47	+	811	AGC	GGC	S	G	271	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3069167	T	C	301	0	289	1.0	225.0	Rv2756c|hsdM	type I restriction/modification system DNA methylase HsdM	-	917	CTG	CCG	L	P	306	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3072567	G	T	381	0	326	1.0	225.0	Rv2761c|hsdS	type I restriction/modification system specificity determinant HsdS	-	74	GGC	GTC	G	V	25	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3078178	G	A	261	0	238	1.0	225.0	Rv2769c|PE27	PE family protein PE27	-	808	GTG	ATG	V	M	270	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3080795	T	C	394	0	359	1.0	225.0	Rv2771c|Rv2771c	hypothetical protein	-	239	CTC	CCC	L	P	80	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3086208	G	T	447	0	411	1.0	225.0	intergenic	.	+	25 bp from Rv2778c|Rv2778c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3086788	T	C	438	0	401	1.0	225.0	intergenic	.	+	34 bp from Rv2779c|Rv2779c and 32 bp from Rv2780|ald	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3091595	C	T	309	0	293	1.0	225.0	Rv2783c|gpsI	bifunctional guanosine pentaphosphate synthetase/polyribonucleotide nucleotidyltransferase	-	1003	CTG	TTG	L	L	335	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3096807	G	T	393	0	361	1.0	225.0	Rv2787|Rv2787	hypothetical protein	+	1697	AGC	ATC	S	I	566	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3103682	A	G	310	0	274	1.0	225.0	Rv2794c|pptT	4'-phosphopantetheinyl transferase	-	259	ATG	GTG	M	V	87	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3105107	G	C	278	0	238	1.0	225.0	Rv2796c|lppV	lipoprotein LppV	-	513	TCG	TCC	S	S	171	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3109457	G	A	200	0	175	1.0	225.0	Rv2800|Rv2800	hydrolase	+	1042	GGC	AGC	G	S	348	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3113872	A	T	212	0	188	1.0	225.0	Rv2807|Rv2807	hypothetical protein	+	215	GAG	GTG	E	V	72	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3118000	A	G	113	0	94	1.0	225.0	Rv2812|Rv2812	transposase	+	1183	AGG	GGG	R	G	395	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3133536	A	G	477	0	429	1.0	225.0	Rv2825c|Rv2825c	hypothetical protein	-	4	AAA	GAA	K	E	2	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3136335	C	T	189	0	147	1.0	225.0	Rv2828A|Rv2828A	hypothetical protein	-	265	CGG	TGG	R	W	89	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3136576	G	A	225	0	171	1.0	225.0	Rv2828A|Rv2828A	hypothetical protein	-	24	CTG	CTA	L	L	8	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3137058	C	T	306	0	268	1.0	225.0	Rv2830c|vapB22	antitoxin VapB22	-	167	GCG	GTG	A	V	56	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3147742	T	C	322	0	281	1.0	225.0	Rv2839c|infB	translation initiation factor IF-2	-	132	GTT	GTC	V	V	44	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3149880	G	A	295	0	233	1.0	225.0	Rv2842c|Rv2842c	ribosome maturation factor RimP	-	97	GCG	ACG	A	T	33	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3162805	C	G	57	0	54	1.0	225.0	Rv2853|PE_PGRS48	PE-PGRS family protein PE_PGRS48	+	538	CGC	GGC	R	G	180	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3177884	C	A	206	0	195	1.0	225.0	Rv2866|relG	toxin RelG	+	63	CGC	CGA	R	R	21	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3186860	T	G	157	0	148	1.0	225.0	Rv2874|dipZ	integral membrane C-type cytochrome biogenesis protein DipZ	+	2014	TAT	GAT	Y	D	672	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3187090	G	A	147	0	122	1.0	225.0	Rv2875|mpt70	major secreted immunogenic protein Mpt70	+	61	GCG	ACG	A	T	21	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3192307	T	C	381	7	355	0.98	228.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3194791	C	T	4	0	4	1.0	81.0	Rv2885c|Rv2885c	transposase	-	758	GCG	GTG	A	V	253	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3226181	T	G	310	0	284	1.0	225.0	Rv2916c|ffh	signal recognition particle protein	-	105	CGT	CGG	R	R	35	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3228143	G	T	241	0	173	1.0	225.0	Rv2917|Rv2917	hypothetical protein	+	1781	CGG	CTG	R	L	594	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3247316	C	G	307	0	273	1.0	225.0	Rv2931|ppsA	phthiocerol synthesis polyketide synthase type I PpsA	+	1872	GAC	GAG	D	E	624	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3255647	T	C	385	0	345	1.0	225.0	Rv2932|ppsB	phthiocerol synthesis polyketide synthase type I PpsB	+	4576	TTG	CTG	L	L	1526	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3256494	A	G	342	0	322	1.0	225.0	Rv2933|ppsC	phthiocerol synthesis polyketide synthase type I PpsC	+	810	GGA	GGG	G	G	270	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3258274	A	C	318	0	276	1.0	225.0	Rv2933|ppsC	phthiocerol synthesis polyketide synthase type I PpsC	+	2590	AGC	CGC	S	R	864	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3269581	A	G	380	0	350	1.0	225.0	Rv2935|ppsE	phthiocerol synthesis polyketide synthase type I PpsE	+	1845	GCA	GCG	A	A	615	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3270784	A	G	374	0	349	1.0	225.0	Rv2935|ppsE	phthiocerol synthesis polyketide synthase type I PpsE	+	3048	CAA	CAG	Q	Q	1016	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3289923	C	A	392	0	357	1.0	225.0	Rv2943A|Rv2943A	transposase	+	219	GCC	GCA	A	A	73	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3289923	C	A	392	0	357	1.0	225.0	Rv2944|Rv2944	insertion sequence element IS1533 transposase	+	134	CCC	CAC	P	H	45	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3296843	T	C	336	0	282	1.0	225.0	Rv2947c|pks15	polyketide synthase	-	998	GTG	GCG	V	A	333	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3308606	G	A	412	0	375	1.0	225.0	intergenic	.	+	61 bp from Rv2955c|Rv2955c and 62 bp from Rv2956|Rv2956	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3332254	G	A	339	0	300	1.0	225.0	Rv2976c|ung	uracil-DNA glycosylase	-	501	CTG	CTA	L	L	167	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3336825	A	G	73	0	65	1.0	225.0	Rv2981c|ddlA	D-alanine--D-alanine ligase	-	1093	ACA	GCA	T	A	365	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3338603	C	G	268	0	252	1.0	225.0	Rv2982c|gpdA2	glycerol-3-phosphate dehydrogenase	-	397	CCG	GCG	P	A	133	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3340328	G	T	369	0	330	1.0	225.0	Rv2984|ppk1	polyphosphate kinase	+	475	GTC	TTC	V	F	159	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3346224	A	C	418	0	388	1.0	225.0	Rv2989|Rv2989	transcriptional regulator	+	78	GGA	GGC	G	G	26	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3352932	G	C	327	0	298	1.0	225.0	Rv2995c|leuB	3-isopropylmalate dehydrogenase	-	537	ACG	ACC	T	T	179	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3354437	A	C	297	0	252	1.0	225.0	Rv2996c|serA1	D-3-phosphoglycerate dehydrogenase	-	633	GGA	GGC	G	G	211	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3355161	C	T	300	0	246	1.0	225.0	Rv2997|Rv2997	dehydrogenase	+	63	CGC	CGT	R	R	21	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3358235	A	T	480	1	433	1.0	228.0	Rv2999|lppY	lipoprotein LppY	+	634	ATG	TTG	M	L	212	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3363338	A	G	378	0	361	1.0	225.0	intergenic	.	+	10 bp from Rv3004|cfp6	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3367765	C	T	364	0	293	1.0	225.0	Rv3009c|gatB	aspartyl/glutamyl-tRNA(Asn/Gln) amidotransferase subunit B	-	1029	GGC	GGT	G	G	343	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3390059	G	A	340	1	294	1.0	228.0	Rv3031|Rv3031	1,4-alpha-glucan-branching protein	+	138	CCG	CCA	P	P	46	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3401871	T	C	298	0	253	1.0	225.0	Rv3041c|Rv3041c	ABC transporter ATP-binding protein	-	48	GCT	GCC	A	A	16	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3402816	G	A	423	0	384	1.0	225.0	Rv3042c|serB2	phosphoserine phosphatase SerB	-	347	GGA	GAA	G	E	116	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3404376	G	C	456	0	422	1.0	225.0	Rv3043c|ctaD	cytochrome C oxidase cytochrome 1	-	546	ACG	ACC	T	T	182	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3408000	C	A	368	0	322	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3417839	T	C	296	0	267	1.0	225.0	Rv3057c|Rv3057c	short chain alcohol dehydrogenase/reductase	-	824	GTC	GCC	V	A	275	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3425280	C	G	176	0	155	1.0	225.0	Rv3061c|fadE22	acyl-CoA dehydrogenase FadE22	-	148	CTG	GTG	L	V	50	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3425854	C	T	334	0	294	1.0	225.0	Rv3062|ligB	DNA ligase	+	271	CCG	TCG	P	S	91	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3428374	C	G	356	0	329	1.0	225.0	Rv3063|cstA	carbon starvation protein A	+	1132	CAC	GAC	H	D	378	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3428917	C	A	404	0	367	1.0	225.0	Rv3063|cstA	carbon starvation protein A	+	1675	CGT	AGT	R	S	559	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3433858	C	A	359	0	310	1.0	225.0	Rv3069|Rv3069	fluoride ion transporter CrcB	+	167	ACC	AAC	T	N	56	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3440895	G	A	390	0	346	1.0	225.0	Rv3077|Rv3077	hydrolase	+	1355	CGT	CAT	R	H	452	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3450463	C	T	215	0	182	1.0	225.0	Rv3084|lipR	acetyl-hydrolase LipR	+	467	GCC	GTC	A	V	156	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3450725	T	C	338	0	305	1.0	225.0	Rv3084|lipR	acetyl-hydrolase LipR	+	729	GTT	GTC	V	V	243	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3455686	G	C	410	0	372	1.0	225.0	Rv3088|tgs4	diacyglycerol O-acyltransferase	+	1347	CTG	CTC	L	L	449	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3456666	A	G	382	0	354	1.0	225.0	Rv3089|fadD13	long chain-fatty-acid--CoA ligase FadD13	+	906	GCA	GCG	A	A	302	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3462135	C	G	240	0	222	1.0	225.0	Rv3093c|Rv3093c	oxidoreductase	-	630	TGC	TGG	C	W	210	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3465812	C	T	338	0	305	1.0	225.0	Rv3097c|lipY	triacylglycerol lipase Lip	-	1280	CCG	CTG	P	L	427	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3473275	G	T	344	0	271	1.0	225.0	Rv3105c|prfB	peptide chain release factor PrfB	-	630	GTG	GTT	V	V	210	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3479721	T	A	389	0	356	1.0	225.0	Rv3112|moaD1	molybdenum cofactor biosynthesis protein MoaD	+	22	TAC	AAC	Y	N	8	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3480474	G	A	397	0	367	1.0	225.0	Rv3113|Rv3113	phosphatase	+	401	GGA	GAA	G	E	134	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3485128	C	A	436	0	399	1.0	225.0	intergenic	.	+	4 bp from Rv3119|moaE1	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3486977	A	G	458	0	418	1.0	225.0	Rv3121|cyp141	cytochrome P450 Cyp141	+	469	AAA	GAA	K	E	157	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3491105	C	T	335	0	291	1.0	225.0	Rv3125c|PPE49	PPE family protein PPE49	-	547	CAG	TAG	Q	#	183	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3492662	G	A	297	0	238	1.0	225.0	Rv3127|Rv3127	hypothetical protein	+	516	CCG	CCA	P	P	172	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3503895	C	T	352	0	312	1.0	225.0	Rv3137|Rv3137	histidinol-phosphatase	+	503	CCG	CTG	P	L	168	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3518167	A	G	226	0	211	1.0	225.0	Rv3151|nuoG	NADH-quinone oxidoreductase subunit G	+	1422	ATA	ATG	I	M	474	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3518555	A	G	362	0	329	1.0	225.0	Rv3151|nuoG	NADH-quinone oxidoreductase subunit G	+	1810	ACG	GCG	T	A	604	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3529067	C	G	452	0	396	1.0	225.0	Rv3159c|PPE53	PPE family protein PPE53	-	97	CGT	GGT	R	G	33	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3544710	A	G	257	0	234	1.0	225.0	Rv3176c|mesT	epoxide hydrolase MesT	-	591	CCA	CCG	P	P	197	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3556275	T	C	351	0	308	1.0	225.0	Rv3190c|Rv3190c	hypothetical protein	-	413	CTG	CCG	L	P	138	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3556607	C	A	395	0	317	1.0	225.0	Rv3190c|Rv3190c	hypothetical protein	-	81	AGC	AGA	S	R	27	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3573090	G	T	483	0	431	1.0	225.0	Rv3200c|Rv3200c	transmembrane cation transporter	-	580	GTC	TTC	V	F	194	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3581414	A	G	443	0	412	1.0	225.0	Rv3204|Rv3204	DNA-methyltransferase	+	100	ACA	GCA	T	A	34	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3587072	A	G	449	0	407	1.0	225.0	Rv3210c|Rv3210c	hypothetical protein	-	468	GAA	GAG	E	E	156	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3591063	A	G	375	0	335	1.0	225.0	Rv3213c|Rv3213c	SOJ/ParA-like protein	-	430	AAG	GAG	K	E	144	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3603355	G	A	323	0	283	1.0	225.0	intergenic	.	+	33 bp from Rv3226c|Rv3226c and 22 bp from Rv3227|aroA	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3604821	G	C	197	0	163	1.0	225.0	Rv3228|Rv3228	hypothetical protein	+	96	GCG	GCC	A	A	32	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3614982	A	G	453	0	416	1.0	225.0	Rv3239c|Rv3239c	transmembrane transport protein	-	2622	CTA	CTG	L	L	874	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3621423	A	G	373	0	342	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3622003	G	T	399	0	361	1.0	225.0	Rv3242c|Rv3242c	hypothetical protein	-	209	CGT	CTT	R	L	70	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3622441	T	G	331	0	297	1.0	225.0	Rv3243c|Rv3243c	hypothetical protein	-	651	GTT	GTG	V	V	217	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3625065	A	C	310	0	265	1.0	225.0	Rv3245c|mtrB	two component sensory histidine kinase MtrB	-	1549	ATG	CTG	M	L	517	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3659547	A	C	239	0	188	1.0	225.0	Rv3276c|purK	5-(carboxyamino)imidazole ribonucleotide synthase	-	378	GCA	GCC	A	A	126	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3661340	G	A	338	0	301	1.0	225.0	Rv3279c|birA	bifunctional biotin operon repressor/biotin--[acetyl-CoA-carboxylase] synthetase	-	673	GTC	ATC	V	I	225	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3680912	G	A	287	0	244	1.0	225.0	Rv3296|lhr	ATP-dependent helicase	+	4138	GGT	AGT	G	S	1380	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3689523	C	A	348	0	297	1.0	225.0	Rv3303c|lpdA	NAD(P)H quinone reductase LpdA	-	1416	TGC	TGA	C	#	472	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3693689	G	A	364	1	319	1.0	228.0	Rv3306c|amiB1	amidase AmiB	-	301	GCC	ACC	A	T	101	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3693875	C	T	344	0	296	1.0	225.0	Rv3306c|amiB1	amidase AmiB	-	115	CAT	TAT	H	Y	39	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3704596	G	C	426	1	396	1.0	228.0	Rv3317|sdhD	succinate dehydrogenase hydrophobic membrane anchor subunit	+	160	GTG	CTG	V	L	54	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3707286	A	G	308	0	286	1.0	225.0	Rv3319|sdhB	succinate dehydrogenase iron-sulphur protein subunit	+	515	GAC	GGC	D	G	172	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3709339	G	A	5	0	5	1.0	91.0	Rv3323c|moaX	MoaD-MoaE fusion protein MoaX	-	376	GAA	AAA	E	K	126	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3714211	C	A	366	0	340	1.0	225.0	Rv3328c|sigJ	ECF RNA polymerase sigma factor SigJ	-	122	CCG	CAG	P	Q	41	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3714757	A	C	348	0	306	1.0	225.0	Rv3329|Rv3329	aminotransferase	+	366	CAA	CAC	Q	H	122	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3717184	G	A	315	0	279	1.0	225.0	Rv3331|sugI	sugar-transport integral membrane protein SugI	+	95	CGT	CAT	R	H	32	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3717464	C	G	391	0	357	1.0	225.0	Rv3331|sugI	sugar-transport integral membrane protein SugI	+	375	GTC	GTG	V	V	125	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3718357	C	T	324	0	294	1.0	225.0	Rv3331|sugI	sugar-transport integral membrane protein SugI	+	1268	CCG	CTG	P	L	423	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3721806	C	G	285	0	270	1.0	225.0	Rv3335c|Rv3335c	integral membrane protein	-	795	GGC	GGG	G	G	265	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3730466	T	C	257	0	238	1.0	225.0	Rv3343c|PPE54	PPE family protein PPE54	-	6470	ATC	ACC	I	T	2157	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3730519	G	C	222	0	205	1.0	225.0	Rv3343c|PPE54	PPE family protein PPE54	-	6417	ACG	ACC	T	T	2139	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3730582	C	T	117	0	114	1.0	225.0	Rv3343c|PPE54	PPE family protein PPE54	-	6354	AAC	AAT	N	N	2118	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3730642	C	T	34	0	33	1.0	225.0	Rv3343c|PPE54	PPE family protein PPE54	-	6294	AAC	AAT	N	N	2098	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3730741	C	T	73	0	64	1.0	130.0	Rv3343c|PPE54	PPE family protein PPE54	-	6195	GGC	GGT	G	G	2065	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3732194	T	C	96	0	87	1.0	96.0	Rv3343c|PPE54	PPE family protein PPE54	-	4742	ATC	ACC	I	T	1581	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3732247	G	C	128	0	111	1.0	118.0	Rv3343c|PPE54	PPE family protein PPE54	-	4689	ACG	ACC	T	T	1563	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3732310	C	T	150	0	119	1.0	225.0	Rv3343c|PPE54	PPE family protein PPE54	-	4626	AAC	AAT	N	N	1542	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3732469	C	T	68	0	57	1.0	140.0	Rv3343c|PPE54	PPE family protein PPE54	-	4467	GGC	GGT	G	G	1489	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3736628	A	C	123	0	109	1.0	225.0	Rv3343c|PPE54	PPE family protein PPE54	-	308	GAG	GCG	E	A	103	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3744786	C	T	315	0	261	1.0	225.0	Rv3347c|PPE55	PPE family protein PPE55	-	8399	GCC	GTC	A	V	2800	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3745118	C	G	278	0	244	1.0	225.0	Rv3347c|PPE55	PPE family protein PPE55	-	8067	CTC	CTG	L	L	2689	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3746409	T	C	335	0	299	1.0	225.0	Rv3347c|PPE55	PPE family protein PPE55	-	6776	CTG	CCG	L	P	2259	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3751257	T	G	343	0	309	1.0	225.0	Rv3347c|PPE55	PPE family protein PPE55	-	1928	CTG	CGG	L	R	643	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3752207	T	C	321	0	282	1.0	225.0	Rv3347c|PPE55	PPE family protein PPE55	-	978	ATT	ATC	I	I	326	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3758850	G	C	279	0	224	1.0	225.0	Rv3350c|PPE56	PPE family protein PPE56	-	8253	GGG	GGC	G	G	2751	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3760770	C	G	7	0	6	1.0	122.0	Rv3350c|PPE56	PPE family protein PPE56	-	6333	GGC	GGG	G	G	2111	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3777612	C	T	294	0	241	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3783058	C	T	360	0	321	1.0	225.0	Rv3370c|dnaE2	error-prone DNA polymerase	-	1683	AGC	AGT	S	S	561	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3797397	C	T	421	0	389	1.0	225.0	Rv3382c|Rv3382c	4-hydroxy-3-methylbut-2-enyl diphosphate reductase	-	41	GCT	GTT	A	V	14	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3798095	T	G	314	0	268	1.0	225.0	Rv3383c|idsB	polyprenyl synthetase IdsB	-	395	GTC	GGC	V	G	132	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3812821	T	G	311	0	285	1.0	225.0	Rv3396c|guaA	GMP synthase	-	1258	TTG	GTG	L	V	420	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3815477	C	A	391	0	359	1.0	225.0	Rv3398c|idsA1	multifunctional dimethylallyltransferase/geranyltranstransferase/farnesylt ranstransferase	-	630	GCC	GCA	A	A	210	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3817117	C	A	222	0	200	1.0	225.0	Rv3399|Rv3399	S-adenosylmethionine-dependent methyltransferase	+	989	GCG	GAG	A	E	330	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3820665	G	A	341	0	302	1.0	225.0	Rv3402c|Rv3402c	hypothetical protein	-	1227	GTG	GTA	V	V	409	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3823159	T	A	362	0	308	1.0	225.0	Rv3403c|Rv3403c	hypothetical protein	-	705	GTT	GTA	V	V	235	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3826684	C	T	437	0	389	1.0	225.0	Rv3408|vapC47	ribonuclease VapC47	+	137	TCG	TTG	S	L	46	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3829770	A	G	358	0	315	1.0	225.0	Rv3410c|guaB3	oxidoreductase	-	141	CCA	CCG	P	P	47	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3838871	T	C	373	0	340	1.0	225.0	Rv3420c|rimI	ribosomal-protein-alanine acetyltransferase RimI	-	192	GCT	GCC	A	A	64	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3842976	A	G	372	21	294	0.93	228.0	intergenic	.	+	60 bp from Rv3426|PPE58	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3844992	A	T	395	0	363	1.0	225.0	Rv3428c|Rv3428c	transposase	-	979	AGC	TGC	S	C	327	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3854174	C	T	266	0	237	1.0	225.0	Rv3435c|Rv3435c	transmembrane protein	-	620	GCG	GTG	A	V	207	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3858940	G	C	228	0	206	1.0	225.0	Rv3439c|Rv3439c	hypothetical protein	-	723	GTG	GTC	V	V	241	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3859893	G	A	303	0	267	1.0	225.0	Rv3440c|Rv3440c	hypothetical protein	-	84	GAG	GAA	E	E	28	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3864995	A	G	334	0	298	1.0	225.0	Rv3447c|eccC4	ESX-4 secretion system protein EccC4	-	3244	AGC	GGC	S	G	1082	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3866350	G	A	346	1	325	1.0	228.0	Rv3447c|eccC4	ESX-4 secretion system protein EccC4	-	1889	GGA	GAA	G	E	630	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3873242	G	A	394	0	352	1.0	225.0	Rv3451|cut3	cutinase	+	626	GGC	GAC	G	D	209	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3877421	T	C	430	0	392	1.0	225.0	Rv3456c|rplQ	50S ribosomal protein L17	-	12	CCT	CCC	P	P	4	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3884906	A	G	277	9	240	0.96	228.0	Rv3467|Rv3467	hypothetical protein	+	943	AAA	GAA	K	E	315	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3885886	A	G	371	0	315	1.0	225.0	Rv3468c|Rv3468c	dTDP-glucose 4,6-dehydratase	-	184	ATC	GTC	I	V	62	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3887576	C	A	344	0	290	1.0	225.0	Rv3470c|ilvB2	acetolactate synthase large subunit	-	1227	GGC	GGA	G	G	409	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3887921	T	C	220	0	172	1.0	225.0	Rv3470c|ilvB2	acetolactate synthase large subunit	-	882	TTT	TTC	F	F	294	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3892671	A	G	419	0	381	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3896340	T	G	402	0	347	1.0	225.0	Rv3479|Rv3479	transmembrane protein	+	521	CTC	CGC	L	R	174	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3898408	A	G	255	0	218	1.0	225.0	Rv3479|Rv3479	transmembrane protein	+	2589	GCA	GCG	A	A	863	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3922380	G	A	489	0	425	1.0	225.0	intergenic	.	+	91 bp from Rv3504|fadE26	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3925733	T	G	319	0	289	1.0	225.0	Rv3506|fadD17	long-chain-fatty-acid--CoA ligase FadD17	+	844	TTC	GTC	F	V	282	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3934542	T	G	24	0	22	1.0	151.0	Rv3508|PE_PGRS54	PE-PGRS family protein PE_PGRS54	+	3538	TCT	GCT	S	A	1180	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3940802	A	G	22	0	20	1.0	225.0	Rv3511|PE_PGRS55	PE-PGRS family protein PE_PGRS55	+	1186	AAC	GAC	N	D	396	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3941717	G	A	28	1	27	0.96	228.0	Rv3511|PE_PGRS55	PE-PGRS family protein PE_PGRS55	+	2101	GGC	AGC	G	S	701	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3942481	C	G	55	0	51	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3942640	T	C	63	0	59	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3943019	C	G	21	0	18	1.0	173.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3950177	A	G	45	0	44	1.0	225.0	Rv3514|PE_PGRS57	PE-PGRS family protein PE_PGRS57	+	4384	ACT	GCT	T	A	1462	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3951429	G	C	226	0	211	1.0	225.0	Rv3515c|fadD19	acyl-CoA synthetase	-	1042	GCG	CCG	A	P	348	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3952800	G	A	390	0	334	1.0	225.0	Rv3516|echA19	enoyl-CoA hydratase EchA19	+	257	GGC	GAC	G	D	86	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3958403	A	G	412	0	362	1.0	225.0	Rv3521|Rv3521	hypothetical protein	+	883	AAC	GAC	N	D	295	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3959316	G	A	337	0	301	1.0	225.0	Rv3522|ltp4	lipid transfer protein	+	869	AGG	AAG	R	K	290	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3959418	C	T	295	0	267	1.0	225.0	Rv3522|ltp4	lipid transfer protein	+	971	ACC	ATC	T	I	324	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3959957	C	A	384	0	321	1.0	225.0	Rv3523|ltp3	lipid carrier protein	+	429	TAC	TAA	Y	#	143	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3966813	C	T	416	0	381	1.0	225.0	Rv3529c|Rv3529c	hypothetical protein	-	226	CAG	TAG	Q	#	76	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3969137	G	C	372	0	329	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3971428	C	A	290	0	254	1.0	225.0	Rv3533c|PPE62	PPE family protein PPE62	-	1026	AGC	AGA	S	R	342	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3973152	G	C	228	0	199	1.0	225.0	Rv3534c|hsaF	4-hydroxy-2-oxovalerate aldolase	-	441	GAG	GAC	E	D	147	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3985439	T	G	364	0	330	1.0	225.0	Rv3545c|cyp125	steroid C26-monooxygenase	-	7	TGG	GGG	W	G	3	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3989135	C	T	323	0	300	1.0	225.0	intergenic	.	+	37 bp from Rv3549c|Rv3549c and 18 bp from Rv3550|echA20	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+3993984	A	C	4	0	4	1.0	69.0	Rv3554|fdxB	electron transfer protein FdxB	+	1300	ACA	CCA	T	P	434	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4004650	C	T	401	0	365	1.0	225.0	Rv3563|fadE32	acyl-CoA dehydrogenase FadE32	+	360	ACC	ACT	T	T	120	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4005555	T	C	319	0	291	1.0	225.0	Rv3564|fadE33	acyl-CoA dehydrogenase FadE33	+	309	GAT	GAC	D	D	103	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4005607	T	C	316	0	285	1.0	225.0	Rv3564|fadE33	acyl-CoA dehydrogenase FadE33	+	361	TTG	CTG	L	L	121	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4024273	A	G	331	0	283	1.0	225.0	Rv3581c|ispF	2C-methyl-D-erythritol 2,4-cyclodiphosphate synthase	-	75	GTA	GTG	V	V	25	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4026899	G	A	383	0	337	1.0	225.0	Rv3585|radA	DNA repair protein RadA	+	456	CAG	CAA	Q	Q	152	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4031626	C	T	100	0	70	1.0	225.0	Rv3590c|PE_PGRS58	PE-PGRS family protein PE_PGRS58	-	1533	GGC	GGT	G	G	511	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4034827	C	T	371	0	284	1.0	225.0	Rv3593|lpqF	lipoprotein LpqF	+	476	GCG	GTG	A	V	159	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4037283	A	C	104	0	93	1.0	225.0	Rv3595c|PE_PGRS59	PE-PGRS family protein PE_PGRS59	-	768	GGA	GGC	G	G	256	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4055801	C	T	385	0	325	1.0	225.0	Rv3616c|espA	ESX-1 secretion-associated protein EspA	-	575	ACC	ATC	T	I	192	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4059904	A	G	349	0	314	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4063682	C	A	359	0	327	1.0	225.0	Rv3624c|hpt	hypoxanthine-guanine phosphoribosyltransferase	-	223	CTG	ATG	L	M	75	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4069292	G	A	307	0	264	1.0	225.0	Rv3630|Rv3630	integral membrane protein	+	118	GCC	ACC	A	T	40	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4086802	C	T	417	0	359	1.0	225.0	Rv3646c|topA	DNA topoisomerase I	-	456	CAC	CAT	H	H	152	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4095728	G	C	204	0	181	1.0	225.0	Rv3657c|Rv3657c	membrane protein	-	388	GGC	CGC	G	R	130	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4100975	T	C	235	0	204	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4111303	G	C	375	0	341	1.0	225.0	Rv3669|Rv3669	transmembrane protein	+	477	GTG	GTC	V	V	159	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4121727	A	C	349	0	286	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4130647	C	G	261	0	231	1.0	225.0	Rv3689|Rv3689	transmembrane protein	+	291	CCC	CCG	P	P	97	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4145388	C	T	280	1	246	1.0	228.0	Rv3702c|egtC	amidohydrolase EgtC	-	227	GCG	GTG	A	V	76	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4146314	C	A	287	0	242	1.0	225.0	Rv3703c|etgB	iron(II)-dependent oxidoreductase EgtB	-	578	CCG	CAG	P	Q	193	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4150773	C	A	244	0	199	1.0	225.0	Rv3707c|Rv3707c	hypothetical protein	-	268	CCT	ACT	P	T	90	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4151855	T	C	336	0	302	1.0	225.0	Rv3708c|asd	aspartate-semialdehyde dehydrogenase	-	363	CCT	CCC	P	P	121	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4156099	G	T	300	0	273	1.0	225.0	Rv3711c|dnaQ	DNA polymerase III subunit epsilon	-	631	GTG	TTG	V	L	211	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4159195	A	G	314	0	269	1.0	225.0	Rv3714c|Rv3714c	hypothetical protein	-	627	CCA	CCG	P	P	209	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4162339	A	G	441	1	403	1.0	228.0	Rv3719|Rv3719	hypothetical protein	+	34	ACG	GCG	T	A	12	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4178354	C	T	427	0	391	1.0	225.0	Rv3729|Rv3729	transferase	+	70	CGC	TGC	R	C	24	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4178709	T	C	350	0	300	1.0	225.0	Rv3729|Rv3729	transferase	+	425	GTG	GCG	V	A	142	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4182695	G	A	373	0	329	1.0	225.0	Rv3731|ligC	DNA ligase C	+	938	CGC	CAC	R	H	313	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4187485	T	C	453	0	414	1.0	225.0	Rv3736|Rv3736	AraC/XylS family transcriptional regulator	+	852	GCT	GCC	A	A	284	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4187817	A	G	237	0	225	1.0	225.0	Rv3737|Rv3737	transmembrane protein	+	119	GAT	GGT	D	G	40	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4190332	T	C	363	0	324	1.0	225.0	Rv3739c|PPE67	PPE family protein PPE67	-	186	GGT	GGC	G	G	62	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4204441	T	C	466	0	431	1.0	225.0	Rv3759c|proX	glycine betaine/carnitine/choline/L-proline ABC transporter substrate-binding lipoprotein ProX	-	933	CAT	CAC	H	H	311	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4205120	T	C	334	0	293	1.0	225.0	Rv3759c|proX	glycine betaine/carnitine/choline/L-proline ABC transporter substrate-binding lipoprotein ProX	-	254	CTG	CCG	L	P	85	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4210274	T	C	386	0	346	1.0	225.0	Rv3764c|tcrY	two component sensor kinase TcrY	-	736	TGT	CGT	C	R	246	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4216779	G	C	370	0	328	1.0	225.0	intergenic	.	+	49 bp from Rv3771c|Rv3771c	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4221490	C	G	284	0	259	1.0	225.0	Rv3776|Rv3776	hypothetical protein	+	402	CTC	CTG	L	L	134	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4222073	A	G	231	0	204	1.0	225.0	Rv3776|Rv3776	hypothetical protein	+	985	ATG	GTG	M	V	329	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4222882	A	G	328	0	303	1.0	225.0	Rv3777|Rv3777	oxidoreductase	+	189	CTA	CTG	L	L	63	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4223172	T	C	234	0	229	1.0	225.0	Rv3777|Rv3777	oxidoreductase	+	479	GTC	GCC	V	A	160	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4239298	C	T	366	0	306	1.0	225.0	Rv3792|aftA	arabinofuranosyltransferase	+	1367	GCC	GTC	A	V	456	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4239853	A	C	257	0	215	1.0	225.0	Rv3792|aftA	arabinofuranosyltransferase	+	1922	GAG	GCG	E	A	641	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4242643	C	T	334	0	288	1.0	225.0	Rv3793|embC	arabinosyltransferase C	+	2781	CGC	CGT	R	R	927	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4242803	G	C	288	0	252	1.0	225.0	Rv3793|embC	arabinosyltransferase C	+	2941	GTG	CTG	V	L	981	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4247431	G	C	375	0	349	1.0	225.0	Rv3795|embB	arabinosyltransferase B	+	918	ATG	ATC	M	I	306	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4255922	T	C	372	0	321	1.0	225.0	Rv3799c|accD4	propionyl-CoA carboxylase subunit beta AccD	-	27	CAT	CAC	H	H	9	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4256758	C	G	179	0	163	1.0	225.0	Rv3800c|pks13	polyketide synthase	-	4389	CCC	CCG	P	P	1463	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4257220	T	C	300	0	263	1.0	225.0	Rv3800c|pks13	polyketide synthase	-	3927	CGT	CGC	R	R	1309	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4280105	C	T	324	0	275	1.0	225.0	Rv3815c|Rv3815c	acyltransferase	-	684	GCC	GCT	A	A	228	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4284347	C	T	459	0	397	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4287866	C	T	284	0	240	1.0	225.0	Rv3822|Rv3822	hypothetical protein	+	1146	AAC	AAT	N	N	382	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4290403	G	C	429	0	388	1.0	225.0	Rv3823c|mmpL8	integral membrane transport protein MmpL8	-	1127	TGG	TCG	W	S	376	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4296015	C	T	465	0	424	1.0	225.0	Rv3825c|pks2	phthioceranic/hydroxyphthioceranic acid synthase	-	3591	GAC	GAT	D	D	1197	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4299724	G	T	429	0	385	1.0	225.0	intergenic	.	+	88 bp from Rv3826|fadD23	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4302036	A	G	256	0	240	1.0	225.0	Rv3827c|Rv3827c	transposase	-	754	ACG	GCG	T	A	252	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4304958	C	T	443	1	377	1.0	228.0	Rv3829c|Rv3829c	dehydrogenase	-	51	ACC	ACT	T	T	17	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4306155	C	T	394	0	354	1.0	225.0	Rv3831|Rv3831	hypothetical protein	+	399	AGC	AGT	S	S	133	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4306929	G	T	348	0	278	1.0	225.0	Rv3833|Rv3833	AraC family transcriptional regulator	+	63	CGG	CGT	R	R	21	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4307179	G	A	324	0	296	1.0	225.0	Rv3833|Rv3833	AraC family transcriptional regulator	+	313	GTC	ATC	V	I	105	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4314645	A	G	382	0	348	1.0	225.0	Rv3841|bfrB	bacterioferritin BfrB	+	468	CTA	CTG	L	L	156	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4315511	C	T	405	0	373	1.0	225.0	Rv3842c|glpQ1	glycerophosphoryl diester phosphodiesterase	-	52	CGT	TGT	R	C	18	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4320502	G	A	431	0	381	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4331585	C	T	373	0	332	1.0	225.0	Rv3859c|gltB	glutamate synthase large subunit	-	4497	GAC	GAT	D	D	1499	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4337736	G	A	351	0	303	1.0	225.0	Rv3860|Rv3860	hypothetical protein	+	960	AAG	AAA	K	K	320	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4338732	G	A	453	0	405	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4340006	A	C	392	0	358	1.0	225.0	Rv3863|Rv3863	hypothetical protein	+	1158	GCA	GCC	A	A	386	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4350809	T	G	374	0	344	1.0	225.0	Rv3872|PE35	PE family protein PE35	+	65	CTG	CGG	L	R	22	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4351039	G	T	351	0	316	1.0	225.0	Rv3872|PE35	PE family protein PE35	+	295	GAA	TAA	E	#	99	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4351160	C	T	221	0	167	1.0	225.0	Rv3873|PPE68	PPE family protein PPE68	+	86	GCG	GTG	A	V	29	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4352475	G	A	296	0	269	1.0	225.0	Rv3874|esxB	ESAT-6-like protein EsxB	+	202	GAA	AAA	E	K	68	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4356110	G	C	380	0	348	1.0	225.0	Rv3877|eccD1	ESX-1 secretion system protein EccD1	+	1104	CTG	CTC	L	L	368	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4357123	C	A	340	0	289	1.0	225.0	Rv3878|espJ	ESX-1 secretion-associated protein EspJ	+	431	ACG	AAG	T	K	144	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4357597	G	C	399	0	363	1.0	225.0	Rv3879c|espK	ESX-1 secretion-associated protein EspK	-	2186	TGC	TCC	C	S	729	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4359667	T	G	379	0	341	1.0	225.0	Rv3879c|espK	ESX-1 secretion-associated protein EspK	-	116	TTG	TGG	L	W	39	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4362807	T	C	329	0	300	1.0	225.0	Rv3882c|eccE1	ESX-1 secretion system protein EccE1	-	614	GTC	GCC	V	A	205	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4365461	C	T	365	0	327	1.0	225.0	Rv3884c|eccA2	ESX-2 secretion system protein EccA	-	1378	CAA	TAA	Q	#	460	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4366195	A	G	253	0	230	1.0	225.0	Rv3884c|eccA2	ESX-2 secretion system protein EccA	-	644	GAG	GGG	E	G	215	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4366272	C	G	303	0	271	1.0	225.0	Rv3884c|eccA2	ESX-2 secretion system protein EccA	-	567	GCC	GCG	A	A	189	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4375708	T	G	4	0	3	1.0	53.0	intergenic	.	+	25 bp from Rv3892c|PPE69	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4379680	G	C	343	0	314	1.0	225.0	Rv3894c|eccC2	ESX-2 type VII secretion system protein EccC	-	773	CGC	CCC	R	P	258	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4382054	A	G	335	0	297	1.0	225.0	Rv3896c|Rv3896c	hypothetical protein	-	798	GCA	GCG	A	A	266	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4382275	C	A	289	0	258	1.0	225.0	Rv3896c|Rv3896c	hypothetical protein	-	577	CAA	AAA	Q	K	193	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4384112	C	T	363	0	323	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4384417	G	A	308	0	272	1.0	225.0	Rv3899c|Rv3899c	hypothetical protein	-	963	CTG	CTA	L	L	321	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4386228	A	G	291	0	241	1.0	225.0	Rv3900c|Rv3900c	hypothetical protein	-	81	CTA	CTG	L	L	27	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4386709	G	A	398	0	350	1.0	225.0	Rv3901c|Rv3901c	membrane protein	-	106	GCG	ACG	A	T	36	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4393178	A	G	347	0	292	1.0	225.0	intergenic	.	+	.	-	-	-	-	-	-	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4399185	C	T	307	1	284	1.0	228.0	Rv3910|Rv3910	peptidoglycan biosynthesis protein	+	2589	CGC	CGT	R	R	863	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4400246	G	A	403	1	363	1.0	228.0	Rv3911|sigM	ECF RNA polymerase sigma factor SigM	+	61	GAC	AAC	D	N	21	NS	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4404034	C	G	410	0	378	1.0	225.0	Rv3915|Rv3915	peptidoglycan hydrolase	+	843	GGC	GGG	G	G	281	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
+4404832	C	A	399	0	338	1.0	225.0	Rv3916c|Rv3916c	hypothetical protein	-	336	GGC	GGA	G	G	112	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
