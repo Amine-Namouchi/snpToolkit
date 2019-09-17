@@ -246,9 +246,9 @@ def annotate(options):
                         outputfile.write('##SNPs in '+'\t'.join(info) + '\n')
 
                     outputfile.write(
-                        '##Syn=Synonymous NS=Non-Synonymous'+'\n'+'##'+'\n')
+                        '##Syn=Synonymous NS=Non-Synonymous'+'\n')
 
-                    header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Location', 'Product',
+                    header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
                               'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates protein', 'Effect', 'Location']
 
                     outputfile.write('\t'.join(header) + '\n')
@@ -276,7 +276,7 @@ def annotate(options):
                     outputfile.write(
                         '##Syn=Synnonymous NS=Non-Synonymous'+'\n')
 
-                    header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Location', 'Product',
+                    header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
                                 'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates protein', 'Effect', 'Location']
 
                     outputfile.write('\t'.join(header) + '\n')

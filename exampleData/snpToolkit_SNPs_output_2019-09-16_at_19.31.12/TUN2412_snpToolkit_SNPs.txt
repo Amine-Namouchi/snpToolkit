@@ -10,7 +10,7 @@
 ##Location	Genes	RBS	tRNA	rRNA	ncRNA	Pseudogenes	intergenic	Synonymous	NonSynonumous
 ##SNPs in NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp	781	0	0	0	2	0	113	309	472
 ##Syn=Synnonymous NS=Non-Synonymous
-Coordinates	REF	SNP	Depth	Nb of reads REF	Nb reads SNPs	Ratio	Quality	Location	Product	Orientation	Coordinates in gene	Ref codon	SNP codon	Ref AA	SNP AA	Coodinates protein	Effect	Location
+Coordinates	REF	SNP	Depth	Nb of reads REF	Nb reads SNPs	Ratio	Quality	Annotation	Product	Orientation	Coordinates in gene	Ref codon	SNP codon	Ref AA	SNP AA	Coodinates protein	Effect	Location
 418	C	A	379	0	337	1.0	225.0	Rv0001|dnaA	chromosomal replication initiator protein DnaA	+	418	CGG	AGG	R	R	140	Syn	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
 1812	T	C	440	0	395	1.0	225.0	intergenic	.	+	.	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
 1977	A	G	251	0	222	1.0	225.0	intergenic	.	+	75 bp from Rv0002|dnaN	.	.	.	.	.	.	NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp

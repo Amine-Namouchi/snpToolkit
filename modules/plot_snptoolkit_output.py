@@ -49,7 +49,7 @@ app = dash.Dash()
 # Syn=Synonymous NS=Non-Synonymous
 
 # Coordinates	Ref	SNP	Depth	Nb of reads Ref	Nb reads SNPs	Ratio	Quality	Location	Product	Orientation	Coordinates annotation	Ref codon	SNP codon	Ref AA	SNP AA	Coodinates Protein	Effect	Distribution
-header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Location', 'Product',
+header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
             'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates protein', 'Effect', 'Location']
 
 app.layout = html.Div(
@@ -68,13 +68,13 @@ app.layout = html.Div(
             ],style={'width': '50%', 'display': 'inline-block'}
         ),
         html.Hr(),
-        dcc.Checklist(id='selected-type',options=[
+        dcc.RadioItems(id='selected-type',options=[
+            {'label': 'All SNPs', 'value': 'ALL'},
             {'label': 'Synonymous SNPs', 'value': 'SYN'},
             {'label': 'Non-synonymous SNPs', 'value': 'NS'},
-            {'label': 'Intergenic', 'value': 'INT'}
-            ],value=['SYN','NS', 'INT'],labelStyle={'display': 'inline-block'}
+            ],value='ALL',labelStyle={'display': 'inline-block'}
         ),
-        dcc.Input(placeholder='Enter a window size to compute SNPs density...',type='number',value=''),
+        dcc.Input(placeholder='Enter a window size to compute SNPs density...',type='number',id="windowsize",value=''),
         dcc.Graph(id='graph'),
         html.Hr(),
         html.Div(dt.DataTable(columns = [{"name": i, "id": i} for i in header],
@@ -143,15 +143,23 @@ def default_selection(option2):
         return option2[0]['value']
 
 
-@app.callback (Output('graph','figure'),[Input('name-dropdown','value'),Input('opt-dropdown','value'),Input('selected-type','value')])
-def update_graph(sample,location,snpType):
+@app.callback (Output('graph','figure'),[Input('name-dropdown','value'),Input('opt-dropdown','value'),Input('selected-type','value'),Input('windowsize','value')])
+def update_graph(sample,location,snpType,window):
     for eachFile in list_files:
         if sample in eachFile:
             df = pd.read_csv(eachFile,sep='\t',skiprows=12)
+    print (df["Depth"].rolling(100000).mean())
     df1 = df.loc[df['Effect'] == 'NS']
-    if len (snpType) == 3:
-        layout = go.Layout(title='Depth vs Ratio',xaxis={'title':'Coordinates'},yaxis={'title':'Depth'},hovermode='closest')
-        data = [go.Scatter(x=df["Coordinates"],y=df["Depth"],mode="markers",opacity=0.4,marker=dict(colorscale="Viridis"))]
+    df2 = df.loc[df['Effect'] == 'Syn']
+    layout = go.Layout(title='Depth vs Ratio',xaxis={'title':'Coordinates'},yaxis={'title':'Depth'},hovermode='closest')
+    if snpType == 'ALL':
+        data = [go.Scatter(name="Others",x=df["Coordinates"],y=df["Depth"],mode="markers",opacity=0.5,marker={"color":"grey"}),go.Scatter(name='NS',x=df1["Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"}),go.Scatter(name='Syn',x=df2["Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
+    elif snpType == 'NS':
+        
+        data = [go.Scatter(x=df1["Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"})]
+    else:
+        
+        data = [go.Scatter(x=df2["Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
     return {'data':data,'layout':layout}
 
 
