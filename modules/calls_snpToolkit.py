@@ -248,8 +248,8 @@ def annotate(options):
                     outputfile.write(
                         '##Syn=Synonymous NS=Non-Synonymous'+'\n')
 
-                    header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-                              'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates protein', 'Effect', 'Location']
+                    header = ['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
+                              'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
 
                     outputfile.write('\t'.join(header) + '\n')
 
@@ -276,8 +276,8 @@ def annotate(options):
                     outputfile.write(
                         '##Syn=Synnonymous NS=Non-Synonymous'+'\n')
 
-                    header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-                                'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates protein', 'Effect', 'Location']
+                    header = ['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
+                                'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
 
                     outputfile.write('\t'.join(header) + '\n')
 
@@ -372,7 +372,7 @@ def combine(options):
             SampleNames.append(ntpath.basename(eachFile).split(prefix)[0])
             with open(eachFile, 'r') as f:
                 for l in f.readlines():
-                    if l[:2] != '##':
+                    if l[:2] != '##' :
                         content = l.strip().split('\t')
                         if float(content[6]) >= float(options.ratio):
                             snp = [int(content[0])] + \
