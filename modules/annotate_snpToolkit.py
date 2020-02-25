@@ -311,31 +311,31 @@ class SNPfiltering (object):
                 filteredSNPs.append(content)
         return filteredSNPs
 
-    def FilterCloseSNPsandInREgions(self, distance, coordinates_to_exclude):
-        filteredSNPs1 = []
-        i = 0
-        while i < len(self.snps) - 1:
-            if i == 0:
-                if int(self.snps[i + 1][1]) - int(self.snps[i][1]) > distance:
-                    filteredSNPs1.append(self.snps[i])
-            elif i == len(self.snps) - 1:
-                if int(self.snps[i + 1][1]) - int(self.snps[i][1]) > distance:
-                    filteredSNPs1.append(self.snps[i])
-                    filteredSNPs1.append(self.snps[i + 1])
-            else:
-                if int(self.snps[i + 1][1]) - int(self.snps[i][1]) > distance and int(self.snps[i][1]) - int(self.snps[i - 1][1]) > distance:
-                    filteredSNPs1.append(self.snps[i])
-            i += 1
-        filteredSNPs2 = []
-        for content in filteredSNPs1:
-            flag = False
-            for eachRegion in coordinates_to_exclude:
-                if content[0] == eachRegion[0] and int(eachRegion[2]) >= int(content[1]) >= int(eachRegion[1]):
-                    flag = True
-                    break
-            if flag == False:
-                filteredSNPs2.append(content)
-        return filteredSNPs2
+    # def FilterCloseSNPsandInREgions(self, distance, coordinates_to_exclude):
+    #     filteredSNPs1 = []
+    #     i = 0
+    #     while i < len(self.snps) - 1:
+    #         if i == 0:
+    #             if int(self.snps[i + 1][1]) - int(self.snps[i][1]) > distance:
+    #                 filteredSNPs1.append(self.snps[i])
+    #         elif i == len(self.snps) - 1:
+    #             if int(self.snps[i + 1][1]) - int(self.snps[i][1]) > distance:
+    #                 filteredSNPs1.append(self.snps[i])
+    #                 filteredSNPs1.append(self.snps[i + 1])
+    #         else:
+    #             if int(self.snps[i + 1][1]) - int(self.snps[i][1]) > distance and int(self.snps[i][1]) - int(self.snps[i - 1][1]) > distance:
+    #                 filteredSNPs1.append(self.snps[i])
+    #         i += 1
+    #     filteredSNPs2 = []
+    #     for content in filteredSNPs1:
+    #         flag = False
+    #         for eachRegion in coordinates_to_exclude:
+    #             if content[0] == eachRegion[0] and int(eachRegion[2]) >= int(content[1]) >= int(eachRegion[1]):
+    #                 flag = True
+    #                 break
+    #         if flag == False:
+    #             filteredSNPs2.append(content)
+    #     return filteredSNPs2
 
     def FilterCloseSNPsandInREgions(self, distance, coordinates_to_exclude):
         filteredSNPs1 = []
@@ -690,6 +690,7 @@ class SNPannotation (object):
 
                         annotationDB = GenbankContent[eachAccession]
                         for eachSNP in self.filteredSNPs[eachKEY]:
+             
                             flag = False
                             posSNP = eachSNP[0]
                             total_depth = eachSNP[3]
@@ -712,25 +713,40 @@ class SNPannotation (object):
                                                 eachSNP[0] - int(eachElem[2])) + 1
                                             reference_allele = eachSNP[1]
                                             mutated_allele = eachSNP[2]
-
+                                        #TODO:even if the gene is in the reverse strand i decided to keep the SNPs as according to genome. in the other hand, it will be better to change the codon as follorw to show the position of the SNP C(G)T or (C)GT or CG(T)
                                         else:
                                             pos_snp_in_gene = (
                                                 int(eachElem[3]) - eachSNP[0]) + 1
-                                            reference_allele = Reverse_nuc[eachSNP[1]]
-                                            mutated_allele = Reverse_nuc[eachSNP[2]]
+                                            reference_allele = eachSNP[1]
+                                            mutated_allele = eachSNP[2]
 
                                         for i in range(len(codons_nuc_sequence)):
                                             if codons_nuc_sequence[i][0] <= pos_snp_in_gene < codons_nuc_sequence[i][0] + 3:
                                                 ref_codon = codons_nuc_sequence[i][1]
                                                 position_nuc_ToBe_changed = (
                                                     pos_snp_in_gene - codons_nuc_sequence[i][0])
-                                                new_codon = ref_codon[:position_nuc_ToBe_changed] + \
-                                                    mutated_allele + \
-                                                    ref_codon[position_nuc_ToBe_changed+1:]
-                                                ref_AA = standcode[ref_codon.lower(
-                                                )]
-                                                new_AA = standcode[new_codon.lower(
-                                                )]
+                                                if gene_orientation == '+':
+                                                    new_codon = ref_codon[:position_nuc_ToBe_changed] + \
+                                                        '['+mutated_allele + ']'+\
+                                                        ref_codon[position_nuc_ToBe_changed+1:]
+                                                    new_codon_x = ref_codon[:position_nuc_ToBe_changed] + \
+                                                        mutated_allele +\
+                                                        ref_codon[position_nuc_ToBe_changed+1:]
+                                                    ref_AA = standcode[ref_codon.lower(
+                                                    )]
+                                                    new_AA = standcode[new_codon_x.lower(
+                                                    )]
+                                                else:
+                                                    new_codon = ref_codon[:position_nuc_ToBe_changed] + \
+                                                        '['+Reverse_nuc[mutated_allele] + ']'+\
+                                                        ref_codon[position_nuc_ToBe_changed+1:]
+                                                    ref_AA = standcode[ref_codon.lower(
+                                                    )]
+                                                    new_codon_x = ref_codon[:position_nuc_ToBe_changed] + \
+                                                        Reverse_nuc[mutated_allele] + \
+                                                        ref_codon[position_nuc_ToBe_changed+1:]                                                    
+                                                    new_AA = standcode[new_codon_x.lower(
+                                                    )]
                                                 collected_data = [posSNP, reference_allele, mutated_allele, total_depth, nb_reads_reference, nb_reads_mutated, ratio,
                                                                   quality, gene_name, gene_fucntion, gene_orientation, pos_snp_in_gene, ref_codon, new_codon, ref_AA, new_AA, i+1]
                                                 if ref_AA == new_AA:

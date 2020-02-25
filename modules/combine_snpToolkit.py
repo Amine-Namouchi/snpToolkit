@@ -60,7 +60,7 @@ def checksnpToolkitBam(PathBamFiles):
     snpToolkitFolderContent = Path.cwd()
     BamFolderContent = Path(PathBamFiles)
     nameTObam = {}
-    for name in snpToolkitFolderContent.glob('*_snpToolkit.txt'):
+    for name in snpToolkitFolderContent.glob('*_snpToolkit_SNPs.txt'):
         for bam in list(BamFolderContent.glob('*.bam')):
             if bam.stem in name.stem:
                 nameTObam[name.name] = str(bam.parent) + '/' + bam.name

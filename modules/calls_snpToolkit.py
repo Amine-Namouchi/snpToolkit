@@ -41,6 +41,7 @@ import pysam
 
 logger = setupLogger()
 
+
 def annotate(options):
 
     dna = ('A', 'C', 'T', 'G')
@@ -68,7 +69,7 @@ def annotate(options):
 
     if options.genbank != None:
         if Path(options.genbank).exists():
-            try:            
+            try:
                 annotationDB = parse_genbank_file(options.genbank)
             except BaseException as error:
                 logger.error(
@@ -103,7 +104,7 @@ def annotate(options):
                 else:
                     indels_inVCF.append(EachVar)
             raw_number_snps = len(SNPs_in_VCF)
-           
+
             info1 = '##Total number of SNPs before snpToolkit processing: {}'.format(
                 raw_number_snps)
 
@@ -130,7 +131,6 @@ def annotate(options):
             else:
                 Fitered_SNPs = SNPs_in_VCF
                 info2 = '##The options -f and -e were not used'
-
 
             PreProcessedRawSNPs = SNPselect(
                 Fitered_SNPs, 0, 0, 0)
@@ -277,7 +277,7 @@ def annotate(options):
                         '##Syn=Synnonymous NS=Non-Synonymous'+'\n')
 
                     header = ['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-                                'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
+                              'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
 
                     outputfile.write('\t'.join(header) + '\n')
 
@@ -306,8 +306,6 @@ def annotate(options):
                 logger.warning(warning)
         logger.info('snpToolkit output folder was not created')
 
- 
-       
 
 def combine(options):
     regions_to_exclude = []
@@ -316,7 +314,7 @@ def combine(options):
         if Path(options.exclude).exists():
             with open(options.exclude, 'r') as fh:
                 try:
-                    regions_to_exclude = yaml.load(fh)
+                    regions_to_exclude = yaml.load(fh, Loader=yaml.FullLoader)
                 except yaml.YAMLError as exc:
                     logger.error(exc)
         else:
@@ -338,6 +336,7 @@ def combine(options):
 
     if options.bamFolder != None:
         BamFilesToInclude = checksnpToolkitBam(options.bamFolder)
+
         if len(BamFilesToInclude) == 0:
             logger.error('None of the bam files names in the folder {} correspond to any of the snpToolkit outputs'.format(
                 options.bamFolder))
@@ -352,9 +351,9 @@ def combine(options):
     snpToolkitFiles = []
     for eachFile in All_snpToolkitFiles:
         if os.stat(eachFile).st_size == 0:
-            logger.warning(eachFile+ ' is empty and will not be processed!')
+            logger.warning(eachFile + ' is empty and will not be processed!')
         else:
-            snpToolkitFiles.append (eachFile)
+            snpToolkitFiles.append(eachFile)
 
     if len(snpToolkitFiles) == 0:
         logger.error('No snpToolkit output files were detected')
@@ -372,7 +371,7 @@ def combine(options):
             SampleNames.append(ntpath.basename(eachFile).split(prefix)[0])
             with open(eachFile, 'r') as f:
                 for l in f.readlines():
-                    if l[:2] != '##' :
+                    if l[:2] != '##':
                         content = l.strip().split('\t')
                         if float(content[6]) >= float(options.ratio):
                             snp = [int(content[0])] + \
@@ -417,12 +416,7 @@ def combine(options):
             'Creating ' + choices[options.snps] + '_polymorphic_sites.txt')
         outputfile1 = open(choices[options.snps] +
                            '_polymorphic_sites.txt', 'w')
-        
-        
-        
 
-
-        
         for info in infos:
             outputfile1.write(info + '\n')
 
@@ -439,7 +433,6 @@ def combine(options):
         outputfile2 = open(choices[options.snps] + '_alignment.fasta', 'w')
         outputfile2.write('>' + options.location + '\n' + reference + '\n')
         reconstruct_fasta(outputfile2, 13, SampleNames, distribution_result)
-
 
 
 def expand(options):
@@ -577,7 +570,6 @@ def expand(options):
 
             fastaoutput.write('>'+samples[i]+'\n'+sequence+'\n')
             i = i+1
-
 
 
 if __name__ == '__main__':

@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 import glob
 import logging
@@ -148,7 +147,7 @@ def update_graph(sample,location,snpType,window):
     for eachFile in list_files:
         if sample in eachFile:
             df = pd.read_csv(eachFile,sep='\t',skiprows=12)
-    print (df["Depth"].rolling(100000).mean())
+    print (df["Depth"].rolling(10000).mean())
     df1 = df.loc[df['Effect'] == 'NS']
     df2 = df.loc[df['Effect'] == 'Syn']
     layout = go.Layout(title='Depth vs Ratio',xaxis={'title':'Coordinates'},yaxis={'title':'Depth'},hovermode='closest')
@@ -157,8 +156,7 @@ def update_graph(sample,location,snpType,window):
     elif snpType == 'NS':
         
         data = [go.Scatter(x=df1["Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"})]
-    else:
-        
+    else 
         data = [go.Scatter(x=df2["Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
     return {'data':data,'layout':layout}
 
