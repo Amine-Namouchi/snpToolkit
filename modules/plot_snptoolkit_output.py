@@ -18,7 +18,7 @@ import pandas as pd
 
 
 
-#TODO: adjust the size of the input text. color dots in scatter according to SNPS effect. density plot and table filter using coordinates not working!
+#TODO: adjust the size of the input text. color dots in scatter according to SNPS effect. density plot and table filter using ##Coordinates not working!
 
 
 parser = argparse.ArgumentParser()
@@ -47,9 +47,9 @@ app = dash.Dash()
 # SNPs in NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp	763	0	0	0	2	0	111	304	459
 # Syn=Synonymous NS=Non-Synonymous
 
-# Coordinates	Ref	SNP	Depth	Nb of reads Ref	Nb reads SNPs	Ratio	Quality	Location	Product	Orientation	Coordinates annotation	Ref codon	SNP codon	Ref AA	SNP AA	Coodinates Protein	Effect	Distribution
-header = ['Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-            'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coodinates protein', 'Effect', 'Location']
+# ##Coordinates	Ref	SNP	Depth	Nb of reads Ref	Nb reads SNPs	Ratio	Quality	Location	Product	Orientation	##Coordinates annotation	Ref codon	SNP codon	Ref AA	SNP AA	Coodinates Protein	Effect	Distribution
+header = ['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
+            'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
 
 app.layout = html.Div(
     [
@@ -147,17 +147,17 @@ def update_graph(sample,location,snpType,window):
     for eachFile in list_files:
         if sample in eachFile:
             df = pd.read_csv(eachFile,sep='\t',skiprows=12)
-    print (df["Depth"].rolling(10000).mean())
+
     df1 = df.loc[df['Effect'] == 'NS']
     df2 = df.loc[df['Effect'] == 'Syn']
     layout = go.Layout(title='Depth vs Ratio',xaxis={'title':'Coordinates'},yaxis={'title':'Depth'},hovermode='closest')
     if snpType == 'ALL':
-        data = [go.Scatter(name="Others",x=df["Coordinates"],y=df["Depth"],mode="markers",opacity=0.5,marker={"color":"grey"}),go.Scatter(name='NS',x=df1["Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"}),go.Scatter(name='Syn',x=df2["Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
+        data = [go.Scatter(name="Others",x=df["##Coordinates"],y=df["Depth"],mode="markers",opacity=0.5,marker={"color":"grey"}),go.Scatter(name='NS',x=df1["##Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"}),go.Scatter(name='Syn',x=df2["##Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
     elif snpType == 'NS':
         
-        data = [go.Scatter(x=df1["Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"})]
-    else 
-        data = [go.Scatter(x=df2["Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
+        data = [go.Scatter(x=df1["##Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"})]
+    else: 
+        data = [go.Scatter(x=df2["##Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
     return {'data':data,'layout':layout}
 
 

@@ -118,6 +118,25 @@ def get_options():
     requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',
                                   help='provide the path to the directory containing snptoolkit output files')
 
+
+    expand = subparsers.add_parser(
+        name='expand', help='expand cuurent phylogeny', epilog=copyright)
+
+    requiredOptions4 = expand.add_argument_group('snpToolkit viz required options')
+    requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',
+                                  help='provide the path to the directory containing snptoolkit output files to be added')
+    requiredOptions4.add_argument('-p', required=True, type=str, dest='polymorphic_sites',
+                                help='provide the polymorphic sites file already generated')
+    requiredOptions4.add_argument('-o', required=True, type=str, dest='output',
+                                help='output')
+    requiredOptions4.add_argument('--bam', required=True, type=str, dest='bamfiles_directory',
+                                help='bam files directory of already analysed anciant DNA')
+
+    requiredOptions4.add_argument('-l', required=True, type=str, dest='location',
+                                help='name of chromosome, plasmid, contig')
+
+    requiredOptions4.add_argument('-c', required=True, type=str, dest='cutoff',
+                                help='cutoff  of coverage if bam file is provided ')
     return parser.parse_args()
 
 def setupLogger():

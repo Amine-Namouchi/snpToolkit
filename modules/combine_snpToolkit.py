@@ -23,6 +23,8 @@ import sys
 from pathlib import Path
 import pysam
 from tqdm import tqdm
+import numba
+from numba import jit
 
 
 class CheckCoverage (object):
@@ -244,9 +246,9 @@ def snp_distribution_missing(location, ratio, snpType, list_snps, snpToolkitFile
                                     eachSNP.append('?')
                                 else:
                                     if NumberOfReads[0][1] == SNP:
-                                        if NumberOfReads[0][0] / depthATposition >= 0.6:
+                                        if NumberOfReads[0][0] / depthATposition >= 0.8:
                                             eachSNP.append('1')
-                                        elif 0.6 > NumberOfReads[0][0] / depthATposition >= 0.4:
+                                        elif 0.8 > NumberOfReads[0][0] / depthATposition >= 0.4:
                                             eachSNP.append('?')
                                         else:
                                             eachSNP.append('0')

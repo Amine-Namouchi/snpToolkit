@@ -774,38 +774,55 @@ class SNPannotation (object):
                                             eachSNP + ['ncRNA'] + ['.'] * 9)
 
                                     elif eachElem[1] == 'pseudogene':
-                                        codons_nuc_sequence = zip(range(1, len(eachElem[6]), 3), [
-                                            eachElem[6][i:i+3] for i in range(0, len(eachElem[6]), 3)])
-                                        gene_name = eachElem[0] + \
-                                            '_' + 'pseudogene'
+                                        codons_nuc_sequence = list(zip(range(1, len(eachElem[6]), 3), [
+                                            eachElem[6][i:i+3] for i in range(0, len(eachElem[6]), 3)]))
+                                        gene_name = eachElem[0]+'-pseudogene'
                                         gene_fucntion = eachElem[5]
                                         gene_orientation = eachElem[4]
                                         if gene_orientation == '+':
                                             pos_snp_in_gene = (
                                                 eachSNP[0] - int(eachElem[2])) + 1
-                                            reference_allele = eachSNP[1][0]
-                                            mutated_allele = eachSNP[1][1]
+                                            reference_allele = eachSNP[1]
+                                            mutated_allele = eachSNP[2]
+                                        #TODO:even if the gene is in the reverse strand i decided to keep the SNPs as according to genome. in the other hand, it will be better to change the codon as follorw to show the position of the SNP C(G)T or (C)GT or CG(T)
                                         else:
                                             pos_snp_in_gene = (
                                                 int(eachElem[3]) - eachSNP[0]) + 1
-                                            reference_allele = Reverse_nuc[eachSNP[1]]
-                                            mutated_allele = Reverse_nuc[eachSNP[2]]
+                                            reference_allele = eachSNP[1]
+                                            mutated_allele = eachSNP[2]
+
                                         for i in range(len(codons_nuc_sequence)):
                                             if codons_nuc_sequence[i][0] <= pos_snp_in_gene < codons_nuc_sequence[i][0] + 3:
                                                 ref_codon = codons_nuc_sequence[i][1]
                                                 position_nuc_ToBe_changed = (
                                                     pos_snp_in_gene - codons_nuc_sequence[i][0])
-                                                new_codon = ref_codon[:position_nuc_ToBe_changed] + \
-                                                    mutated_allele + \
-                                                    ref_codon[position_nuc_ToBe_changed+1:]
-                                                ref_AA = standcode[ref_codon.lower(
-                                                )]
-                                                new_AA = standcode[new_codon.lower(
-                                                )]
+                                                if gene_orientation == '+':
+                                                    new_codon = ref_codon[:position_nuc_ToBe_changed] + \
+                                                        '['+mutated_allele + ']'+\
+                                                        ref_codon[position_nuc_ToBe_changed+1:]
+                                                    new_codon_x = ref_codon[:position_nuc_ToBe_changed] + \
+                                                        mutated_allele +\
+                                                        ref_codon[position_nuc_ToBe_changed+1:]
+                                                    ref_AA = standcode[ref_codon.lower(
+                                                    )]
+                                                    new_AA = standcode[new_codon_x.lower(
+                                                    )]
+                                                else:
+                                                    new_codon = ref_codon[:position_nuc_ToBe_changed] + \
+                                                        '['+Reverse_nuc[mutated_allele] + ']'+\
+                                                        ref_codon[position_nuc_ToBe_changed+1:]
+                                                    ref_AA = standcode[ref_codon.lower(
+                                                    )]
+                                                    new_codon_x = ref_codon[:position_nuc_ToBe_changed] + \
+                                                        Reverse_nuc[mutated_allele] + \
+                                                        ref_codon[position_nuc_ToBe_changed+1:]                                                    
+                                                    new_AA = standcode[new_codon_x.lower(
+                                                    )]
                                                 collected_data = [posSNP, reference_allele, mutated_allele, total_depth, nb_reads_reference, nb_reads_mutated, ratio,
                                                                   quality, gene_name, gene_fucntion, gene_orientation, pos_snp_in_gene, ref_codon, new_codon, ref_AA, new_AA, i+1]
                                                 if ref_AA == new_AA:
                                                     collected_data.append('Syn')
+
                                                 else:
                                                     collected_data.append('NS')
                                                 snps_in_genes.append(

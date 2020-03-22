@@ -42,270 +42,179 @@ import pysam
 logger = setupLogger()
 
 
-def annotate(options):
-
+def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_directory):
     dna = ('A', 'C', 'T', 'G')
-    allowed_format = {".vcf", ".vcf.gz", ".vcf.zip"}
-    FilesToProcess = [FILE for FILE in glob.glob(
-        '*' + options.identifier + '*') if FILE.endswith(tuple(allowed_format))]
-
-    if len(FilesToProcess) == 0:
-        logger.error(
-            'No input file detected! Please check your(s) file(s) name(s)...')
-        sys.exit(0)
-
-    if options.excludeCloseSNPs == 0:
-        logger.error('You must provide a value > 0 with the -f option')
-        sys.exit(0)
-
     regions_to_exclude = []
-    if options.exclude != None:
-        if Path(options.exclude).exists():
-            regions_to_exclude = pd.read_csv(
-                options.exclude, sep='\t', header=None).values.tolist()
-        else:
-            logger.error('The file ' + options.exclude + ' does not exist')
-            sys.exit(0)
-
-    if options.genbank != None:
-        if Path(options.genbank).exists():
-            try:
-                annotationDB = parse_genbank_file(options.genbank)
-            except BaseException as error:
-                logger.error(
-                    'Something went wrong when trying to extract data from your genbank file: {}'.format(error))
-                sys.exit(0)
-        else:
-            logger.error('The file ' + options.genbank + ' does not exist')
-            sys.exit(0)
-
+    regions_to_exclude = pd.read_csv(options.exclude, sep='\t', header=None).values.tolist()
     known_origins = {"samtools", "GATK", "freeBayes"}
 
-    logger.info('snpToolkit is filtering and annotating your SNPs')
 
     warnings = []
     flag = False
     indelFile = False
-    for i in tqdm(range(len(FilesToProcess)), ascii=True, desc='progress'):
-        VcfFile = FilesToProcess[i]
-        File_name = VcfFile.split('.vcf')[0]
-        VcfFile_object = VCFtoolBox(VcfFile)
-        vcf_source = VcfFile_object.vcf_generator()
-        if vcf_source not in known_origins:
-            warnings.append('Are you sure the vcf file ' + File_name +
-                            ' was generated using samtools-mpileup, gatk-HaplotypeCaller or freeBayes!'.format(vcf_source))
-        else:
-            all_variations = VcfFile_object.extract_all_variation()
-            indels_inVCF = []
-            SNPs_in_VCF = []
-            for EachVar in all_variations:
-                if EachVar[3] in dna and EachVar[4] in dna:
-                    SNPs_in_VCF.append(EachVar)
-                else:
-                    indels_inVCF.append(EachVar)
-            raw_number_snps = len(SNPs_in_VCF)
-
-            info1 = '##Total number of SNPs before snpToolkit processing: {}'.format(
-                raw_number_snps)
-
-            SNPs_to_process = SNPfiltering(SNPs_in_VCF)
-
-            if options.excludeCloseSNPs != None and len(regions_to_exclude) == 0:
-                Fitered_SNPs = SNPs_to_process.FilterCloseSNPs(
-                    options.excludeCloseSNPs)
-                info2 = '##By excluding SNPs that are closer than {} bp to each other, the number of remaining SNPs is: {}'.format(
-                    options.excludeCloseSNPs, len(Fitered_SNPs))
-
-            elif options.excludeCloseSNPs == None and len(regions_to_exclude) > 0:
-                Fitered_SNPs = SNPs_to_process.FilterSNPtoExclude(
-                    regions_to_exclude)
-                info2 = '##By excluding SNPs that are located in the provided regions to exclude, the number of remaining SNPs is: {}'.format(
-                    len(Fitered_SNPs))
-
-            elif options.excludeCloseSNPs != None and len(regions_to_exclude) > 0:
-                Fitered_SNPs = SNPs_to_process.FilterCloseSNPsandInREgions(
-                    options.excludeCloseSNPs, regions_to_exclude)[1]
-                info2 = '##By excluding SNPs that are closer than {} bp to each other, and also located in the provided regions to exclude, the number of remaining SNPs is: {}'.format(
-                    options.excludeCloseSNPs, len(Fitered_SNPs))
-
-            else:
-                Fitered_SNPs = SNPs_in_VCF
-                info2 = '##The options -f and -e were not used'
-
-            PreProcessedRawSNPs = SNPselect(
-                Fitered_SNPs, 0, 0, 0)
-            extractedRawSNPs = PreProcessedRawSNPs.ExtractSNPinfo(vcf_source)
-
-            PreProcessedSNPs = SNPselect(
-                Fitered_SNPs, options.quality, options.depth, options.ratio)
-            extractedSNPs = PreProcessedSNPs.ExtractSNPinfo(vcf_source)
-
-            if options.ratio == 0.001:
-                info3 = '##Filtred SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
-                    len(Fitered_SNPs), options.quality, options.depth, 0.0, sum([len(x) for x in extractedSNPs[0].values()]))
-            else:
-                info3 = '##Filtred SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
-                    len(Fitered_SNPs), options.quality, options.depth, options.ratio, sum([len(x) for x in extractedSNPs[0].values()]))
-
-            genbank_accessions = annotationDB.keys()
-            gbank_accessions_order = []
-            for eachElem1 in annotationDB['locus_order']:
-                for eachElem2 in genbank_accessions:
-                    if eachElem1 in eachElem2:
-                        gbank_accessions_order.append(eachElem2)
-            SNPs_To_Map_and_Annotate = SNPannotation(extractedSNPs[0])
-            Final_SNP_List = SNPs_To_Map_and_Annotate.mapAndannoSNPs(
-                annotationDB)
-            ##################################################################
-            PreProcessedINDELS = SNPselect(
-                indels_inVCF, options.quality, options.depth, options.ratio)
-            extractedINDELS = PreProcessedINDELS.ExtractSNPinfo(vcf_source)
-            INDELS_To_Map_and_Annotate = SNPannotation(extractedINDELS[0])
-            Final_INDELS_List = INDELS_To_Map_and_Annotate.mapAndannoINDELS(
-                annotationDB)
-            indels_found = False
-            for elem in Final_INDELS_List.keys():
-                if len(Final_INDELS_List[elem]) > 1:
-                    indels_found = True
-                    break
-            if indels_found is True:
-                if indelFile is False:
-                    directory_indels = 'snpToolkit_indels_output_' + \
-                        datetime.now().strftime("%Y-%m-%d %H:%M:%S").replace(' ', '_at_').replace(':', '.')
-                    indelFile = True
-
-                    cmd = ['mkdir', directory_indels]
-                    proc = Popen(cmd, stdout=PIPE, stderr=STDOUT)
-                    proc.wait()
-                    outputfile = open(directory_indels + '/' +
-                                      File_name + '_snpToolkit_indels.txt', 'w')
-                else:
-                    cmd = ['mkdir', directory_indels]
-                    proc = Popen(cmd, stdout=PIPE, stderr=STDOUT)
-                    proc.wait()
-                    outputfile = open(directory_indels + '/' +
-                                      File_name + '_snpToolkit_indels.txt', 'w')
-
-                for eachElem in Final_INDELS_List.keys():
-                    for eachIndel in Final_INDELS_List[eachElem]:
-                        outputfile.write(
-                            '\t'.join([str(e) for e in eachIndel]) + '\n')
-            ##################################################################
-
-            info4 = '##After mapping, SNPs were located in: \n##' + \
-                '\n##'.join(Final_SNP_List.keys())
-            info5 = '##The mapped and annotated SNPs are distributed as follow:'
-
-            summary_columns = [['Location', 'Genes', 'RBS', 'tRNA', 'rRNA', 'ncRNA',
-                                'Pseudogenes', 'intergenic', 'Synonymous', 'NonSynonumous']]
-            allSNPs = []
-            all_data_collection = []
-            for eachAccession in genbank_accessions:
-                for location in Final_SNP_List.keys():
-                    if eachAccession == location:
-                        data_collection = []
-                        snp_distribution = Final_SNP_List[location]
-                        genomic_regions = snp_distribution.keys()
-                        counts = [location]
-                        Synonymous = 0
-                        NonSynonumous = 0
-                        for eachRegion1 in summary_columns[0][1:]:
-                            for eachRegion2 in genomic_regions:
-                                if eachRegion1 == eachRegion2:
-                                    counts.append(
-                                        format(len(Final_SNP_List[location][eachRegion1])))
-                                    for eachSNP in Final_SNP_List[location][eachRegion1]:
-                                        eachSNP.append(eachAccession)
-                                        data_collection.append(eachSNP)
-                                        allSNPs.append(eachSNP)
-                                        if eachSNP[-2] == 'Syn':
-                                            Synonymous += 1
-                                        elif eachSNP[-2] == 'NS':
-                                            NonSynonumous += 1
-                        counts.append(format(Synonymous))
-                        counts.append(format(NonSynonumous))
-                        summary_columns.append(counts)
-                        all_data_collection.append(data_collection)
-
-            if len(all_data_collection) > 0:
-                if flag is False:
-                    directory = 'snpToolkit_SNPs_output_' + \
-                        datetime.now().strftime("%Y-%m-%d %H:%M:%S").replace(' ', '_at_').replace(':', '.')
-                    cmd = ['mkdir', directory]
-                    proc = Popen(cmd, stdout=PIPE, stderr=STDOUT)
-                    proc.wait()
-                    flag = True
-                    outputfile = open(directory + '/' +
-                                      File_name + '_snpToolkit_SNPs.txt', 'w')
-                    infos = ['##snpToolkit=version '+__version__, '##commandline= ' + ' '.join(
-                        sys.argv[:]), '##VcfFile='+VcfFile, info1, info2, info3, info4, info5]
-                    for info in infos:
-                        outputfile.write(info + '\n')
-                    outputfile.write('##'+'\t'.join(summary_columns[0]) + '\n')
-                    for info in summary_columns[1:]:
-                        outputfile.write('##SNPs in '+'\t'.join(info) + '\n')
-
-                    outputfile.write(
-                        '##Syn=Synonymous NS=Non-Synonymous'+'\n')
-
-                    header = ['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-                              'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
-
-                    outputfile.write('\t'.join(header) + '\n')
-
-                    for eachData in all_data_collection:
-                        data_collection_sorted = sorted(
-                            eachData, key=itemgetter(0))
-                        for eachSNP in data_collection_sorted:
-                            outputfile.write(
-                                '\t'.join([format(eachElem) for eachElem in eachSNP]) + '\n')
-
-                    outputfile.close()
-
-                else:
-                    outputfile = open(directory + '/' +
-                                      File_name + '_snpToolkit_SNPs.txt', 'w')
-                    infos = ['##snpToolkit=version '+__version__, '##commandline= ' + ' '.join(
-                        sys.argv[:]), '##VcfFile='+VcfFile, info1, info2, info3, info4, info5]
-                    for info in infos:
-                        outputfile.write(info + '\n')
-                    outputfile.write('##'+'\t'.join(summary_columns[0]) + '\n')
-                    for info in summary_columns[1:]:
-                        outputfile.write('##SNPs in '+'\t'.join(info) + '\n')
-
-                    outputfile.write(
-                        '##Syn=Synnonymous NS=Non-Synonymous'+'\n')
-
-                    header = ['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-                              'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
-
-                    outputfile.write('\t'.join(header) + '\n')
-
-                    for eachData in all_data_collection:
-                        data_collection_sorted = sorted(
-                            eachData, key=itemgetter(0))
-                        for eachSNP in data_collection_sorted:
-                            outputfile.write(
-                                '\t'.join([format(eachElem) for eachElem in eachSNP]) + '\n')
-
-                    outputfile.close()
-
-            else:
-                warnings.append(
-                    '{}: No SNPs were detected based on the specified filtering criteria'.format(File_name))
-
-    if flag == True:
-        if len(warnings) > 0:
-            for warning in warnings:
-                logger.warning(warning)
-        logger.info(
-            'snpToolkit output will be located in folder {}'.format(directory))
+    File_name = VcfFile.split('.vcf')[0]
+    VcfFile_object = VCFtoolBox(VcfFile)
+    vcf_source = VcfFile_object.vcf_generator()
+    if vcf_source not in known_origins:
+        warnings.append('Are you sure the vcf file ' + File_name +
+                        ' was generated using samtools-mpileup, gatk-HaplotypeCaller or freeBayes!'.format(vcf_source))
     else:
-        if len(warnings) == True:
-            for warning in warnings:
-                logger.warning(warning)
-        logger.info('snpToolkit output folder was not created')
+        all_variations = VcfFile_object.extract_all_variation()
+        indels_inVCF = []
+        SNPs_in_VCF = []
+        for EachVar in all_variations:
+            if EachVar[3] in dna and EachVar[4] in dna:
+                SNPs_in_VCF.append(EachVar)
+            else:
+                indels_inVCF.append(EachVar)
+        raw_number_snps = len(SNPs_in_VCF)
 
+        info1 = '##Total number of SNPs before snpToolkit processing: {}'.format(
+            raw_number_snps)
+
+        SNPs_to_process = SNPfiltering(SNPs_in_VCF)
+
+        if options.excludeCloseSNPs != None and len(regions_to_exclude) == 0:
+            Fitered_SNPs = SNPs_to_process.FilterCloseSNPs(
+                options.excludeCloseSNPs)
+            info2 = '##By excluding SNPs that are closer than {} bp to each other, the number of remaining SNPs is: {}'.format(
+                options.excludeCloseSNPs, len(Fitered_SNPs))
+
+        elif options.excludeCloseSNPs == None and len(regions_to_exclude) > 0:
+            Fitered_SNPs = SNPs_to_process.FilterSNPtoExclude(
+                regions_to_exclude)
+            info2 = '##By excluding SNPs that are located in the provided regions to exclude, the number of remaining SNPs is: {}'.format(
+                len(Fitered_SNPs))
+
+        elif options.excludeCloseSNPs != None and len(regions_to_exclude) > 0:
+            Fitered_SNPs = SNPs_to_process.FilterCloseSNPsandInREgions(
+                options.excludeCloseSNPs, regions_to_exclude)[1]
+            info2 = '##By excluding SNPs that are closer than {} bp to each other, and also located in the provided regions to exclude, the number of remaining SNPs is: {}'.format(
+                options.excludeCloseSNPs, len(Fitered_SNPs))
+
+        else:
+            Fitered_SNPs = SNPs_in_VCF
+            info2 = '##The options -f and -e were not used'
+
+        PreProcessedRawSNPs = SNPselect(
+            Fitered_SNPs, 0, 0, 0)
+        extractedRawSNPs = PreProcessedRawSNPs.ExtractSNPinfo(vcf_source)
+
+        PreProcessedSNPs = SNPselect(
+            Fitered_SNPs, options.quality, options.depth, options.ratio)
+        extractedSNPs = PreProcessedSNPs.ExtractSNPinfo(vcf_source)
+
+        if options.ratio == 0.001:
+            info3 = '##Filtred SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
+                len(Fitered_SNPs), options.quality, options.depth, 0.0, sum([len(x) for x in extractedSNPs[0].values()]))
+        else:
+            info3 = '##Filtred SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
+                len(Fitered_SNPs), options.quality, options.depth, options.ratio, sum([len(x) for x in extractedSNPs[0].values()]))
+
+        genbank_accessions = annotationDB.keys()
+        gbank_accessions_order = []
+        for eachElem1 in annotationDB['locus_order']:
+            for eachElem2 in genbank_accessions:
+                if eachElem1 in eachElem2:
+                    gbank_accessions_order.append(eachElem2)
+        SNPs_To_Map_and_Annotate = SNPannotation(extractedSNPs[0])
+        Final_SNP_List = SNPs_To_Map_and_Annotate.mapAndannoSNPs(
+            annotationDB)
+        ##################################################################
+        PreProcessedINDELS = SNPselect(
+            indels_inVCF, options.quality, options.depth, options.ratio)
+        extractedINDELS = PreProcessedINDELS.ExtractSNPinfo(vcf_source)
+        INDELS_To_Map_and_Annotate = SNPannotation(extractedINDELS[0])
+        Final_INDELS_List = INDELS_To_Map_and_Annotate.mapAndannoINDELS(
+            annotationDB)
+        indels_found = False
+        for elem in Final_INDELS_List.keys():
+            if len(Final_INDELS_List[elem]) > 1:
+                indels_found = True
+                break
+        if indels_found is True:
+
+            outputfile = open(indels_ouput_directory + '/' +
+                                File_name + '_snpToolkit_indels.txt', 'w')
+
+            for eachElem in Final_INDELS_List.keys():
+                for eachIndel in Final_INDELS_List[eachElem]:
+                    outputfile.write(
+                        '\t'.join([str(e) for e in eachIndel]) + '\n')
+        ##################################################################
+
+        info4 = '##After mapping, SNPs were located in: \n##' + \
+            '\n##'.join(Final_SNP_List.keys())
+        info5 = '##The mapped and annotated SNPs are distributed as follow:'
+
+        summary_columns = [['Location', 'Genes', 'RBS', 'tRNA', 'rRNA', 'ncRNA',
+                            'Pseudogenes', 'intergenic', 'Synonymous', 'NonSynonumous']]
+        allSNPs = []
+        all_data_collection = []
+        for eachAccession in genbank_accessions:
+            for location in Final_SNP_List.keys():
+                if eachAccession == location:
+                    data_collection = []
+                    snp_distribution = Final_SNP_List[location]
+                    genomic_regions = snp_distribution.keys()
+                    counts = [location]
+                    Synonymous = 0
+                    NonSynonumous = 0
+                    for eachRegion1 in summary_columns[0][1:]:
+                        for eachRegion2 in genomic_regions:
+                            if eachRegion1 == eachRegion2:
+                                counts.append(
+                                    format(len(Final_SNP_List[location][eachRegion1])))
+                                for eachSNP in Final_SNP_List[location][eachRegion1]:
+                                    eachSNP.append(eachAccession)
+                                    data_collection.append(eachSNP)
+                                    allSNPs.append(eachSNP)
+                                    if eachSNP[-2] == 'Syn':
+                                        Synonymous += 1
+                                    elif eachSNP[-2] == 'NS':
+                                        NonSynonumous += 1
+                    counts.append(format(Synonymous))
+                    counts.append(format(NonSynonumous))
+                    summary_columns.append(counts)
+                    all_data_collection.append(data_collection)
+
+        if len(all_data_collection) > 0:
+            flag = True
+            outputfile = open(snps_output_directory + '/' +
+                                File_name + '_snpToolkit_SNPs.txt', 'w')
+            infos = ['##snpToolkit=version '+__version__, '##commandline= ' + ' '.join(
+                sys.argv[:]), '##VcfFile='+VcfFile, info1, info2, info3, info4, info5]
+            for info in infos:
+                outputfile.write(info + '\n')
+            outputfile.write('##'+'\t'.join(summary_columns[0]) + '\n')
+            for info in summary_columns[1:]:
+                outputfile.write('##SNPs in '+'\t'.join(info) + '\n')
+
+            outputfile.write(
+                '##Syn=Synonymous NS=Non-Synonymous'+'\n')
+
+            header = ['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
+                        'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
+
+            outputfile.write('\t'.join(header) + '\n')
+
+            for eachData in all_data_collection:
+                data_collection_sorted = sorted(
+                    eachData, key=itemgetter(0))
+                for eachSNP in data_collection_sorted:
+                    outputfile.write(
+                        '\t'.join([format(eachElem) for eachElem in eachSNP]) + '\n')
+
+            outputfile.close()
+
+
+        else:
+            warnings.append(
+                '{}: No SNPs were detected based on the specified filtering criteria'.format(File_name))
+
+    if len(warnings) > 0:
+        for warning in warnings:
+            logger.warning(warning)
 
 def combine(options):
     regions_to_exclude = []
@@ -438,139 +347,220 @@ def combine(options):
 def expand(options):
     FilesToAdd = [FILE for FILE in glob.glob(
         options.directory + '/*_snpToolkit_SNPs.txt')]
+    NewaDNA = [FILE for FILE in glob.glob(
+        options.directory + '/*.bam')]
+    with open(options.polymorphic_sites, 'r') as input:
+        PolyMorphicSites = [l.strip().split('\t') for l in input if '##' not in l]
 
     with open(options.polymorphic_sites, 'r') as input:
-        PolyMorphicSites = [l.strip().split('\t') for l in input]
+        info = [l.strip().split('\t') for l in input if '##ID' in l]
 
-    firstSampleSet = PolyMorphicSites[4][14:]
-    aDNAcoordiantes = []
-    for s in aDNA:
-        i = 0
-        while i < len(firstSampleSet):
-            if s == firstSampleSet[i]:
-                aDNAcoordiantes.append(i)
-            i += 1
 
-    NewaDNAcoordiantes = []
-    for s in NewaDNA:
-        i = 0
-        while i < len(firstSampleSet):
-            if s == firstSampleSet[i]:
-                NewaDNAcoordiantes.append(i)
-            i += 1
+    header =info[0][14:]
 
-    with open(options.output+'-combined.txt', 'w') as input:
-        for elem in PolyMorphicSites:
-            input.write('\t'.join(elem) + '\n')
 
-    isHEADER = False
+    aDNA = [FILE.split('.')[0].split('/')[-1] for FILE in glob.glob(options.bamfiles_directory + '/*.bam')]
+
+
     for i in tqdm(range(len(FilesToAdd)), ascii=True, desc='progress'):
-        with open(options.output+'-combined.txt', 'r') as input:
-            PolyMorphicSites = [l.strip().split('\t') for l in input]
-        if isHEADER is False:
-            header = PolyMorphicSites[4]
-            nbSamples = len(PolyMorphicSites[4][14:])
-            NbPoly = len(PolyMorphicSites[5:])
-            SNPcontent = PolyMorphicSites[5:]
-        else:
-            header = PolyMorphicSites[0]
-            nbSamples = len(PolyMorphicSites[0][14:])
-            NbPoly = len(PolyMorphicSites[1:])
-            SNPcontent = PolyMorphicSites[1:]
-
-        sample_name = FilesToAdd[i].split('/')[-1].split('_snpToolkit')[0]
-        with open(FilesToAdd[i], 'r') as f:
-            SNPnewSample = [l.strip().split('\t')
-                            for l in f if '##' not in l and options.location in l]
-
-        # TODO: check for the new aDNA the position of polymorphic sites
-        SNPpos = [x[0] for x in SNPnewSample]
-        header.append(sample_name)
-        for polySNP in SNPcontent:
-            if polySNP[1] in SNPpos:
-                polySNP.append('1')
-                SNPpos.remove(polySNP[1])
+        with open(FilesToAdd[i], 'r') as input:
+            listSNPs=[l.strip().split('\t') for l in input if '##' not in l]
+        for snp in PolyMorphicSites:
+            if  snp[1] in [s[0] for s in listSNPs]:
+                snp.append ('1')
             else:
-                if sample_name in NewaDNA:
-                    bamFile = pysam.AlignmentFile(
-                        FilesToAdd[i].split('_snpToolkit')[0]+'.bam')
-                    try:
-                        depthATposition = 0
-                        # bamFile.count_coverage() return four array.arrays of the same length in order A C G T
-                        NucleotidesOrder = 'ACGT'
-                        NumberOfReads = []
-                        k = 0
-                        for eachCov in bamFile.count_coverage(options.location, int(polySNP[1]) - 1, int(polySNP[1])):
-                            depthATposition = depthATposition + \
-                                list(eachCov)[0]
-                            NumberOfReads.append(
-                                (list(eachCov)[0], NucleotidesOrder[k]))
-                            k += 1
-                        NumberOfReads.sort(reverse=True)
-                        if depthATposition < int(options.cutoff):
-                            polySNP.append('?')
-                        else:
-                            if NumberOfReads[0][1] == polySNP[3]:
-                                if NumberOfReads[0][0] / depthATposition >= 0.6:
-                                    polySNP.append('1')
-                                elif NumberOfReads[0][0] / depthATposition >= 0.4:
-                                    polySNP.append('?')
-                                else:
-                                    polySNP.append('0')
-                            else:
-                                polySNP.append('0')
-                    except ValueError as e:
-                        logging.error(
-                            'Please use samtools view -H on this bam file to check the exact name.')
-                else:
-                    polySNP.append('0')
-
-        y = 0
-        for eachSNP1 in SNPpos:
-            for eachSNP2 in SNPnewSample:
-                if eachSNP1 == eachSNP2[0]:
-                    transfert = ['snp'+str(NbPoly+y)]
-
-                    SNPinfo = eachSNP2[:3]+eachSNP2[8:-1]
-                    SNPdist = []
+                bamFile = pysam.AlignmentFile(FilesToAdd[i].split('_snpToolkit')[0]+'.bam')
+    
+                try:
+                    depthATposition = 0
+                    # bamFile.count_coverage() return four array.arrays of the same length in order A C G T
+                    NucleotidesOrder = 'ACGT'
+                    NumberOfReads = []
                     k = 0
-                    while k < nbSamples:
-                        if str(k) in aDNAcoordiantes:
-                            SNPdist.append('?')
-                        else:
-                            SNPdist.append('0')
+                    for eachCov in bamFile.count_coverage(options.location, int(snp[1])-1, int(snp[1])):
+                        depthATposition = depthATposition + \
+                            list(eachCov)[0]
+                        NumberOfReads.append(
+                            (list(eachCov)[0], NucleotidesOrder[k]))
                         k += 1
-                    SNPdist.append('1')
-                    combined = transfert+SNPinfo+SNPdist
-                    SNPcontent.append(combined)
-                    y += 1
-        with open(options.output+'-combined.txt', 'w') as f:
-            isHEADER = True
-            f.write('\t'.join(header)+'\n')
-            for eachSNP in SNPcontent:
-                f.write('\t'.join(eachSNP)+'\n')
+                    NumberOfReads.sort(reverse=True)
+                    if depthATposition < int(options.cutoff):
+                        snp.append('?')
+                    else:
+                        snp.append('0')
+                        # print (NumberOfReads)
+                        # if NumberOfReads[0][1] == snp[3]:
+                        #     if NumberOfReads[0][0] / depthATposition >= 0.7:
+                        #         snp.append('1')
+                        #     elif NumberOfReads[0][0] / depthATposition >= 0.3:
+                        #         snp.append('?')
+                        #     else:
+                        #         snp.append('0')
+                        # else:
+                        #     snp.append('0')
+                except ValueError as e:
+                    logging.error(
+                        'Please use samtools view -H on this bam file to check the exact name.')
+        for snp in listSNPs:
 
-    with open(options.output+'-combined.txt', 'r') as f:
-        AllPolyMorphicSites = [l.strip().split('\t') for l in f]
-    samples = AllPolyMorphicSites[0]
+            distribution=[]
+            if snp[0] not in  [s[1] for s in PolyMorphicSites]:  
+                for _ in range (len(header)):
+                    distribution.append ('0')
+                distribution.append ('1')
+
+                PolyMorphicSites.append (['SNP']+snp[:3]+snp[8:18]+distribution)
+                print (PolyMorphicSites[-1])
+                
+        
+        header.append(FilesToAdd[i].split('_snpToolkit_')[0].split('/')[-1])
+    #TODO:add header for polymorphic sites file
+    header_info="##ID,Coordinates,REF,SNP,Location,Product,Orientation,NucPosition,REF-codon,NEW-codon,REF-AA,NEW-AA,ProPostion,Type"
+    with open (options.output+'-polymorphic_sites.txt', 'w') as snpoutput:
+        snpoutput.write('\t'.join(header_info.split(',')+header)+'\n')
+        for snp in PolyMorphicSites:
+            snpoutput.write('\t'.join(snp)+'\n')
+        
+
+
 
     with open(options.output+'-reconstracted.fasta', 'w') as fastaoutput:
 
-        i = 14
-        while i < len(samples):
+        i = 0
+        while i < len(header):
 
             sequence = ''
-            for SNP in AllPolyMorphicSites[1:]:
-                if SNP[i] == '0':
+            for SNP in PolyMorphicSites:
+                if SNP[i+14] == '0':
                     sequence = sequence + SNP[2]
-                elif SNP[i] == '1':
+                elif SNP[i+14] == '1':
                     sequence = sequence + SNP[3]
                 else:
                     sequence = sequence + '?'
 
-            fastaoutput.write('>'+samples[i]+'\n'+sequence+'\n')
+            fastaoutput.write('>'+header[i]+'\n'+sequence+'\n')
             i = i+1
 
 
 if __name__ == '__main__':
     app.run_server()
+
+
+
+
+
+
+
+
+    # firstSampleSet = PolyMorphicSites[4][14:]
+    # aDNAcoordiantes = []
+    # for s in aDNA:
+    #     i = 0
+    #     while i < len(firstSampleSet):
+    #         if s == firstSampleSet[i]:
+    #             aDNAcoordiantes.append(i)
+    #         i += 1
+
+    # # NewaDNAcoordiantes = []
+    # # for s in NewaDNA:
+    # #     i = 0
+    # #     while i < len(firstSampleSet):
+    # #         if s == firstSampleSet[i]:
+    # #             NewaDNAcoordiantes.append(i)
+    # #         i += 1
+
+    # with open(options.output+'-combined.txt', 'w') as input:
+    #     for elem in PolyMorphicSites:
+    #         input.write('\t'.join(elem) + '\n')
+
+    # isHEADER = False
+    # for i in tqdm(range(len(FilesToAdd)), ascii=True, desc='progress'):
+    #     with open(options.output+'-combined.txt', 'r') as input:
+    #         PolyMorphicSites = [l.strip().split('\t') for l in input]
+    #     if isHEADER is False:
+    #         header = PolyMorphicSites[4]
+    #         nbSamples = len(PolyMorphicSites[4][14:])
+    #         NbPoly = len(PolyMorphicSites[5:])
+    #         SNPcontent = PolyMorphicSites[5:]
+    #     else:
+    #         header = PolyMorphicSites[0]
+    #         nbSamples = len(PolyMorphicSites[0][14:])
+    #         NbPoly = len(PolyMorphicSites[1:])
+    #         SNPcontent = PolyMorphicSites[1:]
+
+    #     sample_name = FilesToAdd[i].split('/')[-1].split('_snpToolkit')[0]
+    #     with open(FilesToAdd[i], 'r') as f:
+    #         SNPnewSample = [l.strip().split('\t')
+    #                         for l in f if '##' not in l and options.location in l]
+
+    #     # TODO: check for the new aDNA the position of polymorphic sites
+    #     SNPpos = [x[0] for x in SNPnewSample]
+    #     header.append(sample_name)
+    #     for SNP in SNPpos:
+    #         if SNP in [x[1] for x in SNPcontent]:
+    #             polySNP.append('1')
+    #             SNPpos.remove(polySNP[1])
+    #         else:
+    #             print ('yes')
+    #             if sample_name in NewaDNA:
+    #                 bamFile = pysam.AlignmentFile(
+    #                     FilesToAdd[i].split('_snpToolkit')[0]+'.bam')
+    #                 try:
+    #                     depthATposition = 0
+    #                     # bamFile.count_coverage() return four array.arrays of the same length in order A C G T
+    #                     NucleotidesOrder = 'ACGT'
+    #                     NumberOfReads = []
+    #                     k = 0
+    #                     for eachCov in bamFile.count_coverage(options.location, int(polySNP[1]) - 1, int(polySNP[1])):
+    #                         depthATposition = depthATposition + \
+    #                             list(eachCov)[0]
+    #                         NumberOfReads.append(
+    #                             (list(eachCov)[0], NucleotidesOrder[k]))
+    #                         k += 1
+    #                     NumberOfReads.sort(reverse=True)
+    #                     if depthATposition < int(options.cutoff):
+    #                         polySNP.append('?')
+    #                     else:
+    #                         if NumberOfReads[0][1] == polySNP[3]:
+    #                             if NumberOfReads[0][0] / depthATposition >= 0.6:
+    #                                 polySNP.append('1')
+    #                             elif NumberOfReads[0][0] / depthATposition >= 0.4:
+    #                                 polySNP.append('?')
+    #                             else:
+    #                                 polySNP.append('0')
+    #                         else:
+    #                             polySNP.append('0')
+    #                 except ValueError as e:
+    #                     logging.error(
+    #                         'Please use samtools view -H on this bam file to check the exact name.')
+    #             else:
+    #                 polySNP.append('0')
+
+    #     y = 0
+    #     for eachSNP1 in SNPpos:
+    #         for eachSNP2 in SNPnewSample:
+    #             if eachSNP1 == eachSNP2[0]:
+    #                 transfert = ['snp'+str(NbPoly+y)]
+
+    #                 SNPinfo = eachSNP2[:3]+eachSNP2[8:-1]
+    #                 SNPdist = []
+    #                 k = 0
+    #                 while k < nbSamples:
+    #                     if str(k) in aDNAcoordiantes:
+    #                         SNPdist.append('?')
+    #                     else:
+    #                         SNPdist.append('0')
+    #                     k += 1
+    #                 SNPdist.append('1')
+    #                 combined = transfert+SNPinfo+SNPdist
+    #                 SNPcontent.append(combined)
+    #                 y += 1
+    #     with open(options.output+'-combined.txt', 'w') as f:
+    #         isHEADER = True
+    #         f.write('\t'.join(header)+'\n')
+    #         for eachSNP in SNPcontent:
+    #             f.write('\t'.join(eachSNP)+'\n')
+
+    # with open(options.output+'-combined.txt', 'r') as f:
+    #     AllPolyMorphicSites = [l.strip().split('\t') for l in f]
+    # samples = AllPolyMorphicSites[0]
