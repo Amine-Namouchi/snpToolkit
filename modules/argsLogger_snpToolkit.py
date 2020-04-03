@@ -137,6 +137,9 @@ def get_options():
 
     requiredOptions4.add_argument('-c', required=True, type=str, dest='cutoff',
                                 help='cutoff  of coverage if bam file is provided ')
+    requiredOptions4.add_argument('-e', required=True, type=str, dest='exclude',
+                                help='exclude yaml ')
+
     return parser.parse_args()
 
 def setupLogger():
