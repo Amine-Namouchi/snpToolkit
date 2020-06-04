@@ -68,7 +68,7 @@ def parse_genbank_file(gb_filename):
         for feature in genome.features:
             if(feature.type == "CDS"):
                 if feature.location_operator == 'join':
-                    #TODO: here it is important to paas the coordinates of the fragsment to join and the the other intromic' part. this is important as it is necessray to change the coordiantes of the SNPs according to the new generated sequence. 
+                    #TODO: here it is important to pass the coordinates of the fragsment to join and the the other intromic' part. this is important as it is necessray to change the coordiantes of the SNPs according to the new generated sequence. 
                     #need to work more with the example sample1_n50_gatk.vcf
                     nucseq=''
                     for sub_location in feature.location.parts:
@@ -310,33 +310,7 @@ class SNPfiltering (object):
             if flag == False:
                 filteredSNPs.append(content)
         return filteredSNPs
-
-    # def FilterCloseSNPsandInREgions(self, distance, coordinates_to_exclude):
-    #     filteredSNPs1 = []
-    #     i = 0
-    #     while i < len(self.snps) - 1:
-    #         if i == 0:
-    #             if int(self.snps[i + 1][1]) - int(self.snps[i][1]) > distance:
-    #                 filteredSNPs1.append(self.snps[i])
-    #         elif i == len(self.snps) - 1:
-    #             if int(self.snps[i + 1][1]) - int(self.snps[i][1]) > distance:
-    #                 filteredSNPs1.append(self.snps[i])
-    #                 filteredSNPs1.append(self.snps[i + 1])
-    #         else:
-    #             if int(self.snps[i + 1][1]) - int(self.snps[i][1]) > distance and int(self.snps[i][1]) - int(self.snps[i - 1][1]) > distance:
-    #                 filteredSNPs1.append(self.snps[i])
-    #         i += 1
-    #     filteredSNPs2 = []
-    #     for content in filteredSNPs1:
-    #         flag = False
-    #         for eachRegion in coordinates_to_exclude:
-    #             if content[0] == eachRegion[0] and int(eachRegion[2]) >= int(content[1]) >= int(eachRegion[1]):
-    #                 flag = True
-    #                 break
-    #         if flag == False:
-    #             filteredSNPs2.append(content)
-    #     return filteredSNPs2
-
+        
     def FilterCloseSNPsandInREgions(self, distance, coordinates_to_exclude):
         filteredSNPs1 = []
         for content in self.snps:

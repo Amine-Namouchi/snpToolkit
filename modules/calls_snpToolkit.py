@@ -19,11 +19,7 @@ __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
 __version__ = '2.0.6'
 
-from itertools import islice
-from pathlib import Path
-from datetime import datetime
-from operator import itemgetter
-from subprocess import Popen, PIPE, STDOUT
+
 import glob
 import ntpath
 import sys
@@ -32,6 +28,11 @@ import time
 import logging
 import coloredlogs
 from tqdm import tqdm
+from itertools import islice
+from pathlib import Path
+from datetime import datetime
+from operator import itemgetter
+from subprocess import Popen, PIPE, STDOUT
 from .argsLogger_snpToolkit import *
 from .annotate_snpToolkit import *
 from .combine_snpToolkit import *
@@ -45,7 +46,8 @@ logger = setupLogger()
 def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_directory):
     dna = ('A', 'C', 'T', 'G')
     regions_to_exclude = []
-    regions_to_exclude = pd.read_csv(options.exclude, sep='\t', header=None).values.tolist()
+    if options.exclude != None:
+        regions_to_exclude = pd.read_csv(options.exclude, sep='\t', header=None).values.tolist()
     known_origins = {"samtools", "GATK", "freeBayes"}
 
 

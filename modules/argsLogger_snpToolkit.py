@@ -29,7 +29,7 @@ def get_options():
     __licence__ = 'GPLv3'
     __author__ = 'Amine Namouchi'
     __author_email__ = 'amine.namouchi@gmail.com'
-    __version__ = '1.0'
+    __version__ = '2.0.6'
 
     copyright = __licence__ + " licence | " + __author__ + " | " + __author_email__
 
@@ -66,6 +66,10 @@ def get_options():
 
     AdditonalOptions2 = annotate.add_argument_group(
         'snpToolkit annotate additional options')
+    
+    AdditonalOptions2.add_argument('-p', required=False,  default=1, dest='processes', type=int,
+                                   help='number of vcf files to be annotated in parallel default value [1]')
+
 
     AdditonalOptions2.add_argument('-f', required=False, dest='excludeCloseSNPs', type=int,
                                    help='exclude SNPs if the distance between them is lower then the specified window size in bp')
@@ -120,7 +124,7 @@ def get_options():
 
 
     expand = subparsers.add_parser(
-        name='expand', help='expand cuurent phylogeny', epilog=copyright)
+        name='expand', help='expand curent phylogeny', epilog=copyright)
 
     requiredOptions4 = expand.add_argument_group('snpToolkit viz required options')
     requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',

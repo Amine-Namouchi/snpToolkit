@@ -85,8 +85,6 @@ if __name__ == "__main__":
             if Path(args.exclude).exists()==False:
                 logger.error('The file ' + args.exclude + ' does not exist')
                 sys.exit(0)
-
-        logger.info('snpToolkit is filtering and annotating your SNPs')
         snps_output_directory = 'snpToolkit_SNPs_output_' + datetime.now().strftime("%Y-%m-%d %H:%M:%S").replace(' ', '_at_').replace(':', '.')
         cmd = ['mkdir', snps_output_directory]
         proc = Popen(cmd, stdout=PIPE, stderr=STDOUT)
@@ -96,13 +94,17 @@ if __name__ == "__main__":
         proc = Popen(cmd, stdout=PIPE, stderr=STDOUT)
         proc.wait()
         options = args
-        pool = mp.Pool()
+        logger.info('{} CPUs requested out of {} detected on this machine'.format(options.processes,mp.cpu_count()))
+        logger.info('snpToolkit is filtering and annotating your SNPs')
+        pool = mp.Pool(processes=options.processes)
         pbar = tqdm(total=len(FilesToProcess))
+  
         def update(*a):
             pbar.update()
 
         for inputFile in FilesToProcess:
             pool.apply_async(annotate,args=(options,inputFile,annotationDB,snps_output_directory,indels_ouput_directory),callback=update)
+        
         pool.close()
         pool.join()
         logger.info('snpToolkit output files will be located in folders {} and {}'.format(snps_output_directory,indels_ouput_directory))
