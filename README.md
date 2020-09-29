@@ -28,8 +28,7 @@ pip install git+git://github.com/Amine-Namouchi/snpToolkit.git
 ##Usage
 ---
 
-When using **_snpToolkit_** you have the choice between two options: **annotate** or **combine**
-
+When using **_snpToolkit_** you have the choice between many options.
 ```
 $ snptoolkit -h
 usage: snptoolkit [-h] {explore,annotate,combine,viz,expand} ...
@@ -57,11 +56,10 @@ GPLv3 licence | Amine Namouchi | amine.namouchi@gmail.com
 - SNPs filtering and annotion
 
 ```
-snpToolkit annotate
-
-usage: snpToolkit annotate [-h] -i IDENTIFIER -g GENBANK
-                              [-f EXCLUDECLOSESNPS] [-q QUALITY] [-d DEPTH]
-                              [-r RATIO] [-e EXCLUDE] [--plot]
+$ snpToolkit annotate -h
+usage: snpToolkit annotate [-h] -i IDENTIFIER -g GENBANK [-p PROCESSES]
+                           [-f EXCLUDECLOSESNPS] [-q QUALITY] [-d DEPTH]
+                           [-r RATIO] [-e EXCLUDE]
 
 optional arguments:
   -h, --help           show this help message and exit
@@ -69,9 +67,11 @@ optional arguments:
 snpToolkit annotate required options:
   -i IDENTIFIER        provide a specific identifier to recognize the file(s)
                        to be analyzed
-  -g GENBANK           Pleae provide a genbank file
+  -g GENBANK           Pleae provide a genbank
 
 snpToolkit annotate additional options:
+  -p PROCESSES         number of vcf files to be annotated in parallel default
+                       value [1]
   -f EXCLUDECLOSESNPS  exclude SNPs if the distance between them is lower then
                        the specified window size in bp
   -q QUALITY           quality score to consider as a cutoff for variant
