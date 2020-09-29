@@ -24,13 +24,6 @@ The easiest way to install _snpToolkit_ is through pip:
 pip install git+git://github.com/Amine-Namouchi/snpToolkit.git
 ```
 
-Or, after downloading or cloning the full package, you can install _snpToolkit_ using the following commands:
-
-```
-python setup.py build
-python setup.py install
-```
-
 
 ##Usage
 ---
@@ -38,12 +31,26 @@ python setup.py install
 When using **_snpToolkit_** you have the choice between two options: **annotate** or **combine**
 
 ```
-snpToolkit -h
+$ snptoolkit -h
+usage: snptoolkit [-h] {explore,annotate,combine,viz,expand} ...
+
+    snpToolkit takes vcf files, as well as bam files (optional) as inputs. The vcf files could be generated using samtools/bcftools, gatk HaplotypeCaller or freeBayes.
+    Please visit https://github.com/Amine-Namouchi/snpToolkit for more information.
+
 
 positional arguments:
-  {annotate,combine}  commands
-    annotate          Please provide one or multiple vcf files
-    combine           combine snpToolkit output files in one alignment in fasta format
+  {explore,annotate,combine,viz,expand}
+                        commands
+    explore             explore your vcf files before annotation
+    annotate            Please provide one or multiple vcf files
+    combine             combine snpToolkit output files in one alignment in fasta format
+    viz                 visualize snptoolkit output files
+    expand              expand curent phylogeny
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+GPLv3 licence | Amine Namouchi | amine.namouchi@gmail.com
 ```
 
 
