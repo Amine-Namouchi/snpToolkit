@@ -29,7 +29,7 @@ def get_options():
     __licence__ = 'GPLv3'
     __author__ = 'Amine Namouchi'
     __author_email__ = 'amine.namouchi@gmail.com'
-    __version__ = '2.0.6'
+    __version__ = '2.1'
 
     copyright = __licence__ + " licence | " + __author__ + " | " + __author_email__
 
