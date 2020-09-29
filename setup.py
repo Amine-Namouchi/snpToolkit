@@ -16,5 +16,5 @@ setup(name='snpToolkit',
           'Operating System :: OS Independent',
       ],
       keywords='SNPs filtering annotation variants calling',
-      install_requires=['pysam', 'pandas', 'tqdm', 'coloredlogs', 'Biopython'],
+      install_requires=['pysam', 'pandas', 'tqdm', 'coloredlogs', 'Biopython','dash','plotly'],
       )
