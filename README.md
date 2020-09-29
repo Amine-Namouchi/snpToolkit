@@ -21,7 +21,7 @@ All these requirements are availble for installation through pip or conda.
 The easiest way to install _snpToolkit_ is through pip: 
 
 ```
-pip install snptoolkit
+pip install git+git://github.com/Amine-Namouchi/snpToolkit.git
 ```
 
 Or, after downloading or cloning the full package, you can install _snpToolkit_ using the following commands:
