@@ -18,7 +18,7 @@ import pandas as pd
 
 
 
-#TODO: adjust the size of the input text. color dots in scatter according to SNPS effect. density plot and table filter using ##Coordinates not working!
+#TODO: adjust the size of the input text. color dots in scatter according to SNPS effect.
 
 
 parser = argparse.ArgumentParser()
