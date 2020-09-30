@@ -1,3 +1,25 @@
+#!/usr/bin/env python
+
+# Copyright Amine Namouchi
+# snpToolkit is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but without
+# any warranty; without even the implied warranty of merchantability or fitness
+# for a particular purpose. See the GNU General Public License for more details
+#
+# You should have received a copy of the GNU General Public License along with
+# this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+__licence__ = 'GPLv3'
+__author__ = 'Amine Namouchi'
+__author_email__ = 'amine.namouchi@gmail.com'
+__version__ = '2.1'
+
+
 import glob
 import argparse
 import logging
@@ -19,7 +41,6 @@ from subprocess import Popen, PIPE, STDOUT
 from annotate_snpToolkit import *
 from argsLogger_snpToolkit import *
 from plotly.colors import n_colors
-
 
 
 color_choice = "aliceblue, antiquewhite, aqua, aquamarine, azure, beige, bisque, black, blanchedalmond, blue, blueviolet, brown, burlywood, cadetblue, chartreuse, chocolate, coral, cornflowerblue,cornsilk, crimson, cyan, darkblue, darkcyan,darkgoldenrod, darkgray, darkgrey, darkgreen,darkkhaki, darkmagenta, darkolivegreen, darkorange,darkorchid, darkred, darksalmon, darkseagreen,darkslateblue, darkslategray, darkslategrey, darkturquoise, darkviolet, deeppink, deepskyblue,dimgray, dimgrey, dodgerblue, firebrick,floralwhite, forestgreen, fuchsia, gainsboro, ghostwhite, gold, goldenrod, gray, grey, green,greenyellow, honeydew, hotpink, indianred, indigo,ivory, khaki, lavender, lavenderblush, lawngreen,lemonchiffon, lightblue, lightcoral, lightcyan,lightgoldenrodyellow, lightgray, lightgrey,lightgreen, lightpink, lightsalmon, lightseagreen,lightskyblue, lightslategray, lightslategrey,lightsteelblue, lightyellow, lime, limegreen,linen, magenta, maroon, mediumaquamarine, mediumblue, mediumorchid, mediumpurple,mediumseagreen, mediumslateblue, mediumspringgreen,mediumturquoise, mediumvioletred, midnightblue, mintcream, mistyrose, moccasin, navajowhite, navy,oldlace, olive, olivedrab, orange, orangered,orchid, palegoldenrod, palegreen, paleturquoise,palevioletred, papayawhip, peachpuff, peru, pink,plum, powderblue, purple, red, rosybrown,royalblue, saddlebrown, salmon, sandybrown,seagreen, seashell, sienna, silver, skyblue,slateblue, slategray, slategrey, snow, springgreen,steelblue, tan, teal, thistle, tomato, turquoise,violet, wheat, white, whitesmoke, yellow,yellowgreen".split(',')

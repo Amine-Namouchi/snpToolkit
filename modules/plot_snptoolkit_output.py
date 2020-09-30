@@ -1,4 +1,26 @@
 #!/usr/bin/env python
+
+# Copyright Amine Namouchi
+# snpToolkit is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but without
+# any warranty; without even the implied warranty of merchantability or fitness
+# for a particular purpose. See the GNU General Public License for more details
+#
+# You should have received a copy of the GNU General Public License along with
+# this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+__licence__ = 'GPLv3'
+__author__ = 'Amine Namouchi'
+__author_email__ = 'amine.namouchi@gmail.com'
+__version__ = '2.1'
+
+
+#!/usr/bin/env python
 import glob
 import logging
 import coloredlogs
@@ -34,20 +56,7 @@ for f in list_files:
 colors={'background':'#262626','text':'#ffffff','textHeader':'#111111'}
 app = dash.Dash()
 
-# snpToolkit=version 2.0.6
-# commandline= ../snpToolkit annotate -i vcf.gz -g /Users/amine/Documents/from_google_drive/HAARLEM/reference/GCF_000195955.2_ASM19595v2_genomic.gbff -r 0.9 -f 50
-# VcfFile=TUN228.vcf.gz
-# Total number of SNPs before snpToolkit processing: 1248
-# By excluding SNPs that are closer than 50 bp to each other, the number of remaining SNPs is: 915
-# Filtred SNPs. Among the 915 SNPs, the number of those with a quality score >= 20, a depth >= 3 and a ratio >= 0.9 is: 874
-# After mapping, SNPs were located in: 
-# NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp
-# The mapped and annotated SNPs are distributed as follow:
-# Location	Genes	RBS	tRNA	rRNA	ncRNA	Pseudogenes	intergenic	Synonymous	NonSynonumous
-# SNPs in NC_000962.3: Mycobacterium tuberculosis H37Rv, complete genome 4411532 bp	763	0	0	0	2	0	111	304	459
-# Syn=Synonymous NS=Non-Synonymous
 
-# ##Coordinates	Ref	SNP	Depth	Nb of reads Ref	Nb reads SNPs	Ratio	Quality	Location	Product	Orientation	##Coordinates annotation	Ref codon	SNP codon	Ref AA	SNP AA	Coodinates Protein	Effect	Distribution
 header = ['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
             'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
 
