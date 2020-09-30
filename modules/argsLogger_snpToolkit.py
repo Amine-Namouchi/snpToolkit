@@ -84,7 +84,7 @@ def get_options():
                                    dest='ratio', default=0.001, type=float, help='minimum ratio that correspond to the number of reads that has the mutated allele / total depth in that particular position. default value [0]')
 
     AdditonalOptions2.add_argument('-e', required=False, type=str, dest='exclude',
-                                   help='provide a tab file with genomic regions to exclude in this format: region1	start stop. region1 must corrspond to the same name(s) of chromsome and plasmids in the genbank file')
+                                   help='provide a tab file with genomic regions to exclude in this format: region	start stop. region must correspond to the same name(s) of chromsome and plasmids as in the genbank file')
 
     combine = subparsers.add_parser(
         name='combine', help='combine snpToolkit output files in one alignment in fasta format', epilog=copyright)
