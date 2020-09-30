@@ -62,12 +62,12 @@ def get_options():
                                   help='provide a specific identifier to recognize the file(s) to be analyzed')
 
     requiredOptions2.add_argument('-g', required=True, type=str, dest='genbank',
-                                  help='Pleae provide a genbank')
+                                  help='Pleae provide a genbank file')
 
     AdditonalOptions2 = annotate.add_argument_group(
         'snpToolkit annotate additional options')
     
-    AdditonalOptions2.add_argument('-p', required=False,  default=1, dest='processes', type=int,
+    AdditonalOptions2.add_argument('-p', required=False,  default=1, dest='processors', type=int,
                                    help='number of vcf files to be annotated in parallel default value [1]')
 
 
@@ -84,7 +84,7 @@ def get_options():
                                    dest='ratio', default=0.001, type=float, help='minimum ratio that correspond to the number of reads that has the mutated allele / total depth in that particular position. default value [0]')
 
     AdditonalOptions2.add_argument('-e', required=False, type=str, dest='exclude',
-                                   help='provide a tab file with genomic regions to exclude in this format: region1	start stop')
+                                   help='provide a tab file with genomic regions to exclude in this format: region1	start stop. region1 must corrspond to the same name(s) of chromsome and plasmids in the genbank file')
 
     combine = subparsers.add_parser(
         name='combine', help='combine snpToolkit output files in one alignment in fasta format', epilog=copyright)
