@@ -31,20 +31,19 @@ pip install git+git://github.com/Amine-Namouchi/snpToolkit.git
 When using **_snpToolkit_** you have the choice between many options.
 ```
 $ snptoolkit -h
-usage: snptoolkit [-h] {explore,annotate,combine,viz,expand} ...
+usage: snptoolkit [-h] {explore,annotate,combine,viz} ...
 
     snpToolkit takes vcf files, as well as bam files (optional) as inputs. The vcf files could be generated using samtools/bcftools, gatk HaplotypeCaller or freeBayes.
     Please visit https://github.com/Amine-Namouchi/snpToolkit for more information.
 
 
 positional arguments:
-  {explore,annotate,combine,viz,expand}
+  {explore,annotate,combine,viz}
                         commands
     explore             explore your vcf files before annotation
     annotate            Please provide one or multiple vcf files
     combine             combine snpToolkit output files in one alignment in fasta format
     viz                 visualize snptoolkit output files
-    expand              expand curent phylogeny
 
 optional arguments:
   -h, --help            show this help message and exit
