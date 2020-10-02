@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-setup(name='snpToolkit',
+setup(name='snptoolkit',
       version='2.1',
       description='SNPs filtering, annotation and combining',
       url='https://github.com/Amine-Namouchi/snpToolkit',
@@ -16,5 +16,5 @@ setup(name='snpToolkit',
           'Operating System :: OS Independent',
       ],
       keywords='SNPs filtering annotation variants calling',
-      install_requires=['pysam', 'pandas', 'tqdm', 'coloredlogs', 'Biopython','dash','plotly'],
+      install_requires=['pysam', 'pandas', 'tqdm', 'coloredlogs', 'Biopython','dash','plotly','numba'],
       )

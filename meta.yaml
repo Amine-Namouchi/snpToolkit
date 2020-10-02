@@ -1,0 +1,30 @@
+package:
+  name: snptoolkit
+  version: 2.1
+
+source: 
+  git_url: https://github.com/Amine-Namouchi/snpToolkit.git
+
+build:
+  number: 3
+
+requirements:
+  build:
+    - python
+    - pysam
+    - pandas
+    - tqdm
+    - coloredlogs
+    - Biopython
+    - dash
+    - plotly
+    - numba
+    - setuptools
+
+  run:
+    - python
+
+about:
+  summary: snpToolkit is a computational framework written in Python 3 to analyze, filter, annotate and combine SNPs from vcf files.
+  license: GPLv3
+  home: https://github.com/Amine-Namouchi/snpToolkit

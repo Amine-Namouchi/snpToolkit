@@ -1,41 +1,46 @@
-![logo](img/snpToolkit_LOGO.png)
 
-**_snpToolkit_** is a computational framework written in Python 3, that filter, annotate and combine Single Nucleotide Polymorphisms (SNPs) from vcf files generated using **_samtools mpileup_**, **_gatk HaplotypeCaller_** and **_freebayes_**.
+Status: This tutorial is being updated, so keep tuned!
 
+![img/snpToolkit_LOGO.png](img/snpToolkit_LOGO.png)
 
-##Requirements
----
-- Python 3
-- Biopython
-- pysam
-- pandas
-- tqdm
-- coloredlogs
+# About
 
-All these requirements are availble for installation through pip or conda.
+**snpToolkit** is a computational framework written in Python 3. snpToolkit allow users to:
 
+1. Visualize the content of their VCF files
+2. Filter SNPs based on multiple criteria:
+    - Coordinates of regions to exclude
+    - Depth of coverage
+    - Quality
+    - The ratio corresponding to the number of reads that have the mutated allele / total number of reads at that particular position
+3. Annotate SNPs using genome annotation data provided within a genbank file
+4. Extract the distribution of all indels according to genome annotation
+5. Visualize and explore the annotated SNPs for all analyzed files
+6. Combine all snpToolkit output files generated using the annotate option and generate:
+    - A table storing the distribution of all SNPs on each sample
+    - A fasta file with all concatenated SNPs for each sample. such file can be used to build a phylogenetic tree.
 
-##Installation
----
+snpToolkit detects automatically if the input vcf files were generated using samtools mpileup, gatk HaplotypeCaller or freebayes. Vcf files could be gzipped or not.
 
-The easiest way to install _snpToolkit_ is through pip: 
+# How to install and update
 
+```bash
+#To install 
+pip install  git+git://github.com/Amine-Namouchi/snpToolkit.git
+
+#To update
+pip install  git+git://github.com/Amine-Namouchi/snpToolkit.git --upgrade
 ```
-pip install git+git://github.com/Amine-Namouchi/snpToolkit.git
-```
 
+# snpToolkit menu
 
-##Usage
----
+```bash
+snptoolkit -h
+usage: snptoolkit [-h] {explore,annotate,combine,viz}
 
-When using **_snpToolkit_** you have the choice between many options.
-```
-$ snptoolkit -h
-usage: snptoolkit [-h] {explore,annotate,combine,viz} ...
-
-    snpToolkit takes vcf files, as well as bam files (optional) as inputs. The vcf files could be generated using samtools/bcftools, gatk HaplotypeCaller or freeBayes.
+    snpToolkit takes vcf files, as well as bam files (optional) as inputs. The vcf files could be generated using samtools/bcftools, 
+		gatk HaplotypeCaller or freeBayes.
     Please visit https://github.com/Amine-Namouchi/snpToolkit for more information.
-
 
 positional arguments:
   {explore,annotate,combine,viz}
@@ -51,104 +56,53 @@ optional arguments:
 GPLv3 licence | Amine Namouchi | amine.namouchi@gmail.com
 ```
 
+For this tutorial we will have 10 vcf files to analyze and compare named sample1.vcf.gz to sample10.vcf.gz. In this example we will work with *Yersinia pestis* so we need the genbank file corresponding to the reference strain used in the alignment process to generate the vcf files. In this case we need the file GCF_000009065.1_ASM906v1_genomic.gbff that can be obtained from [NCBI.](https://www.ncbi.nlm.nih.gov/) 
 
-- SNPs filtering and annotion
+# The explore command
 
-```
-$ snpToolkit annotate -h
-usage: snpToolkit annotate [-h] -i IDENTIFIER -g GENBANK [-p PROCESSES]
-                           [-f EXCLUDECLOSESNPS] [-q QUALITY] [-d DEPTH]
-                           [-r RATIO] [-e EXCLUDE]
-
-optional arguments:
-  -h, --help           show this help message and exit
-
-snpToolkit annotate required options:
-  -i IDENTIFIER        provide a specific identifier to recognize the file(s)
-                       to be analyzed
-  -g GENBANK           Pleae provide a genbank
-
-snpToolkit annotate additional options:
-  -p PROCESSES         number of vcf files to be annotated in parallel default
-                       value [1]
-  -f EXCLUDECLOSESNPS  exclude SNPs if the distance between them is lower then
-                       the specified window size in bp
-  -q QUALITY           quality score to consider as a cutoff for variant
-                       calling. default value [20]
-  -d DEPTH             minimum depth caverage. default value [3]
-  -r RATIO             minimum ratio that correspond to the number of reads
-                       that has the mutated allele / total depth in that
-                       particular position. default value [0]
-  -e EXCLUDE           provide a tab file with genomic regions to exclude in
-                       this format: region1 start stop
-```
-
-Here is a simple example on how to use snpToolkit:
-
-```
-snpToolkit annotate -i VCF-filename.vcf.gz -g genbankFile.gbff -q 30 -d 5 -r 0.9
-```
-
-_snpToolkit_ can automatically recogninzes vcf files generated with the following programs: samtools/bcftools, gatk HaplotyCaller and freeBayes. The vcf files could be gzipped or not. In the above command line, _snpToolkit_ will filter and annotate all SNPs in the provided vcf file(s) that fullfil the following criteria: quality >= 30, a depth of coverage >= 5 and a ratio >= 0.9.
-
->**Note**: For each SNP position, the ratio is calculated as follow:
-
->dr = number of reads having the reference allele
-
->dm = number of reads having the mutated allele
-
->r = dm / (dr + dm)
-
-The generated output file(s) of _snpToolkit_ is a tabulated file(s) that you can open with Microsoft Excel and it will looks as follow:
-
-![Alt text](img/snpToolkitHeader.png)
-
-The header of the generated snpToolkit output file includes useful information eg. raw number of SNPs, Number of filtered SNPs, SNPs distribution, etc...
-
-- Compare and combine multiple annotation files
-
-After generating a set of _snpToolkit_ output files, you can run _snpToolkit_ with the option **combine**.
-
-```
-usage: snpToolkit combine [-h] --location LOCATION [-r RATIO] [-d DEPTH]
-                          [--bam BAMFOLDER] [--snps {ns,s,all,inter}]
-                          [-e EXCLUDE]
+```bash
+snptoolkit explore -h
+usage: snptoolkit explore [-h] -i IDENTIFIER
 
 optional arguments:
-  -h, --help            show this help message and exit
+  -h, --help     show this help message and exit
 
-snpToolkit combine required options:
-  --location LOCATION         provide for example the name of the chromosome or plasmid you want to create fasta
-                        alignment for
-
-snpToolkit additional options:
-  -r RATIO              SNP ratio
-  -d DEPTH              depth cutoff for checking missing data
-  --bam BAMFOLDER       path to the folder containing the bam files
-  --snps {ns,s,all,inter}
-                        Specify if you want to concatenate all SNPs or just
-                        synonymous (s), non-synonymous (ns) or intergenic
-                        (inter) SNPs. default [all]
-  -e EXCLUDE            provide a text file including the list of genes and genomic coordinates you want to exclude
-                        before combining the SNPs.
+snpToolkit explore required options:
+  -i IDENTIFIER  Provide the input vcf files
 ```
 
-When using the option **combine**, _snpToolkit_ will compared all identified SNPs in each file and create two additional output files: a tabulated files with all polymorphic sites and a fasta file.
+This command allows user to explore the SNPs on each of their vcf files. 
 
-As we will be working with ancient DNAs, a small fraction of your genome could be covered. In this case we will use the option **--bam** to indicate the path to the folder containing the bam files of the ancient DNAs. The option **-d** must be used with the option **--bam**. By default, all SNPs will be reported. This behaviour can be changed using the option **--snp**.
+The option -i  allows to specify a common identifier in the vcf files names. If you want to explore all VCF files in a folder, you can use vcf  as identifier as it is present in all vcf file names (usually filename.vcf.gz). On the contrary, if you have added in the filenames of your vcf files, for example, the years of isolation of each sample, you can use the year you want as identifier. 
 
->Note: It is also possible to use the option --bam with modern data as some of the genomic regions could be deleted.
+when you run the command:
 
-The file reporting the polymorphic sites is as follow:
+```bash
+$ snptoolkit explore -i vcf
+[TIME][INFO] [snpToolkit is extracting your data and creating the different plots...]
+progress: 100%|#########################################################################| 9/9 [00:00<00:00, 83.75it/s]
+Dash is running on http://127.0.0.1:8050/
 
-ID|Coordiantes|REF|SNP|Columns with SNP information|sample1|sample2|sample3|sample4
-:--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :---
-snp1 |130|A|T| |1|1|1|1
-snp2 |855|C|G| |0|0|?|1
-snp3 |1315|A|C| |1|1|0|0
-snp4 |12086|G|A| |1|0|?|0
+ * Serving Flask app "explore_snpToolkit" (lazy loading)
+ * Environment: production
+ * Running on http://127.0.0.1:8050/ (Press CTRL+C to quit)
+```
 
-The above table report the distribution of all polymorphic sites in all provided files. As we provided the bam files of the ancient DNA samples, _snpToolkit_ will check if the polymorphic sites (snp2 and snp4) were not present in sample3 because there is no SNP in that positions or because the region where the snps are located is not covered. In this case, _snpToolkit_ will add <font size="3" color="red"><b>?</b></font> that reflects a missing data.
-From the above table, it will be possible to generate a fasta file that will look as follow:
+snptoolkit will analyze all raw data on each VCF file in terms of SNPs and starts a web application that you access using the link mentioned above http://127.0.0.1:8050. For this example of 10 vcf files, it took less than a second to analyze all files. Figure 1 shows a screenshot of the generated dashboard to explore your data.
 
-![alignment](img/fasta_poly.png)
+![img/Figure1.png](img/Figure1.png)
+
+**Figure1**
+
+For sample 5 for example, we can see that the total number of SNPs in the chromosome NC_003143.1 is 399 SNPs. This is the total raw number. Lets detail each column of the first table:
+
+- If we apply just the depth filter (-d) when using the option annotate (see below), only 10 SNPs will be excluded as they have a coverage less than 3.
+- If we consider 20 as a cutoff for the quality of each SNPs, the number drop to 356 SNPs
+- If we only consider those that have a ratio (nb reads with mutated allele/total number of reads on that position) ≥ 0.9, the number of SNPs drops to 230.
+- If all filters are used: depth ≥3, QUAL ≥20 and ratio≥0.9, the number of filtered SNPs will be equal to 215.
+
+For the case of *Yersinia pestis,* there are 3 plasmids. For sample 5, there are SNPs on plasmid NC_003134.1 and NC_003131.1
+
+The first plot in Figure1 shows the distribution of all SNPs based on Ratio (x axis) and Depth (y axis). The size of each circle is proportional to the quality of each SNP. The second plot complement the first plot as it give you an idea about the proportion of SNPs for the chromosome and each of the plasmids. For the chromosome NC_004143.1, we can see that there is a small proportion of SNPs located between 0.2 and 0.4, but most of the SNPs has a high ratio ≥ 0.9. 
+
+To hide any of the data presented on each plot, you just need to select the name that you want. 
