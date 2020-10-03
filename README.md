@@ -24,13 +24,15 @@ snpToolkit detects automatically if the input vcf files were generated using sam
 
 # How to install and update
 
-```bash
-#To install 
-pip install  git+git://github.com/Amine-Namouchi/snpToolkit.git
+Different python libraries need to be installed: Biopython, pysam,  pandas, plotly, dash,  tqdm and coloredlogs. The recommended way to install snptoolkit is:
 
-#To update
-pip install  git+git://github.com/Amine-Namouchi/snpToolkit.git --upgrade
+```bash
+pip install  git+git://github.com/Amine-Namouchi/snpToolkit.git
 ```
+
+very soon it will be possible to install snptoolkit directly from pypi as follow: pip install snptoolkit
+
+
 
 # snpToolkit menu
 
@@ -106,3 +108,147 @@ For the case of *Yersinia pestis,* there are 3 plasmids. For sample 5, there are
 The first plot in Figure1 shows the distribution of all SNPs based on Ratio (x axis) and Depth (y axis). The size of each circle is proportional to the quality of each SNP. The second plot complement the first plot as it give you an idea about the proportion of SNPs for the chromosome and each of the plasmids. For the chromosome NC_004143.1, we can see that there is a small proportion of SNPs located between 0.2 and 0.4, but most of the SNPs has a high ratio ≥ 0.9. 
 
 To hide any of the data presented on each plot, you just need to select the name that you want. 
+
+# The annotate command
+
+```bash
+snptoolkit annotate -h
+usage: snptoolkit annotate [-h] -i IDENTIFIER -g GENBANK [-p PROCESSORS] [-f EXCLUDECLOSESNPS] [-q QUALITY] [-d DEPTH] [-r RATIO] [-e EXCLUDE]
+
+optional arguments:
+  -h, --help           show this help message and exit
+
+snpToolkit annotate required options:
+  -i IDENTIFIER        provide a specific identifier to recognize the file(s) to be analyzed
+  -g GENBANK           Pleae provide a genbank file
+
+snpToolkit annotate additional options:
+  -p PROCESSORS        number of vcf files to be annotated in parallel default value [1]
+  -f EXCLUDECLOSESNPS  exclude SNPs if the distance between them is lower then the specified window size in bp
+  -q QUALITY           quality score to consider as a cutoff for variant calling. default value [20]
+  -d DEPTH             minimum depth caverage. default value [3]
+  -r RATIO             minimum ratio that correspond to the number of reads that has the mutated allele / total depth in that particular position. default
+                       value [0]
+  -e EXCLUDE           provide a tab file with genomic regions to exclude in this format: region start stop. region must correspond to the same name(s) of
+                       chromsome and plasmids as in the genbank file
+```
+
+This command allows to filter and annotate all SNPs from each selected VCF files. Only two options are required:
+
+1. option -i: The user need to specify a common identifier found on all VCF files he wants to analyze. If only one VCF file is to be analyzed, provide the file name. If all VCF files should be analyzed, the user  needs to provide e.g vcf as all vcf files will have at the end .vcf.gz of .vcf. 
+2. -g: genbank file. The genbank file must include the fasta sequence for the chromosome and plasmids, if any. genbank files can be downloaded from NCBI
+
+Several options are additional and are needed to filter SNPs:
+
+- -f: To be able to exclude all SNPs that can be located in hotspot zones or short repeats, it is possible to specify an integer that will correspond to the minimum of distance between SNPs to be kept. if the distance between two SNPs is lower than the specified cutoff, both SNPs will be ignored.
+- -q: Quality score to consider as a cutoff for variant calling. The default value is 20
+- -d: Minimum depth coverage. The default value is 3.
+- -r: $r = m/t$  where *m* is the umber of reads that carry the mutated allele and *t* is the total number of read on that position. If not specified all SNPs will be taken into account.
+- -e: This is to specify a tab delimited file with the coordinates of the regions to be ignored when annotating SNPs. If we take the example of the genbank used in for this tutorial:
+
+    ```bash
+    $ grep 'LOCUS' /Users/amine/Documents/tutorials/snptoolkit/GCF_000009065.1_ASM906v1_genomic.gbff
+    LOCUS       NC_003143            4653728 bp    DNA     circular CON 20-MAR-2020
+    LOCUS       NC_003131              70305 bp    DNA     circular CON 20-MAR-2020
+    LOCUS       NC_003134              96210 bp    DNA     circular CON 20-MAR-2020
+    LOCUS       NC_003132               9612 bp    DNA     circular CON 20-MAR-2020
+    ```
+
+    as you can see there is one chromosome NC_003143 and three plasmids: NC_003131, NC_003134 and NC_003132. The tab delimited file should  look as follows:
+
+    ```bash
+    NC_003143.1	4016	4079
+    NC_003143.1	7723	7758
+    NC_003143.1	11562	19149
+    NC_003143.1	25663	26698
+    ```
+
+    If there are regions on the plasmids sequences you can also add them in the same file.
+
+Now time to run the annotate command
+
+```bash
+$ snptoolkit annotate -i vcf -g GCF_000009065.1_ASM906v1_genomic.gbff -d 5 -q 30 -r 0.9 -p 4
+
+[15:37:30] [INFO] [4 CPUs requested out of 8 detected on this machine]
+[15:37:30] [INFO] [snpToolkit is filtering and annotating your SNPs]
+ 89%|████████████████████████████████████████████████████████████████████████████████████| 9/9 [00:01<00:00,  2.67it/s]
+[15:37:32] [INFO] [snpToolkit output files will be located in folders
+				 snpToolkit_SNPs_output_... 
+				 and snpToolkit_INDELS_output_...]
+100%|████████████████████████████████████████████████████████████████████████████████████| 9/9 [00:02<00:00,  3.95it/s]
+```
+
+snptoolkit generates two folders with the  date and time stamp, one for SNPs and one for indels:
+
+```bash
+├── snpToolkit_INDELS_output_...
+│   ├── sample3_snpToolkit_indels.txt
+│   ├── sample9_snpToolkit_indels.txt
+│   ├── sample10_snpToolkit_indels.txt
+│   ├── sample1_snpToolkit_indels.txt
+│   ├── sample2_snpToolkit_indels.txt
+│   ├── sample4_snpToolkit_indels.txt
+│   ├── sample5_snpToolkit_indels.txt
+│   ├── sample6_snpToolkit_indels.txt
+│   ├── sample7_snpToolkit_indels.txt
+│   └── sample8_snpToolkit_indels.txt
+├── snpToolkit_SNPs_output_...
+    ├── sample3_snpToolkit_SNPs.txt
+    ├── sample9_snpToolkit_SNPs.txt
+    ├── sample10_snpToolkit_SNPs.txt
+    ├── sample1_snpToolkit_SNPs.txt
+    ├── sample2_snpToolkit_SNPs.txt
+    ├── sample4_snpToolkit_SNPs.txt
+    ├── sample5_snpToolkit_SNPs.txt
+    ├── sample6_snpToolkit_SNPs.txt
+    ├── sample7_snpToolkit_SNPs.txt
+    └── sample8_snpToolkit_SNPs.txt
+```
+
+All generated output files are tab delimited. 
+
+### Example of SNP output file:
+
+```bash
+##snpToolkit=version 2.2.1
+##commandline= snptoolkit annotate -i vcf -g GCF_000009065.1_ASM906v1_genomic.gbff -d 5 -q 30 -r 0.9 -p 4
+##VcfFile=sample5.vcf.gz
+##Total number of SNPs before snpToolkit processing: 406
+##The options -f and -e were not used
+##Filtred SNPs. Among the 406 SNPs, the number of those with a quality score >= 30, a depth >= 5 and a ratio >= 0.9 is: 218
+##After mapping, SNPs were located in:
+##NC_003131.1: Yersinia pestis CO92 plasmid pCD1, complete sequence 70305 bp
+##NC_003143.1: Yersinia pestis CO92, complete genome 4653728 bp
+##The mapped and annotated SNPs are distributed as follow:
+##Location      Genes   RBS     tRNA    rRNA    ncRNA   Pseudogenes     intergenic      Synonymous      NonSynonumous
+##SNPs in NC_003143.1: Yersinia pestis CO92, complete genome 4653728 bp 155     0       0       1       0       0       57      54      101
+##SNPs in NC_003131.1: Yersinia pestis CO92 plasmid pCD1, complete sequence 70305 bp    2       0       0       0       0       0       3       1       1
+##Syn=Synonymous NS=Non-Synonymous
+##Coordinates   REF     SNP     Depth   Nb of reads REF Nb reads SNPs   Ratio   Quality Annotation      Product Orientation     Coordinates in gene     Ref codon       SNP codon       Ref AA  SNP AA  Coordinates protein     Effect  Location
+82      C       A       36      0       34      1.0     138.0   intergenic      .       +       .       -       -       -       -       -       -       NC_003143.1: Yersinia pestis CO92, complete genome 4653728 bp
+130     G       C       28      0       27      1.0     144.0   intergenic      .       +       .       -       -       -       -       -       -       NC_003143.1: Yersinia pestis CO92, complete genome 4653728 bp
+855     G       A       69      0       62      1.0     228.0   YPO_RS01010|asnC        transcriptional regulator AsnC  -       411     ACC     AC[T]   T       T       137     Syn     NC_003143.1: Yersinia pestis CO92, complete genome 4653728 bp
+```
+
+The first lines of the snptoolkit file for SNPs contain a summary and useful information. The SNPs annotation is organized in tab delimited table. The columns of this table are:
+
+1. Coordinates: SNP coordinate 
+2. REF: Reference allele
+3. SNP: new allele in analyzed sample
+4. Depth: total depth of coverage 
+5. Nb of reads REF: number of reads with the reference allele
+6. Nb reads SNPs: number of reads with the new allele
+7. Ratio:  Nb reads SNPs/(Nb of reads REF+Nb reads SNPs)
+8. Quality: quality score
+9. Annotation: distribution within genes or intergenic
+10. Product: functional product of the gene
+11. Orientation: gene orientation
+12. Coordinates in gene: coordinate of the SNP within the gene
+13. Ref codon: reference codon, ACC in the example above
+14. SNP codon: new codon, AC[T]
+15. Ref AA: Amino Acid corresponding to reference codon 
+16. SNP AA: Amino Acid corresponding to new codon
+17. Coordinates protein: coordinate of the Amino Acid 
+18. Effect: could be Synonymous (Syn) or Non-Synonymous (NS)
+19. Location: ID of the chromosome and plasmids.
