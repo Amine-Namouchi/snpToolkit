@@ -17,7 +17,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.1'
+__version__ = '2.2.1'
 
 
 import gzip
