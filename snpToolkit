@@ -94,9 +94,9 @@ if __name__ == "__main__":
         proc = Popen(cmd, stdout=PIPE, stderr=STDOUT)
         proc.wait()
         options = args
-        logger.info('{} CPUs requested out of {} detected on this machine'.format(options.processes,mp.cpu_count()))
+        logger.info('{} CPUs requested out of {} detected on this machine'.format(options.processors,mp.cpu_count()))
         logger.info('snpToolkit is filtering and annotating your SNPs')
-        pool = mp.Pool(processes=options.processes)
+        pool = mp.Pool(processes=options.processors)
         pbar = tqdm(total=len(FilesToProcess))
   
         def update(*a):
