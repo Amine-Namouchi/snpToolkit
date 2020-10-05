@@ -21,7 +21,7 @@ __version__ = '2.2.1'
 
 if __name__ == "__main__":
 
-    from modules.argsLogger_snpToolkit import *
+    from snptoolkit_modules.argsLogger_snpToolkit import *
     import multiprocessing as mp
     import sys,os
     import subprocess
@@ -45,13 +45,13 @@ if __name__ == "__main__":
 
 
     if args.command == 'explore':
-        cmd = ['python',cwd+'/modules/explore_snpToolkit.py','-i', args.identifier]
+        cmd = ['python',cwd+'/snptoolkit_modules/explore_snpToolkit.py','-i', args.identifier]
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 
     elif args.command == 'annotate':
-        from modules.annotate_snpToolkit import parse_genbank_file
-        from modules.calls_snpToolkit import annotate
+        from snptoolkit_modules.annotate_snpToolkit import parse_genbank_file
+        from snptoolkit_modules.calls_snpToolkit import annotate
         try:
             from Bio import SeqIO
         except ImportError:
@@ -117,8 +117,8 @@ if __name__ == "__main__":
             logger.error('Please install pysam before to continue')
             sys.exit()
 
-        from modules.combine_snpToolkit import *
-        from modules.calls_snpToolkit import combine
+        from snptoolkit_modules.combine_snpToolkit import *
+        from snptoolkit_modules.calls_snpToolkit import combine
         
         combine(args)
     
