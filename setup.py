@@ -18,6 +18,6 @@ setup(name='snptoolkit',
       ],
       keywords='SNPs filtering annotation variants calling',
       install_requires=['pysam', 'pandas', 'tqdm', 'coloredlogs', 'Biopython','dash','plotly','numba'],
-      packages=find_packages(where='./snptoolkit_modules'),
+      packages=find_packages(where='./snpToolkit_modules'),
       scripts=['snptoolkit']
       )

@@ -21,7 +21,7 @@ __version__ = '2.2.1'
 
 if __name__ == "__main__":
 
-    from snptoolkit_modules.argsLogger_snpToolkit import *
+    from snpToolkit_modules.argsLogger_snpToolkit import *
     import multiprocessing as mp
     import sys,os
     import subprocess
@@ -45,13 +45,13 @@ if __name__ == "__main__":
 
 
     if args.command == 'explore':
-        cmd = ['python',cwd+'/snptoolkit_modules/explore_snpToolkit.py','-i', args.identifier]
+        cmd = ['python',cwd+'/snpToolkit_modules/explore_snpToolkit.py','-i', args.identifier]
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 
     elif args.command == 'annotate':
-        from snptoolkit_modules.annotate_snpToolkit import parse_genbank_file
-        from snptoolkit_modules.calls_snpToolkit import annotate
+        from snpToolkit_modules.annotate_snpToolkit import parse_genbank_file
+        from snpToolkit_modules.calls_snpToolkit import annotate
         try:
             from Bio import SeqIO
         except ImportError:
@@ -117,13 +117,13 @@ if __name__ == "__main__":
             logger.error('Please install pysam before to continue')
             sys.exit()
 
-        from snptoolkit_modules.combine_snpToolkit import *
-        from snptoolkit_modules.calls_snpToolkit import combine
+        from snpToolkit_modules.combine_snpToolkit import *
+        from snpToolkit_modules.calls_snpToolkit import combine
         
         combine(args)
     
     elif args.command == 'viz':
-        cmd = ['python',cwd+'/modules/plot_snpToolkit_output.py','--dir', args.directory]
+        cmd = ['python',cwd+'/snpToolkit_modules/plot_snpToolkit_output.py','--dir', args.directory]
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 
