@@ -20,7 +20,6 @@ __author_email__ = 'amine.namouchi@gmail.com'
 __version__ = '2.2.1'
 
 
-#!/usr/bin/env python
 import glob
 import logging
 import coloredlogs
@@ -82,7 +81,7 @@ app.layout = html.Div(
             {'label': 'Non-synonymous SNPs', 'value': 'NS'},
             ],value='ALL',labelStyle={'display': 'inline-block'}
         ),
-        dcc.Input(placeholder='Enter a window size to compute SNPs density...',type='number',id="windowsize",value=''),
+        #TODO: dcc.Input(placeholder='Enter a window size to compute SNPs density...',type='number',id="windowsize",value=''),
         dcc.Graph(id='graph'),
         html.Hr(),
         html.Div(dt.DataTable(columns = [{"name": i, "id": i} for i in header],
@@ -133,35 +132,46 @@ def update_dropdown(name):
     for eachFile in list_files:
         if name in eachFile:
             with open (eachFile, 'r') as f:
-                headerFile = islice(f, 12)
+                headerFile = islice(f, 30)
                 for c in headerFile:
-                    if '##SNPs in ' in c:     
-                        SNPsLocation.append ({'label': c.replace('##SNPs in ','').split('\t')[0], 'value': c.replace('##SNPs in ','').split('/t')[0]})
+                    if '##SNPs in ' in c:  
+                        SNPsLocation.append ({'label': c.strip().replace('##SNPs in ','').split('\t')[0], 'value': c.strip().replace('##SNPs in ','').split('\t')[0]})
+    
     return SNPsLocation
 
 
 @app.callback(
-    Output('opt-dropdown', 'value'),
+    Output('opt-dropdown', 'label'),
     [Input('opt-dropdown', 'options')]
 )
 def default_selection(option2):
     if len (option2) > 1:
+        print ('<option>',option2)
         return ''
     else:
+        print ('option::::', option2[0]['value'])
         return option2[0]['value']
 
 
-@app.callback (Output('graph','figure'),[Input('name-dropdown','value'),Input('opt-dropdown','value'),Input('selected-type','value'),Input('windowsize','value')])
-def update_graph(sample,location,snpType,window):
+@app.callback (Output('graph','figure'),[Input('name-dropdown','value'),Input('opt-dropdown','value'),Input('selected-type','value')])##TODO: Input('windowsize','value')
+def update_graph(sample,location,snpType):
     for eachFile in list_files:
         if sample in eachFile:
-            df = pd.read_csv(eachFile,sep='\t',skiprows=12)
+            fh = open (eachFile,'r')
+            line = fh.readline()
+            x = 0
+            while x !='':
+                if line.startswith('##Coordinates')==True:
+                    break
+                x+=1
+                line = fh.readline()
+            df = pd.read_csv(eachFile,sep='\t',skiprows=x)
 
-    df1 = df.loc[df['Effect'] == 'NS']
-    df2 = df.loc[df['Effect'] == 'Syn']
+    df1 = df.loc[(df['Effect'] == 'NS') & (df['Location'] == location)]
+    df2 = df.loc[(df['Effect'] == 'Syn') & (df['Location'] == location)]
     layout = go.Layout(title='Depth vs Ratio',xaxis={'title':'Coordinates'},yaxis={'title':'Depth'},hovermode='closest')
     if snpType == 'ALL':
-        data = [go.Scatter(name="Others",x=df["##Coordinates"],y=df["Depth"],mode="markers",opacity=0.5,marker={"color":"grey"}),go.Scatter(name='NS',x=df1["##Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"}),go.Scatter(name='Syn',x=df2["##Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
+        data = [go.Scatter(name="Others",x=df[(df["Location"]==location)]["##Coordinates"],y=df[(df["Location"]==location)]["Depth"],mode="markers",opacity=0.5,marker={"color":"grey"}),go.Scatter(name='NS',x=df1["##Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"}),go.Scatter(name='Syn',x=df2["##Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
     elif snpType == 'NS':
         
         data = [go.Scatter(x=df1["##Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"})]
@@ -174,8 +184,16 @@ def update_graph(sample,location,snpType,window):
 def update_table(sample,location):
     for eachFile in list_files:
         if sample in eachFile:
-            df = pd.read_csv(eachFile,sep='\t',skiprows=12)
-    return df.to_dict('rows')
+            fh = open (eachFile,'r')
+            line = fh.readline()
+            x = 0
+            while x !='':
+                if line.startswith('##Coordinates')==True:
+                    break
+                x+=1
+                line = fh.readline()
+            df = pd.read_csv(eachFile,sep='\t',skiprows=x)
+    return df[(df['Location'] == location)].to_dict('rows')
         
             
  
