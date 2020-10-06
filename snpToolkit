@@ -50,8 +50,8 @@ if __name__ == "__main__":
         proc.wait()
 
     elif args.command == 'annotate':
-        from snpToolkit_modules.annotate_snpToolkit import parse_genbank_file
-        from snpToolkit_modules.calls_snpToolkit import annotate
+        from snptoolkit_modules.annotate_snpToolkit import parse_genbank_file
+        from snptoolkit_modules.calls_snpToolkit import annotate
         try:
             from Bio import SeqIO
         except ImportError:
@@ -117,13 +117,13 @@ if __name__ == "__main__":
             logger.error('Please install pysam before to continue')
             sys.exit()
 
-        from snpToolkit_modules.combine_snpToolkit import *
-        from snpToolkit_modules.calls_snpToolkit import combine
+        from snptoolkit_modules.combine_snpToolkit import *
+        from snptoolkit_modules.calls_snpToolkit import combine
         
         combine(args)
     
     elif args.command == 'viz':
-        cmd = ['python',cwd+'/snpToolkit_modules/plot_snpToolkit_output.py','--dir', args.directory]
+        cmd = ['python',cwd+'/modules/plot_snpToolkit_output.py','--dir', args.directory]
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 
