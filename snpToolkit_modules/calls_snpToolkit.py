@@ -140,9 +140,12 @@ def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_dir
                                 File_name + '_snpToolkit_indels.txt', 'w')
 
             for eachElem in Final_INDELS_List.keys():
+                done=[]
                 for eachIndel in Final_INDELS_List[eachElem]:
-                    outputfile.write(
-                        '\t'.join([str(e) for e in eachIndel]) + '\n')
+                    if eachIndel[0] not in done:
+                        done.append(eachIndel[0])
+                        outputfile.write(
+                            '\t'.join([str(e) for e in eachIndel]+[eachElem]) + '\n')
         ##################################################################
 
         info4 = '##After mapping, SNPs were located in: \n##' + \
@@ -378,7 +381,6 @@ def expand(options):
 
     aDNA = [FILE.split('.')[0].split('/')[-1] for FILE in glob.glob(options.bamfiles_directory + '/*.bam')]
 
-    print (options.location)
     for i in tqdm(range(len(FilesToAdd)), ascii=True, desc='progress'):
         with open(FilesToAdd[i], 'r') as input:
             listSNPs=[l.strip().split('\t') for l in input if '##' not in l and options.location in l and l.strip().split('\t') [0] not in position_to_exclude and l.strip().split('\t') [8] not in locations_to_exclude ]
