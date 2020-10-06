@@ -56,8 +56,8 @@ colors={'background':'#262626','text':'#ffffff','textHeader':'#111111'}
 app = dash.Dash()
 
 
-header = ['##Coordinates', 'Effect', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-            'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein']
+header = ['##Coordinates', 'REF', 'SNP', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA','Effect','Annotation', 'Product',
+            'Orientation', 'Coordinates in gene',  'Coordinates protein','Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality']
 
 app.layout = html.Div(
     [
