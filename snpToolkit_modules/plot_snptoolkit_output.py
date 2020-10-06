@@ -165,9 +165,9 @@ def update_graph(sample,location,snpType):
                 line = fh.readline()
             df = pd.read_csv(eachFile,sep='\t',skiprows=x)
 
-    df1 = df.loc[(df['Effect'] == 'NS') & (df['Location'] == location)]['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
+    df1 = df.loc[(df['Effect'] == 'NS') & (df['Location'] == location)].loc['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
             'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect']
-    df2 = df.loc[(df['Effect'] == 'Syn') & (df['Location'] == location)]['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
+    df2 = df.loc[(df['Effect'] == 'Syn') & (df['Location'] == location)].loc['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
             'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect']
 
     layout = go.Layout(title='Depth vs Ratio',xaxis={'title':'Coordinates'},yaxis={'title':'Depth'},hovermode='closest')
@@ -194,7 +194,7 @@ def update_table(sample,location):
                 x+=1
                 line = fh.readline()
             df = pd.read_csv(eachFile,sep='\t',skiprows=x)
-    return df[(df['Location'] == location)]['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
+    return df[(df['Location'] == location)].loc['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
             'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect'].to_dict('rows')
         
 
