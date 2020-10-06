@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!python
 
 # Copyright Amine Namouchi
 # snpToolkit is free software: you can redistribute it and/or modify it under
@@ -165,11 +165,8 @@ def update_graph(sample,location,snpType):
                 line = fh.readline()
             df = pd.read_csv(eachFile,sep='\t',skiprows=x)
 
-    df1 = df.loc[(df['Effect'] == 'NS') & (df['Location'] == location)]['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-            'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect']
-    df2 = df.loc[(df['Effect'] == 'Syn') & (df['Location'] == location)]['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-            'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect']
-
+    df1 = df.loc[(df['Effect'] == 'NS') & (df['Location'] == location)]
+    df2 = df.loc[(df['Effect'] == 'Syn') & (df['Location'] == location)]
     layout = go.Layout(title='Depth vs Ratio',xaxis={'title':'Coordinates'},yaxis={'title':'Depth'},hovermode='closest')
     if snpType == 'ALL':
         data = [go.Scatter(name="Others",x=df[(df["Location"]==location)]["##Coordinates"],y=df[(df["Location"]==location)]["Depth"],mode="markers",opacity=0.5,marker={"color":"grey"}),go.Scatter(name='NS',x=df1["##Coordinates"],y=df1["Depth"],mode="markers",opacity=0.8,marker={"color":"#FBBF4C"}),go.Scatter(name='Syn',x=df2["##Coordinates"],y=df2["Depth"],mode="markers",opacity=0.8,marker={"color":"#51A8C7"})]
@@ -194,8 +191,7 @@ def update_table(sample,location):
                 x+=1
                 line = fh.readline()
             df = pd.read_csv(eachFile,sep='\t',skiprows=x)
-    return df[(df['Location'] == location)]['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-            'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect'].to_dict('rows')
+    return df[(df['Location'] == location)].to_dict('rows')
         
 
 if __name__ == '__main__':
