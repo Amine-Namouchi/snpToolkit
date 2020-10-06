@@ -33,9 +33,9 @@ from pathlib import Path
 from datetime import datetime
 from operator import itemgetter
 from subprocess import Popen, PIPE, STDOUT
-from .argsLogger_snpToolkit import *
-from .annotate_snpToolkit import *
-from .combine_snpToolkit import *
+from argsLogger_snpToolkit import *
+from annotate_snpToolkit import *
+from combine_snpToolkit import *
 from pathlib import Path
 import pandas as pd
 import pysam
