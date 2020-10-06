@@ -123,7 +123,7 @@ if __name__ == "__main__":
         combine(args)
     
     elif args.command == 'viz':
-        cmd = ['python',cwd+'/modules/plot_snpToolkit_output.py','--dir', args.directory]
+        cmd = ['python',cwd+'/plot_snpToolkit_output.py','--dir', args.directory]
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 

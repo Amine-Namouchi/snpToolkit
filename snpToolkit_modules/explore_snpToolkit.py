@@ -141,6 +141,7 @@ colors={'background':'#111111','text':'#ffffff','textHeader':'#111111'}
 app.layout = html.Div(children=[
     html.H2('snpToolkit plots -  VCFs SNPs content',style={'color':colors['textHeader'],'text-align':'center'}),
     dcc.Dropdown(id='isolate',options=isolates_collection,value=isolates_collection[0]['value']),
+    #TODO:
     # html.Div(children=[html.Label('Depth cutoff'),
     # dcc.Slider(id='depth-slider',min=0,max=1000,step=1,value=3, tooltip={'updatemode':'drag'})]),
     # html.Label('Quality cutoff'),
