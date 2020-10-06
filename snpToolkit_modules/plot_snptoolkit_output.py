@@ -146,10 +146,8 @@ def update_dropdown(name):
 )
 def default_selection(option2):
     if len (option2) > 1:
-        print ('<option>',option2)
         return ''
     else:
-        print ('option::::', option2[0]['value'])
         return option2[0]['value']
 
 
@@ -195,9 +193,6 @@ def update_table(sample,location):
             df = pd.read_csv(eachFile,sep='\t',skiprows=x)
     return df[(df['Location'] == location)].to_dict('rows')
         
-            
- 
-
 
 if __name__ == '__main__':
     app.run_server()

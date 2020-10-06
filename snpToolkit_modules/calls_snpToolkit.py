@@ -488,9 +488,3 @@ def expand(options):
             fastaoutput.write('>'+header[i]+'\n'+sequence+'\n')
             i +=1
 
-
-if __name__ == '__main__':
-    app.run_server()
-
-
-

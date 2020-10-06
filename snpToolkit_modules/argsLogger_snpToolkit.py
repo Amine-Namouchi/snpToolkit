@@ -13,7 +13,6 @@
 # You should have received a copy of the GNU General Public License along with
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# 6e1be7
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
@@ -120,7 +119,7 @@ def get_options():
 
     requiredOptions4 = viz.add_argument_group('snpToolkit viz required options')
     requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',
-                                  help='provide the path to the directory containing snptoolkit output files')
+                                  help='provide the path of the directory containing snptoolkit SNPs output files')
 
 
     expand = subparsers.add_parser(
