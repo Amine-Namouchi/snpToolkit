@@ -17,7 +17,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.1'
+__version__ = '2.2.2'
 
 
 import glob
@@ -141,13 +141,6 @@ colors={'background':'#111111','text':'#ffffff','textHeader':'#111111'}
 app.layout = html.Div(children=[
     html.H2('snpToolkit plots -  VCFs SNPs content',style={'color':colors['textHeader'],'text-align':'center'}),
     dcc.Dropdown(id='isolate',options=isolates_collection,value=isolates_collection[0]['value']),
-    #TODO:
-    # html.Div(children=[html.Label('Depth cutoff'),
-    # dcc.Slider(id='depth-slider',min=0,max=1000,step=1,value=3, tooltip={'updatemode':'drag'})]),
-    # html.Label('Quality cutoff'),
-    # dcc.Slider(id='qual-slider',min=0,max=1000,step=1,value=20,tooltip={'updatemode':'drag'}),
-    # html.Label('Ratio cutoff'),
-    # dcc.Slider(id='ratio-slider',min=0.0,max=1.0,step=0.1,value=0.9, marks={i:i for i in range (0,1)}),
     html.H3('Number of identified SNPs',style={'color':colors['textHeader']}),
     html.Div(dt.DataTable(columns = [{"name": i, "id": i} for i in ['Location', 'Total SNPs','Nb SNP if depth >= 3','Nb SNP if QUAL >= 20','Nb SNP if Ratio >= 0.9','All filters on']],id='snpTable', style_table={ 'align':'center'},style_cell={'textAlign': 'center', 'border': '1px solid grey'},    style_header={
         'color':'white',
