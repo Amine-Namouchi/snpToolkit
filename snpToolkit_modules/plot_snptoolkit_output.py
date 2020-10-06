@@ -57,7 +57,7 @@ app = dash.Dash()
 
 
 header = ['##Coordinates', 'REF', 'SNP', 'Depth', 'Nb of reads REF', 'Nb reads SNPs', 'Ratio', 'Quality', 'Annotation', 'Product',
-            'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect', 'Location']
+            'Orientation', 'Coordinates in gene', 'Ref codon', 'SNP codon', 'Ref AA', 'SNP AA', 'Coordinates protein', 'Effect']
 
 app.layout = html.Div(
     [
