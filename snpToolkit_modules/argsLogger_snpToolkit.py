@@ -123,7 +123,7 @@ def get_options():
 
 
     expand = subparsers.add_parser(
-        name='expand', help='expand curent phylogeny', epilog=copyright)
+        name='expand', help='expand existent list of polymorphic sites when new SNP output files are availble', epilog=copyright)
 
     requiredOptions4 = expand.add_argument_group('snpToolkit viz required options')
     requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',
