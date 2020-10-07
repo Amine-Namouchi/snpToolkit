@@ -52,7 +52,7 @@ def get_options():
                                   help='Provide the input vcf files')
 
     annotate = subparsers.add_parser(
-        name='annotate', help='Please provide one or multiple vcf files', epilog=copyright)
+        name='annotate', help='Annotate one or multiple vcf files', epilog=copyright)
 
     requiredOptions2 = annotate.add_argument_group(
         'snpToolkit annotate required options')
