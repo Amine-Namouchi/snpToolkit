@@ -25,9 +25,7 @@ if __name__ == "__main__":
     import multiprocessing as mp
     import sys,os
     import subprocess
-    import numba
     from tqdm import tqdm
-    from numba import jit
     import glob
     from pathlib import Path
     from datetime import datetime
