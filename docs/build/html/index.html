@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>snpToolkit &#8212; snpToolkit  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="snptoolkit">
+<h1>snpToolkit<a class="headerlink" href="#snptoolkit" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="index/snpToolkit_LOGO.png"><img alt="index/snpToolkit_LOGO.png" src="_images/snpToolkit_LOGO.png" /></a>
+<p><strong>snpToolkit</strong> is a computational framework written in Python 3. snpToolkit allow users to:</p>
+<ol class="arabic simple">
+<li><p>Visualize the content of their VCF files</p></li>
+<li><p>Filter SNPs based on multiple criteria:</p>
+<ul class="simple">
+<li><p>Coordinates of regions to exclude</p></li>
+<li><p>Depth of coverage</p></li>
+<li><p>Quality</p></li>
+<li><p>The ratio corresponding to the number of reads that have the mutated allele / total number of reads at that particular position</p></li>
+</ul>
+</li>
+<li><p>Annotate SNPs using genome annotation data provided within a genbank file</p></li>
+<li><p>Extract the distribution of all indels according to genome annotation</p></li>
+<li><p>Visualize and explore the annotated SNPs for all analyzed files</p></li>
+<li><p>Combine all snpToolkit output files generated using the annotate option and generate:</p>
+<ul class="simple">
+<li><p>A table storing the distribution of all SNPs on each sample</p></li>
+<li><p>A fasta file with all concatenated SNPs for each sample. such file can be used to build a phylogenetic tree.</p></li>
+</ul>
+</li>
+<li><p>Expand existent list of polymorphic sites when new SNPs output files are available</p></li>
+</ol>
+<p>snpToolkit detects automatically if the input vcf files were generated using samtools mpileup, gatk HaplotypeCaller or freebayes. Vcf files could be gzipped or not.</p>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">snpToolkit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Amine Namouchi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

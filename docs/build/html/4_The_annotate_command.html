@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The annotate command &#8212; snpToolkit  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="the-annotate-command">
+<h1>The annotate command<a class="headerlink" href="#the-annotate-command" title="Permalink to this headline">¶</a></h1>
+<p>Done: Yes</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>snptoolkit annotate -h
+usage: snptoolkit annotate <span class="o">[</span>-h<span class="o">]</span> -i IDENTIFIER -g GENBANK <span class="o">[</span>-p PROCESSORS<span class="o">]</span> <span class="o">[</span>-f EXCLUDECLOSESNPS<span class="o">]</span> <span class="o">[</span>-q QUALITY<span class="o">]</span> <span class="o">[</span>-d DEPTH<span class="o">]</span> <span class="o">[</span>-r RATIO<span class="o">]</span> <span class="o">[</span>-e EXCLUDE<span class="o">]</span>
+
+optional arguments:
+  -h, --help           show this <span class="nb">help</span> message and <span class="nb">exit</span>
+
+snpToolkit annotate required options:
+  -i IDENTIFIER        provide a specific identifier to recognize the file<span class="o">(</span>s<span class="o">)</span> to be analyzed
+  -g GENBANK           Pleae provide a genbank file
+
+snpToolkit annotate additional options:
+  -p PROCESSORS        number of vcf files to be annotated in parallel default value <span class="o">[</span><span class="m">1</span><span class="o">]</span>
+  -f EXCLUDECLOSESNPS  exclude SNPs <span class="k">if</span> the distance between them is lower <span class="k">then</span> the specified window size in bp
+  -q QUALITY           quality score to consider as a cutoff <span class="k">for</span> variant calling. default value <span class="o">[</span><span class="m">20</span><span class="o">]</span>
+  -d DEPTH             minimum depth caverage. default value <span class="o">[</span><span class="m">3</span><span class="o">]</span>
+  -r RATIO             minimum ratio that correspond to the number of reads that has the mutated allele / total depth in that particular position. default
+                       value <span class="o">[</span><span class="m">0</span><span class="o">]</span>
+  -e EXCLUDE           provide a tab file with genomic regions to exclude in this format: region start stop. region must correspond to the same name<span class="o">(</span>s<span class="o">)</span> of
+                       chromsome and plasmids as in the genbank file
+</pre></div>
+</div>
+<p>This command allows to filter and annotate all SNPs from each selected VCF files. Only two options are required:</p>
+<ol class="arabic simple">
+<li><p>option -i: The user need to specify a common identifier found on all VCF files he wants to analyze. If only one VCF file is to be analyzed, provide the file name. If all VCF files should be analyzed, the user  needs to provide e.g vcf as all vcf files will have at the end .vcf.gz of .vcf.</p></li>
+<li><p>-g: genbank file. The genbank file must include the fasta sequence for the chromosome and plasmids, if any. genbank files can be downloaded from NCBI</p></li>
+</ol>
+<p>Several options are additional and are needed to filter SNPs:</p>
+<ul>
+<li><p>-f: To be able to exclude all SNPs that can be located in hotspot zones or short repeats, it is possible to specify an integer that will correspond to the minimum of distance between SNPs to be kept. if the distance between two SNPs is lower than the specified cutoff, both SNPs will be ignored.</p></li>
+<li><p>-q: Quality score to consider as a cutoff for variant calling. The default value is 20</p></li>
+<li><p>-d: Minimum depth coverage. The default value is 3.</p></li>
+<li><p>-r: $r = m/t$  where <em>m</em> is the umber of reads that carry the mutated allele and <em>t</em> is the total number of read on that position. If not specified all SNPs will be taken into account.</p></li>
+<li><p>-e: This is to specify a tab delimited file with the coordinates of the regions to be ignored when annotating SNPs. If we take the example of the genbank used in for this tutorial:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   $ grep <span class="s1">&#39;LOCUS&#39;</span> /Users/amine/Documents/tutorials/snptoolkit/GCF_000009065.1_ASM906v1_genomic.gbff
+   LOCUS       NC_003143            <span class="m">4653728</span> bp    DNA     circular CON <span class="m">20</span>-MAR-2020
+   LOCUS       NC_003131              <span class="m">70305</span> bp    DNA     circular CON <span class="m">20</span>-MAR-2020
+   LOCUS       NC_003134              <span class="m">96210</span> bp    DNA     circular CON <span class="m">20</span>-MAR-2020
+   LOCUS       NC_003132               <span class="m">9612</span> bp    DNA     circular CON <span class="m">20</span>-MAR-2020
+
+as you can see there is one chromosome NC_003143 and three plasmids: NC_003131, NC_003134 and NC_003132. The tab delimited file should  look as follows:
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>   NC_003143.1 <span class="m">4016</span>    <span class="m">4079</span>
+   NC_003143.1 <span class="m">7723</span>    <span class="m">7758</span>
+   NC_003143.1 <span class="m">11562</span>   <span class="m">19149</span>
+   NC_003143.1 <span class="m">25663</span>   <span class="m">26698</span>
+
+If there are regions on the plasmids sequences you can also add them in the same file.
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="run">
+<h1>Run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h1>
+<p>Now time to run the annotate command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit annotate -i vcf -g GCF_000009065.1_ASM906v1_genomic.gbff -d <span class="m">5</span> -q <span class="m">30</span> -r <span class="m">0</span>.9 -p <span class="m">4</span>
+
+<span class="o">[</span><span class="m">15</span>:37:30<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">4</span> CPUs requested out of <span class="m">8</span> detected on this machine<span class="o">]</span>
+<span class="o">[</span><span class="m">15</span>:37:30<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>snpToolkit is filtering and annotating your SNPs<span class="o">]</span>
+<span class="m">100</span>%<span class="p">|</span>████████████████████████████████████████████████████████████████████████████████████<span class="p">|</span> <span class="m">9</span>/9 <span class="o">[</span><span class="m">00</span>:01&lt;<span class="m">00</span>:00,  <span class="m">2</span>.67it/s<span class="o">]</span>
+<span class="o">[</span><span class="m">15</span>:37:32<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>snpToolkit output files will be located in folders
+                 snpToolkit_SNPs_output_...
+                 and snpToolkit_INDELS_output_...<span class="o">]</span>
+<span class="m">100</span>%<span class="p">|</span>████████████████████████████████████████████████████████████████████████████████████<span class="p">|</span> <span class="m">9</span>/9 <span class="o">[</span><span class="m">00</span>:02&lt;<span class="m">00</span>:00,  <span class="m">3</span>.95it/s<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="outputs">
+<h1>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">¶</a></h1>
+<p>snptoolkit generates two folders with the  date and time stamp, one for SNPs and one for indels:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>├── snpToolkit_INDELS_output_...
+│   ├── sample3_snpToolkit_indels.txt
+│   ├── sample9_snpToolkit_indels.txt
+│   ├── sample10_snpToolkit_indels.txt
+│   ├── sample1_snpToolkit_indels.txt
+│   ├── sample2_snpToolkit_indels.txt
+│   ├── sample4_snpToolkit_indels.txt
+│   ├── sample5_snpToolkit_indels.txt
+│   ├── sample6_snpToolkit_indels.txt
+│   ├── sample7_snpToolkit_indels.txt
+│   └── sample8_snpToolkit_indels.txt
+├── snpToolkit_SNPs_output_...
+    ├── sample3_snpToolkit_SNPs.txt
+    ├── sample9_snpToolkit_SNPs.txt
+    ├── sample10_snpToolkit_SNPs.txt
+    ├── sample1_snpToolkit_SNPs.txt
+    ├── sample2_snpToolkit_SNPs.txt
+    ├── sample4_snpToolkit_SNPs.txt
+    ├── sample5_snpToolkit_SNPs.txt
+    ├── sample6_snpToolkit_SNPs.txt
+    ├── sample7_snpToolkit_SNPs.txt
+    └── sample8_snpToolkit_SNPs.txt
+</pre></div>
+</div>
+<p>All generated output files are tab delimited.</p>
+<div class="section" id="example-of-snp-output-file">
+<h2>Example of SNP output file:<a class="headerlink" href="#example-of-snp-output-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##snpToolkit=__version__</span>
+<span class="c1">##commandline= snptoolkit annotate -i vcf -g GCF_000009065.1_ASM906v1_genomic.gbff -d 5 -q 30 -r 0.9 -p 4</span>
+<span class="c1">##VcfFile=sample5.vcf.gz</span>
+<span class="c1">##Total number of SNPs before snpToolkit processing: 406</span>
+<span class="c1">##The options -f and -e were not used</span>
+<span class="c1">##Filtred SNPs. Among the 406 SNPs, the number of those with a quality score &gt;= 30, a depth &gt;= 5 and a ratio &gt;= 0.9 is: 218</span>
+<span class="c1">##After mapping, SNPs were located in:</span>
+<span class="c1">##NC_003131.1: Yersinia pestis CO92 plasmid pCD1, complete sequence 70305 bp</span>
+<span class="c1">##NC_003143.1: Yersinia pestis CO92, complete genome 4653728 bp</span>
+<span class="c1">##The mapped and annotated SNPs are distributed as follow:</span>
+<span class="c1">##Location      Genes   RBS     tRNA    rRNA    ncRNA   Pseudogenes     intergenic      Synonymous      NonSynonumous</span>
+<span class="c1">##SNPs in NC_003143.1: Yersinia pestis CO92, complete genome 4653728 bp 155     0       0       1       0       0       57      54      101</span>
+<span class="c1">##SNPs in NC_003131.1: Yersinia pestis CO92 plasmid pCD1, complete sequence 70305 bp    2       0       0       0       0       0       3       1       1</span>
+<span class="c1">##Syn=Synonymous NS=Non-Synonymous</span>
+<span class="c1">##Coordinates   REF     SNP     Depth   Nb of reads REF Nb reads SNPs   Ratio   Quality Annotation      Product Orientation     Coordinates in gene     Ref codon       SNP codon       Ref AA  SNP AA  Coordinates protein     Effect  Location</span>
+<span class="m">82</span>      C       A       <span class="m">36</span>      <span class="m">0</span>       <span class="m">34</span>      <span class="m">1</span>.0     <span class="m">138</span>.0   intergenic      .       +       .       -       -       -       -       -       -       NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+<span class="m">130</span>     G       C       <span class="m">28</span>      <span class="m">0</span>       <span class="m">27</span>      <span class="m">1</span>.0     <span class="m">144</span>.0   intergenic      .       +       .       -       -       -       -       -       -       NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+<span class="m">855</span>     G       A       <span class="m">69</span>      <span class="m">0</span>       <span class="m">62</span>      <span class="m">1</span>.0     <span class="m">228</span>.0   YPO_RS01010<span class="p">|</span>asnC        transcriptional regulator AsnC  -       <span class="m">411</span>     ACC     AC<span class="o">[</span>T<span class="o">]</span>   T       T       <span class="m">137</span>     Syn     NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+</pre></div>
+</div>
+<p>The first lines of the snptoolkit file for SNPs contain a summary and useful information. The SNPs annotation is organized in tab delimited table. The columns of this table are:</p>
+<ol class="arabic simple">
+<li><p>Coordinates: SNP coordinate</p></li>
+<li><p>REF: Reference allele</p></li>
+<li><p>SNP: new allele in analyzed sample</p></li>
+<li><p>Depth: total depth of coverage</p></li>
+<li><p>Nb of reads REF: number of reads with the reference allele</p></li>
+<li><p>Nb reads SNPs: number of reads with the new allele</p></li>
+<li><p>Ratio:  Nb reads SNPs/(Nb of reads REF+Nb reads SNPs)</p></li>
+<li><p>Quality: quality score</p></li>
+<li><p>Annotation: distribution within genes or intergenic</p></li>
+<li><p>Product: functional product of the gene</p></li>
+<li><p>Orientation: gene orientation</p></li>
+<li><p>Coordinates in gene: coordinate of the SNP within the gene</p></li>
+<li><p>Ref codon: reference codon, ACC in the example above</p></li>
+<li><p>SNP codon: new codon, AC[T]</p></li>
+<li><p>Ref AA: Amino Acid corresponding to reference codon</p></li>
+<li><p>SNP AA: Amino Acid corresponding to new codon</p></li>
+<li><p>Coordinates protein: coordinate of the Amino Acid</p></li>
+<li><p>Effect: could be Synonymous (Syn) or Non-Synonymous (NS)</p></li>
+<li><p>Location: ID of the chromosome and plasmids.</p></li>
+</ol>
+<p>IMPORTANT NOTE:</p>
+<p>In the example above, the total depth for the first SNP is 36, while the number of reads that carry the reference allele plus the number of reads that carry the new allele is equal to 34. The VCF file corresponding to that sample is generated using samtools mpileup. By default, samtools mpileup applies Phred-scaled probability of a read base being misaligned, known as BAQ. As indicated in samtools documentation, this greatly helps to reduce false SNPs caused by misalignments.</p>
+<p>The total depth shown by snpToolkit is the raw depth taking into account all reads (column 4). However, the columns 5 and 6 shows the number of reads with  Phred-scaled probability. The ratio in column 7 is based on only column 5 and 6.  I have made this decision to store as much information as possible from the original VCF file.</p>
+<p>If the VCF files where produced using samtools-mpileup with the option -B to skip Phred-scaled probability, you will not see such difference.</p>
+</div>
+<div class="section" id="example-of-indels-output-file">
+<h2>Example of INDELS output file:<a class="headerlink" href="#example-of-indels-output-file" title="Permalink to this headline">¶</a></h2>
+<p>The indels output is in tab delimited format as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">55732</span>   CCGGGGCGGGGCGGGGCGG CCGGGGCGGGGCGG  <span class="m">62</span>  <span class="m">0</span>   <span class="m">20</span>  <span class="m">1</span>.0 <span class="m">228</span>.0   intergenic  .   .   deletion    <span class="m">5</span>   NC_003131.1: Yersinia pestis CO92 plasmid pCD1, <span class="nb">complete</span> sequence <span class="m">70305</span> bp
+<span class="m">35188</span>   T   TTC <span class="m">41</span>  <span class="m">0</span>   <span class="m">32</span>  <span class="m">1</span>.0 <span class="m">228</span>.0   intergenic  .   .   insertion   <span class="m">2</span>   NC_003134.1: Yersinia pestis CO92 plasmid pMT1, <span class="nb">complete</span> sequence <span class="m">96210</span> bp
+<span class="m">73418</span>   GAA GA  <span class="m">72</span>  <span class="m">0</span>   <span class="m">68</span>  <span class="m">1</span>.0 <span class="m">228</span>.0   intergenic  .   .   deletion    <span class="m">1</span>   NC_003134.1: Yersinia pestis CO92 plasmid pMT1, <span class="nb">complete</span> sequence <span class="m">96210</span> bp
+<span class="m">16</span>  AC  A   <span class="m">13</span>  <span class="m">0</span>   <span class="m">13</span>  <span class="m">1</span>.0 <span class="m">149</span>.0   intergenic  .   .   deletion    <span class="m">1</span>   NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+<span class="m">183029</span>  CCAATAACAAT CCAATAACAATAACAAT   <span class="m">95</span>  <span class="m">0</span>   <span class="m">24</span>  <span class="m">1</span>.0 <span class="m">228</span>.0   intergenic  .   .   insertion   <span class="m">6</span>   NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+<span class="m">266466</span>  AGGGGGGGG   AGGGGGGGGG  <span class="m">40</span>  <span class="m">1</span>   <span class="m">25</span>  <span class="m">0</span>.96    <span class="m">66</span>.0    CDS YPO_RS02340<span class="p">|</span>YPO_RS02340 EscV/YscV/HrcV family <span class="nb">type</span> III secretion system <span class="nb">export</span> apparatus protein    insertion   <span class="m">1</span>   NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+<span class="m">552919</span>  TGGGGGGG    TGGGGGGGG   <span class="m">93</span>  <span class="m">0</span>   <span class="m">71</span>  <span class="m">1</span>.0 <span class="m">122</span>.0   CDS YPO_RS03585<span class="p">|</span>tssM    <span class="nb">type</span> VI secretion system membrane subunit TssM  insertion   <span class="m">1</span>   NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+<span class="m">581519</span>  GTTCAATTCAATTCAAT   GTTCAATTCAATTCAATTCAAT  <span class="m">31</span>  <span class="m">0</span>   <span class="m">9</span>   <span class="m">1</span>.0 <span class="m">228</span>.0   intergenic  .   .   insertion   <span class="m">5</span>   NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+<span class="m">747924</span>  AGGGGGGGG   AGGGGGGGGG  <span class="m">41</span>  <span class="m">1</span>   <span class="m">26</span>  <span class="m">0</span>.96    <span class="m">71</span>.0    CDS YPO_RS04395<span class="p">|</span>YPO_RS04395 pseudopilin insertion   <span class="m">1</span>   NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+<span class="m">813977</span>  GC  GCCTGGCCATC <span class="m">54</span>  <span class="m">0</span>   <span class="m">10</span>  <span class="m">1</span>.0 <span class="m">228</span>.0   CDS YPO_RS04755<span class="p">|</span>YPO_RS04755 DASS family sodium-coupled anion symporter  insertion   <span class="m">9</span>   NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+</pre></div>
+</div>
+<p>for the case of the position 266466 for example</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">266466</span>  AGGGGGGGG   AGGGGGGGGG  <span class="m">40</span>  <span class="m">1</span>   <span class="m">25</span>  <span class="m">0</span>.96    <span class="m">66</span>.0    CDS YPO_RS02340<span class="p">|</span>YPO_RS02340 EscV/YscV/HrcV family <span class="nb">type</span> III secretion system <span class="nb">export</span> apparatus protein    insertion   <span class="m">1</span>   NC_003143.1: Yersinia pestis CO92, <span class="nb">complete</span> genome <span class="m">4653728</span> bp
+</pre></div>
+</div>
+<p>The different columns are:</p>
+<ol class="arabic simple">
+<li><p>Coordinates (266466)</p></li>
+<li><p>Reference (AGGGGGGGG)</p></li>
+<li><p>Sample (AGGGGGGGGG)</p></li>
+<li><p>Number of total reads (40)</p></li>
+<li><p>Number of reads with reference sequence (1)</p></li>
+<li><p>Number of reads with new sequence (25)</p></li>
+<li><p>Ratio (0.96)</p></li>
+<li><p>Quality score (66.0)</p></li>
+<li><p>Location (CDS)</p></li>
+<li><p>Gene or intergenic (YPO_RS02340|YPO_RS02340)</p></li>
+<li><p>Gene product (EscV/YscV/HrcV family type III secretion system export apparatus protein)</p></li>
+<li><p>Type of indel (insertion)</p></li>
+<li><p>Number of nucleotide (1)</p></li>
+<li><p>Sequence name (NC_003143.1: Yersinia pestis CO92, complete genome 4653728 bp)</p></li>
+</ol>
+<p>While snpToolkit annotate indels, it is important to be careful and check any indels you are interested in before to elaborate any hypothesis and conclusion.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">snpToolkit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Amine Namouchi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/4_The_annotate_command.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
