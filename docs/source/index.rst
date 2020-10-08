@@ -1,8 +1,3 @@
-#############
-snpToolkit
-#############
-
-
 .. image:: index/snpToolkit_LOGO.png
    :target: index/snpToolkit_LOGO.png
    :alt: index/snpToolkit_LOGO.png
