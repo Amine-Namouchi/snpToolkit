@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The explore command &#8212; snpToolkit  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="the-explore-command">
+<h1>The explore command<a class="headerlink" href="#the-explore-command" title="Permalink to this headline">¶</a></h1>
+<p>Done: Yes</p>
+</div>
+<div class="section" id="id1">
+<h1>The explore command<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>snptoolkit explore -h
+usage: snptoolkit explore <span class="o">[</span>-h<span class="o">]</span> -i IDENTIFIER
+
+optional arguments:
+  -h, --help     show this <span class="nb">help</span> message and <span class="nb">exit</span>
+
+snpToolkit explore required options:
+  -i IDENTIFIER  Provide the input vcf files
+</pre></div>
+</div>
+<p>This command allows user to explore the SNPs on each of their vcf files.</p>
+<p>The option -i  allows to specify a common identifier in the vcf files names. If you want to explore all VCF files in a folder, you can use vcf  as identifier as it is present in all vcf file names (usually filename.vcf.gz). On the contrary, if you have added in the filenames of your vcf files, for example, the years of isolation of each sample, you can use the year you want as identifier.</p>
+<p>when you run the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit explore -i vcf
+<span class="o">[</span>TIME<span class="o">][</span>INFO<span class="o">]</span> <span class="o">[</span>snpToolkit is extracting your data and creating the different plots...<span class="o">]</span>
+progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">#########################################################################| 9/9 [00:00&lt;00:00, 83.75it/s]</span>
+Dash is running on http://127.0.0.1:8050/
+
+ * Serving Flask app <span class="s2">&quot;explore_snpToolkit&quot;</span> <span class="o">(</span>lazy loading<span class="o">)</span>
+ * Environment: production
+ * Running on http://127.0.0.1:8050/ <span class="o">(</span>Press CTRL+C to quit<span class="o">)</span>
+</pre></div>
+</div>
+<p>snptoolkit will analyze all raw data on each VCF file in terms of SNPs and starts a web application that you access using the link mentioned above <a class="reference external" href="http://127.0.0.1:8050">http://127.0.0.1:8050</a>. For this example of 10 vcf files, it took less than a second to analyze all files. Figure 1 shows a screenshot of the generated dashboard to explore your data.</p>
+<a class="reference external image-reference" href="The%20explore%20command%20662de3f289d748408bbd871ff3f41ed7/Figure1.png"><img alt="The%20explore%20command%20662de3f289d748408bbd871ff3f41ed7/Figure1.png" src="The%20explore%20command%20662de3f289d748408bbd871ff3f41ed7/Figure1.png" /></a>
+<p><strong>Figure1</strong></p>
+<p>For sample 5 for example, we can see that the total number of SNPs in the chromosome NC_003143.1 is 399 SNPs. This is the total raw number. Lets detail each column of the first table:</p>
+<ul class="simple">
+<li><p>If we apply just the depth filter (-d) when using the option annotate (see below), only 10 SNPs will be excluded as they have a coverage less than 3.</p></li>
+<li><p>If we consider 20 as a cutoff for the quality of each SNPs, the number drop to 356 SNPs</p></li>
+<li><p>If we only consider those that have a ratio (nb reads with mutated allele/total number of reads on that position) ≥ 0.9, the number of SNPs drops to 230.</p></li>
+<li><p>If all filters are used: depth ≥3, QUAL ≥20 and ratio≥0.9, the number of filtered SNPs will be equal to 215.</p></li>
+</ul>
+<p>For the case of <em>Yersinia pestis,</em> there are 3 plasmids. For sample 5, there are SNPs on plasmid NC_003134.1 and NC_003131.1</p>
+<p>The first plot in Figure1 shows the distribution of all SNPs based on Ratio (x axis) and Depth (y axis). The size of each circle is proportional to the quality of each SNP. The second plot complement the first plot as it give you an idea about the proportion of SNPs for the chromosome and each of the plasmids. For the chromosome NC_004143.1, we can see that there is a small proportion of SNPs located between 0.2 and 0.4, but most of the SNPs has a high ratio ≥ 0.9.</p>
+<p>To hide any of the data presented on each plot, you just need to select the name that you want.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">snpToolkit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Amine Namouchi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/3_The explore_command.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

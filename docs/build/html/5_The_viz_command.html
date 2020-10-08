@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. The viz command &mdash; snpToolkit  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="4. The annotate command" href="4_The_annotate_command.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> snpToolkit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_How_to_Install.html">1. How to Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_snpToolkit_menu.html">2. snpToolkit menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_The_explore_command.html">3. The explore command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_The_annotate_command.html">4. The annotate command</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. The viz command</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">snpToolkit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">5. </span>The viz command</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/5_The_viz_command.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-viz-command">
+<h1><span class="section-number">5. </span>The viz command<a class="headerlink" href="#the-viz-command" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit viz -h
+usage: snptoolkit viz <span class="o">[</span>-h<span class="o">]</span> --dir DIRECTORY
+
+optional arguments:
+  -h, --help       show this <span class="nb">help</span> message and <span class="nb">exit</span>
+
+snpToolkit viz required options:
+  --dir DIRECTORY  provide the path of the directory containing snptoolkit SNPs output files
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> ── snpToolkit_SNPs_output_...
+    ├── sample3_snpToolkit_SNPs.txt
+    ├── sample9_snpToolkit_SNPs.txt
+    ├── sample10_snpToolkit_SNPs.txt
+    ├── sample1_snpToolkit_SNPs.txt
+    ├── sample2_snpToolkit_SNPs.txt
+    ├── sample4_snpToolkit_SNPs.txt
+    ├── sample5_snpToolkit_SNPs.txt
+    ├── sample6_snpToolkit_SNPs.txt
+    ├── sample7_snpToolkit_SNPs.txt
+    └── sample8_snpToolkit_SNPs.txt
+
+$ snptoolkit viz --dir snpToolkit_SNPs_output_..
+Dash is running on http://127.0.0.1:8050/
+
+ * Serving Flask app <span class="s2">&quot;plot_snpToolkit_output&quot;</span> <span class="o">(</span>lazy loading<span class="o">)</span>
+ * Environment: production
+ * Debug mode: off
+ * Running on http://127.0.0.1:8050/ <span class="o">(</span>Press CTRL+C to quit<span class="o">)</span>
+</pre></div>
+</div>
+<p>To visualize all snpToolkit outputs,  just access the url <a class="reference external" href="http://127.0.0.1:8050/">http://127.0.0.1:8050/</a>.</p>
+<a class="reference external image-reference" href="5_The_viz_command/Figure2.png"><img alt="5_The_viz_command/Figure2.png" src="_images/Figure2.png" /></a>
+<p>The first time, you will see one sample selected, in this case sample10, and nothing in the plot and table below. Before to see anything you will need to select for which sequence you want to display the result. For sample10, SNPs where found in the chromosome of <em>Yersinis pestis</em> NC_003143.1 and two plasmids: NC_003131.1 and NC_003134.1</p>
+<a class="reference external image-reference" href="5_The_viz_command/Figure3.png"><img alt="5_The_viz_command/Figure3.png" src="_images/Figure3.png" /></a>
+<p>lets select the chromosome NC_003143.1</p>
+<a class="reference external image-reference" href="5_The_viz_command/Figure4.png"><img alt="5_The_viz_command/Figure4.png" src="_images/Figure4.png" /></a>
+<p>The plot shows the genomic distribution of all SNPs according to depth. By default, all SNPs are shown but you can select to visualize only Non-synonymous (orange), Synonymous (blue) and intergenic SNPs (grey). The table below the plot shows all relevant information retrieved from snptoolkit output file for each sample.</p>
+<p>It is possible to filter the table using keywords on each column. In the example below, I used the keyword “transporter” in the column Product.</p>
+<a class="reference external image-reference" href="5_The_viz_command/Figure5.png"><img alt="5_The_viz_command/Figure5.png" src="_images/Figure5.png" /></a>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="4_The_annotate_command.html" class="btn btn-neutral float-left" title="4. The annotate command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Amine Namouchi
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
