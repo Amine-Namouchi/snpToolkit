@@ -35,7 +35,7 @@ extensions = [
 ]
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'index
 
 # source_suffix = ['.rst', '.md']
 source_suffix = '.rst'
