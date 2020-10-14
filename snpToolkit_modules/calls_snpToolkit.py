@@ -324,7 +324,7 @@ def combine(options):
 
         else:
             distribution_result = snp_distribution_missing(
-                options.location, options.ratio, options.snps, polymorphic_sites, snpToolkitFiles, options.bamFolder, BamFilesToInclude, options.depth, regions_to_exclude)
+                options.location, options.ratio, options.snps, polymorphic_sites, snpToolkitFiles, options.bamFolder, BamFilesToInclude, options.cutoff, regions_to_exclude)
 
         logger.info(
             'Creating ' + choices[options.snps] + '_polymorphic_sites.txt')

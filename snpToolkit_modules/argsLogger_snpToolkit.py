@@ -95,12 +95,12 @@ def get_options():
         '-r', required=False, type=float, dest='ratio', default=0.01, help='SNP ratio')
 
     AdditonalOptions3.add_argument('-d', required=False, type=int, dest='depth',
-                                   default=0, help='depth cutoff for cheking missing data')
+                                   default=0, help='depth cutoff for polymorphic sites')
 
     AdditonalOptions3.add_argument('-m', required=False, type=int, dest='marging',
                                    default=0, help='low marging for depth') 
 
-    AdditonalOptions3.add_argument('-c', required=False, type=int, dest='depth',
+    AdditonalOptions3.add_argument('-c', required=False, type=int, dest='cutoff',
                                    default=2, help='depth cutoff for cheking missing data')
 
     AdditonalOptions3.add_argument('--bam', required=False, type=str,

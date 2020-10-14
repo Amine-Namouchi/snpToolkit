@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 import pysam
 from tqdm import tqdm
-import numba
+
 
 
 
