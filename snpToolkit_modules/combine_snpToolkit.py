@@ -24,7 +24,7 @@ from pathlib import Path
 import pysam
 from tqdm import tqdm
 import numba
-from numba import jit
+
 
 
 class CheckCoverage (object):

@@ -1,0 +1,7 @@
+pysam
+pandas
+tqdm
+coloredlogs
+Biopython
+dash
+plotly

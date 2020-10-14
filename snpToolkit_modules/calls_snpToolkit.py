@@ -287,7 +287,7 @@ def combine(options):
                 for l in f.readlines():
                     if l[:2] != '##':
                         content = l.strip().split('\t')
-                        if float(content[6]) >= float(options.ratio):
+                        if float(content[6]) >= float(options.ratio) and float(content[3])>=int(options.depth)-int(options.marging):
                             snp = [int(content[0])] + \
                                 content[1:3] + content[8:-1]
                             if snp not in polymorphic_sites:

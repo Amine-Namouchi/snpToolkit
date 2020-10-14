@@ -86,7 +86,7 @@ def get_options():
         'snpToolkit combine required options')
 
     requiredOptions3.add_argument('--location', required=True, type=str, dest='location',
-                                  help='provide for example the name of the chromosome or plamid you want to create fasta alignemnt for')
+                                  help='provide for example the name of the chromosome or plasmid you want to create fasta alignemnt for')
 
     AdditonalOptions3 = combine.add_argument_group(
         'snpToolkit additional options')
@@ -96,6 +96,12 @@ def get_options():
 
     AdditonalOptions3.add_argument('-d', required=False, type=int, dest='depth',
                                    default=0, help='depth cutoff for cheking missing data')
+
+    AdditonalOptions3.add_argument('-m', required=False, type=int, dest='marging',
+                                   default=0, help='low marging for depth') 
+
+    AdditonalOptions3.add_argument('-c', required=False, type=int, dest='depth',
+                                   default=2, help='depth cutoff for cheking missing data')
 
     AdditonalOptions3.add_argument('--bam', required=False, type=str,
                                    dest='bamFolder', help='path to the folder containing the bam files')
