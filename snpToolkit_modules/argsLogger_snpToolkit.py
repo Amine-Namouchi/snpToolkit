@@ -94,17 +94,8 @@ def get_options():
     AdditonalOptions3.add_argument(
         '-r', required=False, type=float, dest='ratio', default=0.01, help='SNP ratio')
 
-    AdditonalOptions3.add_argument('-d', required=False, type=int, dest='depth',
-                                   default=0, help='depth cutoff for polymorphic sites')
-
-    AdditonalOptions3.add_argument('-m', required=False, type=int, dest='marging',
-                                   default=0, help='low marging for depth') 
-
-    AdditonalOptions3.add_argument('-c', required=False, type=int, dest='cutoff',
-                                   default=2, help='depth cutoff for cheking missing data')
-
     AdditonalOptions3.add_argument('--bam', required=False, type=str,
-                                   dest='bamFolder', help='path to the folder containing the bam files')
+                                   dest='bamFolder', nargs=3, help='depth, ratio and the path to the folder containing the bam files. eg. 3 0.9 path')
 
     AdditonalOptions3.add_argument('--snps', required=False, type=str, dest='snps', default='all', choices=['ns', 's', 'all', 'inter'],
                                    help='Specify if you want to concatenate all SNPs or just synonymous (s), non-synonymous (ns) or intergenic (inter) SNPs. default [all]')

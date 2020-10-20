@@ -249,14 +249,14 @@ def combine(options):
             sys.exit(0)
 
     if options.bamFolder != None:
-        BamFilesToInclude = checksnpToolkitBam(options.bamFolder)
+        BamFilesToInclude = checksnpToolkitBam(options.bamFolder[2])
 
         if len(BamFilesToInclude) == 0:
             logger.error('None of the bam files names in the folder {} correspond to any of the snpToolkit outputs'.format(
-                options.bamFolder))
+                options.bamFolder[2]))
             sys.exit(0)
         else:
-            BamBai = checkBamindex(options.bamFolder)
+            BamBai = checkBamindex(options.bamFolder[2])
             if len(BamBai) > 0:
                 logger.error('index file missing for: \n' + '\n'.join(BamBai))
                 sys.exit(0)
@@ -287,7 +287,8 @@ def combine(options):
                 for l in f.readlines():
                     if l[:2] != '##':
                         content = l.strip().split('\t')
-                        if float(content[6]) >= float(options.ratio) and float(content[3])>=int(options.depth)-int(options.marging):
+  
+                        if float(content[6]) >= float(options.ratio):
                             snp = [int(content[0])] + \
                                 content[1:3] + content[8:-1]
                             if snp not in polymorphic_sites:
@@ -323,8 +324,9 @@ def combine(options):
                 polymorphic_sites, snpToolkitFiles, regions_to_exclude)
 
         else:
+            
             distribution_result = snp_distribution_missing(
-                options.location, options.ratio, options.snps, polymorphic_sites, snpToolkitFiles, options.bamFolder, BamFilesToInclude, options.cutoff, regions_to_exclude)
+                options.location, options.ratio, options.snps, polymorphic_sites, snpToolkitFiles, options.bamFolder[2], BamFilesToInclude, options.bamFolder[0],  options.bamFolder[1],regions_to_exclude)
 
         logger.info(
             'Creating ' + choices[options.snps] + '_polymorphic_sites.txt')
@@ -346,6 +348,7 @@ def combine(options):
         logger.info('Creating ' + choices[options.snps] + '_alignment.fasta')
         outputfile2 = open(choices[options.snps] + '_alignment.fasta', 'w')
         outputfile2.write('>' + options.location + '\n' + reference + '\n')
+        
         reconstruct_fasta(outputfile2, 13, SampleNames, distribution_result)
 
 

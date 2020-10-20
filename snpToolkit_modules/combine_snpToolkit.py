@@ -99,22 +99,23 @@ def snp_distribution(list_snps, PathFiles, regions_to_exclude):
     for eachFile in PathFiles:
         with open(eachFile, 'r') as f:
             file_content = [[int(l.strip().split('\t')[0])] + l.strip().split(
-                '\t')[1:3] + l.strip().split('\t')[8:-1] for l in f if '##' not in l]
+                '\t')[1:3] + l.strip().split('\t')[8:-1]  for l in f if '##' not in l]
         extract_files_content[eachFile] = file_content
 
     for i in tqdm(range(len(filteredSNPs)), ascii=True, desc='progress'):
         eachSNP = filteredSNPs[i]
         searchSNP = eachSNP[:]
         for eachFile in extract_files_content.keys():
+
             if searchSNP in extract_files_content[eachFile]:
                 eachSNP.append('1')
             else:
                 eachSNP.append('0')
-   
+
     return filteredSNPs
 
 
-def snp_distribution_missing(location, ratio, snpType, list_snps, snpToolkitFiles, bamFolder, checkedBam, cutoff, regions_to_exclude):
+def snp_distribution_missing(location, ratio, snpType, list_snps, snpToolkitFiles, bamFolder, checkedBam, cutoff, checkRatio, regions_to_exclude):
 
     if len(regions_to_exclude) > 0:
         filteredSNPs = excludeCloseSNPs(list_snps, regions_to_exclude)
@@ -158,13 +159,13 @@ def snp_distribution_missing(location, ratio, snpType, list_snps, snpToolkitFile
                                     (list(eachCov)[0], NucleotidesOrder[k]))
                                 k += 1
                             NumberOfReads.sort(reverse=True)
-                            if depthATposition <= cutoff:
+                            if depthATposition < cutoff:
                                 eachSNP.append('?')
                             else:
                                 if NumberOfReads[0][1] == SNP:
-                                    if NumberOfReads[0][0] / depthATposition >= 0.6:
+                                    if NumberOfReads[0][0] / depthATposition >= checkRatio:
                                         eachSNP.append('1')
-                                    elif NumberOfReads[0][0] / depthATposition >= 0.4:
+                                    elif NumberOfReads[0][0] / depthATposition < checkRatio and NumberOfReads[0][0] / depthATposition >= 0.4 :
                                         eachSNP.append('?')
                                     else:
                                         eachSNP.append('0')
