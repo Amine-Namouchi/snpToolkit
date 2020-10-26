@@ -92,10 +92,10 @@ def get_options():
         'snpToolkit additional options')
 
     AdditonalOptions3.add_argument(
-        '-r', required=False, type=float, dest='ratio', default=0.01, help='SNP ratio')
+        '-r', required=False, type=float, dest='ratio', default=0.01, help='new versus reference allele ratio to filter SNPs from snpToolkit outputs. default [0]')
 
     AdditonalOptions3.add_argument('--bam', required=False, type=str,
-                                   dest='bamFolder', nargs=3, help='depth, ratio and the path to the folder containing the bam files. eg. 3 0.9 path')
+                                   dest='bamFilter', nargs=3, help='provide the depth, ratio and the path to the folder containing the bam files. eg. 3 0.9 path')
 
     AdditonalOptions3.add_argument('--snps', required=False, type=str, dest='snps', default='all', choices=['ns', 's', 'all', 'inter'],
                                    help='Specify if you want to concatenate all SNPs or just synonymous (s), non-synonymous (ns) or intergenic (inter) SNPs. default [all]')

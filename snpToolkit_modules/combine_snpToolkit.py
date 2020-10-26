@@ -60,10 +60,10 @@ def checkBamindex(PathBamFiles):
 
 def checksnpToolkitBam(PathBamFiles):
     snpToolkitFolderContent = Path.cwd()
-    BamFolderContent = Path(PathBamFiles)
+    bamFilterContent = Path(PathBamFiles)
     nameTObam = {}
     for name in snpToolkitFolderContent.glob('*_snpToolkit_SNPs.txt'):
-        for bam in list(BamFolderContent.glob('*.bam')):
+        for bam in list(bamFilterContent.glob('*.bam')):
             if bam.stem in name.stem:
                 nameTObam[name.name] = str(bam.parent) + '/' + bam.name
     return nameTObam
@@ -115,7 +115,7 @@ def snp_distribution(list_snps, PathFiles, regions_to_exclude):
     return filteredSNPs
 
 
-def snp_distribution_missing(location, ratio, snpType, list_snps, snpToolkitFiles, bamFolder, checkedBam, cutoff, checkRatio, regions_to_exclude):
+def snp_distribution_missing(location, ratio, snpType, list_snps, snpToolkitFiles, bamFilter, checkedBam, cutoff, checkRatio, regions_to_exclude):
 
     if len(regions_to_exclude) > 0:
         filteredSNPs = excludeCloseSNPs(list_snps, regions_to_exclude)
@@ -124,8 +124,8 @@ def snp_distribution_missing(location, ratio, snpType, list_snps, snpToolkitFile
 
     Reverse_nuc = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
     communFile = set(checkedBam.keys()).intersection(snpToolkitFiles)
-    if communFile == set(snpToolkitFiles):
-        FolderContent = Path(bamFolder)
+    if len(communFile) > 0:
+        FolderContent = Path(bamFilter)
         bamfiles = list(FolderContent.glob('*.bam'))
         for i in tqdm(range(len(filteredSNPs)), ascii=True, desc='progress'):
             eachSNP = filteredSNPs[i]
@@ -205,7 +205,7 @@ def snp_distribution_missing(location, ratio, snpType, list_snps, snpToolkitFile
                                             list_snps_only_bamFiles.append(
                                                 snp_coordinate)
 
-        FolderContent = Path(bamFolder)
+        FolderContent = Path(bamFilter)
         bamfiles = list(FolderContent.glob('*.bam'))
         for i in tqdm(range(len(filteredSNPs)), ascii=True, desc='progress'):
             Flag = False

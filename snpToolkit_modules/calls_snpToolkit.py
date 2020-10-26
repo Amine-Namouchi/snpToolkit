@@ -242,21 +242,21 @@ def combine(options):
     checkOutput = Path(choices[options.snps] + '_polymorphic_sites.txt')
     if checkOutput.exists():
         logger.warning(choices[options.snps] + '_polymorphic_sites.txt exists already and was created on ' + time.ctime(
-            checkOutput.stat().st_ctime) + '. This file will be overwritten. Press any key to continue or ctrl-c to exit!')
+            checkOutput.stat().st_ctime) + '. This file will be replaced. Press any key to continue or ctrl-c to exit!')
         try:
             input()
         except KeyboardInterrupt:
             sys.exit(0)
 
-    if options.bamFolder != None:
-        BamFilesToInclude = checksnpToolkitBam(options.bamFolder[2])
+    if options.bamFilter != None:
+        BamFilesToInclude = checksnpToolkitBam(options.bamFilter[2])
 
         if len(BamFilesToInclude) == 0:
             logger.error('None of the bam files names in the folder {} correspond to any of the snpToolkit outputs'.format(
-                options.bamFolder[2]))
+                options.bamFilter[2]))
             sys.exit(0)
         else:
-            BamBai = checkBamindex(options.bamFolder[2])
+            BamBai = checkBamindex(options.bamFilter[2])
             if len(BamBai) > 0:
                 logger.error('index file missing for: \n' + '\n'.join(BamBai))
                 sys.exit(0)
@@ -319,14 +319,14 @@ def combine(options):
         logger.info(choices[options.snps] +
                     ' polymorphic sites distribution. Please wait...')
 
-        if options.bamFolder == None:
+        if options.bamFilter == None:
             distribution_result = snp_distribution(
                 polymorphic_sites, snpToolkitFiles, regions_to_exclude)
 
         else:
             
             distribution_result = snp_distribution_missing(
-                options.location, options.ratio, options.snps, polymorphic_sites, snpToolkitFiles, options.bamFolder[2], BamFilesToInclude, options.bamFolder[0],  options.bamFolder[1],regions_to_exclude)
+                options.location, options.ratio, options.snps, polymorphic_sites, snpToolkitFiles, options.bamFilter[2], BamFilesToInclude, int(options.bamFilter[0]),  float(options.bamFilter[1]),regions_to_exclude)
 
         logger.info(
             'Creating ' + choices[options.snps] + '_polymorphic_sites.txt')

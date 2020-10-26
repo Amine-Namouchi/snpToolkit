@@ -89,6 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="3_The_explore_command.html">3. The explore command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_The_annotate_command.html">4. The annotate command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_The_viz_command.html">5. The viz command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_The_combine_command.html">6. The combine command</a></li>
 </ul>
 
             
@@ -157,25 +158,25 @@
   <a class="reference external image-reference" href="index/snpToolkit_LOGO.png"><img alt="index/snpToolkit_LOGO.png" src="_images/snpToolkit_LOGO.png" /></a>
 <p><strong>snpToolkit</strong> is a computational framework written in Python 3. snpToolkit allows users to:</p>
 <ol class="arabic simple">
-<li><p>Visualize the content of their VCF files</p></li>
+<li><p>Visualize the content of their VCF files.</p></li>
 <li><p>Filter SNPs based on multiple criteria:</p>
 <ul class="simple">
 <li><p>Coordinates of regions to exclude</p></li>
 <li><p>Depth of coverage</p></li>
 <li><p>Quality</p></li>
-<li><p>The ratio corresponding to the number of reads that have the mutated allele / total number of reads at that particular position</p></li>
+<li><p>The ratio corresponding to the number of reads that have the mutated allele / total number of reads at that particular position.</p></li>
 </ul>
 </li>
-<li><p>Annotate SNPs using genome annotation data provided within a genbank file</p></li>
-<li><p>Extract the distribution of all indels according to genome annotation</p></li>
-<li><p>Visualize and explore the annotated SNPs for all analyzed files</p></li>
+<li><p>Annotate SNPs using genome annotation data provided within a genbank file.</p></li>
+<li><p>Extract the distribution of all indels according to genome annotation.</p></li>
+<li><p>Visualize and explore the annotated SNPs for all analyzed files.</p></li>
 <li><p>Combine all snpToolkit output files generated using the annotate option and generate:</p>
 <ul class="simple">
 <li><p>A table storing the distribution of all SNPs on each sample</p></li>
 <li><p>A fasta file with all concatenated SNPs for each sample. such file can be used to build a phylogenetic tree.</p></li>
 </ul>
 </li>
-<li><p>Expand existent list of polymorphic sites when new SNPs output files are available</p></li>
+<li><p>Expand existent list of polymorphic sites when new SNPs output files are available.</p></li>
 </ol>
 <p>snpToolkit detects automatically if the input vcf files were generated using samtools mpileup, gatk HaplotypeCaller or freebayes. Vcf files could be gzipped or not.</p>
 <div class="section" id="contents">
@@ -192,6 +193,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="5_The_viz_command.html">5. The viz command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_The_combine_command.html">6. The combine command</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_The_combine_command.html#options">6.1. Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_The_combine_command.html#running-the-combine-command">6.2. Running the combine command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_The_combine_command.html#find-and-include-missing-data">6.3. Find and Include Missing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_The_combine_command.html#excluding-snps">6.4. Excluding SNPs</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
