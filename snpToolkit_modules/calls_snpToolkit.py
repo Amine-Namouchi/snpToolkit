@@ -328,61 +328,109 @@ def combine(options):
             distribution_result = snp_distribution_missing(
                 options.location, options.ratio, options.snps, polymorphic_sites, snpToolkitFiles, options.bamFilter[2], BamFilesToInclude, int(options.bamFilter[0]),  float(options.bamFilter[1]),regions_to_exclude)
 
-        logger.info(
-            'Creating ' + choices[options.snps] + '_polymorphic_sites.txt')
+
         outputfile1 = open(choices[options.snps] +
-                           '_polymorphic_sites.txt', 'w')
+                        '_polymorphic_sites.txt', 'w')
 
         for info in infos:
             outputfile1.write(info + '\n')
-
         reference = ''
         i = 1
         for eachSNP in distribution_result:
             reference = reference + eachSNP[1]
             outputfile1.write('snp{}'.format(i) + '\t' +
-                              '\t'.join([str(x) for x in eachSNP]) + '\n')
+                            '\t'.join([str(x) for x in eachSNP]) + '\n')
             i += 1
         outputfile1.close()
-
         logger.info('Creating ' + choices[options.snps] + '_alignment.fasta')
         outputfile2 = open(choices[options.snps] + '_alignment.fasta', 'w')
         outputfile2.write('>' + options.location + '\n' + reference + '\n')
-        
         reconstruct_fasta(outputfile2, 13, SampleNames, distribution_result)
+
+
+        if options.bamFilter!=None:
+            logger.info(
+            'Creating ' + choices[options.snps] + '_polymorphic_sites_clean.txt')
+            outputfile1 = open(choices[options.snps] + '_polymorphic_sites_clean.txt', 'w')
+
+            reference = ''
+            distribution_result_clean=[]
+            for eachSNP in distribution_result:
+                if '?' not in eachSNP:
+                    distribution_result_clean.append (eachSNP)
+
+            for info in infos:
+                if '##Number of polymorphic sites' in info:
+                    new_info = info.split('=')[0]+'= {}'.format(len(distribution_result_clean))
+                    outputfile1.write(new_info + '\n')
+                else:
+                    outputfile1.write(info + '\n')
+
+            j = 1
+            for i in tqdm(range(len(distribution_result_clean)), ascii=True, desc='progress'):
+                if '?' not in distribution_result_clean[i]:
+                    reference = reference + distribution_result_clean[i][1]
+                    outputfile1.write('snp{}'.format(j) + '\t' +
+                                    '\t'.join([str(x) for x in distribution_result_clean[i]]) + '\n')
+                    j+=1
+                
+
+
+            outputfile1.close()
+            logger.info('Creating ' + choices[options.snps] + '_alignment_clean.fasta')
+            outputfile2 = open(choices[options.snps] + '_alignment_clean.fasta', 'w')
+            outputfile2.write('>' + options.location + '\n' + reference + '\n')
+            reconstruct_fasta(outputfile2, 13, SampleNames, distribution_result_clean)
+
+
+
+
+
+
+
+        
+
+
 
 
 def expand(options):
     regions_to_exclude = []
+    position_to_exclude=[]
+    locations_to_exclude=[]
     if options.exclude is not None:
         import yaml
         if Path(options.exclude).exists():
             with open(options.exclude, 'r') as fh:
                 try:
                     regions_to_exclude = yaml.load(fh, Loader=yaml.FullLoader)
+                    position_to_exclude = regions_to_exclude['COORDINATES'].split(';')
+                    locations_to_exclude = regions_to_exclude['KEYWORDS'].split(';')
                 except yaml.YAMLError as exc:
                     logger.error(exc)
+                
         else:
             logger.error('The file ' + options.exclude + ' does not exist')
             sys.exit(0)
-    position_to_exclude = regions_to_exclude['COORDINATES'].split(';')
 
-    locations_to_exclude = regions_to_exclude['KEYWORDS'].split(';')
+
     FilesToAdd = [FILE for FILE in glob.glob(
         options.directory + '/*_snpToolkit_SNPs.txt')]
-    NewaDNA = [FILE for FILE in glob.glob(
-        options.directory + '/*.bam')]
+    # NewaDNA = [FILE for FILE in glob.glob(
+    #     options.directory + '/*.bam')]
     with open(options.polymorphic_sites, 'r') as input:
-        PolyMorphicSites = [l.strip().split('\t') for l in input if '##' not in l and l.strip().split('\t')[1] not in position_to_exclude and l.strip().split('\t')[4] not in  position_to_exclude]    
-    
+        if position_to_exclude !=[]:
+            PolyMorphicSites = [l.strip().split('\t') for l in input if '##' not in l and l.strip().split('\t')[1] not in position_to_exclude and l.strip().split('\t')[4] not in  position_to_exclude]    
+        else:
+            PolyMorphicSites = [l.strip().split('\t') for l in input if '##' not in l]  
+
     with open(options.polymorphic_sites, 'r') as input:
         info = [l.strip().split('\t') for l in input if '##ID' in l]
 
 
-    header =info[0][14:]
+    header =info[0][14:] 
 
-
-    aDNA = [FILE.split('.')[0].split('/')[-1] for FILE in glob.glob(options.bamfiles_directory + '/*.bam')]
+    if options.bamfiles_directory != None:
+        aDNA = [FILE.split('.')[0].split('/')[-1] for FILE in glob.glob(options.bamfiles_directory + '/*.bam')]
 
     for i in tqdm(range(len(FilesToAdd)), ascii=True, desc='progress'):
         with open(FilesToAdd[i], 'r') as input:

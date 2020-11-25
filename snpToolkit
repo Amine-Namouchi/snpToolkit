@@ -124,3 +124,7 @@ if __name__ == "__main__":
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 
+    else:
+        from calls_snpToolkit import expand
+        expand(args)
+
