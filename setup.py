@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(name='snptoolkit',
-      version='2.2.4',
+      version='2.2.5',
       description='SNPs filtering, annotation and combining',
       url='https://github.com/Amine-Namouchi/snpToolkit',
       author='Amine Namouchi',

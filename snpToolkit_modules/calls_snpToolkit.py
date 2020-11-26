@@ -17,7 +17,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.3'
+__version__ = '2.2.5'
 
 
 import glob
@@ -381,18 +381,7 @@ def combine(options):
             outputfile2 = open(choices[options.snps] + '_alignment_clean.fasta', 'w')
             outputfile2.write('>' + options.location + '\n' + reference + '\n')
             reconstruct_fasta(outputfile2, 13, SampleNames, distribution_result_clean)
-
-
-
-
-
-
-
-        
-
-
-
-
+            
 def expand(options):
     regions_to_exclude = []
     position_to_exclude=[]
