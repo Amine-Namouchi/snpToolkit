@@ -382,3 +382,152 @@ def combine(options):
             outputfile2.write('>' + options.location + '\n' + reference + '\n')
             reconstruct_fasta(outputfile2, 13, SampleNames, distribution_result_clean)
 
+
+
+def expand(options):
+    regions_to_exclude = []
+    position_to_exclude=[]
+    locations_to_exclude=[]
+    if options.exclude is not None:
+        import yaml
+        if Path(options.exclude).exists():
+            with open(options.exclude, 'r') as fh:
+                try:
+                    regions_to_exclude = yaml.load(fh, Loader=yaml.FullLoader)
+                    position_to_exclude = regions_to_exclude['COORDINATES'].split(';')
+                    locations_to_exclude = regions_to_exclude['KEYWORDS'].split(';')
+                except yaml.YAMLError as exc:
+                    logger.error(exc)
+                
+        else:
+            logger.error('The file ' + options.exclude + ' does not exist')
+            sys.exit(0)
+
+
+    FilesToAdd = [FILE for FILE in glob.glob(
+        options.directory + '/*_snpToolkit_SNPs.txt')]
+    # NewaDNA = [FILE for FILE in glob.glob(
+    #     options.directory + '/*.bam')]
+    with open(options.polymorphic_sites, 'r') as input:
+        if position_to_exclude !=[]:
+            PolyMorphicSites = [l.strip().split('\t') for l in input if '##' not in l and l.strip().split('\t')[1] not in position_to_exclude and l.strip().split('\t')[4] not in  position_to_exclude]    
+        else:
+            PolyMorphicSites = [l.strip().split('\t') for l in input if '##' not in l]  
+
+    with open(options.polymorphic_sites, 'r') as input:
+        info = [l.strip().split('\t') for l in input if '##ID' in l]
+
+
+    header =info[0][14:] 
+
+    if options.bamfiles_directory != None:
+        aDNA = [FILE.split('.')[0].split('/')[-1] for FILE in glob.glob(options.bamfiles_directory + '/*.bam')]
+
+    for i in tqdm(range(len(FilesToAdd)), ascii=True, desc='progress'):
+        with open(FilesToAdd[i], 'r') as input:
+            listSNPs=[l.strip().split('\t') for l in input if '##' not in l and options.location in l and l.strip().split('\t') [0] not in position_to_exclude and l.strip().split('\t') [8] not in locations_to_exclude ]
+
+        for snp in PolyMorphicSites:
+            if  snp[1] in [s[0] for s in listSNPs ]:
+                snp.append ('1')
+            else:
+                bamFile = pysam.AlignmentFile(FilesToAdd[i].split('_snpToolkit')[0]+'.bam')
+    
+                try:
+                    depthATposition = 0
+                    # bamFile.count_coverage() return four array.arrays of the same length in order A C G T
+                    NucleotidesOrder = 'ACGT'
+                    NumberOfReads = []
+                    k = 0
+                    for eachCov in bamFile.count_coverage(options.location, int(snp[1])-1, int(snp[1])):
+                        depthATposition = depthATposition + \
+                            list(eachCov)[0]
+                        NumberOfReads.append(
+                            (list(eachCov)[0], NucleotidesOrder[k]))
+                        k += 1
+                    NumberOfReads.sort(reverse=True)
+                    if depthATposition < int(options.cutoff):
+                        snp.append('?')
+                    else:
+                        snp.append('0')
+                except ValueError as e:
+                    logging.error(
+                        'Please use samtools view -H on this bam file to check the exact name.')
+        done =[]
+        bamfiles_list = list(glob.glob(options.bamfiles_directory+'*.bam'))
+        for snp in listSNPs:          
+            if snp[0] not in done:
+                
+                if snp[0] not in  [s[1] for s in PolyMorphicSites]:
+                    distribution=[]
+                    
+                    
+                    for x in range (len(header)):
+                        flag = False
+                        for file in bamfiles_list:
+                            if header[x] in file:
+                                bamFile = pysam.AlignmentFile(file)
+                                flag = True
+                                
+                                try:
+                                    depthATposition = 0
+                                    # bamFile.count_coverage() return four array.arrays of the same length in order A C G T
+                                    NucleotidesOrder = 'ACGT'
+                                    NumberOfReads = []
+                                    k = 0
+                                    for eachCov in bamFile.count_coverage(options.location, int(snp[0])-1, int(snp[0])):
+    
+                                        depthATposition = depthATposition + list(eachCov)[0]
+                                        NumberOfReads.append((list(eachCov)[0], NucleotidesOrder[k]))
+                                        k += 1
+                                    NumberOfReads.sort(reverse=True)
+                                    
+                                    if depthATposition < int(options.cutoff):
+                                        distribution.append('?')
+                                    else:
+                                        if NumberOfReads[0][1] == snp[1]:
+                                            distribution.append('0')
+                                        else:
+                                            distribution.append('1')
+                                except ValueError as e:
+                                    logging.error(
+                                        'Please use samtools view -H on this bam file to check the exact name.')
+                        if flag == False:
+                            distribution.append ('0')
+                    distribution.append ('1')
+                    PolyMorphicSites.append (['SNP']+snp[:3]+snp[8:18]+distribution)
+            done.append (snp[0])
+                                    
+        
+        header.append(FilesToAdd[i].split('_snpToolkit_')[0].split('/')[-1])
+    #TODO:add header for polymorphic sites file
+    header_info="##ID,Coordinates,REF,SNP,Location,Product,Orientation,NucPosition,REF-codon,NEW-codon,REF-AA,NEW-AA,ProPostion,Type"
+    with open (options.output+'-polymorphic_sites.txt', 'w') as snpoutput:
+        snpoutput.write('\t'.join(header_info.split(',')+header)+'\n')
+        for snp in PolyMorphicSites:
+            snpoutput.write('\t'.join(snp)+'\n')
+        
+
+
+
+    with open(options.output+'-reconstracted.fasta', 'w') as fastaoutput:
+        reference=''
+        for SNP in PolyMorphicSites:
+            reference = reference + SNP[2]
+        
+        fastaoutput.write('>'+options.location+'\n'+reference+'\n')
+        i = 0
+        while i < len(header):
+            
+            sequence = ''
+            for SNP in PolyMorphicSites:
+
+                if SNP[i+14] == '0':
+                    sequence = sequence + SNP[2]
+                elif SNP[i+14] == '1':
+                    sequence = sequence + SNP[3]
+                else:
+                    sequence = sequence + '?'
+
+            fastaoutput.write('>'+header[i]+'\n'+sequence+'\n')
+            i +=1
