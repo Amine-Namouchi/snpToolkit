@@ -7,13 +7,13 @@ The combine command
 .. code-block:: bash
 
    $ snptoolkit combine  -h
-   usage: snptoolkit combine [-h] --location LOCATION [-r RATIO] [--bam BAMFILTER BAMFILTER BAMFILTER] [--snps {ns,s,all,inter}] [-e EXCLUDE]
+   usage: snptoolkit combine [-h] --loc LOCATION [-r RATIO] [--bam BAMFILTER BAMFILTER BAMFILTER] [--snps {ns,s,all,inter}] [-e EXCLUDE]
 
    optional arguments:
      -h, --help            show this help message and exit
 
    snpToolkit combine required options:
-     --location LOCATION   provide for example the name of the chromosome or plasmid you want to create fasta alignemnt for
+     --loc LOCATION   provide for example the name of the chromosome or plasmid you want to create fasta alignemnt for
 
    snpToolkit additional options:
      -r RATIO              new versus reference allele ratio to filter SNPs from snpToolkit outputs. default [0]
@@ -31,7 +31,7 @@ Options
 ======================= ========
 Option                  Description
 ======================= ========
-**--location**          The name of chromosome or plasmid you want to concatenate the SNPs for. This can be found in the last coloumn of the output file of the annotate command
+**--loc**               The name of chromosome or plasmid you want to concatenate the SNPs for. This can be found in the last coloumn of the output file of the annotate command
 ======================= ========
 
 Several options are additional: 
@@ -67,7 +67,7 @@ Running the combine command
 
 .. code-block:: bash
 
-   $ snptoolkit combine  --location NC_003143.1
+   $ snptoolkit combine  --loc NC_003143.1
    [09:33:38] [INFO] [Searching for polymorphic sites...]
    [09:33:38] [INFO] [SNPs polymorphic sites distribution. Please wait...]
    progress: 100%|##############################################################################| 490/490 [00:00<00:00, 20233.61it/s]
@@ -88,7 +88,7 @@ Now lets run the command above with the option -r 1
 
 .. code-block:: bash
 
-   $ snptoolkit combine  --location NC_003143.1 -r 1
+   $ snptoolkit combine  --loc NC_003143.1 -r 1
    [10:06:27] [WARNING] [SNPs_polymorphic_sites.txt exists already and was created on Thu Oct 22 09:44:43 2020. This file will be replaced. 
                                                Press any key to continue or ctrl-c to exit!]
    [10:06:28] [INFO] [Searching for polymorphic sites...]
@@ -107,7 +107,7 @@ The Polymorphic sites output SNPs_polymorphic_sites.txt is as follows:
 .. code-block:: bash
 
    ##snpToolkit=version
-   ##commandline= snptoolkit combine --location NC_003143.1 -r 1
+   ##commandline= snptoolkit combine --loc NC_003143.1 -r 1
    ##location=NC_003143.1
    ##Number of polymorphic sites= 470
    ##ID    Coordinates     REF     SNP     Location        Product Orientation     NucPosition     REF-codon       NEW-codon       REF-AA  NEW-AA  ProPostion      Type    sample10        sample9 sample8 sample7 sample6 sample5 sample4 sample2 sample3 sample1
@@ -172,7 +172,7 @@ Lets now suppose that we have two ancient DNA samples that we have analyzed and 
 
 .. code-block:: bash
 
-   snptoolkit combine -r 0.9 --location NC_003143.1 --bam 2 1.0 ../bam/
+   snptoolkit combine -r 0.9 --loc NC_003143.1 --bam 2 1.0 ../bam/
 
 As you can see, you need just to specify one addition option '- -bam' with three parameter 
 
@@ -184,9 +184,23 @@ As you can see, you need just to specify one addition option '- -bam' with three
 Parameter                Description
 =======================  ========
 2                        Minimum depth of coverage to consider. Here this depth is set to 2, which mean that at least 2 reads should be found 
-1.0                      Number of reads with new reads /  total number of reads ratio. For this example it is set to 1.0, which mean that the 2 reads should have the new allele
+1.0                      Number of reads with new allele /  total number of reads ratio. For this example it is set to 1.0, which mean that the 2 reads should have the new allele
 ../bam                   This is the path of the folder containing the bam files of all aDNA to be considered. The bam folder should also include the .bai files 
 =======================  ========
+
+.. note::
+   When using the --bam option, snptoolkit will create in total 4 output files:
+
+   * SNPs_polymorphic_sites.txt + SNPs_alignment.fasta
+   * SNPs_polymorphic_sites_clean.txt + SNPs_alignment.fasta
+
+   As described above, The first two files contains all SNPs found in all analysed samples including polymorphic sites where in some samples there is missing information indicated by a question mark.
+   The second two files are a "clean" version of the two files described above in the sence that they don't contain any position where missing information is reported.
+
+
+.. image:: 6_The_combine_command/Figure7.png
+   :target: 6_The_combine_command/Figure7.png
+   :alt: 6_The_combine_command/Figure7.png
 
 .. code-block:: bash
 
@@ -212,20 +226,25 @@ Now lets run the combine command on all snpToolkit output files generated using 
    ├── [ 16K ]  sampleX_snpToolkit_SNPs.txt
    ├── [ 41K ]  sample8_snpToolkit_SNPs.txt
 
-   $ snptoolkit combine -r 0.9 --location NC_003143.1 --bam 2 1.0 ../bam/
-   [10:43:57] [INFO] [Searching for polymorphic sites...]
-   [10:43:57] [INFO] [SNPs polymorphic sites distribution. Please wait...]
-   progress: 100%|#######################################################################| 505/505 [00:04<00:00, 118.34it/s]
-   [10:44:02] [INFO] [Creating SNPs_polymorphic_sites.txt]
-   [10:44:02] [INFO] [Creating SNPs_alignment.fasta]
-   progress: 100%|########################################################################| 12/12 [00:00<00:00, 8955.81it/s]
-   (snptoolkit)
-
-By adding the two aDNA samples, the number of polymorphic sites has increased to 505.  The new SNPs_polymorphic_sites.txt contains now the SNPs distribution for sampleX and sampleY
 
 .. code-block:: bash
 
-   ##commandline= snptoolkit combine -r 0.9 --location NC_003143.1 --bam 2 1.0 ../bam/
+   $ snptoolkit combine -r 0.9 --loc NC_003143.1 --bam 2 1.0 ../bam/
+   [10:45:48] [INFO] [Searching for polymorphic sites...]
+   [10:45:48] [INFO] [SNPs polymorphic sites distribution. Please wait...]
+   progress: 100%|############################################################################################################################################################################################| 505/505 [00:04<00:00, 112.91it/s]
+   [10:45:52] [INFO] [Creating SNPs_alignment.fasta]
+   progress: 100%|#############################################################################################################################################################################################| 12/12 [00:00<00:00, 8558.35it/s]
+   [10:45:52] [INFO] [Creating SNPs_polymorphic_sites_clean.txt]
+   progress: 100%|#########################################################################################################################################################################################| 375/375 [00:00<00:00, 183381.60it/s]
+   [10:45:52] [INFO] [Creating SNPs_alignment_clean.fasta]
+   progress: 100%|############################################################################################################################################################################################| 12/12 [00:00<00:00, 12738.96it/s]
+
+By adding the two aDNA samples, the number of polymorphic sites has increased to 505.  The new SNPs_polymorphic_sites.txt contains now the SNPs distribution for sampleX and sampleY. 
+
+.. code-block:: bash
+
+   ##commandline= snptoolkit combine -r 0.9 --loc NC_003143.1 --bam 2 1.0 ../bam/
    ##location=NC_003143.1
    ##Number of polymorphic sites= 505
    ##ID    Coordinates     REF     SNP     Location        Product Orientation     NucPosition     REF-codon       NEW-codon       REF-AA  NEW-AA  ProPostion      Type    sample10        sampleX sampleY sample9 sample8 sample7 sample6 sample5 sample4 sample2 sample3 sample1
@@ -246,12 +265,38 @@ For snp4, this SNP is considered as "?" as at position 18061 the criteria minimu
    ##ID    Coordinates     REF     SNP     Location        Product Orientation     NucPosition     REF-codon       NEW-codon       REF-AA  NEW-AA  ProPostion      Type    sample10        sampleX sampleY sample9 sample8 sample7 sample6 sample5 sample4 sample2 sample3 sample1
    snp4    18061   C       T       YPO_RS01090|YPO_RS01090 IS256 family transposase        +       156     AAC     AA[T]   N       N       52      Syn     0       ?       ?       0       1       1       1       1       1       0       0       0
 
-lets take a look now at the file SNPs_alignment.fasta:
+Lets take a look now at the file SNPs_alignment.fasta:
 
 
 .. image:: 6_The_combine_command/Figure6.png
    :target: 6_The_combine_command/Figure6.png
    :alt: 6_The_combine_command/Figure6.png
+
+
+The file SNPs_polymorphic_sites_clean.txt contains only 375 SNPs instead of 505 as 130 polymorphic sites contain missing information. 
+
+.. code-block:: bash
+
+   ##commandline= snptoolkit combine -r 0.9 --loc NC_003143.1 --bam 2 1.0 ../bam/
+   ##location=NC_003143.1
+   ##Number of polymorphic sites= 375
+   ##ID    Coordinates     REF     SNP     Location        Product Orientation     NucPosition     REF-codon       NEW-codon       REF-AA  NEW-AA  ProPostion      Type    sample10        sampleX sampleY sample9 sample8 sample7 sample6 sample5 sample4 sample2 sample3 sample1
+   snp1    82      C       A       intergenic      .       +       .       -       -       -       -       -       -       1       1       1       1       1       1       1       1       1       1       1       1
+   snp2    130     G       C       intergenic      .       +       .       -       -       -       -       -       -       1       1       1       1       1       1       1       1       1       1       1       1
+   snp3    855     G       A       YPO_RS01010|asnC        transcriptional regulator AsnC  -       411     ACC     AC[T]   T       T       137     Syn     0       0       0       0       0       0       1       1       1       0       0 0
+   snp4    21219   C       A       YPO_RS01110|YPO_RS01110 serine/threonine protein kinase +       428     GCC     G[A]C   A       D       143     NS      0       0       0       0       0       0       0       1       0       0       0 0
+   snp5    29368   G       T       YPO_RS01140|hemN        oxygen-independent coproporphyrinogen III oxidase       +       387     GTG     GT[T]   V       V       129     Syn     0       0       1       0       0       0       0       0 0       0       0       0
+   snp6    42303   C       T       YPO_RS01190|fabY        fatty acid biosynthesis protein FabY    +       897     GTC     GT[T]   V       V       299     Syn     0       0       0       0       0       0       0       0       0       0 1       0
+   snp7    61685   G       C       intergenic      .       +       64 bp from YPO_RS01280|YPO_RS01280      .       .       .       .       .       .       0       0       0       0       0       0       0       0       1       0       0 0
+   snp8    74539   C       T       YPO_RS01350|envC        murein hydrolase activator EnvC -       361     GCC     [A]CC   A       T       121     NS      1       1       1       1       1       1       1       1       1       1       1 1
+   snp9    76590   C       T       intergenic      .       +       .       -       -       -       -       -       -       0       0       0       0       0       0       0       0       0       0       1       0
+
+Lets take a look now at the file SNPs_alignment_clean.fasta that compared to SNPs_alignment.fasta does not contain polymorphic site with missing information.
+
+
+.. image:: 6_The_combine_command/Figure8.png
+   :target: 6_The_combine_command/Figure8.png
+   :alt: 6_The_combine_command/Figure8.png
 
 
 ----------------

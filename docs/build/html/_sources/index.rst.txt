@@ -10,6 +10,7 @@
 #. Visualize the content of their VCF files.
 #. Filter SNPs based on multiple criteria:
 
+   * Distance between SNPs
    * Coordinates of regions to exclude
    * Depth of coverage
    * Quality
@@ -19,7 +20,7 @@
 #. Annotate SNPs using genome annotation data provided within a genbank file.
 #. Extract the distribution of all indels according to genome annotation.
 #. Visualize and explore the annotated SNPs for all analyzed files.
-#. Combine all snpToolkit output files generated using the annotate option and generate:
+#. Combine all snpToolkit output files generated using the annotate option and produce:
 
    * A table storing the distribution of all SNPs on each sample
    * A fasta file with all concatenated SNPs for each sample. such file can be used to build a phylogenetic tree.
@@ -27,7 +28,7 @@
 
 #. Expand existent list of polymorphic sites when new SNPs output files are available.
 
-snpToolkit detects automatically if the input vcf files were generated using samtools mpileup, gatk HaplotypeCaller or freebayes. Vcf files could be gzipped or not.
+snpToolkit detects automatically if the input vcf files were generated using samtools mpileup, gatk HaplotypeCaller or freebayes. Vcf files can be in gzipped format or not.
 
 
 ********

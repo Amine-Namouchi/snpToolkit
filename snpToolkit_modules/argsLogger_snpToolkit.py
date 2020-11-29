@@ -24,7 +24,7 @@ import coloredlogs
 
 
 def get_options():
-    copyright = __licence__ + " licence | " + __author__ + " | " + __author_email__
+    copyright = __licence__ + " licence | " + __author__ + " | " + __author_email__ + " | snpToolkit version: " + __version__
 
     description = """
     snpToolkit can takes vcf files, as well as bam files (optional) as inputs. The vcf files could be generated using samtools/bcftools, gatk HaplotypeCaller or freeBayes.
@@ -34,7 +34,6 @@ def get_options():
         description=description, formatter_class=argparse.RawTextHelpFormatter, epilog=copyright)
 
     subparsers = parser.add_subparsers(help='commands', dest='command')
-
 
     explore = subparsers.add_parser(
         name='explore', help='Explore your vcf files before annotation', epilog=copyright)
@@ -110,26 +109,6 @@ def get_options():
     requiredOptions4 = viz.add_argument_group('snpToolkit viz required options')
     requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',
                                   help='provide the path of the directory containing snptoolkit SNPs output files')
-
-
-    expand = subparsers.add_parser(
-        name='expand', help='expand existent list of polymorphic sites when new SNP output files are availble', epilog=copyright)
-
-    requiredOptions4 = expand.add_argument_group('snpToolkit viz required options')
-    requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',
-                                  help='provide the path to the directory containing snptoolkit output files to be added')
-    requiredOptions4.add_argument('-p', required=True, type=str, dest='polymorphic_sites',
-                                help='provide the polymorphic sites file already generated')
-    requiredOptions4.add_argument('-o', required=True, type=str, dest='output',
-                                help='output')
-    requiredOptions4.add_argument('-l', required=True, type=str, dest='location',
-                                help='name of chromosome, plasmid, contig')
-    requiredOptions4.add_argument('--bam', required=False, type=str, dest='bamfiles_directory',
-                                help='bam files directory of already analysed anciant DNA')
-    requiredOptions4.add_argument('-c', required=False, type=str, dest='cutoff',
-                                help='cutoff  of coverage if bam file is provided ')
-    requiredOptions4.add_argument('-e', required=False, type=str, dest='exclude',
-                                help='exclude yaml ')
 
     return parser.parse_args()
 

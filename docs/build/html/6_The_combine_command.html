@@ -164,13 +164,13 @@
   <div class="section" id="the-combine-command">
 <h1><span class="section-number">6. </span>The combine command<a class="headerlink" href="#the-combine-command" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit combine  -h
-usage: snptoolkit combine <span class="o">[</span>-h<span class="o">]</span> --location LOCATION <span class="o">[</span>-r RATIO<span class="o">]</span> <span class="o">[</span>--bam BAMFILTER BAMFILTER BAMFILTER<span class="o">]</span> <span class="o">[</span>--snps <span class="o">{</span>ns,s,all,inter<span class="o">}]</span> <span class="o">[</span>-e EXCLUDE<span class="o">]</span>
+usage: snptoolkit combine <span class="o">[</span>-h<span class="o">]</span> --loc LOCATION <span class="o">[</span>-r RATIO<span class="o">]</span> <span class="o">[</span>--bam BAMFILTER BAMFILTER BAMFILTER<span class="o">]</span> <span class="o">[</span>--snps <span class="o">{</span>ns,s,all,inter<span class="o">}]</span> <span class="o">[</span>-e EXCLUDE<span class="o">]</span>
 
 optional arguments:
   -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
 
 snpToolkit combine required options:
-  --location LOCATION   provide <span class="k">for</span> example the name of the chromosome or plasmid you want to create fasta alignemnt <span class="k">for</span>
+  --loc LOCATION   provide <span class="k">for</span> example the name of the chromosome or plasmid you want to create fasta alignemnt <span class="k">for</span>
 
 snpToolkit additional options:
   -r RATIO              new versus reference allele ratio to filter SNPs from snpToolkit outputs. default <span class="o">[</span><span class="m">0</span><span class="o">]</span>
@@ -194,7 +194,7 @@ snpToolkit additional options:
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>–location</strong></p></td>
+<tr class="row-even"><td><p><strong>–loc</strong></p></td>
 <td><p>The name of chromosome or plasmid you want to concatenate the SNPs for. This can be found in the last coloumn of the output file of the annotate command</p></td>
 </tr>
 </tbody>
@@ -241,7 +241,7 @@ snpToolkit additional options:
 </div>
 <div class="section" id="running-the-combine-command">
 <h2><span class="section-number">6.2. </span>Running the combine command<a class="headerlink" href="#running-the-combine-command" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit combine  --location NC_003143.1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit combine  --loc NC_003143.1
 <span class="o">[</span><span class="m">09</span>:33:38<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>Searching <span class="k">for</span> polymorphic sites...<span class="o">]</span>
 <span class="o">[</span><span class="m">09</span>:33:38<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>SNPs polymorphic sites distribution. Please wait...<span class="o">]</span>
 progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">##############################################################################| 490/490 [00:00&lt;00:00, 20233.61it/s]</span>
@@ -258,7 +258,7 @@ progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">##
 <p>all annotated SNPs  will have at least a depth of 5 and a ratio of 0.9.</p>
 </div>
 <p>Now lets run the command above with the option -r 1</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit combine  --location NC_003143.1 -r <span class="m">1</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit combine  --loc NC_003143.1 -r <span class="m">1</span>
 <span class="o">[</span><span class="m">10</span>:06:27<span class="o">]</span> <span class="o">[</span>WARNING<span class="o">]</span> <span class="o">[</span>SNPs_polymorphic_sites.txt exists already and was created on Thu Oct <span class="m">22</span> <span class="m">09</span>:44:43 <span class="m">2020</span>. This file will be replaced.
                                             Press any key to <span class="k">continue</span> or ctrl-c to exit!<span class="o">]</span>
 <span class="o">[</span><span class="m">10</span>:06:28<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>Searching <span class="k">for</span> polymorphic sites...<span class="o">]</span>
@@ -273,7 +273,7 @@ progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">##
 <p>As we requested that for all SNPs, 100% of the reads must have the new allele, the number of polymorphic sites is now 470.</p>
 <p>The Polymorphic sites output SNPs_polymorphic_sites.txt is as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##snpToolkit=version</span>
-<span class="c1">##commandline= snptoolkit combine --location NC_003143.1 -r 1</span>
+<span class="c1">##commandline= snptoolkit combine --loc NC_003143.1 -r 1</span>
 <span class="c1">##location=NC_003143.1</span>
 <span class="c1">##Number of polymorphic sites= 470</span>
 <span class="c1">##ID    Coordinates     REF     SNP     Location        Product Orientation     NucPosition     REF-codon       NEW-codon       REF-AA  NEW-AA  ProPostion      Type    sample10        sample9 sample8 sample7 sample6 sample5 sample4 sample2 sample3 sample1</span>
@@ -366,7 +366,7 @@ snp10   <span class="m">90931</span>   T       A       YPO_RS01440<span class="p
 <div class="section" id="find-and-include-missing-data">
 <h2><span class="section-number">6.3. </span>Find and Include Missing data<a class="headerlink" href="#find-and-include-missing-data" title="Permalink to this headline">¶</a></h2>
 <p>Lets now suppose that we have two ancient DNA samples that we have analyzed and generated the corresponding vcf files. When working with aDNA, usually not 100% of your genome is recovered. When looking for the distribution of all polymorphic sites within these aDNA, it is important to know if an SNP was not identified because for that position the aDNA is similar to the reference or because the region is not covered at all. To be able to identify such position, users have to provide the bam files of all samples for whom  they want to account for missing data.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>snptoolkit combine -r <span class="m">0</span>.9 --location NC_003143.1 --bam <span class="m">2</span> <span class="m">1</span>.0 ../bam/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>snptoolkit combine -r <span class="m">0</span>.9 --loc NC_003143.1 --bam <span class="m">2</span> <span class="m">1</span>.0 ../bam/
 </pre></div>
 </div>
 <p>As you can see, you need just to specify one addition option ‘- -bam’ with three parameter</p>
@@ -388,13 +388,24 @@ snp10   <span class="m">90931</span>   T       A       YPO_RS01440<span class="p
 <td><p>Minimum depth of coverage to consider. Here this depth is set to 2, which mean that at least 2 reads should be found</p></td>
 </tr>
 <tr class="row-odd"><td><p>1.0</p></td>
-<td><p>Number of reads with new reads /  total number of reads ratio. For this example it is set to 1.0, which mean that the 2 reads should have the new allele</p></td>
+<td><p>Number of reads with new allele /  total number of reads ratio. For this example it is set to 1.0, which mean that the 2 reads should have the new allele</p></td>
 </tr>
 <tr class="row-even"><td><p>../bam</p></td>
 <td><p>This is the path of the folder containing the bam files of all aDNA to be considered. The bam folder should also include the .bai files</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using the –bam option, snptoolkit will create in total 4 output files:</p>
+<ul class="simple">
+<li><p>SNPs_polymorphic_sites.txt + SNPs_alignment.fasta</p></li>
+<li><p>SNPs_polymorphic_sites_clean.txt + SNPs_alignment.fasta</p></li>
+</ul>
+<p>As described above, The first two files contains all SNPs found in all analysed samples including polymorphic sites where in some samples there is missing information indicated by a question mark.
+The second two files are a “clean” version of the two files described above in the sence that they don’t contain any position where missing information is reported.</p>
+</div>
+<a class="reference external image-reference" href="6_The_combine_command/Figure7.png"><img alt="6_The_combine_command/Figure7.png" src="_images/Figure7.png" /></a>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>├── <span class="o">[</span> 19M <span class="o">]</span>  sampleY.bam
 ├── <span class="o">[</span> 33M <span class="o">]</span>  sampleX.bam
 ├── <span class="o">[</span> 14K <span class="o">]</span>  sampleX.bam.bai
@@ -414,19 +425,22 @@ snp10   <span class="m">90931</span>   T       A       YPO_RS01440<span class="p
 ├── <span class="o">[</span> 37K <span class="o">]</span>  sample7_snpToolkit_SNPs.txt
 ├── <span class="o">[</span> 16K <span class="o">]</span>  sampleX_snpToolkit_SNPs.txt
 ├── <span class="o">[</span> 41K <span class="o">]</span>  sample8_snpToolkit_SNPs.txt
-
-$ snptoolkit combine -r <span class="m">0</span>.9 --location NC_003143.1 --bam <span class="m">2</span> <span class="m">1</span>.0 ../bam/
-<span class="o">[</span><span class="m">10</span>:43:57<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>Searching <span class="k">for</span> polymorphic sites...<span class="o">]</span>
-<span class="o">[</span><span class="m">10</span>:43:57<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>SNPs polymorphic sites distribution. Please wait...<span class="o">]</span>
-progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">#######################################################################| 505/505 [00:04&lt;00:00, 118.34it/s]</span>
-<span class="o">[</span><span class="m">10</span>:44:02<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>Creating SNPs_polymorphic_sites.txt<span class="o">]</span>
-<span class="o">[</span><span class="m">10</span>:44:02<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>Creating SNPs_alignment.fasta<span class="o">]</span>
-progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">########################################################################| 12/12 [00:00&lt;00:00, 8955.81it/s]</span>
-<span class="o">(</span>snptoolkit<span class="o">)</span>
 </pre></div>
 </div>
-<p>By adding the two aDNA samples, the number of polymorphic sites has increased to 505.  The new SNPs_polymorphic_sites.txt contains now the SNPs distribution for sampleX and sampleY</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##commandline= snptoolkit combine -r 0.9 --location NC_003143.1 --bam 2 1.0 ../bam/</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit combine -r <span class="m">0</span>.9 --loc NC_003143.1 --bam <span class="m">2</span> <span class="m">1</span>.0 ../bam/
+<span class="o">[</span><span class="m">10</span>:45:48<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>Searching <span class="k">for</span> polymorphic sites...<span class="o">]</span>
+<span class="o">[</span><span class="m">10</span>:45:48<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>SNPs polymorphic sites distribution. Please wait...<span class="o">]</span>
+progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">############################################################################################################################################################################################| 505/505 [00:04&lt;00:00, 112.91it/s]</span>
+<span class="o">[</span><span class="m">10</span>:45:52<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>Creating SNPs_alignment.fasta<span class="o">]</span>
+progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">#############################################################################################################################################################################################| 12/12 [00:00&lt;00:00, 8558.35it/s]</span>
+<span class="o">[</span><span class="m">10</span>:45:52<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>Creating SNPs_polymorphic_sites_clean.txt<span class="o">]</span>
+progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">#########################################################################################################################################################################################| 375/375 [00:00&lt;00:00, 183381.60it/s]</span>
+<span class="o">[</span><span class="m">10</span>:45:52<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>Creating SNPs_alignment_clean.fasta<span class="o">]</span>
+progress: <span class="m">100</span>%<span class="p">|</span><span class="c1">############################################################################################################################################################################################| 12/12 [00:00&lt;00:00, 12738.96it/s]</span>
+</pre></div>
+</div>
+<p>By adding the two aDNA samples, the number of polymorphic sites has increased to 505.  The new SNPs_polymorphic_sites.txt contains now the SNPs distribution for sampleX and sampleY.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##commandline= snptoolkit combine -r 0.9 --loc NC_003143.1 --bam 2 1.0 ../bam/</span>
 <span class="c1">##location=NC_003143.1</span>
 <span class="c1">##Number of polymorphic sites= 505</span>
 <span class="c1">##ID    Coordinates     REF     SNP     Location        Product Orientation     NucPosition     REF-codon       NEW-codon       REF-AA  NEW-AA  ProPostion      Type    sample10        sampleX sampleY sample9 sample8 sample7 sample6 sample5 sample4 sample2 sample3 sample1</span>
@@ -446,8 +460,26 @@ snp9    <span class="m">74539</span>   C       T       YPO_RS01350<span class="p
 snp4    <span class="m">18061</span>   C       T       YPO_RS01090<span class="p">|</span>YPO_RS01090 IS256 family transposase        +       <span class="m">156</span>     AAC     AA<span class="o">[</span>T<span class="o">]</span>   N       N       <span class="m">52</span>      Syn     <span class="m">0</span>       ?       ?       <span class="m">0</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>
 </pre></div>
 </div>
-<p>lets take a look now at the file SNPs_alignment.fasta:</p>
+<p>Lets take a look now at the file SNPs_alignment.fasta:</p>
 <a class="reference external image-reference" href="6_The_combine_command/Figure6.png"><img alt="6_The_combine_command/Figure6.png" src="_images/Figure6.png" /></a>
+<p>The file SNPs_polymorphic_sites_clean.txt contains only 375 SNPs instead of 505 as 130 polymorphic sites contain missing information.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##commandline= snptoolkit combine -r 0.9 --loc NC_003143.1 --bam 2 1.0 ../bam/</span>
+<span class="c1">##location=NC_003143.1</span>
+<span class="c1">##Number of polymorphic sites= 375</span>
+<span class="c1">##ID    Coordinates     REF     SNP     Location        Product Orientation     NucPosition     REF-codon       NEW-codon       REF-AA  NEW-AA  ProPostion      Type    sample10        sampleX sampleY sample9 sample8 sample7 sample6 sample5 sample4 sample2 sample3 sample1</span>
+snp1    <span class="m">82</span>      C       A       intergenic      .       +       .       -       -       -       -       -       -       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>
+snp2    <span class="m">130</span>     G       C       intergenic      .       +       .       -       -       -       -       -       -       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>
+snp3    <span class="m">855</span>     G       A       YPO_RS01010<span class="p">|</span>asnC        transcriptional regulator AsnC  -       <span class="m">411</span>     ACC     AC<span class="o">[</span>T<span class="o">]</span>   T       T       <span class="m">137</span>     Syn     <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">0</span>       <span class="m">0</span> <span class="m">0</span>
+snp4    <span class="m">21219</span>   C       A       YPO_RS01110<span class="p">|</span>YPO_RS01110 serine/threonine protein kinase +       <span class="m">428</span>     GCC     G<span class="o">[</span>A<span class="o">]</span>C   A       D       <span class="m">143</span>     NS      <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">1</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span> <span class="m">0</span>
+snp5    <span class="m">29368</span>   G       T       YPO_RS01140<span class="p">|</span>hemN        oxygen-independent coproporphyrinogen III oxidase       +       <span class="m">387</span>     GTG     GT<span class="o">[</span>T<span class="o">]</span>   V       V       <span class="m">129</span>     Syn     <span class="m">0</span>       <span class="m">0</span>       <span class="m">1</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span> <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>
+snp6    <span class="m">42303</span>   C       T       YPO_RS01190<span class="p">|</span>fabY        fatty acid biosynthesis protein FabY    +       <span class="m">897</span>     GTC     GT<span class="o">[</span>T<span class="o">]</span>   V       V       <span class="m">299</span>     Syn     <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span> <span class="m">1</span>       <span class="m">0</span>
+snp7    <span class="m">61685</span>   G       C       intergenic      .       +       <span class="m">64</span> bp from YPO_RS01280<span class="p">|</span>YPO_RS01280      .       .       .       .       .       .       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">1</span>       <span class="m">0</span>       <span class="m">0</span> <span class="m">0</span>
+snp8    <span class="m">74539</span>   C       T       YPO_RS01350<span class="p">|</span>envC        murein hydrolase activator EnvC -       <span class="m">361</span>     GCC     <span class="o">[</span>A<span class="o">]</span>CC   A       T       <span class="m">121</span>     NS      <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span> <span class="m">1</span>
+snp9    <span class="m">76590</span>   C       T       intergenic      .       +       .       -       -       -       -       -       -       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">0</span>       <span class="m">1</span>       <span class="m">0</span>
+</pre></div>
+</div>
+<p>Lets take a look now at the file SNPs_alignment_clean.fasta that compared to SNPs_alignment.fasta does not contain polymorphic site with missing information.</p>
+<a class="reference external image-reference" href="6_The_combine_command/Figure8.png"><img alt="6_The_combine_command/Figure8.png" src="_images/Figure8.png" /></a>
 </div>
 <div class="section" id="excluding-snps">
 <h2><span class="section-number">6.4. </span>Excluding SNPs<a class="headerlink" href="#excluding-snps" title="Permalink to this headline">¶</a></h2>

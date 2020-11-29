@@ -90,6 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="3_The_explore_command.html">3. The explore command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_The_annotate_command.html">4. The annotate command</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_The_viz_command.html">5. The viz command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_The_combine_command.html">6. The combine command</a></li>
 </ul>
 
             
@@ -160,17 +161,17 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit -h
 usage: snptoolkit <span class="o">[</span>-h<span class="o">]</span> <span class="o">{</span>explore,annotate,combine,viz,expand<span class="o">}</span> ...
 
-    snpToolkit takes vcf files, as well as bam files <span class="o">(</span>optional<span class="o">)</span> as inputs. The vcf files could be generated using samtools/bcftools, gatk HaplotypeCaller or freeBayes.
-    Please visit https://github.com/Amine-Namouchi/snpToolkit <span class="k">for</span> more information.
+    snpToolkit can takes vcf files, as well as bam files <span class="o">(</span>optional<span class="o">)</span> as inputs. The vcf files could be generated using samtools/bcftools, gatk HaplotypeCaller or freeBayes.
+    Please visit https://snptoolkit.readthedocs.io/en/latest/index.html <span class="k">for</span> more information.
 
 positional arguments:
   <span class="o">{</span>explore,annotate,combine,viz,expand<span class="o">}</span>
                         commands
-    explore             explore your vcf files before annotation
+    explore             Explore your vcf files before annotation
     annotate            Annotate one or multiple vcf files
-    combine             combine snpToolkit output files in one alignment in fasta format
-    viz                 visualize snptoolkit output files
-    expand              expand existent list of polymorphic sites when new SNP output files are availble
+    combine             Combine snpToolkit output files in one alignment in fasta format
+    viz                 Visualize snptoolkit output files
+    expand              Expand existent list of polymorphic sites when new SNP output files are availble
 
 optional arguments:
   -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
