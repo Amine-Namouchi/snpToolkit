@@ -122,9 +122,15 @@ if __name__ == "__main__":
         combine(args)
     
     elif args.command == 'viz':
-        cmd = ['python',cwd+'/plot_snpToolkit_output.py','--dir', args.directory]
-        proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
-        proc.wait()
+        if args.directory!=None:
+            cmd = ['python',cwd+'/plot_snpToolkit_output.py','--dir', args.directory]
+            proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
+            proc.wait()
+        elif args.polymorphic_sites!=None:
+            cmd = ['python',cwd+'/plot_polySites_output.py','-p', args.polymorphic_sites]
+            proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
+            proc.wait()
+            
 
     else:
         from calls_snpToolkit import expand

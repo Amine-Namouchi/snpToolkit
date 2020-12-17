@@ -16,7 +16,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.5'
+__version__ = '2.2.6'
 
 import argparse
 import logging
@@ -107,8 +107,12 @@ def get_options():
         name='viz', help='visualize snptoolkit output files', epilog=copyright)
 
     requiredOptions4 = viz.add_argument_group('snpToolkit viz required options')
-    requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',
+    requiredOptions4.add_argument('--dir', required=False, type=str, dest='directory',
                                   help='provide the path of the directory containing snptoolkit SNPs output files')
+    requiredOptions4.add_argument('-p', required=False, type=str, dest='polymorphic_sites',
+                                  help='provide the path of the polymorphic sites you want to analyze')
+    requiredOptions4.add_argument('-conf', required=False, type=str, dest='config',
+                                  help='provide the path of the configuration file that contains the information to use for data visualization')
 
     expand = subparsers.add_parser(
         name='expand', help='expand existent list of polymorphic sites when new SNP output files are availble', epilog=copyright)

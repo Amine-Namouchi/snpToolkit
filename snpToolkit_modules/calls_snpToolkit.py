@@ -335,12 +335,23 @@ def combine(options):
         for info in infos:
             outputfile1.write(info + '\n')
         reference = ''
+        reference_NS_codons_Nuc = ''
+        reference_NS_codons_Pro = ''
         i = 1
         for eachSNP in distribution_result:
             reference = reference + eachSNP[1]
+            if eachSNP[12] == 'NS':
+                
+                reference_NS_codons_Nuc = reference_NS_codons_Nuc + eachSNP[7]
+                reference_NS_codons_Pro = reference_NS_codons_Pro + eachSNP[9]
+
+
             outputfile1.write('snp{}'.format(i) + '\t' +
                             '\t'.join([str(x) for x in eachSNP]) + '\n')
             i += 1
+
+        print (reference_NS_codons_Nuc)
+        print (reference_NS_codons_Pro)
         outputfile1.close()
         logger.info('Creating ' + choices[options.snps] + '_alignment.fasta')
         outputfile2 = open(choices[options.snps] + '_alignment.fasta', 'w')

@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(name='snptoolkit',
-      version='2.2.5',
+      version='2.2.6',
       description='SNPs filtering, annotation and combining',
       url='https://github.com/Amine-Namouchi/snpToolkit',
       author='Amine Namouchi',
@@ -18,5 +18,5 @@ setup(name='snptoolkit',
       ],
       keywords='SNPs filtering annotation variants calling',
       install_requires=['pysam', 'pandas', 'tqdm', 'coloredlogs', 'Biopython','dash','plotly'],
-      scripts=['snptoolkit','./snpToolkit_modules/annotate_snpToolkit.py','./snpToolkit_modules/annotate_snpToolkit.py','./snpToolkit_modules/calls_snpToolkit.py', './snpToolkit_modules/argsLogger_snpToolkit.py','./snpToolkit_modules/combine_snpToolkit.py','./snpToolkit_modules/expand_snpToolkit.py','./snpToolkit_modules/explore_snpToolkit.py','./snpToolkit_modules/plot_snptoolkit_output.py']
+      scripts=['snptoolkit','./snpToolkit_modules/plot_polySites_output.py','./snpToolkit_modules/annotate_snpToolkit.py','./snpToolkit_modules/annotate_snpToolkit.py','./snpToolkit_modules/calls_snpToolkit.py', './snpToolkit_modules/argsLogger_snpToolkit.py','./snpToolkit_modules/combine_snpToolkit.py','./snpToolkit_modules/explore_snpToolkit.py','./snpToolkit_modules/plot_snptoolkit_output.py']
       )
