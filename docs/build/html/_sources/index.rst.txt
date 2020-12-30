@@ -28,6 +28,8 @@
 
 #. Expand existent list of polymorphic sites when new SNPs output files are available.
 
+#. Analyse your data using two dimentionality reduction methods: PCA and UMAP.
+
 snpToolkit detects automatically if the input vcf files were generated using samtools mpileup, gatk HaplotypeCaller or freebayes. Vcf files can be in gzipped format or not.
 
 
