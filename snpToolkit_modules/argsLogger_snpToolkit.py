@@ -115,6 +115,7 @@ def get_options():
                                   help='provide the path of the configuration file that contains the information to use for data visualization')
 
 
+    return parser.parse_args()
 
 def setupLogger():
 
