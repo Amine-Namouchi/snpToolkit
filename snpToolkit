@@ -126,8 +126,12 @@ if __name__ == "__main__":
             cmd = ['python',cwd+'/plot_snpToolkit_output.py','--dir', args.directory]
             proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
             proc.wait()
-        elif args.polymorphic_sites!=None:
+        elif args.polymorphic_sites!=None and args.config==None:
             cmd = ['python',cwd+'/plot_polySites_output.py','-p', args.polymorphic_sites]
+            proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
+            proc.wait()
+        elif args.polymorphic_sites!=None and args.config!=None:
+            cmd = ['python',cwd+'/plot_polySites_output.py','-p', args.polymorphic_sites,'-conf',args.config]
             proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
             proc.wait()
             

@@ -62,6 +62,8 @@ header = ['##Coordinates', 'REF', 'SNP', 'Ref codon', 'SNP codon', 'Ref AA', 'SN
 app.layout = html.Div(
     [
         html.Div([
+        html.H1("snpToolkit",style={'textAlign': 'center'}),
+        html.H3("Visualization of snpToolkit annotated output file",style={'textAlign': 'center', 'color': '#5e5e5e'}),
         dcc.Dropdown(
             id='name-dropdown',
             options=snptoolkitInputs,

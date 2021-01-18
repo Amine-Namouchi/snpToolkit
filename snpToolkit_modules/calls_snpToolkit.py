@@ -350,8 +350,6 @@ def combine(options):
                             '\t'.join([str(x) for x in eachSNP]) + '\n')
             i += 1
 
-        print (reference_NS_codons_Nuc)
-        print (reference_NS_codons_Pro)
         outputfile1.close()
         logger.info('Creating ' + choices[options.snps] + '_alignment.fasta')
         outputfile2 = open(choices[options.snps] + '_alignment.fasta', 'w')

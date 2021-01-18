@@ -25,5 +25,6 @@ Please visit the full documentation at https://snptoolkit.readthedocs.io/en/late
 
 
 7. Expand existent list of polymorphic sites when new SNPs output files are available.
+8. Analyse your data using two dimentionality reduction methods: PCA and UMAP.
 
 snpToolkit detects automatically if the input vcf files were generated using samtools mpileup, gatk HaplotypeCaller or freebayes. Vcf files could be gzipped or not.
