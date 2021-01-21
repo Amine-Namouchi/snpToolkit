@@ -23,8 +23,6 @@ Please visit the full documentation at https://snptoolkit.readthedocs.io/en/late
    * A table storing the distribution of all SNPs on each sample
    * A fasta file with all concatenated SNPs for each sample. such file can be used to build a phylogenetic tree.
 
-
-7. Expand existent list of polymorphic sites when new SNPs output files are available.
-8. Analyse your data using two dimentionality reduction methods: PCA and UMAP.
+7. Analyse your data using two dimentionality reduction methods: PCA and UMAP.
 
 snpToolkit detects automatically if the input vcf files were generated using samtools mpileup, gatk HaplotypeCaller or freebayes. Vcf files could be gzipped or not.

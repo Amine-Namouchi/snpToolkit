@@ -16,7 +16,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.7'
+__version__ = '2.2.8'
 
 import argparse
 import logging
@@ -79,7 +79,7 @@ def get_options():
                                    help='Please provide a tab file with genomic regions to exclude in this format: region	start stop. region must correspond to the same name(s) of chromsome or plasmids as indicated in the genbank file')
 
     combine = subparsers.add_parser(
-        name='combine', help='Identify polymorphic sites and create distribution table and alignment file', epilog=copyright)
+        name='combine', help='Identify polymorphic sites and create distribution table and alignment file in fasta format', epilog=copyright)
 
     requiredOptions3 = combine.add_argument_group(
         'snpToolkit combine required options')

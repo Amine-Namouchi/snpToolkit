@@ -16,13 +16,9 @@ snpToolkit menu
                             commands
         explore             Explore your vcf files before annotation
         annotate            Annotate one or multiple vcf files
-        combine             Identify polymorphic sites and create distribution table and alignment file
+        combine             Identify polymorphic sites and create distribution table and alignment file in fasta format
         viz                 visualize snptoolkit output files
         analyse             analyse your SNPs data
 
     optional arguments:
       -h, --help            show this help message and exit
-
-
-   optional arguments:
-     -h, --help            show this help message and exit
