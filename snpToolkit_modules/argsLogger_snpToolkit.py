@@ -16,7 +16,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.6'
+__version__ = '2.2.7'
 
 import argparse
 import logging
@@ -109,28 +109,34 @@ def get_options():
     requiredOptions4 = viz.add_argument_group('snpToolkit viz required options')
     requiredOptions4.add_argument('--dir', required=False, type=str, dest='directory',
                                   help='provide the path of the directory containing snptoolkit SNPs output files')
-    requiredOptions4.add_argument('-p', required=False, type=str, dest='polymorphic_sites',
+
+
+    analyze = subparsers.add_parser(
+        name='analyse', help='analyse your SNPs data', epilog=copyright)
+    requiredOptions5 = analyze.add_argument_group('snpToolkit analyze required options')
+
+    requiredOptions5.add_argument('-p', required=True, type=str, dest='polymorphic_sites',
                                   help='provide the path of the polymorphic sites you want to analyze')
-    requiredOptions4.add_argument('-conf', required=False, type=str, dest='config',
+    requiredOptions5.add_argument('-c', required=False, type=str, dest='config',
                                   help='provide the path of the configuration file that contains the information to use for data visualization')
 
     expand = subparsers.add_parser(
         name='expand', help='expand existent list of polymorphic sites when new SNP output files are availble', epilog=copyright)
 
-    requiredOptions4 = expand.add_argument_group('snpToolkit viz required options')
-    requiredOptions4.add_argument('--dir', required=True, type=str, dest='directory',
+    requiredOptions6 = expand.add_argument_group('snpToolkit viz required options')
+    requiredOptions6.add_argument('--dir', required=True, type=str, dest='directory',
                                   help='provide the path to the directory containing snptoolkit output files to be added')
-    requiredOptions4.add_argument('-p', required=True, type=str, dest='polymorphic_sites',
+    requiredOptions6.add_argument('-p', required=True, type=str, dest='polymorphic_sites',
                                 help='provide the polymorphic sites file already generated')
-    requiredOptions4.add_argument('-o', required=True, type=str, dest='output',
+    requiredOptions6.add_argument('-o', required=True, type=str, dest='output',
                                 help='output')
-    requiredOptions4.add_argument('-l', required=True, type=str, dest='location',
+    requiredOptions6.add_argument('-l', required=True, type=str, dest='location',
                                 help='name of chromosome, plasmid, contig')
-    requiredOptions4.add_argument('--bam', required=False, type=str, dest='bamfiles_directory',
+    requiredOptions6.add_argument('--bam', required=False, type=str, dest='bamfiles_directory',
                                 help='bam files directory of already analysed anciant DNA')
-    requiredOptions4.add_argument('-c', required=False, type=str, dest='cutoff',
+    requiredOptions6.add_argument('-c', required=False, type=str, dest='cutoff',
                                 help='cutoff  of coverage if bam file is provided ')
-    requiredOptions4.add_argument('-e', required=False, type=str, dest='exclude',
+    requiredOptions6.add_argument('-e', required=False, type=str, dest='exclude',
                                 help='exclude yaml ')
     return parser.parse_args()
 
