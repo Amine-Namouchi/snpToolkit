@@ -24,3 +24,13 @@ Different python libraries will be installed:
 
 .. note::
    If already installed, use pip install snptoolkit --upgrade
+
+
+Install from source code:
+
+.. code-block:: bash
+
+   git clone https://github.com/Amine-Namouchi/snpToolkit
+   cd snpToolkit
+   pip install .
+

@@ -17,7 +17,7 @@ snpToolkit menu
        annotate            Annotate one or multiple vcf files
        combine             Combine snpToolkit output files in one alignment in fasta format
        viz                 Visualize snptoolkit output files
-       expand              Expand existent list of polymorphic sites when new SNP output files are availble
+
 
    optional arguments:
      -h, --help            show this help message and exit

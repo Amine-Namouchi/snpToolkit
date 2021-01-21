@@ -109,9 +109,15 @@ def get_options():
     requiredOptions4 = viz.add_argument_group('snpToolkit viz required options')
     requiredOptions4.add_argument('--dir', required=False, type=str, dest='directory',
                                   help='provide the path of the directory containing snptoolkit SNPs output files')
-    requiredOptions4.add_argument('-p', required=False, type=str, dest='polymorphic_sites',
+
+
+    analyze = subparsers.add_parser(
+        name='analyse', help='analyse your SNPs data', epilog=copyright)
+    requiredOptions5 = analyze.add_argument_group('snpToolkit analyze required options')
+
+    requiredOptions5.add_argument('-p', required=True, type=str, dest='polymorphic_sites',
                                   help='provide the path of the polymorphic sites you want to analyze')
-    requiredOptions4.add_argument('-conf', required=False, type=str, dest='config',
+    requiredOptions5.add_argument('-c', required=False, type=str, dest='config',
                                   help='provide the path of the configuration file that contains the information to use for data visualization')
 
 

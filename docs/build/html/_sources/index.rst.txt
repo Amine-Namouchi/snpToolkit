@@ -47,3 +47,4 @@ Contents
    4_The_annotate_command
    5_The_viz_command
    6_The_combine_command
+   7_The_analyse_command

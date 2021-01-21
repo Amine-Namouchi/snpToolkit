@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. The analyse command &mdash; snpToolkit  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="6. The combine command" href="6_The_combine_command.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> snpToolkit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_How_to_Install.html">1. How to Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_snpToolkit_menu.html">2. snpToolkit menu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_The_explore_command.html">3. The explore command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_The_annotate_command.html">4. The annotate command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_The_viz_command.html">5. The viz command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_The_combine_command.html">6. The combine command</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. The analyse command</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pca">7.1. PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#umap">7.2. UMAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#color-mapping">7.3. Color mapping</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">snpToolkit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">7. </span>The analyse command</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/7_The_analyse_command.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-analyse-command">
+<h1><span class="section-number">7. </span>The analyse command<a class="headerlink" href="#the-analyse-command" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>snptoolkit analyse -h
+usage: snptoolkit analyse <span class="o">[</span>-h<span class="o">]</span> -p POLYMORPHIC_SITES <span class="o">[</span>-c CONFIG<span class="o">]</span>
+
+optional arguments:
+-h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+
+snpToolkit analyze required options:
+-p POLYMORPHIC_SITES  provide the path of the polymorphic sites you want to analyze
+-c CONFIG             provide the path of the configuration file that contains the information to use <span class="k">for</span> data visualization
+</pre></div>
+</div>
+<p>The main goal of this analysis is to use two dimentionality reduction methods: PCA and UMAP to cluster all your samples based on the distibution of all identified polymorphic sites between them. Principal Component analysis (PCA) is a quite knowing method and is an unsupervised linear dimensionality reduction and data visualization technique. On the other hand, UMAP is a Uniform Manifold Approximation and Projection for Dimension Reduction.
+From a visualization point of view, PCA tries to preserve the global structure of the data while UMAP tries to preserve global and local structure.
+To apply both of these methods you need to provide as input the file <strong>SNPs_polymorphic_sites.txt</strong> generated with the snptoolkit combine command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit viz -p SNPs_polymorphic_sites.txt
+Dash is running on http://127.0.0.1:8050/
+
+* Serving Flask app <span class="s2">&quot;plot_polySites_output&quot;</span> <span class="o">(</span>lazy loading<span class="o">)</span>
+* Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+* Debug mode: off
+* Running on http://127.0.0.1:8050/ <span class="o">(</span>Press CTRL+C to quit<span class="o">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case you used the option –bam with the snptoolkit combine command, two output files will be generated: SNPs_polymorphic_sites.txt and SNPs_polymorphic_sites_clean.txt.
+The file SNPs_polymorphic_sites_clean.txt does not contains any missing information indicated with a question mark “?” and should be used as input file for dimentionality reduction.</p>
+</div>
+<p>After running the command <em>snptoolkit viz -p SNPs_polymorphic_sites.txt</em>, you can access your result following the link <em>http://127.0.0.1:8050/</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that this step may take some time depending on the size of your data.</p>
+</div>
+<p>The result will be displayed as follows:</p>
+<div class="section" id="pca">
+<h2><span class="section-number">7.1. </span>PCA<a class="headerlink" href="#pca" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="7_The_analyse_command/Figure6.png"><img alt="7_The_analyse_command/Figure6.png" src="_images/Figure61.png" /></a>
+<p>As you notice, when you hover of each dot, the name of the corresponding sample will be displayed.</p>
+</div>
+<div class="section" id="umap">
+<h2><span class="section-number">7.2. </span>UMAP<a class="headerlink" href="#umap" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="7_The_analyse_command/Figure7.png"><img alt="7_The_analyse_command/Figure7.png" src="_images/Figure71.png" /></a>
+</div>
+<div class="section" id="color-mapping">
+<h2><span class="section-number">7.3. </span>Color mapping<a class="headerlink" href="#color-mapping" title="Permalink to this headline">¶</a></h2>
+<p>To take a better advantage of these two methods, it is possible to provide a configuration file that contains the metadata about the analyzed samples.
+This information will be used for color mapping which will make the visualization more comprehensive.
+The configuration file is a tab delimited file. Here is an example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ less metadata_file
+         Lineage Rifampicin      Isoniazid       Pyrazinamide    Ethambutol      compensatory    Location        MDR
+ERR760737_L4_Argentina_2006     L4      R       R       S       R       YES     Argentina       RR
+ERR037537_L4_Malawi_0   L4      S       S       S       S       NO      Malawi  SS
+ERR2652979_L4_Brazil_2004       L4      S       S       S       S       NO      Brazil  SS
+ERR2652959_L4_Canada_2003       L4      S       S       S       S       NO      Canada  SS
+ERR2653008_L4_Brazil_2004       L4      S       S       S       S       YES     Brazil  SS
+ERR2652915_L4_USA_1999  L4      S       S       S       S       NO      USA     SS
+ERR245833_L1_Malawi_0   L1      S       S       S       S       YES     Malawi  SS
+ERR037471_L4_Malawi_0   L4      S       S       S       S       NO      Malawi  SS
+ERR037549_L4_Malawi_0   L4      S       S       S       S       YES     Malawi  SS
+ERR245675_L1_Malawi_0   L1      S       S       S       S       YES     Malawi  SS
+ERR760755_L4_Argentina_2006     L4      R       R       S       R       YES     Argentina       RR
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that the configuration file must contains all the samples that are present in the input file SNPs_polymorphic_sites.txt.
+In case not all the information is availble, you can just any label on the corresponding cells e.g. NA for not availble.</p>
+</div>
+<p>lets run the command viz with the configuration file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit viz -p SNPs_polymorphic_sites.txt -conf metadata_file
+
+Dash is running on http://127.0.0.1:8050/
+
+* Serving Flask app <span class="s2">&quot;plot_polySites_output&quot;</span> <span class="o">(</span>lazy loading<span class="o">)</span>
+* Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+* Debug mode: off
+* Running on http://127.0.0.1:8050/ <span class="o">(</span>Press CTRL+C to quit<span class="o">)</span>
+</pre></div>
+</div>
+<p>As you can see below, now the dropdown menu shows the list of features to use for coloring the different samples.</p>
+<a class="reference external image-reference" href="7_The_analyse_command/Figure8.png"><img alt="7_The_analyse_command/Figure8.png" src="_images/Figure81.png" /></a>
+<p>Now lets color the samples based on their resistance to rifampicin</p>
+<a class="reference external image-reference" href="7_The_analyse_command/Figure9.png"><img alt="7_The_analyse_command/Figure9.png" src="_images/Figure9.png" /></a>
+<p>Now lets  color the samples based on their location</p>
+<a class="reference external image-reference" href="7_The_analyse_command/Figure10.png"><img alt="7_The_analyse_command/Figure10.png" src="_images/Figure10.png" /></a>
+<p>For those (like me) that like dark mode in general you can turn it on to get graphs with dark bakground.</p>
+<a class="reference external image-reference" href="7_The_analyse_command/Figure11.png"><img alt="7_The_analyse_command/Figure11.png" src="_images/Figure11.png" /></a>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="6_The_combine_command.html" class="btn btn-neutral float-left" title="6. The combine command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Amine Namouchi
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
