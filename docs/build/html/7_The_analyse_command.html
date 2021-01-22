@@ -177,7 +177,7 @@ snpToolkit analyze required options:
 <p>The main goal of this analysis is to use two dimentionality reduction methods: PCA and UMAP to cluster all your samples based on the distibution of all identified polymorphic sites between them. Principal Component analysis (PCA) is a quite knowing method and is an unsupervised linear dimensionality reduction and data visualization technique. On the other hand, UMAP is a Uniform Manifold Approximation and Projection for Dimension Reduction.
 From a visualization point of view, PCA tries to preserve the global structure of the data while UMAP tries to preserve global and local structure.
 To apply both of these methods you need to provide as input the file <strong>SNPs_polymorphic_sites.txt</strong> generated with the snptoolkit combine command.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit viz -p SNPs_polymorphic_sites.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit analyse -p SNPs_polymorphic_sites.txt
 Dash is running on http://127.0.0.1:8050/
 
 * Serving Flask app <span class="s2">&quot;plot_polySites_output&quot;</span> <span class="o">(</span>lazy loading<span class="o">)</span>
@@ -193,7 +193,7 @@ Dash is running on http://127.0.0.1:8050/
 <p>In case you used the option –bam with the snptoolkit combine command, two output files will be generated: SNPs_polymorphic_sites.txt and SNPs_polymorphic_sites_clean.txt.
 The file SNPs_polymorphic_sites_clean.txt does not contains any missing information indicated with a question mark “?” and should be used as input file for dimentionality reduction.</p>
 </div>
-<p>After running the command <em>snptoolkit viz -p SNPs_polymorphic_sites.txt</em>, you can access your result following the link <em>http://127.0.0.1:8050/</em>.</p>
+<p>After running the command <em>snptoolkit analyse -p SNPs_polymorphic_sites.txt</em>, you can access your result following the link <em>http://127.0.0.1:8050/</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Please note that this step may take some time depending on the size of your data.</p>
@@ -233,8 +233,8 @@ ERR760755_L4_Argentina_2006     L4      R       R       S       R       YES     
 <p>Please note that the configuration file must contains all the samples that are present in the input file SNPs_polymorphic_sites.txt.
 In case not all the information is availble, you can just any label on the corresponding cells e.g. NA for not availble.</p>
 </div>
-<p>lets run the command viz with the configuration file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit viz -p SNPs_polymorphic_sites.txt -conf metadata_file
+<p>lets run the command analyse with the configuration file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ snptoolkit analyse -p SNPs_polymorphic_sites.txt -c metadata_file
 
 Dash is running on http://127.0.0.1:8050/
 
