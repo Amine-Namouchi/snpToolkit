@@ -1,0 +1,15 @@
+README.md
+setup.py
+snptoolkit
+./snpToolkit_modules/annotate_snpToolkit.py
+./snpToolkit_modules/argsLogger_snpToolkit.py
+./snpToolkit_modules/calls_snpToolkit.py
+./snpToolkit_modules/combine_snpToolkit.py
+./snpToolkit_modules/explore_snpToolkit.py
+./snpToolkit_modules/plot_polySites_output.py
+./snpToolkit_modules/plot_snptoolkit_output.py
+snptoolkit.egg-info/PKG-INFO
+snptoolkit.egg-info/SOURCES.txt
+snptoolkit.egg-info/dependency_links.txt
+snptoolkit.egg-info/requires.txt
+snptoolkit.egg-info/top_level.txt

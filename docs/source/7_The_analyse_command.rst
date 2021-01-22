@@ -21,7 +21,7 @@ To apply both of these methods you need to provide as input the file **SNPs_poly
 
 .. code-block:: bash
 
-   $ snptoolkit viz -p SNPs_polymorphic_sites.txt
+   $ snptoolkit analyse -p SNPs_polymorphic_sites.txt
    Dash is running on http://127.0.0.1:8050/
 
    * Serving Flask app "plot_polySites_output" (lazy loading)
@@ -37,7 +37,7 @@ To apply both of these methods you need to provide as input the file **SNPs_poly
    The file SNPs_polymorphic_sites_clean.txt does not contains any missing information indicated with a question mark "?" and should be used as input file for dimentionality reduction.
 
 
-After running the command *snptoolkit viz -p SNPs_polymorphic_sites.txt*, you can access your result following the link *http://127.0.0.1:8050/*. 
+After running the command *snptoolkit analyse -p SNPs_polymorphic_sites.txt*, you can access your result following the link *http://127.0.0.1:8050/*. 
 
 
 .. note::
@@ -95,11 +95,11 @@ The configuration file is a tab delimited file. Here is an example:
    In case not all the information is availble, you can just any label on the corresponding cells e.g. NA for not availble. 
    
 
-lets run the command viz with the configuration file:
+lets run the command analyse with the configuration file:
 
 .. code-block:: bash
 
-   $ snptoolkit viz -p SNPs_polymorphic_sites.txt -conf metadata_file
+   $ snptoolkit analyse -p SNPs_polymorphic_sites.txt -c metadata_file
 
    Dash is running on http://127.0.0.1:8050/
 
