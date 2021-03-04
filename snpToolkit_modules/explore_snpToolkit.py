@@ -17,7 +17,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.8'
+__version__ = '2.2.9'
 
 
 import glob
@@ -164,7 +164,7 @@ def update_graph(selected_isolate):
 
 @app.callback (Output('graph2','figure'),[Input('isolate','value')])
 def update_graph2(selected_isolate):
-    layout2 = go.Layout(title='Frequency distribution',xaxis={'title':'Ratio','range':[0,1]}, yaxis={'showticklabels':False}, hovermode=False,autosize=False,height=300,xaxis_showgrid=False, xaxis_zeroline=False)
+    layout2 = go.Layout(title='Frequency distribution',xaxis={'title':'Ratio','range':[0,1]}, yaxis={'showticklabels':False}, hovermode=False,autosize=True,height=400,xaxis_showgrid=False, xaxis_zeroline=False)
     return {'data':data2[selected_isolate],'layout':layout2}
 
 

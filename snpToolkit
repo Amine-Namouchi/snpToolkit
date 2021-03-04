@@ -17,7 +17,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.8'
+__version__ = '2.2.9'
 
 if __name__ == "__main__":
 
@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
 
     if args.command == 'explore':
-        cmd = ['python',cwd+'/explore_snpToolkit.py','-i', args.identifier]
+        cmd = [sys.executable,os.path.join(cwd,'explore_snpToolkit.py'),'-i', args.identifier]
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 
@@ -122,17 +122,17 @@ if __name__ == "__main__":
         combine(args)
     
     elif args.command == 'viz':
-        cmd = ['python',cwd+'/plot_snpToolkit_output.py','--dir', args.directory]
+        cmd = [sys.executable,os.path.join(cwd,'plot_snpToolkit_output.py'),'--dir', args.directory]
         proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
         proc.wait()
 
     elif args.command == 'analyse':
         if args.polymorphic_sites!=None and args.config==None:
-            cmd = ['python',cwd+'/plot_polySites_output.py','-p', args.polymorphic_sites]
+            cmd = [sys.executable,os.path.join(cwd,'plot_polySites_output.py'),'-p', args.polymorphic_sites]
             proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
             proc.wait()
         elif args.polymorphic_sites!=None and args.config!=None:
-            cmd = ['python',cwd+'/plot_polySites_output.py','-p', args.polymorphic_sites,'-conf',args.config]
+            cmd = [sys.executable,os.path.join(cwd,'plot_polySites_output.py'),'-p', args.polymorphic_sites,'-conf',args.config]
             proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT)
             proc.wait()
 

@@ -17,10 +17,11 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.8'
+__version__ = '2.2.9'
 
 
 import glob
+import os
 import logging
 import coloredlogs
 import argparse
@@ -38,15 +39,11 @@ import pandas as pd
 
 
 
-
-#TODO: adjust the size of the input text. color dots in scatter according to SNPS effect.
-
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--dir', dest='directory', required=True, help='provide the path to the directory containing snptoolkit output files')
 args= parser.parse_args()
 
-list_files = glob.glob(args.directory+'/*_snpToolkit_SNPs.txt')
+list_files = glob.glob(os.path.join(args.directory,'*_snpToolkit_SNPs.txt'))
 snptoolkitInputs =[]
 for f in list_files:
     snptoolkitInputs.append ({'label':f.split('/')[-1].split('_snpToolkit_')[0],'value':f.split('/')[-1].split('_snpToolkit_')[0]})
@@ -69,12 +66,12 @@ app.layout = html.Div(
             options=snptoolkitInputs,
             value = snptoolkitInputs[0]['value']
             ),
-            ],style={'width': '50%', 'display': 'inline-block'}),
+            ],style={'width': '100%'}),
         html.Div([
         dcc.Dropdown(
             id='opt-dropdown',
             ),
-            ],style={'width': '50%', 'display': 'inline-block'}
+            ],style={'width': '100%'}
         ),
         html.Hr(),
         dcc.RadioItems(id='selected-type',options=[
@@ -83,7 +80,7 @@ app.layout = html.Div(
             {'label': 'Non-synonymous SNPs', 'value': 'NS'},
             ],value='ALL',labelStyle={'display': 'inline-block'}
         ),
-        #TODO: dcc.Input(placeholder='Enter a window size to compute SNPs density...',type='number',id="windowsize",value=''),
+        
         dcc.Graph(id='graph'),
         html.Hr(),
         html.Div(dt.DataTable(columns = [{"name": i, "id": i} for i in header],
