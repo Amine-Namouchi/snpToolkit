@@ -17,7 +17,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.9'
+__version__ = '2.3.0'
 
 if __name__ == "__main__":
 
@@ -107,8 +107,32 @@ if __name__ == "__main__":
         
         pool.close()
         pool.join()
-        logger.info('snpToolkit output files will be located in folders {} and {}'.format(snps_output_directory,indels_ouput_directory))
+        snpStatus = False
+        indelStatus = False
 
+        if not os.listdir(snps_output_directory) :
+            cmd = ['rm','-r', snps_output_directory]
+            proc = Popen(cmd, stdout=PIPE, stderr=STDOUT)
+            proc.wait()
+        else:
+            snpStatus = True
+            logger.info('snpToolkit output files for SNPs data will be located in folders {}'.format(snps_output_directory))
+        
+        if not os.listdir(indels_ouput_directory) :
+            cmd = ['rm','-r' ,indels_ouput_directory]
+            proc = Popen(cmd, stdout=PIPE, stderr=STDOUT)
+            proc.wait()
+        else:
+            indelStatus = True
+            logger.info('snpToolkit output files for INDELs data will be located in folders {}'.format(indels_ouput_directory))
+
+        
+        if snpStatus == True and indelStatus == False:
+            logger.info('Only snpToolkit output folder {} for SNPs data was created as no INDELs were found'.format(snps_output_directory))
+        elif snpStatus == False and indelStatus == True:
+            logger.info('Only snpToolkit output folder {} for INDELs data was created as no SNPs were found'.format(indels_ouput_directory))
+        elif snpStatus == False and indelStatus == False:
+            logger.info('No output files cretaed! Please check your input file(s) and/or change your filtering criteria')
 
     elif args.command == 'combine':
         try:

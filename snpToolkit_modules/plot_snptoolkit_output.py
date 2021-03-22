@@ -17,7 +17,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.9'
+__version__ = '2.3.0'
 
 
 import glob
@@ -48,7 +48,7 @@ snptoolkitInputs =[]
 for f in list_files:
     snptoolkitInputs.append ({'label':f.split('/')[-1].split('_snpToolkit_')[0],'value':f.split('/')[-1].split('_snpToolkit_')[0]})
 
-
+print (snptoolkitInputs)
 colors={'background':'#262626','text':'#ffffff','textHeader':'#111111'}
 app = dash.Dash()
 

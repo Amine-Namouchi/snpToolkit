@@ -17,7 +17,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.9'
+__version__ = '2.3.0'
 
 
 import glob
@@ -58,6 +58,7 @@ def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_dir
     VcfFile_object = VCFtoolBox(VcfFile)
     vcf_source = VcfFile_object.vcf_generator()
     if vcf_source not in known_origins:
+        
         warnings.append('Are you sure the vcf file ' + File_name +
                         ' was generated using samtools-mpileup, gatk-HaplotypeCaller or freeBayes!'.format(vcf_source))
     else:
@@ -70,7 +71,7 @@ def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_dir
             else:
                 indels_inVCF.append(EachVar)
         raw_number_snps = len(SNPs_in_VCF)
-
+        
         info1 = '##Total number of SNPs before snpToolkit processing: {}'.format(
             raw_number_snps)
 
@@ -97,22 +98,18 @@ def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_dir
         else:
             Fitered_SNPs = SNPs_in_VCF
             info2 = '##The options -f and -e were not used'
-
-        PreProcessedRawSNPs = SNPselect(
-            Fitered_SNPs, 0, 0, 0)
-        extractedRawSNPs = PreProcessedRawSNPs.ExtractSNPinfo(vcf_source)
-
+        
         PreProcessedSNPs = SNPselect(
             Fitered_SNPs, options.quality, options.depth, options.ratio)
         extractedSNPs = PreProcessedSNPs.ExtractSNPinfo(vcf_source)
-
+        
         if options.ratio == 0.001:
-            info3 = '##Filtred SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
+            info3 = '##Filtered SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
                 len(Fitered_SNPs), options.quality, options.depth, 0.0, sum([len(x) for x in extractedSNPs[0].values()]))
         else:
-            info3 = '##Filtred SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
+            info3 = '##Filtered SNPs. Among the {} SNPs, the number of those with a quality score >= {}, a depth >= {} and a ratio >= {} is: {}'.format(
                 len(Fitered_SNPs), options.quality, options.depth, options.ratio, sum([len(x) for x in extractedSNPs[0].values()]))
-
+        
         genbank_accessions = annotationDB.keys()
         gbank_accessions_order = []
         for eachElem1 in annotationDB['locus_order']:
@@ -122,31 +119,7 @@ def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_dir
         SNPs_To_Map_and_Annotate = SNPannotation(extractedSNPs[0])
         Final_SNP_List = SNPs_To_Map_and_Annotate.mapAndannoSNPs(
             annotationDB)
-        ##################################################################
-        PreProcessedINDELS = SNPselect(
-            indels_inVCF, options.quality, options.depth, options.ratio)
-        extractedINDELS = PreProcessedINDELS.ExtractSNPinfo(vcf_source)
-        INDELS_To_Map_and_Annotate = SNPannotation(extractedINDELS[0])
-        Final_INDELS_List = INDELS_To_Map_and_Annotate.mapAndannoINDELS(
-            annotationDB)
-        indels_found = False
-        for elem in Final_INDELS_List.keys():
-            if len(Final_INDELS_List[elem]) > 1:
-                indels_found = True
-                break
-        if indels_found is True:
 
-            outputfile = open(indels_ouput_directory + '/' +
-                                File_name + '_snpToolkit_indels.txt', 'w')
-
-            for eachElem in Final_INDELS_List.keys():
-                done=[]
-                for eachIndel in Final_INDELS_List[eachElem]:
-                    if eachIndel[0] not in done:
-                        done.append(eachIndel[0])
-                        outputfile.write(
-                            '\t'.join([str(e) for e in eachIndel]+[eachElem]) + '\n')
-        ##################################################################
 
         info4 = '##After mapping, SNPs were located in: \n##' + \
             '\n##'.join(Final_SNP_List.keys())
@@ -155,6 +128,7 @@ def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_dir
         summary_columns = [['Location', 'Genes', 'RBS', 'tRNA', 'rRNA', 'ncRNA',
                             'Pseudogenes', 'intergenic', 'Synonymous', 'NonSynonumous']]
         allSNPs = []
+        
         all_data_collection = []
         for eachAccession in genbank_accessions:
             for location in Final_SNP_List.keys():
@@ -182,9 +156,9 @@ def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_dir
                     counts.append(format(NonSynonumous))
                     summary_columns.append(counts)
                     all_data_collection.append(data_collection)
+        
 
         if len(all_data_collection) > 0:
-            flag = True
             outputfile = open(snps_output_directory + '/' +
                                 File_name + '_snpToolkit_SNPs.txt', 'w')
             infos = ['##snpToolkit=version '+__version__, '##commandline= ' + ' '.join(
@@ -211,11 +185,41 @@ def annotate(options,VcfFile,annotationDB,snps_output_directory,indels_ouput_dir
                         '\t'.join([format(eachElem) for eachElem in eachSNP]) + '\n')
 
             outputfile.close()
-
-
         else:
-            warnings.append(
-                '{}: No SNPs were detected based on the specified filtering criteria'.format(File_name))
+            warnings.append('{}: No SNPs were detected based on the specified filtering criteria'.format(File_name))
+
+        ##################################################################
+        PreProcessedINDELS = SNPselect(
+            indels_inVCF[:], options.quality, options.depth, options.ratio)
+        
+        extractedINDELS = PreProcessedINDELS.ExtractSNPinfo(vcf_source)
+        
+        INDELS_To_Map_and_Annotate = SNPannotation(extractedINDELS[0])
+        
+        Final_INDELS_List = INDELS_To_Map_and_Annotate.mapAndannoINDELS(
+            annotationDB)
+
+        indels_found = False
+        for elem in Final_INDELS_List.keys():
+            if len(Final_INDELS_List[elem]) > 0:
+                indels_found = True
+                break
+        
+        if indels_found is True:
+            outputfile = open(indels_ouput_directory + '/' +
+                                File_name + '_snpToolkit_indels.txt', 'w')
+
+            for eachElem in Final_INDELS_List.keys():
+                done=[]
+                for eachIndel in Final_INDELS_List[eachElem]:
+                    if eachIndel[0] not in done:
+                        done.append(eachIndel[0])
+                        outputfile.write(
+                            '\t'.join([str(e) for e in eachIndel]+[eachElem]) + '\n')
+        else:
+            warnings.append('{}: No INDELs were detected based on the specified filtering criteria'.format(File_name))
+        ################################################################
+
 
     if len(warnings) > 0:
         for warning in warnings:

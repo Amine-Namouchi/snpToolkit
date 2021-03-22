@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(name='snptoolkit',
-      version='2.2.9',
+      version='2.3.0',
       description='Explore, filter, annotate and analyse your SNPs/indels from VCF files',
       url='https://github.com/Amine-Namouchi/snpToolkit',
       author='Amine Namouchi',

@@ -16,7 +16,7 @@
 __licence__ = 'GPLv3'
 __author__ = 'Amine Namouchi'
 __author_email__ = 'amine.namouchi@gmail.com'
-__version__ = '2.2.9'
+__version__ = '2.3.0'
 
 
 import gzip
@@ -67,8 +67,6 @@ def parse_genbank_file(gb_filename):
         for feature in genome.features:
             if(feature.type == "CDS"):
                 if feature.location_operator == 'join':
-                    #TODO: here it is important to pass the coordinates of the fragsment to join and the the other intromic' part. this is important as it is necessray to change the coordiantes of the SNPs according to the new generated sequence. 
-                    #need to work more with the example sample1_n50_gatk.vcf
                     nucseq=''
                     for sub_location in feature.location.parts:
                         if sub_location.strand == 1:
@@ -358,12 +356,12 @@ class SNPselect (object):
         data_collection = {}
         units = list(set([elem[0] for elem in self.snps]))
         for eachUnit in units:
+
             extracted_data = []
-            for content in self.snps:
+            for content in self.snps:  
                 if eachUnit == content[0]:
                     coordiantes = int(content[1])
                     REF = content[3]
-
                     ALT = content[4]
                     quality = float(content[5])
                     if quality >= self.QUAL:
@@ -405,48 +403,49 @@ class SNPselect (object):
                                 count_DEPTH += 1
                                 if nbREADref == 0:
                                     ratio = 1.0
-                                    extracted_data.append([coordiantes, REF, ALT, depth, nbREADref, nbREADalt, float(
-                                        ('%.2f') % ratio), quality])
+                                    extracted_data.append([coordiantes, REF, ALT, depth, nbREADref, nbREADalt, float(('%.2f') % ratio), quality])
                                     count_RATIO += 1
                                 else:
                                     ratio = float(
                                         nbREADalt*1.0/(nbREADref+nbREADalt))
                                     if ratio >= self.RATIO:
-                                        extracted_data.append([coordiantes, REF, ALT, depth, nbREADref, nbREADalt, float(
-                                            ('%.2f') % ratio), quality])
+                                        extracted_data.append([coordiantes, REF, ALT, depth, nbREADref, nbREADalt, float(('%.2f') % ratio), quality])
                                         count_RATIO += 1
 
-                        else:  # freeBayes
-                            for eachElem in varInfo:
-                                if 'DP=' in eachElem:
-                                    depth = int(eachElem.split('=')[1])
-                                elif 'SRF=' in eachElem:
-                                    nbREADref_F = int(eachElem.split('=')[1])
-                                elif 'SRR=' in eachElem:
-                                    nbREADref_R = int(eachElem.split('=')[1])
-                                elif 'SAF=' in eachElem:
-                                    nbREADalt_F = int(eachElem.split('=')[1])
-                                elif 'SAR=' in eachElem:
-                                    nbREADalt_R = int(eachElem.split('=')[1])
+                        elif origin == 'freeBayes':
+                            if ',' not in ALT:                    
+                                for eachElem in varInfo:
+                                    if 'DP=' in eachElem:
+                                        depth = int(eachElem.split('=')[1])
+                                    elif 'SRF=' in eachElem:
+                                        nbREADref_F = int(eachElem.split('=')[1])
+                                    elif 'SRR=' in eachElem:
+                                        nbREADref_R = int(eachElem.split('=')[1])
+                                    elif 'SAF=' in eachElem:
+                                        nbREADalt_F = int(eachElem.split('=')[1])
+                                    elif 'SAR=' in eachElem:
+                                        nbREADalt_R = int(eachElem.split('=')[1])
 
-                            nbREADref = nbREADref_F + nbREADref_R
-                            nbREADalt = nbREADalt_F + nbREADalt_R
+                                nbREADref = nbREADref_F + nbREADref_R
+                                nbREADalt = nbREADalt_F + nbREADalt_R
 
-                            if depth >= self.DEPTH:
-                                count_DEPTH += 1
-                                if nbREADref == 0:
-                                    ratio = 1.0
-                                    extracted_data.append([coordiantes, REF, ALT, depth, nbREADref, nbREADalt, float(
-                                        ('%.2f') % ratio), quality])
-                                    count_RATIO += 1
-                                else:
-                                    ratio = float(
-                                        nbREADalt*1.0/(nbREADref+nbREADalt))
-                                    if ratio >= self.RATIO:
-                                        extracted_data.append([coordiantes, REF, ALT, depth, nbREADref, nbREADalt, float(
-                                            ('%.2f') % ratio), quality])
+                                if depth >= self.DEPTH:
+                                    
+                                    count_DEPTH += 1
+                                    if nbREADref == 0:
+                                        
+                                        ratio = 1.0
+                                        extracted_data.append([coordiantes, REF, ALT, depth, nbREADref, nbREADalt, float(('%.2f') % ratio), quality])
                                         count_RATIO += 1
+                                    else:
+                                        ratio = float(
+                                            nbREADalt*1.0/(nbREADref+nbREADalt))
+                                        
+                                        if ratio >= self.RATIO:
+                                            extracted_data.append([coordiantes, REF, ALT, depth, nbREADref, nbREADalt, float(('%.2f') % ratio), quality])
+                                            count_RATIO += 1
             data_collection[eachUnit] = extracted_data
+
         return data_collection, count_QUAL, count_DEPTH, count_RATIO
 
 
